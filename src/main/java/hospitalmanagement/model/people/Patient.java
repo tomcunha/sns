@@ -1,6 +1,6 @@
 package hospitalmanagement.model.people;
 
-import hospitalmanagement.Utility.SexUtil;
+import hospitalmanagement.utility.SexUtil;
 import hospitalmanagement.model.medicalLists.Hospital;
 
 import java.time.LocalDate;
@@ -16,6 +16,8 @@ public class Patient extends Person{
     private Hospital favoriteHospital;
 
     private boolean hasDiseases;
+
+    private String report;
 
 
     public Patient(String name, LocalDate birthDate, SexUtil sexUtil, String email, String phoneNumber, String address, long cc_id, Hospital favoriteHospital, boolean hasDiseases, boolean hasInsurance) {
@@ -62,6 +64,12 @@ public class Patient extends Person{
         this.hasDiseases = hasDiseases;
     }
 
+    public String getReport() {
+        return report;
+    }
 
+    public void setReport(String report) {
+        this.report = report;
+    }
 
 }

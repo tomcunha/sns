@@ -1,6 +1,6 @@
 package hospitalmanagement.model.people;
 
-import hospitalmanagement.Utility.SpecialitiesUtil;
+import hospitalmanagement.utility.SpecialitiesUtil;
 import hospitalmanagement.model.medicalLists.Hospital;
 
 public class Doctor {

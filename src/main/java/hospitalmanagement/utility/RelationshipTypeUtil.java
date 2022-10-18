@@ -1,4 +1,4 @@
-package hospitalmanagement.Utility;
+package hospitalmanagement.utility;
 
 public enum RelationshipTypeUtil {
 }

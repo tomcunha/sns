@@ -1,6 +1,6 @@
 package hospitalmanagement.model.people;
 
-import hospitalmanagement.Utility.SexUtil;
+import hospitalmanagement.utility.SexUtil;
 import hospitalmanagement.model.Contact;
 
 import java.time.LocalDate;

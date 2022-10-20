@@ -34,7 +34,6 @@ public class LoginMenuController extends SceneController {
         List<String> passwords = new ArrayList<>();
         List<Integer> types = new ArrayList<>();
 
-
         ResultSet resultSet = Database.queryTable("SELECT * FROM Employees");
         try {
             while (resultSet.next()) {
@@ -50,6 +49,7 @@ public class LoginMenuController extends SceneController {
             if (users.get(i).equals(usernamefield.getText()) && passwords.get(i).equals(passwordfield.getText())){
                 switch (types.get(i)){
                     case 1:
+
                         break;
                     case 2:
                         setScreen(signInButton, "Example.fxml");
@@ -61,6 +61,5 @@ public class LoginMenuController extends SceneController {
                 break;
             }
         }
-
     }
 }

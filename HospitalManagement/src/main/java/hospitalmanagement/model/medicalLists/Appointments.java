@@ -16,10 +16,11 @@ public class Appointments {
 
     private Doctor doctor;
 
+
+
     private double appointmentCost;
 
     private LocalTime localTime;
-
 
     private char type;
 

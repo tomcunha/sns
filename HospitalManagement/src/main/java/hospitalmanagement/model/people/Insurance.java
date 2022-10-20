@@ -1,18 +1,23 @@
 package hospitalmanagement.model.people;
 
 public class Insurance {
+    private int id;
 
     private String name;
 
-    private double discount;
+    private double discountExam;
+    private double discountAppointment;
 
-    private long nr_policy;
-
-    public Insurance(String name, double discount, long nr_policy) {
+    public Insurance(String name, double discountExam, double discountAppointment) {
         this.name = name;
-        this.discount = discount;
-        this.nr_policy = nr_policy;
+        this.discountExam = discountExam;
+        this.discountAppointment = discountAppointment;
     }
+
+    public int getId() {
+        return id;
+    }
+
 
     public String getName() {
         return name;
@@ -22,19 +27,19 @@ public class Insurance {
         this.name = name;
     }
 
-    public double getDiscount() {
-        return discount;
+    public double getDiscountExam() {
+        return discountExam;
     }
 
-    public void setDiscount(double discount) {
-        this.discount = discount;
+    public void setDiscountExam(double discountExam) {
+        this.discountExam = discountExam;
     }
 
-    public long getNr_policy() {
-        return nr_policy;
+    public double getDiscountAppointment() {
+        return discountAppointment;
     }
 
-    public void setNr_policy(long nr_policy) {
-        this.nr_policy = nr_policy;
+    public void setDiscountAppointment(double discountAppointment) {
+        this.discountAppointment = discountAppointment;
     }
 }

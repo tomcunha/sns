@@ -1,4 +1,4 @@
 package hospitalmanagement.utility;
 
-public enum InsuranceUtil {
+public class RelationshipUtil {
 }

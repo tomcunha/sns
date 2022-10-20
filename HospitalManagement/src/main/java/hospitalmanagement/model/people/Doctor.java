@@ -1,9 +1,12 @@
 package hospitalmanagement.model.people;
 
+import hospitalmanagement.utility.SexUtil;
 import hospitalmanagement.utility.SpecialitiesUtil;
 import hospitalmanagement.model.medicalLists.Hospital;
 
-public class Doctor {
+import java.time.LocalDate;
+
+public class Doctor extends Person {
 
     private long medical_id;
 
@@ -11,7 +14,8 @@ public class Doctor {
 
     private Hospital workingHospital;
 
-    public Doctor(long medical_id, SpecialitiesUtil specialty, Hospital workingHospital) {
+    public Doctor(String name, LocalDate birthDate, SexUtil sexUtil, String email, String phoneNumber, String address, long medical_id, SpecialitiesUtil specialty, Hospital workingHospital) {
+        super(name, birthDate, sexUtil, email, phoneNumber, address);
         this.medical_id = medical_id;
         this.specialty = specialty;
         this.workingHospital = workingHospital;

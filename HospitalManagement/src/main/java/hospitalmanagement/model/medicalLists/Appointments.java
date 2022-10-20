@@ -1,5 +1,6 @@
 package hospitalmanagement.model.medicalLists;
 
+import hospitalmanagement.utility.ExamUtil;
 import hospitalmanagement.utility.SpecialitiesUtil;
 import hospitalmanagement.model.people.Doctor;
 import hospitalmanagement.model.people.Patient;
@@ -23,7 +24,7 @@ public class Appointments {
 
     private char type;
 
-    private Exam exam;
+    private ExamUtil exam;
 
     private SpecialitiesUtil speciality;
 
@@ -89,11 +90,11 @@ public class Appointments {
         this.type = type;
     }
 
-    public Exam getExam() {
+    public ExamUtil getExam() {
         return exam;
     }
 
-    public void setExam(Exam exam) {
+    public void setExam(ExamUtil exam) {
         this.exam = exam;
     }
 

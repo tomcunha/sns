@@ -6,4 +6,6 @@ module hospitalmanagement.hospitalmanagement {
 
     exports hospitalmanagement;
     opens hospitalmanagement to javafx.fxml;
+    exports hospitalmanagement.controller;
+    opens hospitalmanagement.controller to javafx.fxml;
 }

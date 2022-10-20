@@ -3,6 +3,7 @@ package hospitalmanagement;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -10,6 +11,7 @@ import java.io.IOException;
 public class StartApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
+        Database.connect();
         FXMLLoader fxmlLoader = new FXMLLoader(StartApplication.class.getResource("LoginScene.fxml"));
 
         Scene scene = new Scene(fxmlLoader.load(), 1280, 720);

@@ -6,23 +6,28 @@ import hospitalmanagement.model.medicalLists.Hospital;
 
 import java.time.LocalDate;
 
-public class Doctor extends Person {
+public class Doctor extends Employee {
 
-    private long medical_id;
+    private String medical_id;
 
     private SpecialitiesUtil specialty;
 
     private Hospital workingHospital;
 
-    public Doctor(String name, LocalDate birthDate, SexUtil sexUtil, String email, String phoneNumber, String address, long medical_id, SpecialitiesUtil specialty, Hospital workingHospital) {
-        super(name, birthDate, sexUtil, email, phoneNumber, address);
+
+    public Doctor(String name, LocalDate birthDate, SexUtil sexUtil, String email, String phoneNumber, String address, String username, String password, int type, String medical_id, SpecialitiesUtil specialty, Hospital workingHospital) {
+        super(name, birthDate, sexUtil, email, phoneNumber, address, username, password, type);
         this.medical_id = medical_id;
         this.specialty = specialty;
         this.workingHospital = workingHospital;
     }
 
-    public long getMedical_id() {
+    public String getMedical_id() {
         return medical_id;
+    }
+
+    public void setMedical_id(String medical_id) {
+        this.medical_id = medical_id;
     }
 
     public SpecialitiesUtil getSpecialty() {

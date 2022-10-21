@@ -1,2 +1,9 @@
-package hospitalmanagement.controller;public class AdminFindDoctorController {
+package hospitalmanagement.controller;
+
+import javafx.fxml.FXML;
+
+public class AdminFindDoctorController {
+
+
+
 }

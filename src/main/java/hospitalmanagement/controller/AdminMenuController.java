@@ -32,9 +32,12 @@ public class AdminMenuController extends SceneController {
     @FXML
     public void setButtonPower() throws IOException {
         setScreen(buttonPower, "LoginScene.fxml");
+    }
+    @FXML
+    public void setDoctorManagementButton() throws IOException {
+        setScreen(doctorsManagementButton, "AdminFindDoctorScene.fxml");
 
     }
-
     @FXML
     public void setExamsManagementButton() throws IOException {
         setScreen(examsManagementButton, "LoginScene.fxml");
@@ -45,50 +48,7 @@ public class AdminMenuController extends SceneController {
         setScreen(hospitalsManagementButton, "LoginScene.fxml");
     }
 
-    @FXML
-    public void setDoctorManagementButton() throws IOException {
-        List<String> name = new ArrayList<>();
-        List<String> medicalLicense = new ArrayList<>();
-        List<Integer> medical_id = new ArrayList<>();
-        List<LocalDate> birthdate = new ArrayList<>();
-        List<String> gender = new ArrayList<>();
-        List<String> phoneNumber = new ArrayList<>();
-        List<String> address = new ArrayList<>();
-        List<String> email = new ArrayList<>();
-        List<Integer> hospital_id = new ArrayList<>();
 
-
-        ResultSet resultSet = Database.queryTable("SELECT * FROM Doctors JOIN Persons WHERE idDoctors = person_id");
-
-
-        try {
-            while (resultSet.next()) {
-
-                medical_id.add(resultSet.getInt("idDoctors"));
-                medicalLicense.add(resultSet.getString("medicalLicense"));
-                name.add(resultSet.getString("name"));
-                birthdate.add(resultSet.getDate("birthdate").toLocalDate());
-                gender.add(resultSet.getString("sex"));
-                phoneNumber.add(resultSet.getString("phoneNumber"));
-                address.add(resultSet.getString("address"));
-                email.add(resultSet.getString("email"));
-                hospital_id.add(resultSet.getInt("hospital_id"));
-            }
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-
-        String name1 = "Débora";
-        String name2 = "Débora XXXX";
-
-        System.out.println(name1.compareTo(name2));
-
-
-        setScreen(doctorsManagementButton, "DoctorMenuScene.fxml");
-
-    }
 
     @FXML
     public void setSpecialitiesManagementButton() throws IOException {

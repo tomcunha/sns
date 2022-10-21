@@ -7,7 +7,7 @@ import java.time.LocalDate;
 
 public class Patient extends Person{
 
-    private long cc_id;
+    private String cc_id;
 
     private boolean hasInsurance;
 
@@ -20,7 +20,7 @@ public class Patient extends Person{
     private String report;
 
 
-    public Patient(String name, LocalDate birthDate, SexUtil sexUtil, String email, String phoneNumber, String address, long cc_id, Hospital favoriteHospital, boolean hasDiseases, boolean hasInsurance) {
+    public Patient(String name, LocalDate birthDate, SexUtil sexUtil, String email, String phoneNumber, String address, String cc_id, Hospital favoriteHospital, boolean hasDiseases, boolean hasInsurance) {
         super(name, birthDate, sexUtil, email, phoneNumber, address);
         this.cc_id = cc_id;
         this.favoriteHospital = favoriteHospital;
@@ -28,7 +28,7 @@ public class Patient extends Person{
         this.hasDiseases = hasDiseases;
     }
 
-    public long getCc_id() {
+    public String getCc_id() {
         return cc_id;
     }
 

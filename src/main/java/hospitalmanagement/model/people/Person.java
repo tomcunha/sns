@@ -8,6 +8,8 @@ import java.time.Period;
 
 public class Person {
 
+    private int id;
+
     private String name;
 
     private LocalDate birthDate;

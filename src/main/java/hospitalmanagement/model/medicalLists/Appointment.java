@@ -7,7 +7,7 @@ import hospitalmanagement.model.people.Patient;
 
 import java.time.LocalTime;
 
-public class Appointments {
+public class Appointment {
 
     private int id;
 
@@ -29,7 +29,7 @@ public class Appointments {
 
     private SpecialitiesUtil speciality;
 
-    public Appointments(int id, Hospital hospital, Patient patient, Doctor doctor, double appointmentCost, LocalTime localTime, char type) {
+    public Appointment(int id, Hospital hospital, Patient patient, Doctor doctor, double appointmentCost, LocalTime localTime, char type) {
         this.id = id;
         this.hospital = hospital;
         this.patient = patient;

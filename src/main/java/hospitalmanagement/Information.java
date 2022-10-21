@@ -27,6 +27,7 @@ public class Information {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        return hospitals;
     }
 
     public static List<Doctor> getDoctors(){

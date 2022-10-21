@@ -1,12 +1,11 @@
-
 /*GENERAL*/
+.root {-fx-background-image: url(images/Login/LoginScene.png);}
 /*ALL LABELS*/
 .label {
     -fx-font-family: "Inter";
     -fx-font-size: 30px;
     -fx-text-fill: #0E1D33;
 }
-
 /*ALL BUTTONS*/
 .button{
     -fx-font-family: "Inter";
@@ -21,8 +20,6 @@
 
 
 /*LOGIN SCENE*/
-.root {-fx-background-image: url(images/background.png);}
-/*MAIN MENU TITLE*/
 #title{
     -fx-font-size: 60px;
     -fx-font-weight: BOLD;
@@ -31,29 +28,16 @@
 #usernamefield{
     -fx-font-size: 25 px;
 }
-
 #passwordfield{
     -fx-font-size: 25 px;
 }
 
-/*ADMIN BUTTON*/
-#buttonAdmin{
-    -fx-background-image: url(images/AdminMenu/user.png);
-    -fx-background-color: Transparent;
-}
-#buttonAdmin:hover{
-    -fx-effect: dropshadow( one-pass-box , white , 8 , 0 , 0 , 0 );
+#warning{
+    -fx-font-size: 20px;
+    -fx-fill: red;
 }
 
 
-/*POWER BUTTON*/
-#buttonPower{
-    -fx-background-image: url(images/AdminMenu/power.png);
-    -fx-background-color: Transparent;
-}
-#buttonAdmin:hover{
-    -fx-effect: dropshadow( one-pass-box , white , 8 , 0 , 0 , 0 );
-}
 
 
 

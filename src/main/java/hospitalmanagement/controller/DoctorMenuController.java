@@ -13,7 +13,7 @@ public class DoctorMenuController extends SceneController {
     @FXML
     public void setButtonPower() throws IOException {
         setScreen(button123, "LoginScene.fxml");
-        System.out.println("OLA");
+
     }
 
 }

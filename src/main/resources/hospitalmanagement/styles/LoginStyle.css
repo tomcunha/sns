@@ -1,0 +1,39 @@
+/*GENERAL*/
+.root {-fx-background-image: url(images/background.png);}
+
+/*ALL LABELS*/
+.label {
+    -fx-font-family: "Inter";
+    -fx-font-size: 30px;
+    -fx-text-fill: #0E1D33;
+}
+/*ALL BUTTONS*/
+.button{
+    -fx-font-family: "Inter";
+    -fx-font-size: 40 px;
+    -fx-text-fill: black;
+    -fx-background-color: linear-gradient(#d0d0d0, #aeb5b6);
+    -fx-background-radius: 30px;
+}
+.button:hover{
+    -fx-effect: dropshadow( one-pass-box , white , 8 , 0 , 2 , 0 );
+}
+
+
+/************************************  LOGIN SCENE  ******************************************************/
+#title{
+    -fx-font-size: 60px;
+    -fx-font-weight: BOLD;
+    -fx-effect: dropshadow( one-pass-box , white , 8 , 0.0 , 2 , 0 );
+}
+#usernamefield{
+    -fx-font-size: 25 px;
+}
+#passwordfield{
+    -fx-font-size: 25 px;
+}
+
+#textWarning{
+    -fx-font-size: 20px;
+    -fx-fill: red;
+}

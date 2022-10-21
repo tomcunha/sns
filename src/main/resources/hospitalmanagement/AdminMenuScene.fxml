@@ -37,7 +37,7 @@
                 <Insets bottom="30" right="30" />
             </padding>
             <children>
-                <Button mnemonicParsing="false" prefWidth="600.0" text="Doctors Management" />
+                <Button fx:id="doctorsManagementButton" mnemonicParsing="false" prefWidth="600.0" text="Doctors Management" />
             </children>
             <opaqueInsets>
                 <Insets />

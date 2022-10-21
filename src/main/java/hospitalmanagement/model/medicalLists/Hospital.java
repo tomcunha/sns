@@ -3,11 +3,11 @@ package hospitalmanagement.model.medicalLists;
 import hospitalmanagement.model.Contact;
 
 public class Hospital {
-    private String name;
-
-    private Contact contact;
 
     private int id;
+    private String name;
+    private Contact contact;
+
 
     public Hospital(int id, String name, String address, String phoneNumber, String email) {
         this.id = id;

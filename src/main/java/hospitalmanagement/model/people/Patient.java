@@ -1,43 +1,32 @@
 package hospitalmanagement.model.people;
 
+import hospitalmanagement.model.medicalLists.Disease;
 import hospitalmanagement.utility.SexUtil;
 import hospitalmanagement.model.medicalLists.Hospital;
 
 import java.time.LocalDate;
+import java.util.List;
 
-public class Patient extends Person{
+public class Patient extends Person {
 
     private String patientCC;
-
-    private boolean hasInsurance;
 
     private Insurance insurance;
 
     private Hospital favoriteHospital;
 
-    private boolean hasDiseases;
+    private List<Disease> diseases;
 
-    private String report;
-
-
-    public Patient(String name, LocalDate birthDate, SexUtil sexUtil, String address, String phoneNumber, String email, String patientCC, Hospital favoriteHospital, boolean hasDiseases, boolean hasInsurance) {
+    public Patient(String name, LocalDate birthDate, SexUtil sexUtil, String address, String phoneNumber, String email, String patientCC, Hospital favoriteHospital, Insurance insurance, List<Disease> diseases) {
         super(name, birthDate, sexUtil, address, phoneNumber, email);
         this.patientCC = patientCC;
         this.favoriteHospital = favoriteHospital;
-        this.hasInsurance = hasInsurance;
-        this.hasDiseases = hasDiseases;
+        this.insurance = insurance;
+        this.diseases = diseases;
     }
 
     public String getPatientCC() {
         return patientCC;
-    }
-
-    public boolean isHasInsurance() {
-        return hasInsurance;
-    }
-
-    public void setHasInsurance(boolean hasInsurance) {
-        this.hasInsurance = hasInsurance;
     }
 
     public Insurance getInsurance() {
@@ -56,20 +45,11 @@ public class Patient extends Person{
         this.favoriteHospital = favoriteHospital;
     }
 
-    public boolean isHasDiseases() {
-        return hasDiseases;
+    public List<Disease> getDiseases() {
+        return diseases;
     }
 
-    public void setHasDiseases(boolean hasDiseases) {
-        this.hasDiseases = hasDiseases;
+    public void setDiseases(List<Disease> diseases) {
+        this.diseases = diseases;
     }
-
-    public String getReport() {
-        return report;
-    }
-
-    public void setReport(String report) {
-        this.report = report;
-    }
-
 }

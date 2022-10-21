@@ -3,6 +3,7 @@ package hospitalmanagement;
 import hospitalmanagement.model.medicalLists.Disease;
 import hospitalmanagement.model.medicalLists.Hospital;
 import hospitalmanagement.model.people.Doctor;
+import hospitalmanagement.model.people.Insurance;
 import hospitalmanagement.model.people.Patient;
 import hospitalmanagement.utility.SexUtil;
 import hospitalmanagement.utility.SpecialitiesUtil;
@@ -39,6 +40,25 @@ public class Information {
         return hospitals;
     }
 
+    public static List<Insurance> getInsurances(){
+        resultSet = Database.queryTable("SELECT* FROM Insurances");
+        List<Insurance> insurances = new ArrayList<>();
+        try {
+            while (resultSet.next()) {
+
+                int insurance_id = resultSet.getInt("insurance_id");
+                String name = resultSet.getString("name");
+                float discountExam = resultSet.getFloat("dExam");
+                float discountAppointment = resultSet.getFloat("dAppointment");
+
+                insurances.add(new Insurance(insurance_id, name, discountExam, discountAppointment));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return insurances;
+    }
+
     public static List<Disease> getDiseases() {
 
         resultSet = Database.queryTable("SELECT * FROM Diseases");
@@ -59,7 +79,6 @@ public class Information {
 
         return diseases;
     }
-
 
     public static List<Doctor> getDoctors() {
         String query = "SELECT name, birthDate,sex, address, phoneNumber, email, medicalLicense, speciality_id, hospital_id FROM Doctors JOIN Employees ON Doctors.employee_id = Employees.employee_id JOIN Persons ON Employees.person_id = Persons.person_id";
@@ -86,9 +105,8 @@ public class Information {
                     default -> sexUtil = SexUtil.OTHER;
                 }
 
-                List<Hospital> hospitals = getHospitals();
                 Hospital selectedHospital = null;
-                for (Hospital hospital : hospitals) {
+                for (Hospital hospital : getHospitals()) {
                     if (hospital_id == hospital.getId()) {
                         selectedHospital = hospital;
                         break;
@@ -118,14 +136,27 @@ public class Information {
         try {
             while (resultSet.next()) {
 
-                String patientCC = resultSet.getString("patientCC");
                 String name = resultSet.getString("name");
                 LocalDate birthdate = resultSet.getDate("birthdate").toLocalDate();
                 String sex = resultSet.getString("sex");
                 String cellphone = resultSet.getString("cellphone");
                 String address = resultSet.getString("address");
                 String email = resultSet.getString("email");
+                String patientCC = resultSet.getString("patientCC");
                 int favouriteHospital_id = resultSet.getInt("favourite_hospital_id");
+                int insurance_id=resultSet.getInt("insurance_id");
+
+                Hospital selectedHospital = null;
+                for (Hospital hospital : getHospitals()) {
+                    if (favouriteHospital_id == hospital.getId()) {
+                        selectedHospital = hospital;
+                        break;
+                    }
+                }
+
+
+
+
 
             }
         } catch (SQLException e) {

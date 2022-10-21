@@ -2,13 +2,13 @@ package hospitalmanagement.model.people;
 
 public class Insurance {
     private int id;
-
     private String name;
 
-    private double discountExam;
-    private double discountAppointment;
+    private float discountExam;
+    private float discountAppointment;
 
-    public Insurance(String name, double discountExam, double discountAppointment) {
+    public Insurance(int id, String name, float discountExam, float discountAppointment) {
+        this.id = id;
         this.name = name;
         this.discountExam = discountExam;
         this.discountAppointment = discountAppointment;
@@ -27,19 +27,19 @@ public class Insurance {
         this.name = name;
     }
 
-    public double getDiscountExam() {
+    public float getDiscountExam() {
         return discountExam;
     }
 
-    public void setDiscountExam(double discountExam) {
+    public void setDiscountExam(float discountExam) {
         this.discountExam = discountExam;
     }
 
-    public double getDiscountAppointment() {
+    public float getDiscountAppointment() {
         return discountAppointment;
     }
 
-    public void setDiscountAppointment(double discountAppointment) {
+    public void setDiscountAppointment(float discountAppointment) {
         this.discountAppointment = discountAppointment;
     }
 }

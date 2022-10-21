@@ -1,6 +1,7 @@
 package hospitalmanagement;
 
 import hospitalmanagement.model.medicalLists.Hospital;
+import hospitalmanagement.model.people.Doctor;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -14,6 +15,7 @@ public class StartApplication extends Application {
     public void start(Stage stage) throws IOException {
         Database.connect();
         List<Hospital> hospitals= Information.getHospitals();
+        List<Doctor> doctors =Information.getDoctors();
 
         FXMLLoader fxmlLoader = new FXMLLoader(StartApplication.class.getResource("LoginScene.fxml"));
 

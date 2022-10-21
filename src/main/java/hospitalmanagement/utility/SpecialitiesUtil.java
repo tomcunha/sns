@@ -35,5 +35,7 @@ public enum SpecialitiesUtil {
         return name;
     }
 
-
+    public int getId() {
+        return id;
+    }
 }

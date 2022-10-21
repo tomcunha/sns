@@ -11,6 +11,8 @@ import java.util.List;
 
 public class Information {
 
+
+
     public static List<Doctor> getDoctors(){
         Database.connect();
         ResultSet resultSet = Database.queryTable("SELECT * FROM Medics");

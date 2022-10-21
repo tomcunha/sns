@@ -1,30 +1,32 @@
 package hospitalmanagement.utility;
 
 public enum SpecialitiesUtil {
-    ALLERGY_AND_IMMUNOLOGY ("Allergy And Immunology"),
-    ANESTHESIOLOGY("Anesthesiology"),
-    DERMATOLOGY("Dermatology"),
-    DIAGNOSTIC_RADIOLOGY("Diagnostic Radiology"),
-    EMERGENCY_MEDICINE("Emergency Medicine"),
-    FAMILY_MEDICINE("Family Medicine"),
-    INTERNAL_MEDICINE("Internal Medicine"),
-    MEDICAL_GENETICS("Medical Genetics"),
-    NEUROLOGY("Neurology"),
-    NUCLEAR_MEDICINE("Nuclear Medicine"),
-    OBSTETRICS_AND_GYNECOLOGY("Obstetrics And Gynecology"),
-    OPHTHALMOLOGY("Ophthalmology"),
-    PATHOLOGY("Pathology"),
-    PEDIATRICS("Pediatrics"),
-    PHYSICAL_MEDICINE_AND_REHABILITATION("Physical Medicine And Rehabilitation"),
-    PREVENTIVE_MEDICINE("Preventive Medicine"),
-    PSYCHIATRY("Psychiatry"),
-    RADIATION_ONCOLOGY("Radiation Oncology"),
-    SURGERY("Surgery"),
-    UROLOGY("Urology");
+    ALLERGY_AND_IMMUNOLOGY(1,"Allergy And Immunology"),
+    ANESTHESIOLOGY(2,"Anesthesiology"),
+    DERMATOLOGY(3,"Dermatology"),
+    DIAGNOSTIC_RADIOLOGY(4,"Diagnostic Radiology"),
+    EMERGENCY_MEDICINE(5,"Emergency Medicine"),
+    FAMILY_MEDICINE(6,"Family Medicine"),
+    INTERNAL_MEDICINE(7,"Internal Medicine"),
+    MEDICAL_GENETICS(8,"Medical Genetics"),
+    NEUROLOGY(9,"Neurology"),
+    NUCLEAR_MEDICINE(10,"Nuclear Medicine"),
+    OBSTETRICS_AND_GYNECOLOGY(11,"Obstetrics And Gynecology"),
+    OPHTHALMOLOGY(12,"Ophthalmology"),
+    PATHOLOGY(13,"Pathology"),
+    PEDIATRICS(14,"Pediatrics"),
+    PHYSICAL_MEDICINE_AND_REHABILITATION(15,"Physical Medicine And Rehabilitation"),
+    PREVENTIVE_MEDICINE(16,"Preventive Medicine"),
+    PSYCHIATRY(17,"Psychiatry"),
+    RADIATION_ONCOLOGY(18,"Radiation Oncology"),
+    SURGERY(19,"Surgery"),
+    UROLOGY(20,"Urology");
 
-
+    private final int id;
     private final String name;
-    SpecialitiesUtil(String name){
+
+    SpecialitiesUtil(int id, String name) {
+        this.id = id;
         this.name = name;
     }
 

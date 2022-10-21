@@ -1,5 +1,6 @@
 package hospitalmanagement;
 
+import hospitalmanagement.model.medicalLists.Disease;
 import hospitalmanagement.model.medicalLists.Hospital;
 import hospitalmanagement.model.people.Doctor;
 import hospitalmanagement.model.people.Patient;
@@ -13,14 +14,20 @@ import java.util.List;
 public class Information {
 
     static ResultSet resultSet;
-    public static List<Hospital> getHospitals(){
+
+    public static List<Hospital> getHospitals() {
         resultSet = Database.queryTable("SELECT* FROM Hospitals");
         List<Hospital> hospitals = new ArrayList<>();
-        try{
-            while (resultSet.next()){
+        try {
+            while (resultSet.next()) {
 
                 int hospital_id = resultSet.getInt("hospital_id");
                 String name = resultSet.getString("name");
+                String address = resultSet.getString("address");
+                String phoneNumber = resultSet.getString("phoneNumber");
+                String email = resultSet.getString("email");
+
+                hospitals.add(new Hospital(hospital_id, name, address, phoneNumber, email));
 
 
             }
@@ -30,20 +37,45 @@ public class Information {
         return hospitals;
     }
 
-    public static List<Doctor> getDoctors(){
+    public static List<Disease> getDiseases(){
+
+        resultSet=Database.queryTable("SELECT * FROM Diseases");
+        List<Disease> diseases = new ArrayList<>();
+        try{
+            while ((resultSet.next())){
+
+                int disease_id = resultSet.getInt("disease_id");
+                String name = resultSet.getString("name");
+                String description = resultSet.getString("description");
+
+                diseases.add(new Disease(disease_id,name,description));
+
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return diseases;
+    }
+
+
+
+    public static List<Doctor> getDoctors() {
         resultSet = Database.queryTable("SELECT * FROM Medics");
         List<Doctor> doctors = new ArrayList<>();
-        try{
-            while (resultSet.next()){
+        try {
+            while (resultSet.next()) {
 
-                String medicalLicense=resultSet.getString("medicalLicense");
+                String medicalLicense = resultSet.getString("medicalLicense");
                 String name = resultSet.getString("name");
                 LocalDate birthdate = resultSet.getDate("birthdate").toLocalDate();
                 String sex = resultSet.getString("sex");
                 String cellphone = resultSet.getString("cellphone");
                 String address = resultSet.getString("address");
                 String email = resultSet.getString("email");
-                int hospital_id =resultSet.getInt("hospital_id");
+                int hospital_id = resultSet.getInt("hospital_id");
+
+
 
             }
         } catch (SQLException e) {
@@ -53,20 +85,20 @@ public class Information {
         return doctors;
     }
 
-    public static List<Patient> getPatients(){
+    public static List<Patient> getPatients() {
         ResultSet resultSet = Database.queryTable("SELECT * FROM Patients");
         List<Patient> patients = new ArrayList<>();
-        try{
-            while (resultSet.next()){
+        try {
+            while (resultSet.next()) {
 
                 String patientCC = resultSet.getString("patientCC");
                 String name = resultSet.getString("name");
-                LocalDate birthdate =resultSet.getDate("birthdate").toLocalDate();
+                LocalDate birthdate = resultSet.getDate("birthdate").toLocalDate();
                 String sex = resultSet.getString("sex");
-                String cellphone =resultSet.getString("cellphone");
+                String cellphone = resultSet.getString("cellphone");
                 String address = resultSet.getString("address");
                 String email = resultSet.getString("email");
-                int favouriteHospital_id =resultSet.getInt("favourite_hospital_id");
+                int favouriteHospital_id = resultSet.getInt("favourite_hospital_id");
 
             }
         } catch (SQLException e) {

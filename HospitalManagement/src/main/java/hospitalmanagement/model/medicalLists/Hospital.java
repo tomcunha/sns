@@ -3,16 +3,16 @@ package hospitalmanagement.model.medicalLists;
 import hospitalmanagement.model.Contact;
 
 public class Hospital {
+
+    private int id;
     private String name;
 
     private Contact contact;
 
-    private int id;
-
-    public Hospital(String name, Contact contact, int id) {
-        this.name = name;
-        this.contact = contact;
+    public Hospital(int id, String name,  String address , String phoneNumber, String email) {
         this.id = id;
+        this.name = name;
+        this.contact= new Contact(address,phoneNumber,email);
     }
 
     public String getName() {

@@ -9,6 +9,7 @@ public class Database {
     //Connect to the
     public static void connect() {
         try {
+
             connection = DriverManager.getConnection("jdbc:mysql://awsdatabase.chcn61cnzhwv.us-east-1.rds.amazonaws.com:3306/hospitalManagement", "admin", "Academia_Java_4457");
         } catch (SQLException e) {
             throw new RuntimeException(e);

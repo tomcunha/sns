@@ -60,6 +60,9 @@ public class LoginMenuController extends SceneController {
                 }
                 break;
             }
+            else {
+                setScreen(signInButton, "LoginSceneFail.fxml");
+            }
         }
 
     }

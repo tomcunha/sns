@@ -1,6 +1,5 @@
 package hospitalmanagement;
 
-import hospitalmanagement.Database;
 import hospitalmanagement.model.people.Doctor;
 import hospitalmanagement.model.people.Patient;
 
@@ -59,6 +58,4 @@ public class Information {
 
         return patients;
     }
-
-
 }

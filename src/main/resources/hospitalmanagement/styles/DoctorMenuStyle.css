@@ -1,0 +1,36 @@
+/*GENERAL*/
+.root {-fx-background-image: url(images/DoctorMenu/BackgroundDoctor.png);}
+
+/*ALL BUTTONS */
+.button{
+    -fx-font-family: "Inter";
+    -fx-font-size: 40 px;
+    -fx-text-fill: black;
+    -fx-background-color: linear-gradient(#d0d0d0, #aeb5b6);
+    -fx-background-radius: 30px;
+}
+.button:hover{
+    -fx-effect: dropshadow( one-pass-box , white , 8 , 0 , 2 , 0 );
+}
+
+#title{
+    -fx-font-size: 60px;
+    -fx-font-weight: BOLD;
+    -fx-effect: dropshadow( one-pass-box , white , 8 , 0.0 , 2 , 0 );
+}
+/*POWER BUTTON*/
+
+#button123{
+    -fx-background-image: url(images/DoctorMenu/power.png);
+    -fx-background-color: Transparent;
+}
+
+/*DOCTOR BUTTON*/
+#buttonDoctor{
+    -fx-background-image: url(images/DoctorMenu/user.png);
+    -fx-background-color: Transparent;
+}
+#button123:hover{
+    -fx-effect: dropshadow( one-pass-box , white , 8 , 0 , 2 , 0 );
+}
+

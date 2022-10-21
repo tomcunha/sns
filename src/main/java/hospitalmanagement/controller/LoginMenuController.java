@@ -5,13 +5,14 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import org.w3c.dom.Text;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class LoginMenuController extends SceneController {
 
@@ -34,8 +35,6 @@ public class LoginMenuController extends SceneController {
         List<Integer> types = new ArrayList<>();
 
         ResultSet resultSet = Database.queryTable("SELECT * FROM Employees");
-
-
         try {
             while (resultSet.next()) {
                 users.add(resultSet.getString("user"));
@@ -62,7 +61,7 @@ public class LoginMenuController extends SceneController {
                 break;
             }
             else {
-                setScreen(signInButton, "LoginSceneFail.fxml");
+                setScreen(signInButton, "LoginFailScene.fxml");
             }
         }
     }

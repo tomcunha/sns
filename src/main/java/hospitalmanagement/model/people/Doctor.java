@@ -8,21 +8,21 @@ import java.time.LocalDate;
 
 public class Doctor extends Person {
 
-    private long medical_id;
+    private String medicalLicense;
 
     private SpecialitiesUtil specialty;
 
     private Hospital workingHospital;
 
-    public Doctor(String name, LocalDate birthDate, SexUtil sexUtil, String email, String phoneNumber, String address, long medical_id, SpecialitiesUtil specialty, Hospital workingHospital) {
+    public Doctor(String name, LocalDate birthDate, SexUtil sexUtil, String email, String phoneNumber, String address, String medicalLicense, SpecialitiesUtil specialty, Hospital workingHospital) {
         super(name, birthDate, sexUtil, email, phoneNumber, address);
-        this.medical_id = medical_id;
+        this.medicalLicense = medicalLicense;
         this.specialty = specialty;
         this.workingHospital = workingHospital;
     }
 
-    public long getMedical_id() {
-        return medical_id;
+    public String getMedicalLicense() {
+        return medicalLicense;
     }
 
     public SpecialitiesUtil getSpecialty() {

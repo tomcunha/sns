@@ -1,5 +1,6 @@
 package hospitalmanagement;
 
+import hospitalmanagement.model.medicalLists.Hospital;
 import hospitalmanagement.model.people.Doctor;
 import hospitalmanagement.model.people.Patient;
 
@@ -11,9 +12,26 @@ import java.util.List;
 
 public class Information {
 
+    static ResultSet resultSet;
+    public static List<Hospital> getHospitals(){
+        resultSet = Database.queryTable("SELECT* FROM Hospitals");
+        List<Hospital> hospitals = new ArrayList<>();
+        try{
+            while (resultSet.next()){
+
+                int hospital_id = resultSet.getInt("hospital_id");
+                String name = resultSet.getString("name");
+
+
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return hospitals;
+    }
+
     public static List<Doctor> getDoctors(){
-        Database.connect();
-        ResultSet resultSet = Database.queryTable("SELECT * FROM Medics");
+        resultSet = Database.queryTable("SELECT * FROM Medics");
         List<Doctor> doctors = new ArrayList<>();
         try{
             while (resultSet.next()){
@@ -36,7 +54,6 @@ public class Information {
     }
 
     public static List<Patient> getPatients(){
-        Database.connect();
         ResultSet resultSet = Database.queryTable("SELECT * FROM Patients");
         List<Patient> patients = new ArrayList<>();
         try{

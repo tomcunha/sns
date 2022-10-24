@@ -22,7 +22,7 @@ public class Person {
 
     public Person(String name, LocalDate birthDate, SexUtil sexUtil, String address, String phoneNumber, String email) {
         this.name = name;
-        this.birthDate = birthDate;
+        this.setBirthDate(birthDate);
         this.sexUtil = sexUtil;
         this.contacts = new Contact(address, phoneNumber, email);
     }
@@ -41,7 +41,7 @@ public class Person {
     }
 
     public void setAge() {
-        this.age = Period.between(this.birthDate, LocalDate.now()).getYears();
+        this.age = Period.between(this.getBirthDate(), LocalDate.now()).getYears();
     }
 
     public SexUtil getSex() {
@@ -58,5 +58,13 @@ public class Person {
 
     public void setContacts(Contact contacts) {
         this.contacts = contacts;
+    }
+
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
     }
 }

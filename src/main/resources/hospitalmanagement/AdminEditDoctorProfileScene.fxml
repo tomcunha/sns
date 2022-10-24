@@ -83,7 +83,7 @@
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="5" GridPane.rowIndex="1">
                <children>
-                  <TextField fx:id="nameInput" disable="true"  prefHeight="40.0" prefWidth="1330.0" />
+                  <TextField fx:id="nameInput" disable="true"  prefHeight="40.0" prefWidth="1330.0"/>
                </children>
             </HBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
@@ -197,7 +197,7 @@
             </HBox>
             <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="6">
                <children>
-                  <Button fx:id="buttonDelete" mnemonicParsing="false" prefWidth="180.0" text="Delete" />
+                  <Button fx:id="buttonDelete" mnemonicParsing="false" prefWidth="180.0" text="Delete" onAction="#deletePerson"/>
                </children>
             </HBox>
             </children>

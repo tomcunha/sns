@@ -5,16 +5,11 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseButton;
 import javafx.util.Callback;
-import org.w3c.dom.events.Event;
-import org.w3c.dom.events.MouseEvent;
 
 import java.io.IOException;
-import java.sql.Array;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -47,11 +42,12 @@ public class AdminFindDoctorController extends SceneController{
 
         String row = tableDoctors.getSelectionModel().getSelectedItems().get(0).toString();
         row = row.replaceAll("\\D+","");
-        int index = Integer.parseInt(row);
-        System.out.println(index);
-        setMedicalLicense(index);
+        //int index = Integer.parseInt(row);
+        setMedicalLicense(row);
 
         setScreen(buttonPower, "AdminEditDoctorProfileScene.fxml");
+        AdminEditDoctorProfileController adminEditDoctorProfileController= getFXML().getController();
+        adminEditDoctorProfileController.setInputs();
 
     }
 

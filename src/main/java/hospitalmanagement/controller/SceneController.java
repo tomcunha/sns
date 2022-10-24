@@ -13,13 +13,18 @@ public class SceneController {
 
     private Stage stage;
     private Scene scene;
+    private FXMLLoader fxmlLoader;
 
     public void setScreen(Button button, String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(StartApplication.class.getResource(fxml));
+        fxmlLoader = new FXMLLoader(StartApplication.class.getResource(fxml));
         stage = ((Stage) button.getScene().getWindow());
         scene = new Scene(fxmlLoader.load(), 1280,720);
         stage.setScene(scene);
         stage.setFullScreen(true);
         stage.show();
+    }
+
+    public FXMLLoader getFXML(){
+        return fxmlLoader;
     }
 }

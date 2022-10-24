@@ -1,0 +1,84 @@
+/*GENERAL*/
+/*ALL LABELS*/
+.label {
+    -fx-font-family: "Inter";
+    -fx-font-size: 30px;
+    -fx-text-fill: #0E1D33;
+}
+
+/*ALL TEXT-FIELDS*/
+.text-area {
+    -fx-font-family: "Inter";
+    -fx-font-size: 30px;
+    -fx-text-fill: #0E1D33;
+}
+
+/*ALL BUTTONS*/
+.button{
+    -fx-font-family: "Inter";
+    -fx-font-size: 40 px;
+    -fx-text-fill: black;
+    -fx-background-color: linear-gradient(#d0d0d0, #aeb5b6);
+    -fx-background-radius: 30px;
+}
+.button:hover{
+    -fx-effect: dropshadow( one-pass-box , white , 8 , 0 , 2 , 0 );
+}
+
+/************************************ DOCTOR PROFILE SCENE  ******************************************************/
+
+/*Admin button*/
+#buttonAdmin{
+    -fx-background-image: url(images/AdminMenu/user.png);
+    -fx-background-color: Transparent;
+}
+#buttonAdmin:hover{
+    -fx-effect: dropshadow( one-pass-box , white , 8 , 0 , 0 , 0 );
+}
+
+
+/*Admin text*/
+#textAdmin{
+    -fx-font-family: "Inter";
+    -fx-font-size: 30px;
+    -fx-text-fill: #0E1D33;
+}
+
+/*Main menu button*/
+#buttonMainMenu{
+    -fx-background-image: url(images/AdminMenu/user.png);
+    -fx-background-color: Transparent;
+}
+#buttonMainMenu:hover{
+    -fx-effect: dropshadow( one-pass-box , white , 8 , 0 , 0 , 0 );
+}
+
+
+/*Power Button*/
+#buttonPower{
+    -fx-background-image: url(images/AdminMenu/power.png);
+    -fx-background-color: Transparent;
+}
+#buttonAdmin:hover{
+    -fx-effect: dropshadow( one-pass-box , white , 8 , 0 , 0 , 0 );
+}
+
+
+/*Background grid*/
+#gridCabecalho{
+    -fx-background-image: url(images/AdminFindDoctor/backgroundAdmin.png);
+}
+
+/*Main title*/
+#title{
+    -fx-font-size: 60px;
+    -fx-font-weight: BOLD;
+    -fx-effect: dropshadow( one-pass-box , white , 8 , 0.0 , 2 , 0 );
+}
+
+
+/*Button save*/
+#buttonSave{
+    -fx-background-color: #79DD99;
+}
+

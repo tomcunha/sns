@@ -1,60 +1,123 @@
 package hospitalmanagement.controller;
 
-import hospitalmanagement.model.people.Doctor;
-import javafx.beans.Observable;
+import hospitalmanagement.Database;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Callback;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class AdminFindDoctorController extends SceneController{
 
-    ObservableList <Doctor> listDoctors = FXCollections.observableArrayList();
-
-    private List<Doctor> doctors = new ArrayList<>();
-
+    ObservableList <ObservableList> listDoctors = FXCollections.observableArrayList();
+    private ResultSet resultSet;
 
     @FXML
     private TableView tableDoctors;
 
     @FXML
-    private TableColumn <Doctor, String> doctorLicense;
+    private TableColumn doctorLicense;
 
     @FXML
-    private TableColumn <Doctor, String> doctorName;
+    private TableColumn doctorName;
 
     @FXML
-    private TableColumn <Doctor, String> doctorHospital;
+    private TableColumn doctorHospital;
 
     @FXML
-    private TableColumn <Doctor, String> doctorSpeciality;
+    private TableColumn doctorSpeciality;
 
     @FXML
-    public void setButtonSearch()  throws IOException {
+    private TextField nameTextField;
+
+    @FXML
+    private Button buttonAddDoctor;
+
+    @FXML
+    public void setButtonSearch() throws SQLException {
+        tableDoctors.getItems().clear();
+
+        buttonAddDoctor.setVisible(false);
+
         initiateCols();
-        loadData();
+        loadData(nameTextField.getText());
+
         tableDoctors.setVisible(true);
     }
 
 
-    private void loadData(){
+    private void loadData(String name) throws SQLException {
+
         listDoctors.removeAll(listDoctors);
+
+        resultSet = Database.queryTable("SELECT medicalLicense as 'MedicalLicense', Persons.name  as 'Name', Hospitals.name as 'Hospital', Specialities.name as 'Speciality'\n" +
+                "FROM Doctors \n" +
+                "JOIN Employees ON Doctors.employee_id = Employees.employee_id \n" +
+                "JOIN Persons ON Employees.person_id = Persons.person_id\n" +
+                "JOIN Specialities ON Doctors.speciality_id = Specialities.speciality_id\n" +
+                "JOIN Hospitals ON Doctors.hospital_id = Hospitals.hospital_id\n" +
+                "WHERE Persons.name LIKE '%"+ name +"%';");
+
+        while(resultSet.next()){
+
+            ObservableList<String> row = FXCollections.observableArrayList();
+            for(int i=1 ; i<=resultSet.getMetaData().getColumnCount(); i++){
+                //Iterate Column
+                row.add(resultSet.getString(i));
+            }
+            listDoctors.add(row);
+
+        }
 
 
         tableDoctors.getItems().addAll(listDoctors);
 
     }
 
-    private void initiateCols(){
-        doctorLicense.setCellValueFactory(new PropertyValueFactory<>(""));
-        doctorName.setCellValueFactory(new PropertyValueFactory<>(""));
-        doctorHospital.setCellValueFactory(new PropertyValueFactory<>(""));
-        doctorSpeciality.setCellValueFactory(new PropertyValueFactory<>(""));
+    private void initiateCols() throws SQLException {
+
+/*
+        doctorLicense.setCellValueFactory(new PropertyValueFactory<>("MedicalLicense"));
+        doctorName.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        doctorHospital.setCellValueFactory(new PropertyValueFactory<>("Hospital"));
+        doctorSpeciality.setCellValueFactory(new PropertyValueFactory<>("Speciality"));
+*/
+        doctorLicense.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<ObservableList, String> param) {
+                return new SimpleStringProperty(param.getValue().get(0).toString());
+            }
+        });
+
+        doctorName.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<ObservableList, String> param) {
+                return new SimpleStringProperty(param.getValue().get(1).toString());
+            }
+        });
+
+        doctorHospital.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<ObservableList, String> param) {
+                return new SimpleStringProperty(param.getValue().get(2).toString());
+            }
+        });
+
+        doctorSpeciality.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<ObservableList, String> param) {
+                return new SimpleStringProperty(param.getValue().get(3).toString());
+            }
+        });
+
+
+
     }
+
+
 }

@@ -51,19 +51,12 @@ public class AdminEditDoctorProfileController {
             buttonDelete.setText("Cancel");
         } else if (buttonEdit.getText().equals("Save")) {
             Database.modifyTable(
-                    "UPDATE Persons SET " +
-                                "name = '" + nameInput.getText() +
-                                "', birthDate = '" + datePicker.getValue() +
-                                "', sex = '" + sexDropdown.getValue().toString() +
-                                "', phoneNumber = '" + phoneNumberInput.getText() +
-                                "', address = '" + addressInput.getText() +
-                                "', email = '" + emailInput.getText() +
-                             "' WHERE person_id = " + getPersonID());
-            Database.modifyTable(
-                    "UPDATE Doctors SET hospital_id = '" + getHospital().getId() + "' WHERE medicalLicence = " + medicalLicense);
+                    "UPDATE Persons SET name = '" + nameInput.getText() + "', birthDate = '" + datePicker.getValue() + "', sex = '" + sexDropdown.getValue().toString() + "', phoneNumber = '" + phoneNumberInput.getText() + "', address = '" + addressInput.getText() + "', email = '" + emailInput.getText() + "' WHERE person_id = " + getPersonID());
+//            Database.modifyTable(
+//                    "UPDATE Doctors SET hospital_id = '" + getHospital().getId() + "' WHERE medicalLicence = " + medicalLicense);
             disableAll();
             buttonEdit.setText("Edit");
-            buttonEdit.setText("Delete");
+            buttonDelete.setText("Delete");
         }
     }
 

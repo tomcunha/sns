@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@styles/AdminEditDoctorProfileStyle.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@styles/AdminEditDoctorProfileStyle.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hospitalmanagement.controller.AdminEditDoctorProfileController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     </columnConstraints>
@@ -83,7 +83,7 @@
                 </HBox>
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="5" GridPane.rowIndex="1">
                     <children>
-                        <TextField prefHeight="40.0" prefWidth="1330.0" />
+                        <TextField fx:id="nameInput" prefHeight="40.0" prefWidth="1330.0" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
@@ -96,7 +96,7 @@
                 </HBox>
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                     <children>
-                        <TextField prefHeight="40.0" prefWidth="250.0" />
+                        <TextField fx:id="medicalLicenseInput" prefHeight="40.0" prefWidth="250.0" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
@@ -109,7 +109,7 @@
                 </HBox>
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="2">
                     <children>
-                        <DatePicker prefHeight="40.0" prefWidth="334.0" />
+                        <DatePicker fx:id="datePicker" prefHeight="40.0" prefWidth="334.0" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="2">
@@ -122,7 +122,7 @@
                 </HBox>
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="2">
                     <children>
-                        <ChoiceBox prefHeight="65.0" prefWidth="220.0" />
+                        <ChoiceBox fx:id="sexDropdown" prefHeight="65.0" prefWidth="220.0"  />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
@@ -135,7 +135,7 @@
                 </HBox>
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="3">
                     <children>
-                        <TextArea prefHeight="160.0" prefWidth="840.0" />
+                        <TextArea  fx:id="addressInput" prefHeight="160.0" prefWidth="840.0" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="3">
@@ -148,7 +148,7 @@
                 </HBox>
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="3">
                     <children>
-                        <TextField prefHeight="40.0" prefWidth="200.0" />
+                        <TextField fx:id="phoneNumberInput" prefHeight="40.0" prefWidth="200.0" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
@@ -161,7 +161,7 @@
                 </HBox>
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="4" GridPane.rowIndex="4">
                     <children>
-                        <TextField prefHeight="40.0" prefWidth="997.0" />
+                        <TextField fx:id="emailInput" prefHeight="40.0" prefWidth="997.0" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
@@ -174,7 +174,7 @@
                 </HBox>
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="5">
                     <children>
-                        <ComboBox prefHeight="50.0" prefWidth="380.0" />
+                        <ComboBox fx:id="hospitalDropdown" prefHeight="50.0" prefWidth="380.0" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="5">
@@ -187,12 +187,12 @@
                 </HBox>
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.rowIndex="5">
                     <children>
-                        <ComboBox prefHeight="50.0" prefWidth="500.0" />
+                        <ComboBox fx:id="specialityDropdown" prefHeight="50.0" prefWidth="500.0" />
                     </children>
                 </HBox>
                 <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="6">
                     <children>
-                        <Button fx:id="buttonEdit" mnemonicParsing="false" prefHeight="40.0" prefWidth="180.0" text="Edit" />
+                        <Button fx:id="buttonEdit" mnemonicParsing="false" prefHeight="40.0" prefWidth="180.0" text="Edit" onAction="#savePersonAtributes"/>
                     </children>
                 </HBox>
                 <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="6">

@@ -15,7 +15,7 @@ public class StartApplication extends Application {
         Database.connect();
         List<Hospital> hospitals= Information.getHospitals();
 
-        FXMLLoader fxmlLoader = new FXMLLoader(StartApplication.class.getResource("LoginScene.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(StartApplication.class.getResource("AdminEditDoctorProfileScene.fxml"));
 
         Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
         stage.setTitle("HealthCare System");

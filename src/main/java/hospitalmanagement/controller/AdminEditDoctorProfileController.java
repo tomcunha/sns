@@ -101,11 +101,11 @@ public class AdminEditDoctorProfileController {
                 sexDropdown.setValue(doctor.getSex().toString());
                 datePicker.setValue(doctor.getBirthDate());
                 medicalLicenseInput.setText(medicalLicense);
-                phoneNumberInput.setText(doctor.getContacts().getPhoneNumber());
+                phoneNumberInput.setText(doctor.getContact().getPhoneNumber());
                 specialityDropdown.setValue(doctor.getMedicalLicense());
                 hospitalDropdown.setValue(doctor.getWorkingHospital());
-                emailInput.setText(doctor.getContacts().getEmail());
-                addressInput.setText(doctor.getContacts().getAddress());
+                emailInput.setText(doctor.getContact().getEmail());
+                addressInput.setText(doctor.getContact().getAddress());
             }
         }
     }

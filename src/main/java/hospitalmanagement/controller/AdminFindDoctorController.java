@@ -110,6 +110,12 @@ public class AdminFindDoctorController extends SceneController{
 
     private void initiateCols() throws SQLException {
 
+/*
+        doctorLicense.setCellValueFactory(new PropertyValueFactory<>("MedicalLicense"));
+        doctorName.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        doctorHospital.setCellValueFactory(new PropertyValueFactory<>("Hospital"));
+        doctorSpeciality.setCellValueFactory(new PropertyValueFactory<>("Speciality"));
+*/
         doctorLicense.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
             public ObservableValue<String> call(TableColumn.CellDataFeatures<ObservableList, String> param) {
                 return new SimpleStringProperty(param.getValue().get(0).toString());

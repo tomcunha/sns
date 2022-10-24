@@ -3,12 +3,8 @@ package hospitalmanagement.controller;
 import hospitalmanagement.Database;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import org.w3c.dom.Text;
 
-import java.sql.PreparedStatement;
-import java.sql.Statement;
-
-public class AdminEditDoctorProfileController {
+public class AdminNewDoctorProfileController {
 
     @FXML
     TextField nameInput;
@@ -33,7 +29,11 @@ public class AdminEditDoctorProfileController {
 
     public void savePersonAtributes() {
         Database.modifyTable("INSERT INTO hospitalManagement.Persons (name,birthDate,sex,phoneNumber,address,email) " +
-                "VALUES ('"+nameInput.getText()+"', '"+datePicker.getValue()+"', 'F', '"+phoneNumberInput.getText()+"', '"+addressInput.getText()+"', '"+emailInput.getText()+"') ");
+                "VALUES ('" + nameInput.getText() + "', '" + datePicker.getValue() + "', 'F', '"+phoneNumberInput.getText()+"', '"+addressInput.getText()+"', '"+emailInput.getText()+"') ");
+
+        Database.modifyTable("INSERT INTO hospitalManagement.Employees (user,password,type,person_id) " +
+                "VALUES ('new_user', 'new_password', '3', '"+LAST_INSERT_ID()+"') ");
+
 
 
     }

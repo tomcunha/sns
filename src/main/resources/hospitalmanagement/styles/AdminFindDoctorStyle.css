@@ -77,9 +77,24 @@
     -fx-effect: dropshadow( one-pass-box , white , 8 , 0.0 , 2 , 0 );
 }
 
+/*Search box*/
+#nameTextField {
+    -fx-font-family: "Inter";
+    -fx-font-size: 30px;
+    -fx-text-fill: #0E1D33;
+}
 
 /*Button search*/
 #buttonSearch{
     -fx-font-size: 30 px;
 }
+
+/*Table text*/
+#tableDoctors {
+    -fx-font-family: "Inter";
+    -fx-font-size: 30px;
+    -fx-text-fill: #0E1D33;
+}
+
+
 

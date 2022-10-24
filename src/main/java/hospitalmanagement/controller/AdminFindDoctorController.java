@@ -10,13 +10,19 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
 
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class AdminFindDoctorController extends SceneController{
+
+    @FXML
+    private Button buttonMainMenu;
+
+    @FXML
+    private Button buttonPower;
 
     ObservableList <ObservableList> listDoctors = FXCollections.observableArrayList();
     private ResultSet resultSet;
@@ -41,6 +47,22 @@ public class AdminFindDoctorController extends SceneController{
 
     @FXML
     private Button buttonAddDoctor;
+
+
+    @FXML
+    public void setMainMenu() throws IOException {
+        setScreen(buttonMainMenu, "AdminMenuScene.fxml");
+    }
+
+    @FXML
+    public void setLogout() throws IOException {
+       setScreen(buttonPower, "LoginScene.fxml");
+    }
+
+    @FXML
+    public void setNewDoctor() throws IOException {
+        setScreen(buttonAddDoctor, "LoginScene.fxml");
+    }
 
     @FXML
     public void setButtonSearch() throws SQLException {
@@ -85,12 +107,6 @@ public class AdminFindDoctorController extends SceneController{
 
     private void initiateCols() throws SQLException {
 
-/*
-        doctorLicense.setCellValueFactory(new PropertyValueFactory<>("MedicalLicense"));
-        doctorName.setCellValueFactory(new PropertyValueFactory<>("Name"));
-        doctorHospital.setCellValueFactory(new PropertyValueFactory<>("Hospital"));
-        doctorSpeciality.setCellValueFactory(new PropertyValueFactory<>("Speciality"));
-*/
         doctorLicense.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
             public ObservableValue<String> call(TableColumn.CellDataFeatures<ObservableList, String> param) {
                 return new SimpleStringProperty(param.getValue().get(0).toString());

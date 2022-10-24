@@ -4,6 +4,9 @@ import hospitalmanagement.model.medicalLists.Disease;
 import hospitalmanagement.model.medicalLists.Hospital;
 import hospitalmanagement.model.people.Doctor;
 import hospitalmanagement.model.people.Insurance;
+import hospitalmanagement.model.people.Patient;
+import hospitalmanagement.utility.ExamUtil;
+import hospitalmanagement.utility.MedicineUtil;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -20,6 +23,9 @@ public class StartApplication extends Application {
         List<Doctor> doctors = Information.getDoctors();
         List<Disease> diseases=Information.getDiseases();
         List<Insurance> insurances = Information.getInsurances();
+        List<Patient> patients = Information.getPatients();
+        List<ExamUtil> exams = Information.getExams();
+        List<MedicineUtil> medicines = Information.getMedicines();
 
 
         FXMLLoader fxmlLoader = new FXMLLoader(StartApplication.class.getResource("LoginScene.fxml"));

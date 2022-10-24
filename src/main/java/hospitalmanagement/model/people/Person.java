@@ -18,13 +18,13 @@ public class Person {
 
     private SexUtil sexUtil;
 
-    private Contact contacts;
+    private Contact contact;
 
     public Person(String name, LocalDate birthDate, SexUtil sexUtil, String address, String phoneNumber, String email) {
         this.name = name;
         this.birthDate = birthDate;
         this.sexUtil = sexUtil;
-        this.contacts = new Contact(address, phoneNumber, email);
+        this.contact = new Contact(address, phoneNumber, email);
     }
 
     public String getName() {
@@ -52,11 +52,11 @@ public class Person {
         this.sexUtil = sexUtil;
     }
 
-    public Contact getContacts() {
-        return contacts;
+    public Contact getContact() {
+        return contact;
     }
 
-    public void setContacts(Contact contacts) {
-        this.contacts = contacts;
+    public void setContact(Contact contact) {
+        this.contact = contact;
     }
 }

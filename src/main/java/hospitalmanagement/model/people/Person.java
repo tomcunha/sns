@@ -8,6 +8,8 @@ import java.time.Period;
 
 public class Person {
 
+    private int id;
+
     private String name;
 
     private LocalDate birthDate;
@@ -18,7 +20,7 @@ public class Person {
 
     private Contact contacts;
 
-    public Person(String name, LocalDate birthDate, SexUtil sexUtil, String email, String phoneNumber, String address) {
+    public Person(String name, LocalDate birthDate, SexUtil sexUtil, String address, String phoneNumber, String email) {
         this.name = name;
         this.birthDate = birthDate;
         this.sexUtil = sexUtil;

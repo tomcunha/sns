@@ -32,9 +32,12 @@ public class AdminMenuController extends SceneController {
     @FXML
     public void setButtonPower() throws IOException {
         setScreen(buttonPower, "LoginScene.fxml");
+    }
+    @FXML
+    public void setDoctorManagementButton() throws IOException {
+        setScreen(doctorsManagementButton, "AdminFindDoctorScene.fxml");
 
     }
-
     @FXML
     public void setExamsManagementButton() throws IOException {
         setScreen(examsManagementButton, "LoginScene.fxml");
@@ -45,12 +48,7 @@ public class AdminMenuController extends SceneController {
         setScreen(hospitalsManagementButton, "LoginScene.fxml");
     }
 
-    @FXML
-    public void setDoctorManagementButton() throws IOException {
 
-        setScreen(doctorsManagementButton, "AdminFindDoctorScene.fxml");
-
-    }
 
     @FXML
     public void setSpecialitiesManagementButton() throws IOException {

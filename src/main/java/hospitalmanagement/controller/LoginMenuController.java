@@ -12,7 +12,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class LoginMenuController extends SceneController {
 
@@ -26,10 +25,10 @@ public class LoginMenuController extends SceneController {
     PasswordField passwordfield;
 
     @FXML
-    Text warning;
-
+    Text textWarning;
     @FXML
     public void setSignInButton() throws IOException {
+
         List<String> users = new ArrayList<>();
         List<String> passwords = new ArrayList<>();
         List<Integer> types = new ArrayList<>();
@@ -61,7 +60,7 @@ public class LoginMenuController extends SceneController {
                 break;
             }
             else {
-                setScreen(signInButton, "LoginFailScene.fxml");
+                textWarning.setText("Login failed: Your user ID or password is incorrect.");
             }
         }
     }

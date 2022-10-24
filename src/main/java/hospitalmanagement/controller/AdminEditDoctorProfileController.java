@@ -6,7 +6,7 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 
 public class AdminEditDoctorProfileController {
-    int medicalLicense;
+    private static int medicalLicense;
 
     @FXML
     TextField nameInput;
@@ -68,8 +68,8 @@ public class AdminEditDoctorProfileController {
         addressInput.setDisable(true);
     }
 
-    public void setMedicalLicense(int medicalLicense) {
-        this.medicalLicense = medicalLicense;
+    public static void setMedicalLicense(int index) {
+        medicalLicense = index;
     }
 
     public void setNameInput(){

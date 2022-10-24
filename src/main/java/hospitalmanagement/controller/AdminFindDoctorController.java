@@ -18,6 +18,8 @@ import java.sql.Array;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import static hospitalmanagement.controller.AdminEditDoctorProfileController.setMedicalLicense;
+
 public class AdminFindDoctorController extends SceneController{
 
     @FXML
@@ -47,8 +49,9 @@ public class AdminFindDoctorController extends SceneController{
         row = row.replaceAll("\\D+","");
         int index = Integer.parseInt(row);
         System.out.println(index);
+        setMedicalLicense(index);
 
-        setScreen(buttonAddDoctor, "Admin.fxml");
+        setScreen(buttonPower, "AdminEditDoctorProfileScene.fxml");
 
     }
 

@@ -103,6 +103,7 @@ public class AdminEditDoctorProfileController {
     public void setInputs(){
         for (Doctor doctor: Information.getDoctors()){
             if(medicalLicense.equals(doctor.getMedicalLicense())){
+                System.out.println("abc");
                 nameInput.setText(doctor.getName());
                 sexDropdown.setValue(doctor.getSex().toString());
                 datePicker.setValue(doctor.getBirthDate());

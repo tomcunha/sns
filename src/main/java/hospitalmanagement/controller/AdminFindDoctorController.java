@@ -43,6 +43,7 @@ public class AdminFindDoctorController extends SceneController{
         String row = tableDoctors.getSelectionModel().getSelectedItems().get(0).toString();
         row = row.replaceAll("\\D+","");
         //int index = Integer.parseInt(row);
+        System.out.printf(row);
         setMedicalLicense(row);
 
         setScreen(buttonPower, "AdminEditDoctorProfileScene.fxml");

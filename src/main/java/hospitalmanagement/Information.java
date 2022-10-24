@@ -11,18 +11,18 @@ import hospitalmanagement.utility.MedicineUtil;
 import hospitalmanagement.utility.SexUtil;
 import hospitalmanagement.utility.SpecialitiesUtil;
 
+import javax.xml.transform.Result;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLOutput;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Information {
 
-    static ResultSet resultSet;
-
     public static List<Hospital> getHospitals() {
-        resultSet = Database.queryTable("SELECT* FROM Hospitals");
+        ResultSet resultSet = Database.queryTable("SELECT* FROM Hospitals");
         List<Hospital> hospitals = new ArrayList<>();
         try {
             while (resultSet.next()) {
@@ -44,7 +44,7 @@ public class Information {
     }
 
     public static List<Insurance> getInsurances() {
-        resultSet = Database.queryTable("SELECT* FROM Insurances");
+        ResultSet resultSet = Database.queryTable("SELECT* FROM Insurances");
         List<Insurance> insurances = new ArrayList<>();
         try {
             while (resultSet.next()) {
@@ -64,7 +64,7 @@ public class Information {
 
     public static List<Disease> getDiseases() {
 
-        resultSet = Database.queryTable("SELECT * FROM Diseases");
+        ResultSet resultSet = Database.queryTable("SELECT * FROM Diseases");
         List<Disease> diseases = new ArrayList<>();
         try {
             while ((resultSet.next())) {
@@ -84,7 +84,7 @@ public class Information {
     }
 
     public static List<ExamUtil> getExams() {
-        resultSet = Database.queryTable("SELECT * FROM Exams");
+        ResultSet resultSet = Database.queryTable("SELECT * FROM Exams");
         List<ExamUtil> exams = new ArrayList<>();
         try {
             while (resultSet.next()) {
@@ -102,7 +102,7 @@ public class Information {
     }
 
     public static List<MedicineUtil> getMedicines() {
-        resultSet = Database.queryTable("SELECT * FROM Medicines");
+        ResultSet resultSet = Database.queryTable("SELECT * FROM Medicines");
         List<MedicineUtil> medicines = new ArrayList<>();
         try {
             while (resultSet.next()) {
@@ -118,22 +118,21 @@ public class Information {
     }
 
     public static List<Doctor> getDoctors() {
-        String query = "SELECT name, birthDate,sex, address, phoneNumber, email, medicalLicense, speciality_id, hospital_id FROM Doctors JOIN Employees ON Doctors.employee_id = Employees.employee_id JOIN Persons ON Employees.person_id = Persons.person_id";
-        resultSet = Database.queryTable(query);
+        String query = "SELECT name, birthDate, sex, address, phoneNumber, email, medicalLicense, speciality_id, hospital_id FROM Doctors JOIN Employees ON Doctors.employee_id = Employees.employee_id JOIN Persons ON Employees.person_id = Persons.person_id";
+        ResultSet rs = Database.queryTable(query);
 
         List<Doctor> doctors = new ArrayList<>();
         try {
-            while (resultSet.next()) {
-
-                String name = resultSet.getString("name");
-                LocalDate birthdate = resultSet.getDate("birthdate").toLocalDate();
-                String sex = resultSet.getString("sex");
-                String address = resultSet.getString("address");
-                String phoneNumber = resultSet.getString("phoneNumber");
-                String email = resultSet.getString("email");
-                String medicalLicense = resultSet.getString("medicalLicense");
-                int hospital_id = resultSet.getInt("hospital_id");
-                int speciality_id = resultSet.getInt("speciality_id");
+            while (rs.next()) {
+                String name = rs.getString("name");
+                LocalDate birthdate = rs.getDate("birthdate").toLocalDate();
+                String sex = rs.getString("sex");
+                String address = rs.getString("address");
+                String phoneNumber = rs.getString("phoneNumber");
+                String email = rs.getString("email");
+                String medicalLicense = rs.getString("medicalLicense");
+                int hospital_id = rs.getInt("hospital_id");
+                int speciality_id = rs.getInt("speciality_id");
 
                 SexUtil sexUtil;
                 switch (sex) {
@@ -169,7 +168,7 @@ public class Information {
 
     public static List<Doctor> getDoctorsFiltered(String nameToSearch) {
         String query = "SELECT name, medicalLicense, speciality_id, hospital_id FROM Doctors JOIN Employees ON Doctors.employee_id = Employees.employee_id JOIN Persons ON Employees.person_id = Persons.person_id WHERE Persons.name LIKE '%"+nameToSearch+"%'";
-        resultSet = Database.queryTable(query);
+        ResultSet resultSet = Database.queryTable(query);
 
         List<Doctor> doctors = new ArrayList<>();
         try {

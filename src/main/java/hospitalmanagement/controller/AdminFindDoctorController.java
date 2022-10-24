@@ -5,24 +5,23 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.input.MouseButton;
 import javafx.util.Callback;
+import org.w3c.dom.events.Event;
+import org.w3c.dom.events.MouseEvent;
 
 import java.io.IOException;
+import java.sql.Array;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class AdminFindDoctorController extends SceneController{
 
     @FXML
-    private Button buttonMainMenu;
-
-    @FXML
-    private Button buttonPower;
+    private Button buttonMainMenu, buttonPower;
 
     ObservableList <ObservableList> listDoctors = FXCollections.observableArrayList();
     private ResultSet resultSet;
@@ -31,16 +30,7 @@ public class AdminFindDoctorController extends SceneController{
     private TableView tableDoctors;
 
     @FXML
-    private TableColumn doctorLicense;
-
-    @FXML
-    private TableColumn doctorName;
-
-    @FXML
-    private TableColumn doctorHospital;
-
-    @FXML
-    private TableColumn doctorSpeciality;
+    private TableColumn doctorLicense, doctorName, doctorHospital, doctorSpeciality;
 
     @FXML
     private TextField nameTextField;
@@ -48,6 +38,19 @@ public class AdminFindDoctorController extends SceneController{
     @FXML
     private Button buttonAddDoctor;
 
+    @FXML
+    public void setMouseClicked() throws IOException {
+
+       Object selectedItems =  tableDoctors.getSelectionModel().getSelectedItems();
+
+        String row = tableDoctors.getSelectionModel().getSelectedItems().get(0).toString();
+        row = row.replaceAll("\\D+","");
+        int index = Integer.parseInt(row);
+        System.out.println(index);
+
+        setScreen(buttonAddDoctor, "Admin.fxml");
+
+    }
 
     @FXML
     public void setMainMenu() throws IOException {
@@ -61,7 +64,7 @@ public class AdminFindDoctorController extends SceneController{
 
     @FXML
     public void setNewDoctor() throws IOException {
-        setScreen(buttonAddDoctor, "LoginScene.fxml");
+        setScreen(buttonAddDoctor, "AdminNewDoctorProfileScene.fxml");
     }
 
     @FXML
@@ -132,8 +135,10 @@ public class AdminFindDoctorController extends SceneController{
         });
 
 
-
     }
+
+
+
 
 
 }

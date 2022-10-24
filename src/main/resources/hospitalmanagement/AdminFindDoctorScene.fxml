@@ -97,7 +97,7 @@
                 </HBox>
                 <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="2">
                     <children>
-                        <TableView fx:id="tableDoctors" prefHeight="200.0" prefWidth="200.0" visible="false">
+                        <TableView fx:id="tableDoctors" prefHeight="200.0" prefWidth="200.0" visible="false" onMouseClicked="#setMouseClicked">
                             <placeholder>
                                 <Label text="No doctors found."/>
                             </placeholder>

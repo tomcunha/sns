@@ -27,15 +27,6 @@ public class AdminNewDoctorProfileController {
     TextArea addressInput;
 
 
-    public void savePersonAtributes() {
-        Database.modifyTable("INSERT INTO hospitalManagement.Persons (name,birthDate,sex,phoneNumber,address,email) " +
-                "VALUES ('" + nameInput.getText() + "', '" + datePicker.getValue() + "', 'F', '"+phoneNumberInput.getText()+"', '"+addressInput.getText()+"', '"+emailInput.getText()+"') ");
 
-        Database.modifyTable("INSERT INTO hospitalManagement.Employees (user,password,type,person_id) " +
-                "VALUES ('new_user', 'new_password', '3', '"+LAST_INSERT_ID()+"') ");
-
-
-
-    }
 
 }

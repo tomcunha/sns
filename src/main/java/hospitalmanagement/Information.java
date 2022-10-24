@@ -1,10 +1,13 @@
 package hospitalmanagement;
 
+import hospitalmanagement.model.medicalLists.Appointment;
 import hospitalmanagement.model.medicalLists.Disease;
 import hospitalmanagement.model.medicalLists.Hospital;
 import hospitalmanagement.model.people.Doctor;
 import hospitalmanagement.model.people.Insurance;
 import hospitalmanagement.model.people.Patient;
+import hospitalmanagement.utility.ExamUtil;
+import hospitalmanagement.utility.MedicineUtil;
 import hospitalmanagement.utility.SexUtil;
 import hospitalmanagement.utility.SpecialitiesUtil;
 
@@ -40,7 +43,7 @@ public class Information {
         return hospitals;
     }
 
-    public static List<Insurance> getInsurances(){
+    public static List<Insurance> getInsurances() {
         resultSet = Database.queryTable("SELECT* FROM Insurances");
         List<Insurance> insurances = new ArrayList<>();
         try {
@@ -78,6 +81,40 @@ public class Information {
         }
 
         return diseases;
+    }
+
+    public static List<ExamUtil> getExams() {
+        resultSet = Database.queryTable("SELECT * FROM Exams");
+        List<ExamUtil> exams = new ArrayList<>();
+        try {
+            while (resultSet.next()) {
+                int exam_id = resultSet.getInt("exam_id");
+                String name = resultSet.getString("name");
+
+                exams.add(new ExamUtil(exam_id, name));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return exams;
+
+    }
+
+    public static List<MedicineUtil> getMedicines() {
+        resultSet = Database.queryTable("SELECT * FROM Medicines");
+        List<MedicineUtil> medicines = new ArrayList<>();
+        try {
+            while (resultSet.next()) {
+                int medicine_id = resultSet.getInt("medicine_id");
+                String name = resultSet.getString("name");
+
+                medicines.add(new MedicineUtil(medicine_id, name));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return medicines;
     }
 
     public static List<Doctor> getDoctors() {
@@ -171,7 +208,7 @@ public class Information {
     }
 
     public static List<Patient> getPatients() {
-        ResultSet resultSet = Database.queryTable("SELECT * FROM Patients");
+        ResultSet resultSet = Database.queryTable("SELECT name, birthDate,sex, phoneNumber, address, email, patientCC, hospital_id, insurance_id FROM Patients JOIN Persons ON Patients.person_id=Persons.person_id");
         List<Patient> patients = new ArrayList<>();
         try {
             while (resultSet.next()) {
@@ -179,12 +216,19 @@ public class Information {
                 String name = resultSet.getString("name");
                 LocalDate birthdate = resultSet.getDate("birthdate").toLocalDate();
                 String sex = resultSet.getString("sex");
-                String cellphone = resultSet.getString("cellphone");
+                String phoneNumber = resultSet.getString("phoneNumber");
                 String address = resultSet.getString("address");
                 String email = resultSet.getString("email");
                 String patientCC = resultSet.getString("patientCC");
-                int favouriteHospital_id = resultSet.getInt("favourite_hospital_id");
-                int insurance_id=resultSet.getInt("insurance_id");
+                int favouriteHospital_id = resultSet.getInt("hospital_id");
+                int insurance_id = resultSet.getInt("insurance_id");
+
+                SexUtil sexUtil;
+                switch (sex) {
+                    case "M" -> sexUtil = SexUtil.MALE;
+                    case "F" -> sexUtil = SexUtil.FEMALE;
+                    default -> sexUtil = SexUtil.OTHER;
+                }
 
                 Hospital selectedHospital = null;
                 for (Hospital hospital : getHospitals()) {
@@ -194,15 +238,40 @@ public class Information {
                     }
                 }
 
+                Insurance selectedInsurance = null;
+                for (Insurance insurance : getInsurances()) {
+                    if (insurance_id == insurance.getId()) {
+                        selectedInsurance = insurance;
+                        break;
+                    }
+                }
 
+                List<Disease> diseases = new ArrayList<>();
+                ResultSet rs = Database.queryTable("SELECT Patients.patientCC, disease_id FROM Patients JOIN Diagnostics ON Patients.patientCC = Diagnostics.patientCC");
+                while (rs.next()) {
+                    if (rs.getString("patientCC").equals(patientCC)) {
+                        for (Disease disease : getDiseases()) {
+                            if (rs.getInt("disease_id") == disease.getId()) {
+                                diseases.add(disease);
+                            }
+                        }
+                    }
+                }
 
-
-
+                patients.add(new Patient(name, birthdate, sexUtil, address, phoneNumber, email, patientCC, selectedHospital, selectedInsurance, diseases));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
         return patients;
+    }
+
+    public static List<Appointment> getAppointments() {
+
+        List<Appointment> appointments = new ArrayList<>();
+
+
+        return appointments;
     }
 }

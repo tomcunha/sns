@@ -17,26 +17,21 @@ public class Appointment {
 
     private Doctor doctor;
 
-
-
-    private double appointmentCost;
+    private float cost;
 
     private LocalTime localTime;
-
-    private char type;
 
     private ExamUtil exam;
 
     private SpecialitiesUtil speciality;
 
-    public Appointment(int id, Hospital hospital, Patient patient, Doctor doctor, double appointmentCost, LocalTime localTime, char type) {
+    public Appointment(int id, Hospital hospital, Patient patient, Doctor doctor, float appointmentCost, LocalTime localTime, ExamUtil exam) {
         this.id = id;
         this.hospital = hospital;
         this.patient = patient;
         this.doctor = doctor;
-        this.appointmentCost = appointmentCost;
+        this.cost = appointmentCost;
         this.localTime = localTime;
-        this.type = type;
     }
 
     public int getId() {
@@ -67,12 +62,12 @@ public class Appointment {
         this.doctor = doctor;
     }
 
-    public double getAppointmentCost() {
-        return appointmentCost;
+    public double getCost() {
+        return cost;
     }
 
-    public void setAppointmentCost(double appointmentCost) {
-        this.appointmentCost = appointmentCost;
+    public void setCost(float cost) {
+        this.cost = cost;
     }
 
     public LocalTime getLocalTime() {
@@ -81,14 +76,6 @@ public class Appointment {
 
     public void setLocalTime(LocalTime localTime) {
         this.localTime = localTime;
-    }
-
-    public char getType() {
-        return type;
-    }
-
-    public void setType(char type) {
-        this.type = type;
     }
 
     public ExamUtil getExam() {

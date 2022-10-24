@@ -158,7 +158,47 @@ public class Information {
                     }
                 }
 
-                doctors.add(new Doctor(name, birthdate, sexUtil, address, phoneNumber, email, medicalLicense, selectedSpeciality, selectedHospital));
+                doctors.add(new Doctor(name, birthdate, sexUtil, email, phoneNumber, address, "", "" , 2 ,medicalLicense, selectedSpeciality, selectedHospital));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return doctors;
+    }
+
+    public static List<Doctor> getDoctorsFiltered(String nameToSearch) {
+        String query = "SELECT name, medicalLicense, speciality_id, hospital_id FROM Doctors JOIN Employees ON Doctors.employee_id = Employees.employee_id JOIN Persons ON Employees.person_id = Persons.person_id WHERE Persons.name LIKE '%"+nameToSearch+"%'";
+        resultSet = Database.queryTable(query);
+
+        List<Doctor> doctors = new ArrayList<>();
+        try {
+            while (resultSet.next()) {
+
+                String name = resultSet.getString("name");
+                String medicalLicense = resultSet.getString("medicalLicense");
+                int hospital_id = resultSet.getInt("hospital_id");
+                int speciality_id = resultSet.getInt("speciality_id");
+
+
+                List<Hospital> hospitals = getHospitals();
+                Hospital selectedHospital = null;
+                for (Hospital hospital : hospitals) {
+                    if (hospital_id == hospital.getId()) {
+                        selectedHospital = hospital;
+                        break;
+                    }
+                }
+
+                SpecialitiesUtil selectedSpeciality = null;
+                for (SpecialitiesUtil speciality : SpecialitiesUtil.values()) {
+                    if (speciality_id == speciality.getId()) {
+                        selectedSpeciality = speciality;
+                        break;
+                    }
+                }
+
+                doctors.add(new Doctor(name, null, null, "", "", "", "", "" , 2 ,medicalLicense, selectedSpeciality, selectedHospital));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

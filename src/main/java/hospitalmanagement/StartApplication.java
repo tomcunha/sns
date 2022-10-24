@@ -28,7 +28,7 @@ public class StartApplication extends Application {
         List<MedicineUtil> medicines = Information.getMedicines();
 
 
-        FXMLLoader fxmlLoader = new FXMLLoader(StartApplication.class.getResource("LoginScene.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(StartApplication.class.getResource("AdminFindDoctorScene.fxml"));
 
         Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
         stage.setTitle("HealthCare System");

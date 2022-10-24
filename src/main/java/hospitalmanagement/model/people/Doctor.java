@@ -6,7 +6,7 @@ import hospitalmanagement.model.medicalLists.Hospital;
 
 import java.time.LocalDate;
 
-public class Doctor extends Person {
+public class Doctor extends Employee {
 
     private String medicalLicense;
 
@@ -14,8 +14,8 @@ public class Doctor extends Person {
 
     private Hospital workingHospital;
 
-    public Doctor(String name, LocalDate birthDate, SexUtil sexUtil, String address, String phoneNumber, String email, String medicalLicense, SpecialitiesUtil specialty, Hospital workingHospital) {
-        super(name, birthDate, sexUtil, address, phoneNumber, email);
+    public Doctor(String name, LocalDate birthDate, SexUtil sexUtil, String email, String phoneNumber, String address, String username, String password, int type, String medicalLicense, SpecialitiesUtil specialty, Hospital workingHospital) {
+        super(name, birthDate, sexUtil, email, phoneNumber, address, username, password, type);
         this.medicalLicense = medicalLicense;
         this.specialty = specialty;
         this.workingHospital = workingHospital;
@@ -23,6 +23,10 @@ public class Doctor extends Person {
 
     public String getMedicalLicense() {
         return medicalLicense;
+    }
+
+    public void setMedicalLicense(String medicalLicense) {
+        this.medicalLicense = medicalLicense;
     }
 
     public SpecialitiesUtil getSpecialty() {

@@ -15,5 +15,4 @@ public class DoctorMenuController extends SceneController {
         setScreen(button123, "LoginScene.fxml");
 
     }
-
 }

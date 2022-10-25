@@ -27,7 +27,7 @@ public class StartApplication extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
         stage.setTitle("HealthCare System");
         stage.setScene(scene);
-        //stage.setFullScreen(true);
+        stage.setFullScreen(true);
         stage.show();
     }
 

@@ -6,7 +6,7 @@ public class Database {
 
     private static Connection connection;
 
-    //Connect to the
+    //Connect to the DB
     public static void connect() {
         try {
 
@@ -16,7 +16,7 @@ public class Database {
         }
     }
 
-    //Can edit, create and delete records of a table (necessary to understand sql instructions)
+    //Can edit, create and delete records of a table
     public static void modifyTable(String instruction) {
         try {
             PreparedStatement statement = connection.prepareStatement(instruction);
@@ -27,10 +27,6 @@ public class Database {
     }
 
     //Query a table and return the desired values
-    //On the calling method the data will be processed:
-     /*while (resultSet.next()) {
-        System.out.println(resultSet.getString("first_name") + " " + resultSet.getString("second_name"));
-        }*/
     public static ResultSet queryTable(String query) {
         ResultSet resultSet;
         try {

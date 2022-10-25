@@ -9,13 +9,14 @@ import hospitalmanagement.utility.*;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Information {
     private static List<Hospital> hospitals = new ArrayList<>();
-    //private static List<Employee> employees = new ArrayList<>();
     private static List<Doctor> doctors = new ArrayList<>();
     private static List<Disease> diseases = new ArrayList<>();
     private static List<Insurance> insurances = new ArrayList<>();
@@ -25,6 +26,698 @@ public class Information {
     private static List<Speciality> specialities = new ArrayList<>();
     private static List<Appointment> appointments = new ArrayList<>();
 
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    ////
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    ////
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    ////
+    //    //
+    //    //
+    //    //
+    //    //
 
     public static void updateAll() {
         updateHospitals();
@@ -35,7 +728,7 @@ public class Information {
         updateMedicines();
         updateDoctors();
         updatePatients();
-        //updateAppointments();
+        updateAppointments();
     }
 
     public static void updateHospitals() {
@@ -286,7 +979,9 @@ public class Information {
             while (resultSet.next()) {
                 int appointment_id = resultSet.getInt("appointment_id");
                 float cost = resultSet.getFloat("cost");
-                LocalDate date = resultSet.getDate("date").toLocalDate();
+                Date date = resultSet.getDate("date");
+                Time time = resultSet.getTime("time");
+                date.setTime(date.getTime() + time.getTime()+3600000);
                 int hospital_id = resultSet.getInt("hospital_id");
                 int exam_id = resultSet.getInt("exam_id");
                 String patientCC = resultSet.getString("patientCC");
@@ -326,8 +1021,8 @@ public class Information {
                 List<Disease> diseases = new ArrayList<>();
                 ResultSet rs = Database.queryTable("SELECT * FROM App_Diseases");
                 while (rs.next()) {
-                    int app_id = resultSet.getInt("appointment_id");
-                    int disease_id = resultSet.getInt("disease_id");
+                    int app_id = rs.getInt("appointment_id");
+                    int disease_id = rs.getInt("disease_id");
 
                     if (app_id == appointment_id) {
                         for (Disease disease : getDiseases()) {
@@ -337,11 +1032,12 @@ public class Information {
                         }
                     }
                 }
+
                 List<SymptomsUtil> symptoms = new ArrayList<>();
                 rs = Database.queryTable("SELECT * FROM App_Symptoms");
                 while (rs.next()) {
-                    int app_id = resultSet.getInt("appointment_id");
-                    int symptoms_id = resultSet.getInt("symptom_id");
+                    int app_id = rs.getInt("appointment_id");
+                    int symptoms_id = rs.getInt("symptom_id");
 
                     if (app_id == appointment_id) {
                         for (SymptomsUtil symptom : SymptomsUtil.values()) {
@@ -355,8 +1051,8 @@ public class Information {
                 List<MedicineUtil> medicines = new ArrayList<>();
                 rs = Database.queryTable("SELECT * FROM App_Medicines");
                 while (rs.next()) {
-                    int app_id = resultSet.getInt("appointment_id");
-                    int medicine_id = resultSet.getInt("medicine_id");
+                    int app_id = rs.getInt("appointment_id");
+                    int medicine_id = rs.getInt("medicine_id");
 
                     if (app_id == appointment_id) {
                         for (MedicineUtil medicine : getMedicines()) {
@@ -372,7 +1068,6 @@ public class Information {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
 
         appointments.clear();
         appointments.addAll(appoints);
@@ -409,5 +1104,4 @@ public class Information {
     public static List<Speciality> getSpecialities() {
         return specialities;
     }
-
 }

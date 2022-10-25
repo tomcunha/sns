@@ -199,7 +199,7 @@
                 </HBox>
                 <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="7">
                     <children>
-                        <Button fx:id="buttonDelete" mnemonicParsing="false" onAction="#deletePerson" prefWidth="180.0" text="Delete" />
+                        <Button fx:id="buttonDelete" mnemonicParsing="false" onAction="#deletePerson"  prefWidth="180.0" text="Delete" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">

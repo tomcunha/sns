@@ -7,6 +7,7 @@ import hospitalmanagement.utility.MedicineUtil;
 import hospitalmanagement.utility.SymptomsUtil;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 public class Appointment {
@@ -21,7 +22,7 @@ public class Appointment {
 
     private float cost;
 
-    private LocalDate date;
+    private Date date;
 
     private ExamUtil exam;
 
@@ -29,7 +30,7 @@ public class Appointment {
     private List<SymptomsUtil> symptoms;
     private List<MedicineUtil> medicines;
 
-    public Appointment(int id, Hospital hospital, Patient patient, Doctor doctor, float cost, LocalDate date, ExamUtil exam, List<Disease> diseases, List<SymptomsUtil> symptoms, List<MedicineUtil> medicines) {
+    public Appointment(int id, Hospital hospital, Patient patient, Doctor doctor, float cost, Date date, ExamUtil exam, List<Disease> diseases, List<SymptomsUtil> symptoms, List<MedicineUtil> medicines) {
         this.id = id;
         this.hospital = hospital;
         this.patient = patient;
@@ -86,11 +87,11 @@ public class Appointment {
         this.exam = exam;
     }
 
-    public LocalDate getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

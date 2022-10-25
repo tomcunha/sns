@@ -18,7 +18,6 @@
     -fx-effect: dropshadow( one-pass-box , white , 8 , 0 , 2 , 0 );
 }
 
-
 /*ADMIN BUTTON*/
 #buttonAdmin{
     -fx-background-image: url(images/user.png);

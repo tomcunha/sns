@@ -42,13 +42,12 @@ public class AdminFindDoctorController extends SceneController{
 
         String row = tableDoctors.getSelectionModel().getSelectedItems().get(0).toString();
         row = row.replaceAll("\\D+","");
-        //int index = Integer.parseInt(row);
-        System.out.printf(row);
         setMedicalLicense(row);
 
         setScreen(buttonPower, "AdminEditDoctorProfileScene.fxml");
         AdminEditDoctorProfileController adminEditDoctorProfileController= getFXML().getController();
         adminEditDoctorProfileController.setInputs();
+        adminEditDoctorProfileController.initializeComboBox();
 
     }
 
@@ -63,8 +62,11 @@ public class AdminFindDoctorController extends SceneController{
     }
 
     @FXML
-    public void setNewDoctor() throws IOException {
+    public void setNewDoctor() throws IOException, SQLException {
+        System.out.println("chamou setNewDoc");
         setScreen(buttonAddDoctor, "AdminNewDoctorProfileScene.fxml");
+        AdminNewDoctorProfileController adminNewDoctorProfileController = getFXML().getController();
+        adminNewDoctorProfileController.initializeComboBox();
     }
 
     @FXML

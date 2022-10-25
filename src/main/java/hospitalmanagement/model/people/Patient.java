@@ -17,11 +17,12 @@ public class Patient extends Person {
 
     private List<Disease> diseases;
 
-    public Patient(String name, LocalDate birthDate, SexUtil sexUtil, String address, String phoneNumber, String email, String patientCC, Hospital favoriteHospital, Insurance insurance, List<Disease> diseases) {
-        super(name, birthDate, sexUtil, address, phoneNumber, email);
+
+    public Patient(String name, LocalDate birthDate, SexUtil sexUtil, String address, String phoneNumber, String email, int personId, String patientCC, Insurance insurance, Hospital favoriteHospital, List<Disease> diseases) {
+        super(name, birthDate, sexUtil, address, phoneNumber, email, personId);
         this.patientCC = patientCC;
-        this.favoriteHospital = favoriteHospital;
         this.insurance = insurance;
+        this.favoriteHospital = favoriteHospital;
         this.diseases = diseases;
     }
 

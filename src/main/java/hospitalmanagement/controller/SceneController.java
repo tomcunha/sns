@@ -1,10 +1,18 @@
 package hospitalmanagement.controller;
 
+import hospitalmanagement.Information;
 import hospitalmanagement.StartApplication;
+import hospitalmanagement.model.medicalLists.Hospital;
+import hospitalmanagement.model.medicalLists.Speciality;
+import hospitalmanagement.utility.SexUtil;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -22,6 +30,28 @@ public class SceneController {
         stage.setScene(scene);
         stage.setFullScreen(true);
         stage.show();
+    }
+
+    public void initializeComboBox(ComboBox hospitalDropdown, ComboBox specialityDropdown, ChoiceBox sexDropdown){
+
+        ObservableList<String> hospitalName = FXCollections.observableArrayList();
+        for (Hospital hospital : Information.getHospitals()) {
+            hospitalName.add(hospital.getName());
+        }
+        hospitalDropdown.setItems(hospitalName);
+
+
+        ObservableList<String> specialityName = FXCollections.observableArrayList();
+        for (Speciality speciality : Information.getSpecialities()) {
+            specialityName.add(speciality.getName());
+        }
+        specialityDropdown.setItems(specialityName);
+
+        ObservableList<String> sexName = FXCollections.observableArrayList();
+        for (SexUtil sex : SexUtil.values()){
+            sexName.add(sex.toString());
+        }
+        sexDropdown.setItems(sexName);
     }
 
     public FXMLLoader getFXML(){

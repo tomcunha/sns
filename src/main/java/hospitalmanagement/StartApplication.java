@@ -16,24 +16,18 @@ import java.io.IOException;
 import java.util.List;
 
 public class StartApplication extends Application {
+
+
     @Override
     public void start(Stage stage) throws IOException {
         Database.connect();
-        List<Hospital> hospitals = Information.getHospitals();
-        List<Doctor> doctors = Information.getDoctors();
-        List<Disease> diseases=Information.getDiseases();
-        List<Insurance> insurances = Information.getInsurances();
-        List<Patient> patients = Information.getPatients();
-        List<ExamUtil> exams = Information.getExams();
-        List<MedicineUtil> medicines = Information.getMedicines();
-
+        Information.updateAll();
 
         FXMLLoader fxmlLoader = new FXMLLoader(StartApplication.class.getResource("AdminFindDoctorScene.fxml"));
-
         Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
         stage.setTitle("HealthCare System");
         stage.setScene(scene);
-        stage.setFullScreen(true);
+        //stage.setFullScreen(true);
         stage.show();
     }
 

@@ -1,15 +1,17 @@
 package hospitalmanagement.model.medicalLists;
 
 import hospitalmanagement.utility.ExamUtil;
-import hospitalmanagement.utility.SpecialitiesUtil;
 import hospitalmanagement.model.people.Doctor;
 import hospitalmanagement.model.people.Patient;
+import hospitalmanagement.utility.MedicineUtil;
+import hospitalmanagement.utility.SymptomsUtil;
 
-import java.time.LocalTime;
+import java.time.LocalDate;
+import java.util.List;
 
 public class Appointment {
 
-    private int id;
+    private final int id;
 
     private Hospital hospital;
 
@@ -19,19 +21,25 @@ public class Appointment {
 
     private float cost;
 
-    private LocalTime localTime;
+    private LocalDate date;
 
     private ExamUtil exam;
 
-    private SpecialitiesUtil speciality;
+    private List<Disease> diseases;
+    private List<SymptomsUtil> symptoms;
+    private List<MedicineUtil> medicines;
 
-    public Appointment(int id, Hospital hospital, Patient patient, Doctor doctor, float appointmentCost, LocalTime localTime, ExamUtil exam) {
+    public Appointment(int id, Hospital hospital, Patient patient, Doctor doctor, float cost, LocalDate date, ExamUtil exam, List<Disease> diseases, List<SymptomsUtil> symptoms, List<MedicineUtil> medicines) {
         this.id = id;
         this.hospital = hospital;
         this.patient = patient;
         this.doctor = doctor;
-        this.cost = appointmentCost;
-        this.localTime = localTime;
+        this.cost = cost;
+        this.date = date;
+        this.exam = exam;
+        this.diseases = diseases;
+        this.symptoms = symptoms;
+        this.medicines = medicines;
     }
 
     public int getId() {
@@ -70,14 +78,6 @@ public class Appointment {
         this.cost = cost;
     }
 
-    public LocalTime getLocalTime() {
-        return localTime;
-    }
-
-    public void setLocalTime(LocalTime localTime) {
-        this.localTime = localTime;
-    }
-
     public ExamUtil getExam() {
         return exam;
     }
@@ -86,11 +86,35 @@ public class Appointment {
         this.exam = exam;
     }
 
-    public SpecialitiesUtil getSpeciality() {
-        return speciality;
+    public LocalDate getDate() {
+        return date;
     }
 
-    public void setSpeciality(SpecialitiesUtil speciality) {
-        this.speciality = speciality;
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public List<Disease> getDiseases() {
+        return diseases;
+    }
+
+    public void setDiseases(List<Disease> diseases) {
+        this.diseases = diseases;
+    }
+
+    public List<SymptomsUtil> getSymptoms() {
+        return symptoms;
+    }
+
+    public void setSymptoms(List<SymptomsUtil> symptoms) {
+        this.symptoms = symptoms;
+    }
+
+    public List<MedicineUtil> getMedicines() {
+        return medicines;
+    }
+
+    public void setMedicines(List<MedicineUtil> medicines) {
+        this.medicines = medicines;
     }
 }

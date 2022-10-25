@@ -14,8 +14,9 @@ public class Doctor extends Employee {
 
     private Hospital workingHospital;
 
-    public Doctor(String name, LocalDate birthDate, SexUtil sexUtil, String email, String phoneNumber, String address, String username, String password, int type, String medicalLicense, SpecialitiesUtil specialty, Hospital workingHospital) {
-        super(name, birthDate, sexUtil, email, phoneNumber, address, username, password, type);
+
+    public Doctor(String name, LocalDate birthDate, SexUtil sexUtil, String email, String phoneNumber, String address, int personId, String username, String password, int type, int employeeId, String medicalLicense, SpecialitiesUtil specialty, Hospital workingHospital) {
+        super(name, birthDate, sexUtil, email, phoneNumber, address, personId, username, password, type, employeeId);
         this.medicalLicense = medicalLicense;
         this.specialty = specialty;
         this.workingHospital = workingHospital;

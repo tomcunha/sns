@@ -35,7 +35,7 @@
 
 /*Admin button*/
 #buttonAdmin{
-    -fx-background-image: url(images/AdminMenu/user.png);
+    -fx-background-image: url(images/user.png);
     -fx-background-color: Transparent;
 }
 #buttonAdmin:hover{
@@ -52,7 +52,7 @@
 
 /*Main menu button*/
 #buttonMainMenu{
-    -fx-background-image: url(images/AdminMenu/user.png);
+    -fx-background-image: url(images/user.png);
     -fx-background-color: Transparent;
 }
 #buttonMainMenu:hover{
@@ -62,7 +62,7 @@
 
 /*Power Button*/
 #buttonPower{
-    -fx-background-image: url(images/AdminMenu/power.png);
+    -fx-background-image: url(images/power.png);
     -fx-background-color: Transparent;
 }
 #buttonAdmin:hover{
@@ -72,7 +72,7 @@
 
 /*Background grid*/
 #gridCabecalho{
-    -fx-background-image: url(images/AdminFindDoctor/backgroundAdmin.png);
+    -fx-background-image: url(images/Admin/backgroundAdmin.png);
 }
 
 /*Main title*/

@@ -6,20 +6,24 @@ import hospitalmanagement.model.medicalLists.Hospital;
 import hospitalmanagement.model.people.Insurance;
 import hospitalmanagement.model.people.Patient;
 import javafx.fxml.FXML;
+import javafx.scene.Group;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
 
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class StaffNewPatientController extends SceneController {
 
     @FXML
+    Button buttonSave;
+    @FXML
     TextField nameInput;
     @FXML
     TextField ccInput;
     @FXML
-    TextField addressInput;
+    TextArea addressInput;
     @FXML
     TextField emailInput;
     @FXML
@@ -31,13 +35,13 @@ public class StaffNewPatientController extends SceneController {
     @FXML
     ComboBox hospitalDropdown;
     @FXML
-    RadioButton insuranceButton;
+    RadioButton yesInsurance;
+    @FXML
+    RadioButton noInsurance;
     @FXML
     ComboBox insuranceDropdown;
     @FXML
-    Text inputSymbolOfErrorCC;
-    @FXML
-    Text inputTextErrorMessage;
+    Label insuranceNameLabel;
 
     public void createPatient() throws SQLException {
         if (validate()) {
@@ -49,14 +53,31 @@ public class StaffNewPatientController extends SceneController {
             last = Integer.valueOf(resultSet.getString(1));
 
             Database.modifyTable("INSERT INTO Patients (patientCC,hospital_id,person_id) " + "VALUES ('" + ccInput.getText() + "', '" + getHospital().getId() + "' ,'" + last + "') ");
-            if (true/* check */) {
-                Database.modifyTable("INSERT INTO Patients (insurance_id) " + "VALUES ('" + getInsurance().getId() + "') ");
+            if (insuranceDropdown.getValue() != null) {
+                System.out.println("Chegueiiii");
+                Database.modifyTable("UPDATE Patients SET insurance_id = " + getInsurance().getId() +" WHERE Patients.patientCC = '" + ccInput.getText() + "'");
             }
 
             Information.updatePatients();
+            try {
+                setScreen(buttonSave, "StaffMenuScene.fxml");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         } else {
-            inputSymbolOfErrorCC.setVisible(true);
-            inputTextErrorMessage.setVisible(true);
+            System.out.println("Ja existe com este CC");
+//            inputSymbolOfErrorCC.setVisible(true);
+//            inputTextErrorMessage.setVisible(true);
+        }
+    }
+
+    public void hasInsurance(){
+        if (yesInsurance.isArmed()){
+            insuranceNameLabel.setVisible(true);
+            insuranceDropdown.setVisible(true);
+        } else if (noInsurance.isArmed()) {
+            insuranceNameLabel.setVisible(false);
+            insuranceDropdown.setVisible(false);
         }
     }
 
@@ -85,5 +106,11 @@ public class StaffNewPatientController extends SceneController {
             }
         }
         return null;
+    }
+
+    public void initializeComboBox(){
+        initializeComboBoxHospital(hospitalDropdown);
+        initializeChoiceBoxSex(sexDropdown);
+        initializeComboBoxInsurances(insuranceDropdown);
     }
 }

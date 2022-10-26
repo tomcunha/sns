@@ -29,7 +29,7 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="2ce73208-9272-4925-99b0-eb6472be90c5">
-      <console name="SNS" type="STANDARD" schema="mysql" session="Main" />
+      <console name="SNS" type="STANDARD" schema="" session="Main" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">

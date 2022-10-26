@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hospitalmanagement.controller.AdminNewDoctorProfileController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hospitalmanagement.controller.StaffNewPatientController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     </columnConstraints>
@@ -101,7 +101,6 @@
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                     <children>
                         <TextField fx:id="ccInput" prefHeight="40.0" prefWidth="250.0" />
-                        <Text fx:id="inputSymbolOfErrorMl" strokeType="OUTSIDE" strokeWidth="0.0" text="*" visible="false" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
@@ -179,7 +178,7 @@
                 </HBox>
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="6">
                <children>
-                  <RadioButton mnemonicParsing="false" text="Yes">
+                  <RadioButton fx:id="yesInsurance" mnemonicParsing="false" text="Yes" onAction="#hasInsurance">
                      <toggleGroup>
                         <ToggleGroup fx:id="insuranceOption" />
                      </toggleGroup>
@@ -187,12 +186,12 @@
                         <Insets left="30.0" right="50.0" />
                      </padding>
                   </RadioButton>
-                  <RadioButton mnemonicParsing="false" text="No" toggleGroup="$insuranceOption" />
+                  <RadioButton fx:id="noInsurance" mnemonicParsing="false" text="No" toggleGroup="$insuranceOption" onAction="#hasInsurance"/>
                </children>
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="6">
                     <children>
-                        <Label text="Insurance name: : " />
+                        <Label fx:id="insuranceNameLabel" text="Insurance name: " visible="false"/>
                     </children>
                     <padding>
                         <Insets right="15.0" />
@@ -200,17 +199,17 @@
                 </HBox>
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.rowIndex="6">
                     <children>
-                        <ComboBox fx:id="insuranceDropdown" prefHeight="50.0" prefWidth="500.0" />
+                        <ComboBox fx:id="insuranceDropdown" prefHeight="50.0" prefWidth="500.0" visible="false"/>
                     </children>
                 </HBox>
                 <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="7">
                     <children>
-                        <Button fx:id="buttonSave" mnemonicParsing="false" onAction="#createDoctor" prefHeight="40.0" prefWidth="180.0" text="Save" />
+                        <Button fx:id="buttonSave" mnemonicParsing="false" onAction="#createPatient" prefHeight="40.0" prefWidth="180.0" text="Save" />
                     </children>
                 </HBox>
                 <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="7">
                     <children>
-                        <Button fx:id="buttonCancel" mnemonicParsing="false" prefWidth="180.0" text="Cancel" />
+                        <Button fx:id="buttonCancel" mnemonicParsing="false" prefWidth="180.0" text="Cancel"/>
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
@@ -223,13 +222,7 @@
                 </HBox>
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="5">
                     <children>
-                        <Text fx:id="inputSymbolOfErrorUser" strokeType="OUTSIDE" strokeWidth="0.0" text="*" visible="false" />
                         <ComboBox fx:id="hospitalDropdown" prefHeight="53.0" prefWidth="528.0" />
-                    </children>
-                </HBox>
-                <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="7">
-                    <children>
-                        <Text fx:id="inputTextErrorMessage" strokeType="OUTSIDE" strokeWidth="0.0" text="* Please correct these fields" visible="false" />
                     </children>
                 </HBox>
             </children>

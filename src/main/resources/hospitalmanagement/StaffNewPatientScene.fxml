@@ -15,6 +15,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hospitalmanagement.controller.StaffNewPatientController">
@@ -113,7 +114,7 @@
                 </HBox>
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="2">
                     <children>
-                        <DatePicker fx:id="dateInput" prefHeight="40.0" prefWidth="334.0" />
+                        <DatePicker fx:id="dateInput" prefHeight="65.0" prefWidth="318.0" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="2">
@@ -126,7 +127,7 @@
                 </HBox>
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="2">
                     <children>
-                        <ChoiceBox fx:id="sexDropdown" prefHeight="65.0" prefWidth="220.0" />
+                        <ChoiceBox fx:id="sexDropdown" prefHeight="65.0" prefWidth="207.0" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
@@ -139,7 +140,7 @@
                 </HBox>
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="3">
                     <children>
-                        <TextArea fx:id="addressInput" prefHeight="160.0" prefWidth="840.0" />
+                        <TextArea fx:id="addressInput" prefHeight="143.0" prefWidth="827.0" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="3">
@@ -178,7 +179,7 @@
                 </HBox>
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="6">
                <children>
-                  <RadioButton fx:id="yesInsurance" mnemonicParsing="false" text="Yes" onAction="#hasInsurance">
+                  <RadioButton fx:id="yesInsurance" mnemonicParsing="false" onAction="#hasInsurance" text="Yes">
                      <toggleGroup>
                         <ToggleGroup fx:id="insuranceOption" />
                      </toggleGroup>
@@ -186,12 +187,12 @@
                         <Insets left="30.0" right="50.0" />
                      </padding>
                   </RadioButton>
-                  <RadioButton fx:id="noInsurance" mnemonicParsing="false" text="No" toggleGroup="$insuranceOption" onAction="#hasInsurance"/>
+                  <RadioButton fx:id="noInsurance" mnemonicParsing="false" onAction="#hasInsurance" text="No" toggleGroup="$insuranceOption" />
                </children>
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="6">
                     <children>
-                        <Label fx:id="insuranceNameLabel" text="Insurance name: " visible="false"/>
+                        <Label fx:id="insuranceNameLabel" text="Insurance name: " />
                     </children>
                     <padding>
                         <Insets right="15.0" />
@@ -199,7 +200,7 @@
                 </HBox>
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.rowIndex="6">
                     <children>
-                        <ComboBox fx:id="insuranceDropdown" prefHeight="50.0" prefWidth="500.0" visible="false"/>
+                        <ComboBox fx:id="insuranceDropdown" prefHeight="50.0" prefWidth="500.0" />
                     </children>
                 </HBox>
                 <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="7">
@@ -209,7 +210,7 @@
                 </HBox>
                 <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="7">
                     <children>
-                        <Button fx:id="buttonCancel" mnemonicParsing="false" prefWidth="180.0" text="Cancel"/>
+                        <Button fx:id="buttonCancel" mnemonicParsing="false" prefWidth="180.0" text="Cancel" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
@@ -222,9 +223,15 @@
                 </HBox>
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="5">
                     <children>
-                        <ComboBox fx:id="hospitalDropdown" prefHeight="53.0" prefWidth="528.0" />
+                        <ComboBox fx:id="hospitalDropdown" prefHeight="53.0" prefWidth="482.0" />
                     </children>
                 </HBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="7">
+               <children>
+                  <Text fx:id="warningMessage" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="This identity number already exists." visible="false" />
+                  <Text fx:id="warningInsurance" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Please select an option to Insurance." visible="false" />
+               </children>
+            </VBox>
             </children>
         </GridPane>
     </children>

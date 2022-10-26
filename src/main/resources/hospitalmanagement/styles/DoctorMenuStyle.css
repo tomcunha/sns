@@ -1,5 +1,5 @@
 /*GENERAL*/
-.root {-fx-background-image: url(images/DoctorMenu/BackgroundDoctor.png);}
+.root {-fx-background-image: url(images/Doctor/backgroundDoctor.png);}
 
 /*ALL BUTTONS */
 .button{
@@ -21,13 +21,13 @@
 /*POWER BUTTON*/
 
 #button123{
-    -fx-background-image: url(images/DoctorMenu/power.png);
+    -fx-background-image: url(images/power.png);
     -fx-background-color: Transparent;
 }
 
 /*DOCTOR BUTTON*/
 #buttonDoctor{
-    -fx-background-image: url(images/DoctorMenu/user.png);
+    -fx-background-image: url(images/user.png);
     -fx-background-color: Transparent;
 }
 #button123:hover{

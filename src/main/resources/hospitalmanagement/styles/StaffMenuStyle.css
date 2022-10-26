@@ -1,5 +1,5 @@
 /*GENERAL*/
-.root {-fx-background-image: url(images/AdminMenu/backgroundAdmin.png);}
+.root {-fx-background-image: url(images/Staff/backgroundStaff.png);}
 /*ALL LABELS*/
 .label {
     -fx-font-family: "Inter";
@@ -19,16 +19,24 @@
 }
 
 
-/*ADMIN BUTTON*/
-#buttonAdmin{
-    -fx-background-image: url(images/AdminMenu/user.png);
+/*STAFF BUTTON*/
+#buttonStaff{
+    -fx-background-image: url(images/user.png);
     -fx-background-color: Transparent;
 }
-#buttonAdmin:hover{
+#buttonStaff:hover{
     -fx-effect: dropshadow( one-pass-box , white , 8 , 0 , 0 , 0 );
 }
 /*POWER BUTTON*/
 #buttonPower{
-    -fx-background-image: url(images/AdminMenu/power.png);
+    -fx-background-image: url(images/power.png);
     -fx-background-color: Transparent;
+}
+
+
+/*Staff text*/
+#textStaff{
+    -fx-font-family: "Inter";
+    -fx-font-size: 30px;
+    -fx-text-fill: #0E1D33;
 }

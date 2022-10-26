@@ -69,7 +69,7 @@
             <children>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2">
                     <children>
-                        <Label fx:id="title" text="Find Doctor" />
+                        <Label fx:id="title" text="Find Patient" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -92,7 +92,7 @@
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
                     <children>
-                        <Button fx:id="buttonAddPatient" mnemonicParsing="false" prefHeight="50.0" prefWidth="350.0" text="Add new Patient" visible="true" onAction="#setNewPatient" />
+                        <Button fx:id="buttonAddPatient" mnemonicParsing="false" onAction="#setNewPatient" prefHeight="50.0" prefWidth="350.0" text="Add new Patient" visible="true" />
                     </children>
                     <GridPane.margin>
                         <Insets />

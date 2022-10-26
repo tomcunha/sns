@@ -12,7 +12,7 @@ public class StaffFindPatientController extends SceneController{
     private Button buttonAddPatient;
 
     @FXML
-    public void setNewPatient() throws IOException, SQLException {
+    public void setNewPatient() throws IOException {
         setScreen(buttonAddPatient, "StaffNewPatientScene.fxml");
         StaffNewPatientController staffNewPatientController = getFXML().getController();
         staffNewPatientController.initializeComboBox();

@@ -1,19 +1,11 @@
 package hospitalmanagement;
 
-import hospitalmanagement.model.medicalLists.Disease;
-import hospitalmanagement.model.medicalLists.Hospital;
-import hospitalmanagement.model.people.Doctor;
-import hospitalmanagement.model.people.Insurance;
-import hospitalmanagement.model.people.Patient;
-import hospitalmanagement.utility.ExamUtil;
-import hospitalmanagement.utility.MedicineUtil;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.List;
 
 public class StartApplication extends Application {
 
@@ -23,7 +15,7 @@ public class StartApplication extends Application {
         Database.connect();
         Information.updateAll();
 
-        FXMLLoader fxmlLoader = new FXMLLoader(StartApplication.class.getResource("AdminFindDoctorScene.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(StartApplication.class.getResource("AdminMenuScene.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
         stage.setTitle("HealthCare System");
         stage.setScene(scene);

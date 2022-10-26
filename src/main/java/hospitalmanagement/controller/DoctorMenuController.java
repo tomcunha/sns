@@ -6,13 +6,28 @@ import javafx.scene.control.Button;
 import java.io.IOException;
 
 public class DoctorMenuController extends SceneController {
-
     @FXML
-    Button button123;
-
+    Button buttonPower,scheduleButton,patientsManagementButton,diseasesMedSymptButton;
     @FXML
     public void setButtonPower() throws IOException {
-        setScreen(button123, "LoginScene.fxml");
-
+        setScreen(buttonPower, "LoginScene.fxml");
     }
+    @FXML
+    public void setScheduleButton() throws IOException {
+        setScreen(scheduleButton, ".fxml");
+    }
+    @FXML
+    public void setPatientsManagementButton() throws IOException {
+            setScreen(patientsManagementButton, "StaffFindPatientScene.fxml");
+    }
+    @FXML
+    public void setDiseasesMedSymptButton() throws IOException {
+        setScreen(diseasesMedSymptButton, ".fxml");
+    }
+
+
+
+
+
+
 }

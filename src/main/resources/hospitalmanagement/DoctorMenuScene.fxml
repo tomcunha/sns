@@ -24,7 +24,7 @@
     <children>
         <HBox prefHeight="100.0" prefWidth="200.0">
             <children>
-                <Button fx:id="buttonDoctor" mnemonicParsing="false" prefHeight="128.0" prefWidth="128.0" />
+                <Button fx:id="buttonUser" mnemonicParsing="false" prefHeight="128.0" prefWidth="128.0" />
             </children>
         </HBox>
         <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="1">
@@ -46,11 +46,11 @@
             </children></HBox>
         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="4">
             <children>
-                <Button mnemonicParsing="false" prefWidth="700.0" text="Diseases, medicines and symptoms" />
+                <Button fx:id="diseasesMedSymptButton" mnemonicParsing="false" prefWidth="700.0" text="Diseases, medicines and symptoms" />
             </children></HBox>
         <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
             <children>
-                <Button fx:id="button123" mnemonicParsing="false" onAction="#setButtonPower" prefHeight="128.0" prefWidth="128.0" />
+                <Button fx:id="buttonPower" mnemonicParsing="false" onAction="#setButtonPower" prefHeight="128.0" prefWidth="128.0" />
             </children></HBox>
     </children>
 </GridPane>

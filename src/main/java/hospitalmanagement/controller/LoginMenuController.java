@@ -65,10 +65,10 @@ public class LoginMenuController extends SceneController {
             if (users.get(i).equals(usernamefield.getText()) && passwords.get(i).equals(passwordfield.getText())) {
                 switch (types.get(i)) {
                     case 1:
-
+                        setScreen(signInButton, "StaffMenuScene.fxml");
                         break;
                     case 2:
-                        setScreen(signInButton, "Example.fxml");
+                        setScreen(signInButton, "DoctorMenuScene.fxml");
                         break;
                     case 3:
                         setScreen(signInButton, "AdminMenuScene.fxml");

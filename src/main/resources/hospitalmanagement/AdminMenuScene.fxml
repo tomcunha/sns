@@ -24,7 +24,7 @@
     <children>
         <HBox prefHeight="100.0" prefWidth="200.0">
             <children>
-                <Button fx:id="buttonAdmin" mnemonicParsing="false" prefHeight="128.0" prefWidth="128.0" />
+                <Button fx:id="buttonUser" mnemonicParsing="false" prefHeight="128.0" prefWidth="128.0" />
             </children>
         </HBox>
         <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">

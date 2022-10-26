@@ -19,7 +19,7 @@
 }
 
 /*ADMIN BUTTON*/
-#buttonAdmin{
+#buttonUser{
     -fx-background-image: url(images/user.png);
     -fx-background-color: Transparent;
 }

@@ -20,17 +20,17 @@
 }
 /*POWER BUTTON*/
 
-#button123{
+#buttonPower{
     -fx-background-image: url(images/power.png);
     -fx-background-color: Transparent;
 }
 
 /*DOCTOR BUTTON*/
-#buttonDoctor{
+#buttonUser{
     -fx-background-image: url(images/user.png);
     -fx-background-color: Transparent;
 }
-#button123:hover{
+#buttonPower:hover{
     -fx-effect: dropshadow( one-pass-box , white , 8 , 0 , 2 , 0 );
 }
 

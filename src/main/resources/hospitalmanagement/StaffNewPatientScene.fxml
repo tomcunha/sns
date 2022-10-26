@@ -89,7 +89,6 @@
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="5" GridPane.rowIndex="1">
                     <children>
                         <TextField fx:id="nameInput" prefHeight="40.0" prefWidth="1330.0" />
-                  <Text fx:id="warningName" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
@@ -103,7 +102,6 @@
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                     <children>
                         <TextField fx:id="ccInput" prefHeight="40.0" prefWidth="250.0" />
-                  <Text fx:id="warningCC" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
@@ -117,7 +115,6 @@
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="2">
                     <children>
                         <DatePicker fx:id="dateInput" prefHeight="65.0" prefWidth="318.0" />
-                  <Text fx:id="warningDate" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="2">
@@ -131,7 +128,6 @@
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="2">
                     <children>
                         <ChoiceBox fx:id="sexDropdown" prefHeight="65.0" prefWidth="207.0" />
-                  <Text fx:id="warningSex" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
@@ -145,7 +141,6 @@
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="3">
                     <children>
                         <TextArea fx:id="addressInput" prefHeight="143.0" prefWidth="827.0" />
-                  <Text fx:id="warningAddress" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="3">
@@ -159,7 +154,6 @@
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="3">
                     <children>
                         <TextField fx:id="phoneInput" prefHeight="40.0" prefWidth="200.0" />
-                  <Text fx:id="warningPhone" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
@@ -173,7 +167,6 @@
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="4" GridPane.rowIndex="4">
                     <children>
                         <TextField fx:id="emailInput" prefHeight="65.0" prefWidth="1088.0" />
-                  <Text fx:id="warningEmail" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
@@ -208,7 +201,6 @@
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.rowIndex="6">
                     <children>
                         <ComboBox fx:id="insuranceDropdown" prefHeight="50.0" prefWidth="500.0" />
-                  <Text fx:id="warningInsurance" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
                     </children>
                 </HBox>
                 <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="7">
@@ -232,13 +224,11 @@
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="5">
                     <children>
                         <ComboBox fx:id="hospitalDropdown" prefHeight="53.0" prefWidth="482.0" />
-                  <Text fx:id="warningHospital" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
                     </children>
                 </HBox>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="7">
                <children>
-                  <Text fx:id="warningMessageCC" strokeType="OUTSIDE" strokeWidth="0.0" text="This identity number already exists." />
-                  <Text fx:id="warningMessageAll" strokeType="OUTSIDE" strokeWidth="0.0" text="This informations is required. Please check this values. " />
+                  <Text fx:id="warningMessage" strokeType="OUTSIDE" strokeWidth="0.0" text="This identity number already exists." visible="false" />
                </children>
             </VBox>
             </children>

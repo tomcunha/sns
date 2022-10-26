@@ -23,6 +23,8 @@ public class StaffNewPatientController extends SceneController {
     @FXML
     TextField ccInput;
     @FXML
+    Text warningMessage;
+    @FXML
     TextArea addressInput;
     @FXML
     TextField emailInput;
@@ -34,6 +36,10 @@ public class StaffNewPatientController extends SceneController {
     ChoiceBox sexDropdown;
     @FXML
     ComboBox hospitalDropdown;
+    @FXML
+    ToggleGroup insuranceOption;
+    @FXML
+    Text warningInsurance;
     @FXML
     RadioButton yesInsurance;
     @FXML
@@ -53,7 +59,7 @@ public class StaffNewPatientController extends SceneController {
             last = Integer.valueOf(resultSet.getString(1));
 
             Database.modifyTable("INSERT INTO Patients (patientCC,hospital_id,person_id) " + "VALUES ('" + ccInput.getText() + "', '" + getHospital().getId() + "' ,'" + last + "') ");
-            if (insuranceDropdown.getValue() != null) {
+            if (insuranceDropdown.getValue() != null && insuranceDropdown.isVisible()) {
                 System.out.println("Chegueiiii");
                 Database.modifyTable("UPDATE Patients SET insurance_id = " + getInsurance().getId() +" WHERE Patients.patientCC = '" + ccInput.getText() + "'");
             }
@@ -82,12 +88,17 @@ public class StaffNewPatientController extends SceneController {
     }
 
     private boolean validate() throws SQLException {
+        boolean validate = true;
         for (Patient patient : Information.getPatients()) {
             if (patient.getPatientCC().equals(ccInput.getText())) {
-                return false;
+                warningMessage.setVisible(true);
+                validate = false;
             }
         }
-        return true;
+        if(emptyFields()){
+           validate = false;
+        }
+        return validate;
     }
 
     private Hospital getHospital() {
@@ -112,5 +123,62 @@ public class StaffNewPatientController extends SceneController {
         initializeComboBoxHospital(hospitalDropdown);
         initializeChoiceBoxSex(sexDropdown);
         initializeComboBoxInsurances(insuranceDropdown);
+    }
+
+    private boolean emptyFields(){
+        boolean complete = true;
+        if(nameInput.getText().isEmpty()){
+            complete = false;
+            nameInput.setStyle("-fx-effect: dropshadow(one-pass-box,red,15,0,0,0)");
+        }
+        if(ccInput.getText().isEmpty()){
+            complete = false;
+            ccInput.setStyle("-fx-effect: dropshadow(one-pass-box,red,15,0,0,0)");
+        }
+        if(addressInput.getText().isEmpty()){
+            complete = false;
+            addressInput.setStyle("-fx-effect: dropshadow(one-pass-box,red,15,0,0,0)");
+        }
+        if (emailInput.getText().isEmpty()){
+            complete = false;
+            emailInput.setStyle("-fx-effect: dropshadow(one-pass-box,red,15,0,0,0)");
+        }
+        if(phoneInput.getText().isEmpty()){
+            complete = false;
+            phoneInput.setStyle("-fx-effect: dropshadow(one-pass-box,red,15,0,0,0)");
+        }
+        if (dateInput.getValue() == null){
+            complete = false;
+            dateInput.setStyle("-fx-effect: dropshadow(one-pass-box,red,15,0,0,0)");
+        }
+        if (sexDropdown.getValue() == null){
+            complete = false;
+            sexDropdown.setStyle("-fx-effect: dropshadow(one-pass-box,red,15,0,0,0)");
+        }
+        if (hospitalDropdown.getValue() == null){
+            complete = false;
+            hospitalDropdown.setStyle("-fx-effect: dropshadow(one-pass-box,red,15,0,0,0)");
+        }
+        if (insuranceOption.getSelectedToggle() == null){
+            complete = false;
+            warningInsurance.setVisible(true);
+        }
+        if(insuranceDropdown.getValue() == null){
+            complete = false;
+            insuranceDropdown.setStyle("-fx-effect: dropshadow(one-pass-box,red,15,0,0,0)");
+        }
+        return complete;
+    }
+
+    private void setAllFilled(){
+        nameInput.setStyle("-fx-effect: none");
+        ccInput.setStyle("-fx-effect: none");
+        addressInput.setStyle("-fx-effect: none");
+        emailInput.setStyle("-fx-effect: none");
+        phoneInput.setStyle("-fx-effect: none");
+        dateInput.setStyle("-fx-effect: none");
+        sexDropdown.setStyle("-fx-effect: none");
+        hospitalDropdown.setStyle("-fx-effect: none");
+        insuranceDropdown.setStyle("-fx-effect: none");
     }
 }

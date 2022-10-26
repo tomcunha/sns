@@ -73,7 +73,7 @@
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                     <children>
-                        <TextField fx:id="nameTextField" prefHeight="40.0" prefWidth="1096.0" />
+                        <TextField fx:id="nameTextField" prefHeight="40.0" prefWidth="1096.0" onKeyReleased="#loadData"/>
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1">

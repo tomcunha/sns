@@ -32,7 +32,7 @@ public class AdminFindSpecialitiesController extends SceneController {
     ObservableList<Speciality> listSpecialities = FXCollections.observableArrayList();
 
     @FXML
-    private Button buttonMainMenu, buttonPower, buttonAddSpeciality;
+    private Button buttonMainMenu, buttonPower, buttonAddSpeciality, buttonSearch;
     @FXML
     private TableView<Speciality> tableSpecialities;
     @FXML
@@ -52,31 +52,34 @@ public class AdminFindSpecialitiesController extends SceneController {
     }
 
     @FXML
-    public void setButtonSearch() throws SQLException {
+    public void setNewSpeciality() throws IOException {
+        setScreen(buttonAddSpeciality, "AdminNewSpecialityScene.fxml");
+    }
+    public void setButtonSearch() {
         tableSpecialities.getItems().clear();
 
+        buttonSearch.setVisible(false);
         initColumn();
-        loadData(nameTextField.getText());
+        loadData();
 
         tableSpecialities.setVisible(true);
     }
 
     @FXML
-    public void setNewSpeciality() throws IOException, SQLException {
-        setScreen(buttonAddSpeciality, "AdminNewSpecialityScene.fxml");
-        //AdminNewDoctorProfileController adminNewDoctorProfileController = getFXML().getController();
-        //adminNewDoctorProfileController.initializeComboBox();
-    }
+    private void loadData() {
+        listSpecialities.clear();
+        tableSpecialities.getItems().clear();
 
-
-    private void loadData(String name) {
-        listSpecialities.removeAll(listSpecialities);
+        String name =  nameTextField.getText();
         ObservableList<Speciality> filterList = FXCollections.observableArrayList();
         for (Speciality specialityName : Information.getSpecialities()) {
-            if(specialityName.getName().toLowerCase().contains(name.toLowerCase()))
-            listSpecialities.add(specialityName);
+            if (specialityName.getName().toLowerCase().contains(name.toLowerCase()))
+                listSpecialities.add(specialityName);
         }
         tableSpecialities.getItems().setAll(listSpecialities);
+        if(listSpecialities.size() != 0)
+            tableSpecialities.setVisible(true);
+        initColumn();
     }
 
     private void initColumn() {

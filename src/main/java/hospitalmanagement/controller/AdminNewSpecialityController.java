@@ -26,9 +26,7 @@ public class AdminNewSpecialityController extends SceneController {
     @FXML
     private TextField specNameInput;
     @FXML
-    private Text inputDuplicateErrorMessage;
-    @FXML
-    private Text inputEmptyErrorMessage;
+    private Text inputErrorMessage;
 
 
 
@@ -58,18 +56,17 @@ public class AdminNewSpecialityController extends SceneController {
     private boolean validate(){
         for (Speciality speciality : Information.getSpecialities()) {
             if (speciality.getName().equalsIgnoreCase(specNameInput.getText())) {
-                inputEmptyErrorMessage.setVisible(false);
-                inputDuplicateErrorMessage.setVisible(true);
+                inputErrorMessage.setVisible(true);
+                inputErrorMessage.setText("* That speciality already exists!");
                 return false;
             }
             if (specNameInput.getText().isEmpty()){
-                inputDuplicateErrorMessage.setVisible(false);
-                inputEmptyErrorMessage.setVisible(true);
+                inputErrorMessage.setVisible(true);
+                inputErrorMessage.setText("* Please fill in the field!");
                 return false;
             }
         }
-        inputDuplicateErrorMessage.setVisible(false);
-        inputEmptyErrorMessage.setVisible(false);
+        inputErrorMessage.setVisible(false);
         return true;
     }
 }

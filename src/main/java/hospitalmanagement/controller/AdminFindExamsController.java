@@ -68,8 +68,8 @@ public class AdminFindExamsController extends SceneController {
         listExams.addAll(Information.getExams());
         tableExams.getItems().setAll(listExams);
 
-        if (!nameTextField.getText().isEmpty()) {
-            listExams.removeAll(listExams);
+       // if (!nameTextField.getText().isEmpty()) {
+         //   listExams.removeAll(listExams);
 
             ObservableList<Exam> filterList = FXCollections.observableArrayList();
 
@@ -78,11 +78,11 @@ public class AdminFindExamsController extends SceneController {
                     filterList.addAll(examName);
                 }
                 tableExams.getItems().setAll(filterList);
+                if(listExams.size() != 0)
+                    tableExams.setVisible(true);
+                initColumn();
             }
-
-
-        }
-
+        //}
     }
 
 

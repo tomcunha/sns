@@ -7,11 +7,10 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 
 import java.io.IOException;
@@ -21,7 +20,6 @@ public class AdminFindHospitalController extends SceneController {
 
     @FXML
     private Button buttonMainMenu, buttonPower;
-
 
     ObservableList<ObservableList<String>> listHospitals = FXCollections.observableArrayList();
 
@@ -39,41 +37,50 @@ public class AdminFindHospitalController extends SceneController {
 
 
     @FXML
-    public void setMainMenu() throws IOException {
-        setScreen(buttonMainMenu, "AdminMenuScene.fxml");
+    public void setMainMenu() {
+        try {
+            setScreen(buttonMainMenu, "AdminMenuScene.fxml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
-    public void setLogout() throws IOException {
-        setScreen(buttonPower, "LoginScene.fxml");
+    public void setLogout() {
+        try {
+            setScreen(buttonPower, "LoginScene.fxml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-
     @FXML
-    private void loadData() {
-        listHospitals.clear();
-        tableHospitals.getItems().clear();
+    public void selectHospital(MouseEvent mouseEvent) {
 
-        String name = nameTextField.getText();
+        if (mouseEvent.getButton().equals(MouseButton.PRIMARY)) {
+            if (mouseEvent.getClickCount() == 2) {
+                String row = tableHospitals.getSelectionModel().getSelectedItems().get(0).toString();
+                String[] row1 = row.split(",");
+                String hospitalName = row1[0].replace("[", "").trim();
 
-        if (!name.isBlank()) {
-            for (Hospital hospital : Information.getHospitals()) {
-
-                String hName = hospital.getName().toUpperCase();
-                name = name.toUpperCase();
-
-                if (hName.contains(name)) {
-                    ObservableList<String> row = FXCollections.observableArrayList();
-                    row.add(hospital.getName());
-                    row.add(hospital.getContact().getPhoneNumber());
-                    row.add(hospital.getContact().getEmail());
-                    listHospitals.add(row);
+                try {
+                    setScreen(buttonPower, "AdminEditHospitalProfileScene.fxml");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
                 }
+
+                AdminEditHospitalProfileController editHospital = getFXML().getController();
+                editHospital.setInputs(hospitalName);
             }
         }
+    }
 
-        tableHospitals.getItems().addAll(listHospitals);
+    public void clearInfo() {
+        listHospitals.clear();
+        tableHospitals.getItems().clear();
+    }
 
+    public void startTable() {
         if (listHospitals.size() != 0) {
             tableHospitals.setVisible(true);
         }
@@ -83,6 +90,57 @@ public class AdminFindHospitalController extends SceneController {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @FXML
+    public void showAllHospitals() {
+
+        if (nameTextField.getText().isBlank()) {
+
+            clearInfo();
+
+            for (Hospital hospital : Information.getHospitals()) {
+                loadHospitalInfo(hospital);
+            }
+            tableHospitals.getItems().addAll(listHospitals);
+
+            startTable();
+        }
+    }
+
+    public void loadHospitalInfo(Hospital hospital) {
+        ObservableList<String> row = FXCollections.observableArrayList();
+        row.add(hospital.getName());
+        row.add(hospital.getContact().getPhoneNumber());
+        row.add(hospital.getContact().getEmail());
+        listHospitals.add(row);
+    }
+
+    @FXML
+    private void loadData(KeyEvent key) {
+        String name = nameTextField.getText();
+
+        if (!name.isBlank()) {
+
+            clearInfo();
+
+            for (Hospital hospital : Information.getHospitals()) {
+
+                String hName = hospital.getName().toUpperCase();
+                name = name.toUpperCase();
+
+                if (hName.contains(name)) {
+                    loadHospitalInfo(hospital);
+                }
+            }
+
+            tableHospitals.getItems().addAll(listHospitals);
+            startTable();
+
+        } else if (key.getCode().toString().equals("BACK_SPACE")) {
+            showAllHospitals();
+        }
+
     }
 
     private void initiateCols() throws SQLException {
@@ -106,5 +164,13 @@ public class AdminFindHospitalController extends SceneController {
         });
     }
 
+    @FXML
+    public void createNewHospital() {
+        try {
+            setScreen(buttonAddHospital, "AdminNewHospitalProfileScene.fxml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 }

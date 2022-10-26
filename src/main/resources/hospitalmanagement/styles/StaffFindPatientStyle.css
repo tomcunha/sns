@@ -6,11 +6,6 @@
     -fx-text-fill: #0E1D33;
 }
 
-.text {
-    -fx-font-family: "Inter";
-    -fx-font-size: 30px;
-    -fx-text-fill: RED;
-}
 
 /*ALL TEXT-FIELDS*/
 .text-area, .text-field {
@@ -77,14 +72,31 @@
 
 /*Main title*/
 #title{
-    -fx-font-size: 60px;
+    -fx-font-size: 80px;
     -fx-font-weight: BOLD;
     -fx-effect: dropshadow( one-pass-box , white , 8 , 0.0 , 2 , 0 );
 }
 
 
-/*Button save*/
-#buttonSave{
-    -fx-background-color: #79DD99;
+/*Background grid*/
+#patientGrid{
+    -fx-background-color: #DFF1F2;
 }
 
+/*Text*/
+#namePatientText, #birthDatePatientText, #identityNumberPatientText, #nameInsuranceText {
+    -fx-font-family: "Inter";
+    -fx-font-size: 30px;
+    -fx-text-fill: #0E1D33;
+}
+
+
+/*Button edit*/
+#buttonEdit{
+    -fx-background-color: #6D6D6D;
+}
+
+/*Button delete*/
+#buttonDelete{
+    -fx-background-color: #CF5F5F;
+}

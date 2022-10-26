@@ -45,7 +45,7 @@ public class AdminMenuController extends SceneController {
 
     @FXML
     public void setHospitalsManagementButton() throws IOException {
-        setScreen(hospitalsManagementButton, "LoginScene.fxml");
+        setScreen(hospitalsManagementButton, "AdminFindHospitalScene.fxml");
     }
 
 

@@ -22,15 +22,25 @@
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <HBox prefHeight="100.0" prefWidth="200.0">
+        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
             <children>
-                <Button fx:id="buttonAdmin" mnemonicParsing="false" prefHeight="128.0" prefWidth="128.0" />
+                <Button fx:id="buttonStaff" mnemonicParsing="false" prefHeight="128.0" prefWidth="128.0" />
+            <Text fx:id="textStaff" strokeType="OUTSIDE" strokeWidth="0.0" text="Staff" />
             </children>
+         <padding>
+            <Insets left="15.0" />
+         </padding>
         </HBox>
-        <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
+        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
             <children>
                 <Button fx:id="buttonPower" mnemonicParsing="false" prefHeight="128.0" prefWidth="128.0" />
             </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets right="15.0" />
+         </padding>
         </HBox>
         <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
             <padding>

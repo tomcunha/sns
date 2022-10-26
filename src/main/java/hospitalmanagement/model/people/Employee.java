@@ -6,7 +6,7 @@ import java.time.LocalDate;
 
 public class Employee extends Person{
 
-    private int employeeId;
+    private int employee_id;
 
     private  String username;
 
@@ -14,16 +14,16 @@ public class Employee extends Person{
 
     private int type;
 
-    public Employee(String name, LocalDate birthDate, SexUtil sexUtil, String email, String phoneNumber, String address, int personId, String username, String password, int type, int employeeId) {
-        super(name, birthDate, sexUtil, email, phoneNumber, address, personId);
+    public Employee(String name, LocalDate birthDate, SexUtil sexUtil, String email, String phoneNumber, String address, int person_id, String username, String password, int type, int employee_id) {
+        super(name, birthDate, sexUtil, email, phoneNumber, address, person_id);
         this.username = username;
         this.password = password;
         this.type = type;
-        this.employeeId = employeeId;
+        this.employee_id = employee_id;
     }
 
-    public int getEmployeeId() {
-        return employeeId;
+    public int getEmployeeID() {
+        return employee_id;
     }
 
     public String getUsername() {

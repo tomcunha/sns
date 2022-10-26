@@ -29,7 +29,7 @@
         </HBox>
         <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
             <children>
-                <Button fx:id="buttonPower" mnemonicParsing="false" prefHeight="128.0" prefWidth="128.0"/>
+                <Button fx:id="buttonPower" mnemonicParsing="false" prefHeight="128.0" prefWidth="128.0" />
             </children>
         </HBox>
         <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
@@ -37,7 +37,7 @@
                 <Insets bottom="30" right="30" />
             </padding>
             <children>
-                <Button fx:id="doctorsManagementButton" mnemonicParsing="false" prefWidth="600.0" text="Doctors Management" />
+                <Button fx:id="doctorsManagementButton" mnemonicParsing="false" prefWidth="600.0" text="Check main Schedule" />
             </children>
             <opaqueInsets>
                 <Insets />
@@ -47,7 +47,7 @@
                 <Insets bottom="30" left="30" />
             </padding>
             <children>
-                <Button fx:id="examsManagementButton" mnemonicParsing="false" prefWidth="600.0" text="Exams Management" />
+                <Button fx:id="examsManagementButton" mnemonicParsing="false" prefWidth="600.0" text="Change appointment" />
             </children></HBox>
         <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="1">
             <children>
@@ -63,7 +63,7 @@
                 <Insets right="30" top="30" />
             </padding>
             <children>
-                <Button fx:id="hospitalsManagementButton" mnemonicParsing="false" prefWidth="600.0" text="Hospitals Management" />
+                <Button fx:id="hospitalsManagementButton" mnemonicParsing="false" prefWidth="600.0" text="Patients Management" />
             </children>
         </HBox>
         <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
@@ -71,7 +71,7 @@
                 <Insets left="30" top="30" />
             </padding>
             <children>
-                <Button fx:id="specialitiesManagementButton" mnemonicParsing="false" prefWidth="600.0" text="Specialities Management" />
+                <Button fx:id="specialitiesManagementButton" mnemonicParsing="false" prefWidth="600.0" text="New appointment" />
             </children>
         </HBox>
     </children>

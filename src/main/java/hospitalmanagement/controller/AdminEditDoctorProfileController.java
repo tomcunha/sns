@@ -12,7 +12,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -133,7 +132,7 @@ public class AdminEditDoctorProfileController extends SceneController{
     private int getPersonID() {
         for (Doctor doctor : Information.getDoctors()) {
             if (doctor.getMedicalLicense().equals(medicalLicense)) {
-                return doctor.getPersonId();
+                return doctor.getPersonID();
             }
         }
         return 0;

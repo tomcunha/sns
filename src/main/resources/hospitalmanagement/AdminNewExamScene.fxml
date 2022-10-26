@@ -1,23 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hospitalmanagement.controller.AdminNewDoctorProfileController">
+<<<<<<<< HEAD:src/main/resources/hospitalmanagement/StaffNewPatientScene.fxml
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@styles/StaffNewPatientStyle.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hospitalmanagement.controller.StaffNewPatientController">
+========
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@styles/AdminNewDoctorProfileStyle.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hospitalmanagement.controller.AdminNewExamController">
+>>>>>>>> origin/final:src/main/resources/hospitalmanagement/AdminNewExamScene.fxml
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     </columnConstraints>
@@ -38,8 +35,8 @@
             <children>
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                     <children>
-                        <Button fx:id="buttonAdmin" mnemonicParsing="false" prefHeight="128.0" prefWidth="128.0" />
-                        <Text fx:id="textStaff" strokeType="OUTSIDE" strokeWidth="0.0" text="Staff" />
+                        <Button fx:id="buttonStaff" mnemonicParsing="false" prefHeight="128.0" prefWidth="128.0" />
+                        <Text fx:id="textStaff" strokeType="OUTSIDE" strokeWidth="0.0" text="STAFF" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2">
@@ -74,7 +71,7 @@
             <children>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.columnSpan="2">
                     <children>
-                        <Label fx:id="title" text="Patient Profile" />
+                        <Label fx:id="title" text="New Exame" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -91,121 +88,79 @@
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+<<<<<<<< HEAD:src/main/resources/hospitalmanagement/StaffNewPatientScene.fxml
                     <children>
                         <Label text="Identity number: " />
                     </children>
+========
+>>>>>>>> origin/final:src/main/resources/hospitalmanagement/AdminNewExamScene.fxml
                     <padding>
                         <Insets right="15.0" />
                     </padding>
                 </HBox>
+<<<<<<<< HEAD:src/main/resources/hospitalmanagement/StaffNewPatientScene.fxml
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                     <children>
                         <TextField fx:id="ccInput" prefHeight="40.0" prefWidth="250.0" />
                         <Text fx:id="inputSymbolOfErrorMl" strokeType="OUTSIDE" strokeWidth="0.0" text="*" visible="false" />
                     </children>
                 </HBox>
+========
+                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+>>>>>>>> origin/final:src/main/resources/hospitalmanagement/AdminNewExamScene.fxml
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
-                    <children>
-                        <Label text="Birth Date: " />
-                    </children>
                     <padding>
                         <Insets right="15.0" />
                     </padding>
                 </HBox>
-                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="2">
-                    <children>
-                        <DatePicker fx:id="dateInput" prefHeight="40.0" prefWidth="334.0" />
-                    </children>
-                </HBox>
+                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="2">
-                    <children>
-                        <Label text="Sex: " />
-                    </children>
                     <padding>
                         <Insets right="15.0" />
                     </padding>
                 </HBox>
-                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="2">
-                    <children>
-                        <ChoiceBox fx:id="sexDropdown" prefHeight="65.0" prefWidth="220.0" />
-                    </children>
-                </HBox>
+                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="2" />
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                    <children>
-                        <Label text="Address: " />
-                    </children>
                     <GridPane.margin>
                         <Insets right="15.0" />
                     </GridPane.margin>
                 </HBox>
-                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="3">
-                    <children>
-                        <TextArea fx:id="addressInput" prefHeight="160.0" prefWidth="840.0" />
-                    </children>
-                </HBox>
+                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="3" />
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="3">
-                    <children>
-                        <Label text="Phone number: " />
-                    </children>
                     <padding>
                         <Insets right="15.0" />
                     </padding>
                 </HBox>
+<<<<<<<< HEAD:src/main/resources/hospitalmanagement/StaffNewPatientScene.fxml
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="3">
                     <children>
                         <TextField fx:id="phoneInput" prefHeight="40.0" prefWidth="200.0" />
                     </children>
                 </HBox>
+========
+                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+>>>>>>>> origin/final:src/main/resources/hospitalmanagement/AdminNewExamScene.fxml
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                    <children>
-                        <Label text="E-mail: " />
-                    </children>
                     <GridPane.margin>
                         <Insets right="15.0" />
                     </GridPane.margin>
                 </HBox>
-                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="4" GridPane.rowIndex="4">
-                    <children>
-                        <TextField fx:id="emailInput" prefHeight="65.0" prefWidth="1088.0" />
-                    </children>
-                </HBox>
+                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="4" GridPane.rowIndex="4" />
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
-                    <children>
-                        <Label text="Insurance: " />
-                    </children>
-               <GridPane.margin>
-                  <Insets right="15.0" />
-               </GridPane.margin>
-                </HBox>
-                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="6">
-               <children>
-                  <RadioButton mnemonicParsing="false" text="Yes">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="insuranceOption" />
-                     </toggleGroup>
-                     <padding>
-                        <Insets left="30.0" right="50.0" />
-                     </padding>
-                  </RadioButton>
-                  <RadioButton mnemonicParsing="false" text="No" toggleGroup="$insuranceOption" />
-               </children>
-                </HBox>
-                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="6">
-                    <children>
-                        <Label text="Insurance name: : " />
-                    </children>
                     <padding>
                         <Insets right="15.0" />
                     </padding>
                 </HBox>
-                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.rowIndex="6">
-                    <children>
-                        <ComboBox fx:id="insuranceDropdown" prefHeight="50.0" prefWidth="500.0" />
-                    </children>
+                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="6" />
+                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="6">
+                    <padding>
+                        <Insets right="15.0" />
+                    </padding>
                 </HBox>
+                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.rowIndex="6" />
                 <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="7">
                     <children>
-                        <Button fx:id="buttonSave" mnemonicParsing="false" onAction="#createDoctor" prefHeight="40.0" prefWidth="180.0" text="Save" />
+                        <Button fx:id="buttonSave" mnemonicParsing="false" onAction="#saveNewExam" prefHeight="40.0" prefWidth="180.0" text="Save" />
                     </children>
                 </HBox>
                 <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="7">
@@ -213,30 +168,12 @@
                         <Button fx:id="buttonCancel" mnemonicParsing="false" prefWidth="180.0" text="Cancel" />
                     </children>
                 </HBox>
-                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
-                    <children>
-                        <Label text="Hospital: " />
-                    </children>
-               <GridPane.margin>
-                  <Insets right="15.0" />
-               </GridPane.margin>
-                </HBox>
-                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="5">
-                    <children>
-                        <Text fx:id="inputSymbolOfErrorUser" strokeType="OUTSIDE" strokeWidth="0.0" text="*" visible="false" />
-                        <ComboBox fx:id="hospitalDropdown" prefHeight="53.0" prefWidth="528.0" />
-                    </children>
-                </HBox>
-                <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="7">
-                    <children>
-                        <Text fx:id="inputTextErrorMessage" strokeType="OUTSIDE" strokeWidth="0.0" text="* Please correct these fields" visible="false" />
-                    </children>
-                </HBox>
+                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+                <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="7" />
             </children>
         </GridPane>
     </children>
-   <stylesheets>
-      <URL value="@styles/AdminNewDoctorProfileStyle.css" />
-      <URL value="@styles/StaffNewPatientStyle.css" />
-   </stylesheets>
 </GridPane>

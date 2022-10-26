@@ -1,9 +1,6 @@
 package hospitalmanagement;
 
-import hospitalmanagement.model.medicalLists.Appointment;
-import hospitalmanagement.model.medicalLists.Disease;
-import hospitalmanagement.model.medicalLists.Hospital;
-import hospitalmanagement.model.medicalLists.Speciality;
+import hospitalmanagement.model.medicalLists.*;
 import hospitalmanagement.model.people.*;
 import hospitalmanagement.utility.*;
 
@@ -21,7 +18,7 @@ public class Information {
     private static List<Disease> diseases = new ArrayList<>();
     private static List<Insurance> insurances = new ArrayList<>();
     private static List<Patient> patients = new ArrayList<>();
-    private static List<ExamUtil> exams = new ArrayList<>();
+    private static List<Exam> exams = new ArrayList<>();
     private static List<MedicineUtil> medicines = new ArrayList<>();
     private static List<Speciality> specialities = new ArrayList<>();
     private static List<Appointment> appointments = new ArrayList<>();
@@ -126,13 +123,13 @@ public class Information {
 
     public static void updateExams() {
         ResultSet resultSet = Database.queryTable("SELECT * FROM Exams");
-        List<ExamUtil> ex = new ArrayList<>();
+        List<Exam> ex = new ArrayList<>();
         try {
             while (resultSet.next()) {
                 int exam_id = resultSet.getInt("exam_id");
                 String name = resultSet.getString("name");
 
-                ex.add(new ExamUtil(exam_id, name));
+                ex.add(new Exam(exam_id, name));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -318,8 +315,8 @@ public class Information {
                     }
                 }
 
-                ExamUtil selectedExam = null;
-                for (ExamUtil exam : getExams()) {
+                Exam selectedExam = null;
+                for (Exam exam : getExams()) {
                     if (exam_id == exam.getId()) {
                         selectedExam = exam;
                     }
@@ -400,7 +397,7 @@ public class Information {
         return patients;
     }
 
-    public static List<ExamUtil> getExams() {
+    public static List<Exam> getExams() {
         return exams;
     }
 

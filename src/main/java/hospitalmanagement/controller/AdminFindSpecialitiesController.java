@@ -2,6 +2,7 @@ package hospitalmanagement.controller;
 
 import hospitalmanagement.Database;
 import hospitalmanagement.Information;
+import hospitalmanagement.model.medicalLists.Exam;
 import hospitalmanagement.model.medicalLists.Hospital;
 import hospitalmanagement.model.medicalLists.Speciality;
 import hospitalmanagement.utility.SexUtil;
@@ -28,14 +29,14 @@ import static hospitalmanagement.controller.AdminEditDoctorProfileController.set
 
 public class AdminFindSpecialitiesController extends SceneController {
 
-    ObservableList <ObservableList> listSpecialities = FXCollections.observableArrayList();
+    ObservableList<Speciality> listSpecialities = FXCollections.observableArrayList();
 
     @FXML
     private Button buttonMainMenu, buttonPower, buttonAddSpeciality;
     @FXML
-    private TableView<ObservableList> tableSpecialities;
+    private TableView<Speciality> tableSpecialities;
     @FXML
-    TableColumn<ObservableList, String> specialityColumn;
+    private TableColumn<Speciality, String> specialityColumn;
     @FXML
     private TextField nameTextField;
 
@@ -54,8 +55,7 @@ public class AdminFindSpecialitiesController extends SceneController {
     public void setButtonSearch() throws SQLException {
         tableSpecialities.getItems().clear();
 
-        buttonAddSpeciality.setVisible(false);
-
+        initColumn();
         loadData(nameTextField.getText());
 
         tableSpecialities.setVisible(true);
@@ -63,42 +63,31 @@ public class AdminFindSpecialitiesController extends SceneController {
 
     @FXML
     public void setNewSpeciality() throws IOException, SQLException {
-        System.out.println("chamou setNewSpeciality");
         setScreen(buttonAddSpeciality, "AdminNewSpecialityScene.fxml");
-        AdminNewDoctorProfileController adminNewDoctorProfileController = getFXML().getController();
-        adminNewDoctorProfileController.initializeComboBox();
+        //AdminNewDoctorProfileController adminNewDoctorProfileController = getFXML().getController();
+        //adminNewDoctorProfileController.initializeComboBox();
     }
 
 
     private void loadData(String name) {
-        specialityColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-
-
-        for (Speciality speciality : Information.getSpecialities()) {
-            //if(speciality.toString().equalsIgnoreCase("%" + name + "%" ))
-            listSpecialities.add(speciality);
+        listSpecialities.removeAll(listSpecialities);
+        ObservableList<Speciality> filterList = FXCollections.observableArrayList();
+        for (Speciality specialityName : Information.getSpecialities()) {
+            if(specialityName.getName().toLowerCase().contains(name.toLowerCase()))
+            listSpecialities.add(specialityName);
         }
+        tableSpecialities.getItems().setAll(listSpecialities);
+    }
 
-
-        tableSpecialities.getItems().addAll(listSpecialities);
-        System.out.println(tableSpecialities.getItems());
-
-        specialityColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
-            public ObservableValue<String> call(TableColumn.CellDataFeatures<ObservableList, String> param) {
-                return new SimpleStringProperty(param.getValue().get(0).toString());
+    private void initColumn() {
+        specialityColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Speciality, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Speciality, String> specialityStringCellDataFeatures) {
+                return specialityStringCellDataFeatures.getValue().nameProperty();
             }
         });
+
     }
-//        specialitiesList.removeAll();
-//        List<String> listSpecialities = new ArrayList<>();
-//        for (Speciality speciality : Information.getSpecialities()) {
-//            if(speciality.toString().equalsIgnoreCase("%" + name + "%" ))
-//            listSpecialities.add(speciality.getName());
-//            tableSpecialities.getItems().add(speciality.getName());
-//        }
-//        tableSpecialities.getItems().addAll(specialitiesList)
-//        tableSpecialities.getItems().addAll(listSpecialities);
-//        System.out.println(tableSpecialities.getItems());
 }
 
 

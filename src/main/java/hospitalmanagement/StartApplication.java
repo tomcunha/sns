@@ -5,7 +5,6 @@ import hospitalmanagement.model.medicalLists.Hospital;
 import hospitalmanagement.model.people.Doctor;
 import hospitalmanagement.model.people.Insurance;
 import hospitalmanagement.model.people.Patient;
-import hospitalmanagement.utility.ExamUtil;
 import hospitalmanagement.utility.MedicineUtil;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

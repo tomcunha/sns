@@ -92,7 +92,7 @@
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
                     <children>
-                        <Button fx:id="buttonAddDoctor" mnemonicParsing="false" prefHeight="50.0" prefWidth="350.0" text="Add new Patient" visible="true" />
+                        <Button fx:id="buttonAddPatient" mnemonicParsing="false" prefHeight="50.0" prefWidth="350.0" text="Add new Patient" visible="true" onAction="#setNewPatient" />
                     </children>
                     <GridPane.margin>
                         <Insets />

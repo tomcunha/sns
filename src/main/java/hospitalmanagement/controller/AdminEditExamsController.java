@@ -20,6 +20,10 @@ public class AdminEditExamsController extends SceneController {
     Button buttonSave;
     @FXML
     TextField nameInput;
+    @FXML
+    private Button buttonMainMenu;
+    @FXML
+    private Button buttonPower;
 
 
     public void saveNewExam() throws IOException {
@@ -54,5 +58,15 @@ public class AdminEditExamsController extends SceneController {
 
     public void setCancelButton() throws IOException {
         setScreen(buttonCancel, "AdminFindExams.fxml");
+    }
+
+    @FXML
+    public void setMainMenu() throws IOException {
+        setScreen(buttonMainMenu, "AdminMenuScene.fxml");
+    }
+
+    @FXML
+    public void setLogout() throws IOException {
+        setScreen(buttonPower, "LoginScene.fxml");
     }
 }

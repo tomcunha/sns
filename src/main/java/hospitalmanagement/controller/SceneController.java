@@ -28,7 +28,7 @@ public class SceneController {
         stage = ((Stage) button.getScene().getWindow());
         scene = new Scene(fxmlLoader.load(), 1280,720);
         stage.setScene(scene);
-        //stage.setFullScreen(true);
+        stage.setFullScreen(true);
         stage.show();
     }
 

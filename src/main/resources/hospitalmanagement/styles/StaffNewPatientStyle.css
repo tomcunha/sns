@@ -82,7 +82,6 @@
     -fx-background-color: #79DD99;
 }
 
-
 .radio-button .radio {
     -fx-border-width: 1px;
     -fx-border-color: #000;
@@ -110,4 +109,10 @@
 .radio-button .dot {
     -fx-background-radius: 50px;
     -fx-padding: 8px;
+}
+
+#warningMessage1, #warningMessage2, #warningInsurance{
+    -fx-font-family: "Inter";
+    -fx-font-size: 20px;
+    -fx-text-fill: RED;
 }

@@ -14,6 +14,8 @@ import javafx.util.Callback;
 
 import java.io.IOException;
 
+import static hospitalmanagement.controller.AdminEditExamsController.setExamId;
+
 public class AdminFindExamsController extends SceneController {
 
     @FXML
@@ -28,7 +30,6 @@ public class AdminFindExamsController extends SceneController {
     private Button buttonAddExam;
     @FXML
     private TableColumn<Exam, String> examColumn;
-
     ObservableList<Exam> listExams = FXCollections.observableArrayList();
 
     public void setMainMenu() throws IOException {
@@ -42,9 +43,12 @@ public class AdminFindExamsController extends SceneController {
     public void setButtonSearch() {
         tableExams.getItems().clear();
 
-        buttonAddExam.setVisible(false);
+
         initColumn();
         loadData();
+        if (!listExams.isEmpty()) {
+            buttonAddExam.setVisible(false);
+        }
 
         tableExams.setVisible(true);
 
@@ -67,8 +71,8 @@ public class AdminFindExamsController extends SceneController {
         listExams.addAll(Information.getExams());
         tableExams.getItems().setAll(listExams);
 
-        if (!nameTextField.getText().isEmpty()) {
-            listExams.removeAll(listExams);
+       // if (!nameTextField.getText().isEmpty()) {
+         //   listExams.removeAll(listExams);
 
             ObservableList<Exam> filterList = FXCollections.observableArrayList();
 
@@ -77,11 +81,11 @@ public class AdminFindExamsController extends SceneController {
                     filterList.addAll(examName);
                 }
                 tableExams.getItems().setAll(filterList);
+                if(listExams.size() != 0)
+                    tableExams.setVisible(true);
+                initColumn();
             }
-
-
-        }
-
+        //}
     }
 
 
@@ -90,7 +94,16 @@ public class AdminFindExamsController extends SceneController {
 
     }
 
-    public void setMouseClicked() {
+    public void setMouseClicked() throws IOException {
+
+        Integer examSelected = tableExams.getSelectionModel().getSelectedItems().get(0).getId();
+        setExamId(examSelected);
+
+        setScreen(buttonPower, "AdminEditExamScene.fxml");
+
+        AdminEditExamsController adminEditExamsController = getFXML().getController();
+        adminEditExamsController.setNameInput();
 
     }
+
 }

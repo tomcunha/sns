@@ -4,6 +4,7 @@ import hospitalmanagement.Information;
 import hospitalmanagement.StartApplication;
 import hospitalmanagement.model.medicalLists.Hospital;
 import hospitalmanagement.model.medicalLists.Speciality;
+import hospitalmanagement.model.people.Insurance;
 import hospitalmanagement.utility.SexUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -54,6 +55,14 @@ public class SceneController {
             specialityName.add(speciality.getName());
         }
         specialityDropdown.setItems(specialityName);
+    }
+
+    public void initializeComboBoxInsurances(ComboBox insuranceDropdown){
+        ObservableList<String> insuranceName = FXCollections.observableArrayList();
+        for(Insurance insurance: Information.getInsurances()){
+            insuranceName.add(insurance.getName());
+        }
+        insuranceDropdown.setItems(insuranceName);
     }
 
 

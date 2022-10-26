@@ -6,11 +6,6 @@
     -fx-text-fill: #0E1D33;
 }
 
-.text {
-    -fx-font-family: "Inter";
-    -fx-font-size: 30px;
-    -fx-text-fill: RED;
-}
 
 /*ALL TEXT-FIELDS*/
 .text-area, .text-field {
@@ -31,7 +26,7 @@
     -fx-effect: dropshadow( one-pass-box , white , 8 , 0 , 2 , 0 );
 }
 
-/************************************ DOCTOR PROFILE SCENE  ******************************************************/
+/************************************ FIND Specialities SCENE  ******************************************************/
 
 /*Admin button*/
 #buttonAdmin{
@@ -52,7 +47,7 @@
 
 /*Main menu button*/
 #buttonMainMenu{
-    -fx-background-image: url(images/user.png);
+    -fx-background-image: url(images/home.png);
     -fx-background-color: Transparent;
 }
 #buttonMainMenu:hover{
@@ -65,7 +60,7 @@
     -fx-background-image: url(images/power.png);
     -fx-background-color: Transparent;
 }
-#buttonAdmin:hover{
+#buttonPower:hover{
     -fx-effect: dropshadow( one-pass-box , white , 8 , 0 , 0 , 0 );
 }
 
@@ -82,9 +77,4 @@
     -fx-effect: dropshadow( one-pass-box , white , 8 , 0.0 , 2 , 0 );
 }
 
-
-/*Button save*/
-#buttonSave{
-    -fx-background-color: #79DD99;
-}
 

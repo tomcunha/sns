@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -13,6 +14,8 @@ import java.sql.SQLException;
 
 public class AdminNewExamController extends SceneController {
 
+    @FXML
+    Text errorMessage;
     @FXML
     TextField nameInput;
     @FXML
@@ -29,9 +32,12 @@ public class AdminNewExamController extends SceneController {
             if (!nameInput.getText().isEmpty()) {
                 Database.modifyTable("INSERT INTO hospitalManagement.Exams (name) VALUES ('" + nameInput.getText() + "')");
                 Information.updateExams();
+                setScreen(buttonSave, "AdminMenuScene.fxml");
 
+            }else {
+                errorMessage.setVisible(true);
             }
-            setScreen(buttonSave, "AdminMenuScene.fxml");
+
         }
     }
 

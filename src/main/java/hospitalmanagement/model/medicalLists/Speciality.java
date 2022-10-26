@@ -1,13 +1,17 @@
 package hospitalmanagement.model.medicalLists;
 
+import javafx.beans.property.SimpleStringProperty;
+
 public class Speciality {
 
     private int id;
-    private String name;
+    private final SimpleStringProperty name;
+
+
 
     public Speciality(int id, String name) {
         this.id = id;
-        this.name = name;
+        this.name = new SimpleStringProperty(name);
     }
 
     public int getId() {
@@ -19,12 +23,14 @@ public class Speciality {
     }
 
     public String getName() {
-        return name;
+        return name.get();
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name.set(name);
     }
-
+    public SimpleStringProperty nameProperty() {
+        return name;
+    }
 
 }

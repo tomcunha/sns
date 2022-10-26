@@ -19,6 +19,8 @@ public class StaffNewPatientController extends SceneController {
     @FXML
     Button buttonSave;
     @FXML
+    Button buttonCancel;
+    @FXML
     TextField nameInput;
     @FXML
     TextField ccInput;
@@ -51,6 +53,7 @@ public class StaffNewPatientController extends SceneController {
 
     public void createPatient() throws SQLException {
         if (validate()) {
+            System.out.println("entrou");
             Database.modifyTable("INSERT INTO Persons (name,birthDate,sex,phoneNumber,address,email) " + "VALUES ('" + nameInput.getText() + "', '" + dateInput.getValue() + "' ,'" + sexDropdown.getValue().toString().charAt(0) + "', '" + phoneInput.getText() + "', '" + addressInput.getText() + "', '" + emailInput.getText() + "') ");
 
             ResultSet resultSet = Database.queryTable("SELECT last_insert_id() FROM Persons");
@@ -71,12 +74,18 @@ public class StaffNewPatientController extends SceneController {
                 throw new RuntimeException(e);
             }
         } else {
-            System.out.println("Ja existe com este CC");
 //            inputSymbolOfErrorCC.setVisible(true);
 //            inputTextErrorMessage.setVisible(true);
         }
     }
 
+    public void cancelButton(){
+        try {
+            setScreen(buttonCancel,"StaffMenuScene.fxml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
     public void hasInsurance(){
         if (yesInsurance.isArmed()){
             insuranceNameLabel.setVisible(true);
@@ -88,14 +97,16 @@ public class StaffNewPatientController extends SceneController {
     }
 
     private boolean validate() throws SQLException {
+        setAllFilled();
         boolean validate = true;
         for (Patient patient : Information.getPatients()) {
             if (patient.getPatientCC().equals(ccInput.getText())) {
                 warningMessage.setVisible(true);
                 validate = false;
+                break;
             }
         }
-        if(emptyFields()){
+        if(!emptyFields()){
            validate = false;
         }
         return validate;
@@ -162,8 +173,7 @@ public class StaffNewPatientController extends SceneController {
         if (insuranceOption.getSelectedToggle() == null){
             complete = false;
             warningInsurance.setVisible(true);
-        }
-        if(insuranceDropdown.getValue() == null){
+        } else if(insuranceDropdown.getValue() == null){
             complete = false;
             insuranceDropdown.setStyle("-fx-effect: dropshadow(one-pass-box,red,15,0,0,0)");
         }
@@ -180,5 +190,9 @@ public class StaffNewPatientController extends SceneController {
         sexDropdown.setStyle("-fx-effect: none");
         hospitalDropdown.setStyle("-fx-effect: none");
         insuranceDropdown.setStyle("-fx-effect: none");
+        warningMessage.setVisible(false);
+        warningInsurance.setVisible(false);
+
+        //if(insuranceOption.getSelectedToggle() != null){insuranceDropdown.setStyle("-fx-effect: none");}
     }
 }

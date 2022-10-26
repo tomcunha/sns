@@ -15,12 +15,12 @@ import java.sql.SQLException;
 
 import static hospitalmanagement.controller.AdminEditDoctorProfileController.setMedicalLicense;
 
-public class AdminFindDoctorController extends SceneController{
+public class AdminFindDoctorController extends SceneController {
 
     @FXML
     private Button buttonMainMenu, buttonPower;
 
-    ObservableList <ObservableList> listDoctors = FXCollections.observableArrayList();
+    ObservableList<ObservableList> listDoctors = FXCollections.observableArrayList();
     private ResultSet resultSet;
 
     @FXML
@@ -38,14 +38,13 @@ public class AdminFindDoctorController extends SceneController{
     @FXML
     public void setMouseClicked() throws IOException {
 
-       Object selectedItems =  tableDoctors.getSelectionModel().getSelectedItems();
 
         String row = tableDoctors.getSelectionModel().getSelectedItems().get(0).toString();
-        row = row.replaceAll("\\D+","");
-        setMedicalLicense(row);
+        row = row.replaceAll("\\D+", "");
+        AdminEditDoctorProfileController.setMedicalLicense(row);
 
         setScreen(buttonPower, "AdminEditDoctorProfileScene.fxml");
-        AdminEditDoctorProfileController adminEditDoctorProfileController= getFXML().getController();
+        AdminEditDoctorProfileController adminEditDoctorProfileController = getFXML().getController();
         adminEditDoctorProfileController.setInputs();
         adminEditDoctorProfileController.initializeComboBox();
 
@@ -58,7 +57,7 @@ public class AdminFindDoctorController extends SceneController{
 
     @FXML
     public void setLogout() throws IOException {
-       setScreen(buttonPower, "LoginScene.fxml");
+        setScreen(buttonPower, "LoginScene.fxml");
     }
 
     @FXML
@@ -75,6 +74,7 @@ public class AdminFindDoctorController extends SceneController{
         buttonAddDoctor.setVisible(false);
 
         initiateCols();
+
         loadData(nameTextField.getText());
 
         tableDoctors.setVisible(true);
@@ -91,12 +91,12 @@ public class AdminFindDoctorController extends SceneController{
                 "JOIN Persons ON Employees.person_id = Persons.person_id\n" +
                 "JOIN Specialities ON Doctors.speciality_id = Specialities.speciality_id\n" +
                 "JOIN Hospitals ON Doctors.hospital_id = Hospitals.hospital_id\n" +
-                "WHERE Persons.name LIKE '%"+ name +"%';");
+                "WHERE Persons.name LIKE '%" + name + "%';");
 
-        while(resultSet.next()){
+        while (resultSet.next()) {
 
             ObservableList<String> row = FXCollections.observableArrayList();
-            for(int i=1 ; i<=resultSet.getMetaData().getColumnCount(); i++){
+            for (int i = 1; i <= resultSet.getMetaData().getColumnCount(); i++) {
                 //Iterate Column
                 row.add(resultSet.getString(i));
             }
@@ -109,12 +109,6 @@ public class AdminFindDoctorController extends SceneController{
 
     private void initiateCols() throws SQLException {
 
-/*
-        doctorLicense.setCellValueFactory(new PropertyValueFactory<>("MedicalLicense"));
-        doctorName.setCellValueFactory(new PropertyValueFactory<>("Name"));
-        doctorHospital.setCellValueFactory(new PropertyValueFactory<>("Hospital"));
-        doctorSpeciality.setCellValueFactory(new PropertyValueFactory<>("Speciality"));
-*/
         doctorLicense.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
             public ObservableValue<String> call(TableColumn.CellDataFeatures<ObservableList, String> param) {
                 return new SimpleStringProperty(param.getValue().get(0).toString());
@@ -141,9 +135,6 @@ public class AdminFindDoctorController extends SceneController{
 
 
     }
-
-
-
 
 
 }

@@ -40,7 +40,7 @@ public class AdminMenuController extends SceneController {
     }
     @FXML
     public void setExamsManagementButton() throws IOException {
-        setScreen(examsManagementButton, "LoginScene.fxml");
+        setScreen(examsManagementButton, "AdminFindExams.fxml");
     }
 
     @FXML

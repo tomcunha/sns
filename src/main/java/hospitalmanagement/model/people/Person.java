@@ -9,7 +9,7 @@ import java.time.Period;
 public class Person {
 
 
-    private int personId;
+    private int person_id;
 
     private String name;
 
@@ -21,16 +21,16 @@ public class Person {
 
     private Contact contact;
 
-    public Person(String name, LocalDate birthDate, SexUtil sexUtil, String address, String phoneNumber, String email, int personId) {
+    public Person(String name, LocalDate birthDate, SexUtil sexUtil, String address, String phoneNumber, String email, int person_id) {
         this.name = name;
-        this.setBirthDate(birthDate);
+        this.birthDate=birthDate;
         this.sexUtil = sexUtil;
+        this.person_id = person_id;
         this.contact = new Contact(address, phoneNumber, email);
-        this.personId = personId;
     }
 
-    public int getPersonId() {
-        return personId;
+    public int getPersonID() {
+        return person_id;
     }
 
     public String getName() {
@@ -42,7 +42,6 @@ public class Person {
     }
 
     public int getAge() {
-        setAge();
         return age;
     }
 

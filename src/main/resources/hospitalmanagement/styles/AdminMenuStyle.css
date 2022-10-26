@@ -1,5 +1,5 @@
 /*GENERAL*/
-.root {-fx-background-image: url(images/AdminMenu/backgroundAdmin.png);}
+.root {-fx-background-image: url(images/Admin/backgroundAdmin.png);}
 /*ALL LABELS*/
 .label {
     -fx-font-family: "Inter";
@@ -18,10 +18,9 @@
     -fx-effect: dropshadow( one-pass-box , white , 8 , 0 , 2 , 0 );
 }
 
-
 /*ADMIN BUTTON*/
 #buttonAdmin{
-    -fx-background-image: url(images/AdminMenu/user.png);
+    -fx-background-image: url(images/user.png);
     -fx-background-color: Transparent;
 }
 #buttonAdmin:hover{
@@ -29,6 +28,6 @@
 }
 /*POWER BUTTON*/
 #buttonPower{
-    -fx-background-image: url(images/AdminMenu/power.png);
+    -fx-background-image: url(images/power.png);
     -fx-background-color: Transparent;
 }

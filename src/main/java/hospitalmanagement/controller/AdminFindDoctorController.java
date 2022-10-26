@@ -63,7 +63,6 @@ public class AdminFindDoctorController extends SceneController{
 
     @FXML
     public void setNewDoctor() throws IOException, SQLException {
-        System.out.println("chamou setNewDoc");
         setScreen(buttonAddDoctor, "AdminNewDoctorProfileScene.fxml");
         AdminNewDoctorProfileController adminNewDoctorProfileController = getFXML().getController();
         adminNewDoctorProfileController.initializeComboBox();
@@ -105,9 +104,7 @@ public class AdminFindDoctorController extends SceneController{
 
         }
 
-
         tableDoctors.getItems().addAll(listDoctors);
-
     }
 
     private void initiateCols() throws SQLException {

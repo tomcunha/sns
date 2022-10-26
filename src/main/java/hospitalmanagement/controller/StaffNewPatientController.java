@@ -12,7 +12,7 @@ import javafx.scene.text.Text;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class StaffNewPatientController1 extends SceneController {
+public class StaffNewPatientController extends SceneController {
 
     @FXML
     TextField nameInput;
@@ -49,10 +49,12 @@ public class StaffNewPatientController1 extends SceneController {
             last = Integer.valueOf(resultSet.getString(1));
 
             Database.modifyTable("INSERT INTO Patients (patientCC,hospital_id,person_id) " + "VALUES ('" + ccInput.getText() + "', '" + getHospital().getId() + "' ,'" + last + "') ");
-            if (true/* check */){Database.modifyTable("INSERT INTO Patients (insurance_id) " + "VALUES ('" + getInsurance().getId() + "') ");}
+            if (true/* check */) {
+                Database.modifyTable("INSERT INTO Patients (insurance_id) " + "VALUES ('" + getInsurance().getId() + "') ");
+            }
 
             Information.updatePatients();
-        }else {
+        } else {
             inputSymbolOfErrorCC.setVisible(true);
             inputTextErrorMessage.setVisible(true);
         }
@@ -84,11 +86,4 @@ public class StaffNewPatientController1 extends SceneController {
         }
         return null;
     }
-
-    public void initializeComboBox(){
-        initializeComboBoxHospital(hospitalDropdown);
-        initializeChoiceBoxSex(sexDropdown);
-    }
 }
-
-

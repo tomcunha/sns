@@ -28,7 +28,7 @@
     <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="ff5e7334-cfd2-4a7d-9fad-db18114844b4">
+    <connection id="2ce73208-9272-4925-99b0-eb6472be90c5">
       <console name="SNS" type="STANDARD" schema="mysql" session="Main" />
     </connection>
   </component>
@@ -36,10 +36,10 @@
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
-    <connection id="ff5e7334-cfd2-4a7d-9fad-db18114844b4" />
+    <connection id="2ce73208-9272-4925-99b0-eb6472be90c5" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="ff5e7334-cfd2-4a7d-9fad-db18114844b4" dataset="hospitalManagement.Doctors" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="2ce73208-9272-4925-99b0-eb6472be90c5" dataset="hospitalManagement.App_Diseases" active-filter-id="" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
@@ -70,7 +70,7 @@
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="ff5e7334-cfd2-4a7d-9fad-db18114844b4" active="true" signed="true">
+      <connection id="2ce73208-9272-4925-99b0-eb6472be90c5" active="true" signed="true">
         <database>
           <name value="SNS" />
           <description value="" />

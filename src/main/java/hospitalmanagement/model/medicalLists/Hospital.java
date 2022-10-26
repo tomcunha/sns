@@ -12,7 +12,7 @@ public class Hospital {
     public Hospital(int id, String name, String address, String phoneNumber, String email) {
         this.id = id;
         this.name = name;
-        this.contact = new Contact(address, phoneNumber, email);
+        this.contact = new Contact(email, phoneNumber, address);
     }
 
     public String getName() {

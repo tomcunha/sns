@@ -35,7 +35,7 @@
         </HBox>
         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
             <children>
-                <TextField fx:id="usernamefield" prefWidth="600.0" />
+                <TextField fx:id="usernamefield" prefWidth="600.0" onKeyPressed="#enterPressed" />
             </children>
             <padding>
                 <Insets left="40" />
@@ -43,7 +43,7 @@
         </HBox>
         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
             <children>
-                <PasswordField fx:id="passwordfield" prefWidth="600.0" />
+                <PasswordField fx:id="passwordfield" prefWidth="600.0" onKeyPressed="#enterPressed" />
             </children>
             <padding>
                 <Insets left="40" />

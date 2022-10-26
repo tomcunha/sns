@@ -32,3 +32,11 @@
     -fx-background-image: url(images/power.png);
     -fx-background-color: Transparent;
 }
+
+
+/*Staff text*/
+#textStaff{
+    -fx-font-family: "Inter";
+    -fx-font-size: 30px;
+    -fx-text-fill: #0E1D33;
+}

@@ -111,7 +111,7 @@
     -fx-padding: 8px;
 }
 
-#warningMessage, #warningInsurance{
+#warningMessage1, #warningMessage2, #warningInsurance{
     -fx-font-family: "Inter";
     -fx-font-size: 20px;
     -fx-text-fill: RED;

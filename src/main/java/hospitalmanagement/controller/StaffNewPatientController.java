@@ -25,7 +25,9 @@ public class StaffNewPatientController extends SceneController {
     @FXML
     TextField ccInput;
     @FXML
-    Text warningMessage;
+    Text warningMessage1;
+    @FXML
+    Text warningMessage2;
     @FXML
     TextArea addressInput;
     @FXML
@@ -101,7 +103,8 @@ public class StaffNewPatientController extends SceneController {
         boolean validate = true;
         for (Patient patient : Information.getPatients()) {
             if (patient.getPatientCC().equals(ccInput.getText())) {
-                warningMessage.setVisible(true);
+                warningMessage1.setVisible(true);
+                warningMessage2.setVisible(true);
                 validate = false;
                 break;
             }
@@ -190,7 +193,8 @@ public class StaffNewPatientController extends SceneController {
         sexDropdown.setStyle("-fx-effect: none");
         hospitalDropdown.setStyle("-fx-effect: none");
         insuranceDropdown.setStyle("-fx-effect: none");
-        warningMessage.setVisible(false);
+        warningMessage1.setVisible(false);
+        warningMessage2.setVisible(false);
         warningInsurance.setVisible(false);
 
         //if(insuranceOption.getSelectedToggle() != null){insuranceDropdown.setStyle("-fx-effect: none");}

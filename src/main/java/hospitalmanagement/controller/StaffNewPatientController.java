@@ -16,6 +16,8 @@ import java.sql.SQLException;
 
 public class StaffNewPatientController extends SceneController {
 
+    private static String ccNumber = "";
+
     @FXML
     Button buttonSave;
     @FXML
@@ -53,9 +55,29 @@ public class StaffNewPatientController extends SceneController {
     @FXML
     Label insuranceNameLabel;
 
+
+    public void savePatient(){
+        if(ccNumber.equals("")){
+            try {
+                createPatient();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }else{
+            editPatient();
+        }
+    }
+
+    public void cancelButton(){
+        try {
+            setScreen(buttonCancel,"StaffMenuScene.fxml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public void createPatient() throws SQLException {
-        if (validate()) {
-            System.out.println("entrou");
+        if (validateEdit()) {
             Database.modifyTable("INSERT INTO Persons (name,birthDate,sex,phoneNumber,address,email) " + "VALUES ('" + nameInput.getText() + "', '" + dateInput.getValue() + "' ,'" + sexDropdown.getValue().toString().charAt(0) + "', '" + phoneInput.getText() + "', '" + addressInput.getText() + "', '" + emailInput.getText() + "') ");
 
             ResultSet resultSet = Database.queryTable("SELECT last_insert_id() FROM Persons");
@@ -75,19 +97,15 @@ public class StaffNewPatientController extends SceneController {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-        } else {
-//            inputSymbolOfErrorCC.setVisible(true);
-//            inputTextErrorMessage.setVisible(true);
         }
     }
 
-    public void cancelButton(){
-        try {
-            setScreen(buttonCancel,"StaffMenuScene.fxml");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+    public void editPatient(){
+        if(emptyFields()){
+            Database.modifyTable("UPDATE Persons SET name = '" + nameInput + "', ");
         }
     }
+
     public void hasInsurance(){
         if (yesInsurance.isArmed()){
             insuranceNameLabel.setVisible(true);
@@ -98,7 +116,7 @@ public class StaffNewPatientController extends SceneController {
         }
     }
 
-    private boolean validate() throws SQLException {
+    private boolean validateEdit() throws SQLException {
         setAllFilled();
         boolean validate = true;
         for (Patient patient : Information.getPatients()) {
@@ -198,5 +216,9 @@ public class StaffNewPatientController extends SceneController {
         warningInsurance.setVisible(false);
 
         //if(insuranceOption.getSelectedToggle() != null){insuranceDropdown.setStyle("-fx-effect: none");}
+    }
+
+    public static void setCcNumber(String index) {
+        ccNumber = index;
     }
 }

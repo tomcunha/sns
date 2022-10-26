@@ -14,6 +14,8 @@ import javafx.util.Callback;
 
 import java.io.IOException;
 
+import static hospitalmanagement.controller.AdminEditExamsController.setExamId;
+
 public class AdminFindExamsController extends SceneController {
 
     @FXML
@@ -28,7 +30,6 @@ public class AdminFindExamsController extends SceneController {
     private Button buttonAddExam;
     @FXML
     private TableColumn<Exam, String> examColumn;
-
     ObservableList<Exam> listExams = FXCollections.observableArrayList();
 
     public void setMainMenu() throws IOException {
@@ -90,7 +91,15 @@ public class AdminFindExamsController extends SceneController {
 
     }
 
-    public void setMouseClicked() {
+    public void setMouseClicked() throws IOException {
+
+        Integer examSelected = tableExams.getSelectionModel().getSelectedItems().get(0).getId();
+        setExamId(examSelected);
+
+        setScreen(buttonPower, "AdminEditExamScene.fxml");
+
+        AdminEditExamsController adminEditExamsController = getFXML().getController();
+        adminEditExamsController.setNameInput();
 
     }
 }

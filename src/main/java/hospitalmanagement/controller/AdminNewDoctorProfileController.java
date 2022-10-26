@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
 
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,8 @@ import java.util.List;
 
 public class AdminNewDoctorProfileController extends SceneController{
 
+    @FXML
+    Button buttonSave;
     @FXML
     TextField nameInput;
     @FXML
@@ -52,7 +55,7 @@ public class AdminNewDoctorProfileController extends SceneController{
     Text inputSymbolOfErrorUser;
 
 
-    public void createDoctor() throws SQLException {
+    public void createDoctor() throws SQLException, IOException {
 
         if (validate()) {
 
@@ -95,6 +98,7 @@ public class AdminNewDoctorProfileController extends SceneController{
             Database.modifyTable("INSERT INTO hospitalManagement.Doctors (medicalLicense,speciality_id,hospital_id,employee_id) " + "VALUES ('" + medicalLicenseInput.getText() + "', " + speciality_id + ", " + hospital_id + " ,  '" + employeeId + "' ) ");
 
             Information.updateDoctors();
+            setScreen(buttonSave, "AdminMenuScene.fxml");
 
         } else {
             inputSymbolOfErrorMl.setVisible(true);
@@ -104,17 +108,24 @@ public class AdminNewDoctorProfileController extends SceneController{
     }
 
     private boolean validate() throws SQLException {
+        System.out.println("entrei");
+        System.out.println(medicalLicenseInput.getText());
         ResultSet resultSet = Database.queryTable("SELECT user" + " FROM hospitalManagement.Employees" + " WHERE user ='" + usernameInput.getText() + "' ");
         for (Doctor doctor : Information.getDoctors()) {
             if (doctor.getMedicalLicense().equals(medicalLicenseInput.getText()) || resultSet.next()) {
                 return false;
             }
         }
+        inputSymbolOfErrorMl.setVisible(false);
+        inputSymbolOfErrorUser.setVisible(false);
+        inputTextErrorMessage.setVisible(false);
         return true;
     }
 
     public void initializeComboBox(){
-        initializeComboBox(hospitalDropdown,specialityDropdown,sexDropdown);
+        initializeComboBoxHospital(hospitalDropdown);
+        initializeComboBoxSpeciality(specialityDropdown);
+        initializeChoiceBoxSex(sexDropdown);
     }
 
 }

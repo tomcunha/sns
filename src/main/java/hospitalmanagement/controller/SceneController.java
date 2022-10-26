@@ -32,27 +32,31 @@ public class SceneController {
         stage.show();
     }
 
-    public void initializeComboBox(ComboBox hospitalDropdown, ComboBox specialityDropdown, ChoiceBox sexDropdown){
-
-        ObservableList<String> hospitalName = FXCollections.observableArrayList();
-        for (Hospital hospital : Information.getHospitals()) {
-            hospitalName.add(hospital.getName());
-        }
-        hospitalDropdown.setItems(hospitalName);
-
-
-        ObservableList<String> specialityName = FXCollections.observableArrayList();
-        for (Speciality speciality : Information.getSpecialities()) {
-            specialityName.add(speciality.getName());
-        }
-        specialityDropdown.setItems(specialityName);
-
+    public void initializeChoiceBoxSex(ChoiceBox sexDropdown){
         ObservableList<String> sexName = FXCollections.observableArrayList();
         for (SexUtil sex : SexUtil.values()){
             sexName.add(sex.toString());
         }
         sexDropdown.setItems(sexName);
     }
+
+    public void initializeComboBoxHospital(ComboBox hospitalDropdown){
+        ObservableList<String> hospitalName = FXCollections.observableArrayList();
+        for (Hospital hospital : Information.getHospitals()) {
+            hospitalName.add(hospital.getName());
+        }
+        hospitalDropdown.setItems(hospitalName);
+    }
+
+    public void initializeComboBoxSpeciality(ComboBox specialityDropdown){
+        ObservableList<String> specialityName = FXCollections.observableArrayList();
+        for (Speciality speciality : Information.getSpecialities()) {
+            specialityName.add(speciality.getName());
+        }
+        specialityDropdown.setItems(specialityName);
+    }
+
+
 
     public FXMLLoader getFXML(){
         return fxmlLoader;

@@ -199,6 +199,8 @@ public class AdminEditDoctorProfileController extends SceneController{
     }
 
     public void initializeComboBox(){
-        initializeComboBox(hospitalDropdown,specialityDropdown,sexDropdown);
+        initializeComboBoxHospital(hospitalDropdown);
+        initializeComboBoxSpeciality(specialityDropdown);
+        initializeChoiceBoxSex(sexDropdown);
     }
 }

@@ -228,7 +228,8 @@
                 </HBox>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="7">
                <children>
-                  <Text fx:id="warningMessage" strokeType="OUTSIDE" strokeWidth="0.0" text="This identity number already exists." visible="false" />
+                  <Text fx:id="warningMessage" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="This identity number already exists." visible="false" />
+                  <Text fx:id="warningInsurance" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Please select an option to Insurance." visible="false" />
                </children>
             </VBox>
             </children>

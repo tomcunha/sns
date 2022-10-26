@@ -55,14 +55,16 @@ public class AdminNewSpecialityController extends SceneController {
 
     private boolean validate(){
         for (Speciality speciality : Information.getSpecialities()) {
-            if (speciality.getName().equalsIgnoreCase(specNameInput.getText())) {
+            String inputNameTrimmed = specNameInput.getText().trim();
+
+            if (inputNameTrimmed.replace(" ","").equalsIgnoreCase(speciality.getName().replace(" ",""))) {
                 inputErrorMessage.setVisible(true);
                 inputErrorMessage.setText("* That speciality already exists!");
                 return false;
             }
-            if (specNameInput.getText().isEmpty()){
+            if (inputNameTrimmed.isEmpty()){
                 inputErrorMessage.setVisible(true);
-                inputErrorMessage.setText("* Please fill in the field!");
+                inputErrorMessage.setText("* fPlease fill in the field!");
                 return false;
             }
         }

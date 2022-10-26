@@ -58,7 +58,6 @@ public class AdminFindSpecialitiesController extends SceneController {
     public void setButtonSearch() {
         tableSpecialities.getItems().clear();
 
-        buttonSearch.setVisible(false);
         initColumn();
         loadData();
 

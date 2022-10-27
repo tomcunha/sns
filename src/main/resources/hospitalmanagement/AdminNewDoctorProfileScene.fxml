@@ -46,6 +46,8 @@
                         <Insets right="15.0" />
                      </HBox.margin></Button>
                         <Button fx:id="buttonPower" mnemonicParsing="false" onAction="#setMainMenu" prefHeight="128.0" prefWidth="128.0" />
+                        <Button fx:id="buttonMainMenu" mnemonicParsing="false" onAction="#setMainMenu" prefHeight="128.0" prefWidth="128.0" />
+                        <Button fx:id="buttonPower" mnemonicParsing="false" onAction="#setLogout" prefHeight="128.0" prefWidth="128.0" />
                     </children>
                 </HBox>
             </children>
@@ -202,7 +204,7 @@
                 </HBox>
                 <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="7">
                     <children>
-                        <Button fx:id="buttonCancel" mnemonicParsing="false" prefWidth="180.0" text="Cancel" />
+                        <Button fx:id="buttonCancel" mnemonicParsing="false" prefWidth="180.0" text="Cancel" onAction="#setCancel" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
@@ -228,7 +230,12 @@
                 </HBox>
                 <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="7">
                     <children>
-                        <Text fx:id="inputTextErrorMessage" strokeType="OUTSIDE" strokeWidth="0.0" text="* Please correct these fields" visible="false" />
+                        <Text fx:id="inputTextErrorMessage" strokeType="OUTSIDE" strokeWidth="0.0" text="* Username and/or Medical License already exists!" visible="false" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="7">
+                    <children>
+                        <Text fx:id="emptyTextErrorMessage" strokeType="OUTSIDE" strokeWidth="0.0" text="Please fill in all the fields!" visible="false" />
                     </children>
                 </HBox>
             </children>

@@ -20,45 +20,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class AdminNewDoctorProfileController extends SceneController{
+public class AdminNewDoctorProfileController extends SceneController {
 
     @FXML
-    Button buttonSave;
+    Button buttonSave, buttonMainMenu, buttonPower, buttonCancel;
     @FXML
-    TextField nameInput;
+    TextField nameInput, medicalLicenseInput, phoneNumberInput, emailInput, usernameInput, passwordInput;
     @FXML
     ChoiceBox sexDropdown;
     @FXML
     DatePicker datePicker;
     @FXML
-    TextField medicalLicenseInput;
-    @FXML
-    TextField phoneNumberInput;
-    @FXML
-    ComboBox specialityDropdown;
-    @FXML
-    ComboBox hospitalDropdown;
-    @FXML
-    TextField emailInput;
+    ComboBox specialityDropdown, hospitalDropdown;
     @FXML
     TextArea addressInput;
-    @FXML
-    TextField usernameInput;
-    @FXML
-    TextField passwordInput;
-    @FXML
-    Text inputTextErrorMessage;
-    @FXML
-    Text inputSymbolOfErrorMl;
-    @FXML
-    Text inputSymbolOfErrorUser;
 
     @FXML
-    private Button buttonMainMenu, buttonPower;
+    Text inputTextErrorMessage, inputSymbolOfErrorMl, inputSymbolOfErrorUser, emptyTextErrorMessage;
+    boolean isDuplicate, isEmpty;
 
 
     @FXML
     public void setMainMenu() throws IOException {
+        System.out.println("button clickec");
         setScreen(buttonMainMenu, "AdminMenuScene.fxml");
     }
 
@@ -67,9 +51,15 @@ public class AdminNewDoctorProfileController extends SceneController{
         setScreen(buttonPower, "LoginScene.fxml");
     }
 
+    @FXML
+    public void setCancel() throws IOException {
+        setScreen(buttonCancel, "AdminFindDoctorScene.fxml");
+    }
+
     public void createDoctor() throws SQLException, IOException {
 
         if (validate()) {
+
 
             Database.modifyTable("INSERT INTO Persons (name,birthDate,sex,phoneNumber,address,email) " + "VALUES ('" + nameInput.getText() + "', '" + datePicker.getValue() + "' ,'" + sexDropdown.getValue().toString().charAt(0) + "', '" + phoneNumberInput.getText() + "', '" + addressInput.getText() + "', '" + emailInput.getText() + "') ");
 
@@ -113,28 +103,84 @@ public class AdminNewDoctorProfileController extends SceneController{
             setScreen(buttonSave, "AdminMenuScene.fxml");
 
         } else {
-            inputSymbolOfErrorMl.setVisible(true);
-            inputSymbolOfErrorUser.setVisible(true);
-            inputTextErrorMessage.setVisible(true);
         }
     }
 
     private boolean validate() throws SQLException {
-        System.out.println("entrei");
-        System.out.println(medicalLicenseInput.getText());
+        resetErrors();
+        isDuplicate = false;
+        isEmpty = false;
+        inputSymbolOfErrorUser.setVisible(false);
+        inputSymbolOfErrorMl.setVisible(false);
+        inputTextErrorMessage.setVisible(false);
+        emptyTextErrorMessage.setVisible(false);
+
         ResultSet resultSet = Database.queryTable("SELECT user" + " FROM hospitalManagement.Employees" + " WHERE user ='" + usernameInput.getText() + "' ");
+        if (resultSet.next()) {
+            inputSymbolOfErrorUser.setVisible(true);
+            inputTextErrorMessage.setVisible(true);
+            isDuplicate = true;
+        }
+
         for (Doctor doctor : Information.getDoctors()) {
-            if (doctor.getMedicalLicense().equals(medicalLicenseInput.getText()) || resultSet.next()) {
-                return false;
+            if (doctor.getMedicalLicense().equals(medicalLicenseInput.getText())) {
+                isDuplicate = true;
+                inputTextErrorMessage.setVisible(true);
+                inputSymbolOfErrorMl.setVisible(true);
             }
         }
-        inputSymbolOfErrorMl.setVisible(false);
-        inputSymbolOfErrorUser.setVisible(false);
-        inputTextErrorMessage.setVisible(false);
+
+        if (nameInput.getText().isEmpty() || medicalLicenseInput.getText().isEmpty() || emailInput.getText().isEmpty() || datePicker.getValue() == null || usernameInput.getText().isEmpty() ||
+                passwordInput.getText().isEmpty() || addressInput.getText().isEmpty() || phoneNumberInput.getText().isEmpty() || sexDropdown.getValue() == null || specialityDropdown.getValue() == null || hospitalDropdown.getValue() == null) {
+            isEmpty = true;
+            emptyTextErrorMessage.setVisible(true);
+            if (nameInput.getText().isEmpty())
+                nameInput.setStyle("-fx-effect: dropshadow( one-pass-box, red, 15,0,0,0)");
+            if (medicalLicenseInput.getText().isEmpty())
+                medicalLicenseInput.setStyle("-fx-effect: dropshadow( one-pass-box, red, 15,0,0,0)");
+            if (emailInput.getText().isEmpty())
+                emailInput.setStyle("-fx-effect: dropshadow( one-pass-box, red, 15,0,0,0)");
+            if (datePicker.getValue() == null)
+                datePicker.setStyle("-fx-effect: dropshadow( one-pass-box, red, 15,0,0,0)");
+            if (usernameInput.getText().isEmpty())
+                usernameInput.setStyle("-fx-effect: dropshadow( one-pass-box, red, 15,0,0,0)");
+            if (passwordInput.getText().isEmpty())
+                passwordInput.setStyle("-fx-effect: dropshadow( one-pass-box, red, 15,0,0,0)");
+            if (addressInput.getText().isEmpty())
+                addressInput.setStyle("-fx-effect: dropshadow( one-pass-box, red, 15,0,0,0)");
+            if (phoneNumberInput.getText().isEmpty())
+                phoneNumberInput.setStyle("-fx-effect: dropshadow( one-pass-box, red, 15,0,0,0)");
+            if (specialityDropdown.getValue() == null)
+                specialityDropdown.setStyle("-fx-effect: dropshadow( one-pass-box, red, 15,0,0,0)");
+            if (hospitalDropdown.getValue() == null)
+                hospitalDropdown.setStyle("-fx-effect: dropshadow( one-pass-box, red, 15,0,0,0)");
+            if (sexDropdown.getValue() == null)
+                sexDropdown.setStyle("-fx-effect: dropshadow( one-pass-box, red, 15,0,0,0)");
+
+        }
+        if (isDuplicate || isEmpty) {
+            return false;
+        }
+
         return true;
     }
 
-    public void initializeComboBox(){
+    public void resetErrors() {
+        nameInput.setStyle("-fx-effect: none");
+        medicalLicenseInput.setStyle("-fx-effect: none");
+        emailInput.setStyle("-fx-effect: none");
+        datePicker.setStyle("-fx-effect: none");
+        usernameInput.setStyle("-fx-effect: none");
+        passwordInput.setStyle("-fx-effect: none");
+        addressInput.setStyle("-fx-effect: none");
+        phoneNumberInput.setStyle("-fx-effect: none");
+        specialityDropdown.setStyle("-fx-effect: none");
+        hospitalDropdown.setStyle("-fx-effect: none");
+        sexDropdown.setStyle("-fx-effect: none");
+
+    }
+
+    public void initializeComboBox() {
         initializeComboBoxHospital(hospitalDropdown);
         initializeComboBoxSpeciality(specialityDropdown);
         initializeChoiceBoxSex(sexDropdown);

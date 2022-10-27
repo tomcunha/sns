@@ -19,13 +19,7 @@ public class AdminNewExamController extends SceneController {
     @FXML
     TextField nameInput;
     @FXML
-    Button buttonSave;
-    @FXML
-    Button buttonCancel;
-    @FXML
-    private Button buttonMainMenu;
-    @FXML
-    private Button buttonPower;
+    Button buttonSave, buttonCancel, buttonMainMenu, buttonPower;
 
     public void saveNewExam() throws SQLException, IOException {
         if (validation()) {

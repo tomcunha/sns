@@ -1,6 +1,7 @@
 package hospitalmanagement.controller;
 
 import hospitalmanagement.Database;
+import hospitalmanagement.Information;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -75,15 +76,16 @@ public class AdminFindDoctorController extends SceneController {
 
         initiateCols();
 
-        loadData(nameTextField.getText());
+        loadData();
 
         tableDoctors.setVisible(true);
     }
 
-
-    private void loadData(String name) throws SQLException {
+@FXML
+    private void loadData() throws SQLException {
 
         listDoctors.removeAll(listDoctors);
+    tableDoctors.getItems().setAll(listDoctors);
 
         resultSet = Database.queryTable("SELECT medicalLicense as 'MedicalLicense', Persons.name  as 'Name', Hospitals.name as 'Hospital', Specialities.name as 'Speciality'\n" +
                 "FROM Doctors \n" +
@@ -91,7 +93,7 @@ public class AdminFindDoctorController extends SceneController {
                 "JOIN Persons ON Employees.person_id = Persons.person_id\n" +
                 "JOIN Specialities ON Doctors.speciality_id = Specialities.speciality_id\n" +
                 "JOIN Hospitals ON Doctors.hospital_id = Hospitals.hospital_id\n" +
-                "WHERE Persons.name LIKE '%" + name + "%';");
+                "WHERE Persons.name LIKE '%" + nameTextField.getText() + "%';");
 
         while (resultSet.next()) {
 
@@ -105,6 +107,7 @@ public class AdminFindDoctorController extends SceneController {
         }
 
         tableDoctors.getItems().addAll(listDoctors);
+        initiateCols();
     }
 
     private void initiateCols() throws SQLException {

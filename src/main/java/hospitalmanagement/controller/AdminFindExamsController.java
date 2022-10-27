@@ -71,8 +71,7 @@ public class AdminFindExamsController extends SceneController {
         listExams.addAll(Information.getExams());
         tableExams.getItems().setAll(listExams);
 
-       // if (!nameTextField.getText().isEmpty()) {
-         //   listExams.removeAll(listExams);
+
 
             ObservableList<Exam> filterList = FXCollections.observableArrayList();
 

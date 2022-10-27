@@ -23,7 +23,7 @@ import java.util.List;
 public class AdminNewDoctorProfileController extends SceneController {
 
     @FXML
-    Button buttonSave, buttonMainMenu, buttonPower;
+    Button buttonSave, buttonMainMenu, buttonPower, buttonCancel;
     @FXML
     TextField nameInput, medicalLicenseInput, phoneNumberInput, emailInput, usernameInput, passwordInput;
     @FXML
@@ -49,6 +49,11 @@ public class AdminNewDoctorProfileController extends SceneController {
     @FXML
     public void setLogout() throws IOException {
         setScreen(buttonPower, "LoginScene.fxml");
+    }
+
+    @FXML
+    public void setCancel() throws IOException {
+        setScreen(buttonCancel, "AdminFindDoctorScene.fxml");
     }
 
     public void createDoctor() throws SQLException, IOException {

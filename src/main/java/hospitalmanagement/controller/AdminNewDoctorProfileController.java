@@ -53,6 +53,19 @@ public class AdminNewDoctorProfileController extends SceneController{
     @FXML
     Text inputSymbolOfErrorUser;
 
+    @FXML
+    private Button buttonMainMenu, buttonPower;
+
+
+    @FXML
+    public void setMainMenu() throws IOException {
+        setScreen(buttonMainMenu, "AdminMenuScene.fxml");
+    }
+
+    @FXML
+    public void setLogout() throws IOException {
+        setScreen(buttonPower, "LoginScene.fxml");
+    }
 
     public void createDoctor() throws SQLException, IOException {
 

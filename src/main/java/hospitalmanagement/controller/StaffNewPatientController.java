@@ -54,6 +54,18 @@ public class StaffNewPatientController extends SceneController {
     @FXML
     Label insuranceNameLabel;
 
+    @FXML
+    private Button buttonMainMenu, buttonPower;
+
+    @FXML
+    public void setMainMenu() throws IOException {
+        setScreen(buttonMainMenu, "StaffMenuScene.fxml");
+    }
+
+    @FXML
+    public void setLogout() throws IOException {
+        setScreen(buttonPower, "LoginScene.fxml");
+    }
 
     public void savePatient(){
         if(ccInput.isDisable()){

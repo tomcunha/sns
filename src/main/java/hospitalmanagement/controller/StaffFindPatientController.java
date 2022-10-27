@@ -18,6 +18,10 @@ public class StaffFindPatientController extends SceneController{
     private Button buttonAddPatient, buttonEdit, buttonDelete;
 
     @FXML
+    private Button buttonMainMenu, buttonPower;
+
+
+    @FXML
     private TextField ccTextField;
 
     @FXML
@@ -28,6 +32,16 @@ public class StaffFindPatientController extends SceneController{
 
     @FXML
     private Text namePatientText, birthDatePatientText, identityNumberPatientText, nameInsuranceText;
+
+    @FXML
+    public void setMainMenu() throws IOException {
+        setScreen(buttonMainMenu, "StaffMenuScene.fxml");
+    }
+
+    @FXML
+    public void setLogout() throws IOException {
+        setScreen(buttonPower, "LoginScene.fxml");
+    }
 
     @FXML
     public void setNewPatient() throws IOException {

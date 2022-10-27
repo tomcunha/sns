@@ -45,10 +45,23 @@ public class AdminEditDoctorProfileController extends SceneController{
     Button buttonDelete;
 
     @FXML
+    Button buttonMainMenu, buttonPower;
+
+    @FXML
     TextField usernameInput;
 
     @FXML
     TextField passwordInput;
+
+    @FXML
+    public void setMainMenu() throws IOException {
+        setScreen(buttonMainMenu, "AdminMenuScene.fxml");
+    }
+
+    @FXML
+    public void setLogout() throws IOException {
+        setScreen(buttonPower, "LoginScene.fxml");
+    }
 
     public void editPersonAttributes() {
         if (buttonEdit.getText().equals("Edit")) {

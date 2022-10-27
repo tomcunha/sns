@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@styles/StaffMenuStyle.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hospitalmanagement.controller.StaffMenuController">
+<GridPane fx:id="gridStaff" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@styles/Style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hospitalmanagement.controller.StaffMenuController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -22,24 +22,23 @@
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+        <HBox prefHeight="100.0" prefWidth="200.0">
             <children>
-                <Button fx:id="buttonStaff" mnemonicParsing="false" prefHeight="128.0" prefWidth="128.0" />
-            <Text fx:id="textStaff" strokeType="OUTSIDE" strokeWidth="0.0" text="Staff" />
+                <Button fx:id="buttonStaffProfile" mnemonicParsing="false" prefHeight="128.0" prefWidth="128.0" />
             </children>
          <padding>
-            <Insets left="15.0" />
+            <Insets left="10.0" top="10.0" />
          </padding>
         </HBox>
-        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
+        <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
             <children>
-                <Button fx:id="buttonPower" mnemonicParsing="false" prefHeight="128.0" prefWidth="128.0" onAction="#setButtonPower"/>
+                <Button fx:id="buttonPower" mnemonicParsing="false" onAction="#setButtonPower" prefHeight="128.0" prefWidth="128.0" />
             </children>
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <padding>
-            <Insets right="15.0" />
+            <Insets right="10.0" top="10.0" />
          </padding>
         </HBox>
         <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
@@ -73,7 +72,7 @@
                 <Insets right="30" top="30" />
             </padding>
             <children>
-                <Button fx:id="patientsManagementButton" mnemonicParsing="false" prefWidth="600.0" text="Patients Management" onAction="#setPatientsManagement"/>
+                <Button fx:id="patientsManagementButton" mnemonicParsing="false" onAction="#setPatientsManagement" prefWidth="600.0" text="Patients Management" />
             </children>
         </HBox>
         <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">

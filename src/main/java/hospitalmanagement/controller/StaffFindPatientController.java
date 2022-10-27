@@ -48,10 +48,11 @@ public class StaffFindPatientController extends SceneController{
                 namePatientText.setText(patient.getName());
                 birthDatePatientText.setText(patient.getBirthDate().toString());
                 identityNumberPatientText.setText(patient.getPatientCC());
-                nameInsuranceText.setText(patient.getInsurance().getName());
-                // StaffNewPatientController staffNewPatientController = getFXML().getController();
-                //staffNewPatientController.setCcNumber(patient.getPatientCC());
-
+                if(patient.getInsurance() != null) {
+                    nameInsuranceText.setText(patient.getInsurance().getName());
+                }else {
+                    nameInsuranceText.setText("No Insurance");
+                }
                 break;
                }
             else {
@@ -65,6 +66,10 @@ public class StaffFindPatientController extends SceneController{
     public void editPatient(){
         try {
             setScreen(buttonEdit, "StaffNewPatientScene.fxml");
+            StaffNewPatientController staffNewPatientController = getFXML().getController();
+            staffNewPatientController.setCcNumber(identityNumberPatientText.getText());
+            staffNewPatientController.initializeComboBox();
+            staffNewPatientController.setInputs();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

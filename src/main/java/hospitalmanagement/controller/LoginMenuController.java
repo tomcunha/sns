@@ -28,7 +28,7 @@ public class LoginMenuController extends SceneController {
     @FXML
     Text textWarning;
 
-    static int employee_id;
+    private static int employee_id;
 
     @FXML
     public void enterPressed(KeyEvent key) {

@@ -47,7 +47,7 @@
                 <Insets bottom="30" right="30" />
             </padding>
             <children>
-                <Button fx:id="doctorsManagementButton" mnemonicParsing="false" prefWidth="600.0" text="Check main Schedule" />
+                <Button fx:id="checkScheduleButton" mnemonicParsing="false" prefWidth="600.0" text="Check main Schedule" />
             </children>
             <opaqueInsets>
                 <Insets />
@@ -57,7 +57,7 @@
                 <Insets bottom="30" left="30" />
             </padding>
             <children>
-                <Button fx:id="examsManagementButton" mnemonicParsing="false" prefWidth="600.0" text="Change appointment" />
+                <Button fx:id="changeAppointmentButton" mnemonicParsing="false" prefWidth="600.0" text="Change appointment" />
             </children></HBox>
         <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="1">
             <children>
@@ -73,7 +73,7 @@
                 <Insets right="30" top="30" />
             </padding>
             <children>
-                <Button fx:id="hospitalsManagementButton" mnemonicParsing="false" prefWidth="600.0" text="Patients Management" />
+                <Button fx:id="patientsManagementButton" mnemonicParsing="false" prefWidth="600.0" text="Patients Management" onAction="#setPatientsManagement"/>
             </children>
         </HBox>
         <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
@@ -81,7 +81,7 @@
                 <Insets left="30" top="30" />
             </padding>
             <children>
-                <Button fx:id="specialitiesManagementButton" mnemonicParsing="false" prefWidth="600.0" text="New appointment" />
+                <Button fx:id="newAppointmentButton" mnemonicParsing="false" prefWidth="600.0" text="New appointment" />
             </children>
         </HBox>
     </children>

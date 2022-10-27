@@ -34,11 +34,11 @@
 /************************************ DOCTOR PROFILE SCENE  ******************************************************/
 
 /*Admin button*/
-#buttonAdmin{
+#buttonUser{
     -fx-background-image: url(images/user.png);
     -fx-background-color: Transparent;
 }
-#buttonAdmin:hover{
+#buttonUser:hover{
     -fx-effect: dropshadow( one-pass-box , white , 8 , 0 , 0 , 0 );
 }
 
@@ -52,7 +52,7 @@
 
 /*Main menu button*/
 #buttonMainMenu{
-    -fx-background-image: url(images/user.png);
+    -fx-background-image: url(images/home.png);
     -fx-background-color: Transparent;
 }
 #buttonMainMenu:hover{

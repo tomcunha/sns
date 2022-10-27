@@ -6,7 +6,6 @@ import hospitalmanagement.model.medicalLists.Hospital;
 import hospitalmanagement.model.people.Insurance;
 import hospitalmanagement.model.people.Patient;
 import javafx.fxml.FXML;
-import javafx.scene.Group;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
 
@@ -57,14 +56,14 @@ public class StaffNewPatientController extends SceneController {
 
 
     public void savePatient(){
-        if(ccNumber.equals("")){
+        if(ccInput.isDisable()){
+            editPatient();
+        }else{
             try {
                 createPatient();
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
-        }else{
-            editPatient();
         }
     }
 
@@ -77,7 +76,7 @@ public class StaffNewPatientController extends SceneController {
     }
 
     public void createPatient() throws SQLException {
-        if (validateEdit()) {
+        if (validateCreate()) {
             Database.modifyTable("INSERT INTO Persons (name,birthDate,sex,phoneNumber,address,email) " + "VALUES ('" + nameInput.getText() + "', '" + dateInput.getValue() + "' ,'" + sexDropdown.getValue().toString().charAt(0) + "', '" + phoneInput.getText() + "', '" + addressInput.getText() + "', '" + emailInput.getText() + "') ");
 
             ResultSet resultSet = Database.queryTable("SELECT last_insert_id() FROM Persons");
@@ -87,7 +86,6 @@ public class StaffNewPatientController extends SceneController {
 
             Database.modifyTable("INSERT INTO Patients (patientCC,hospital_id,person_id) " + "VALUES ('" + ccInput.getText() + "', '" + getHospital().getId() + "' ,'" + last + "') ");
             if (insuranceDropdown.getValue() != null && insuranceDropdown.isVisible()) {
-                System.out.println("Chegueiiii");
                 Database.modifyTable("UPDATE Patients SET insurance_id = " + getInsurance().getId() +" WHERE Patients.patientCC = '" + ccInput.getText() + "'");
             }
 
@@ -102,7 +100,19 @@ public class StaffNewPatientController extends SceneController {
 
     public void editPatient(){
         if(emptyFields()){
-            Database.modifyTable("UPDATE Persons SET name = '" + nameInput + "', ");
+            Database.modifyTable("UPDATE Persons SET name = '" + nameInput.getText() + "', sex = '" + sexDropdown.getValue().toString().charAt(0) + "', address = '" + addressInput.getText() + "', email = '" + emailInput.getText() + "', phoneNumber = '" + phoneInput.getText() + "' WHERE person_id = " + getPersonID());
+            Database.modifyTable("UPDATE Patients SET hospital_id = '" + getHospital().getId() + "' WHERE Patients.patientCC = '" + ccInput.getText() + "'");
+            if(insuranceOption.getSelectedToggle().equals(noInsurance)) {
+                Database.modifyTable("UPDATE Patients SET insurance_id = Default WHERE Patients.patientCC = '" + ccInput.getText() + "'");
+            }else if(insuranceOption.getSelectedToggle().equals(yesInsurance)){
+                Database.modifyTable("UPDATE Patients SET insurance_id = '" + getInsurance().getId() + "' WHERE Patients.patientCC = '" + ccInput.getText() + "'");
+            }
+            Information.updatePatients();
+            try {
+                setScreen(buttonSave, "StaffMenuScene.fxml");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
@@ -116,8 +126,8 @@ public class StaffNewPatientController extends SceneController {
         }
     }
 
-    private boolean validateEdit() throws SQLException {
-        setAllFilled();
+    private boolean validateCreate() throws SQLException {
+        setAllUnstyled();
         boolean validate = true;
         for (Patient patient : Information.getPatients()) {
             if (patient.getPatientCC().equals(ccInput.getText())) {
@@ -194,14 +204,14 @@ public class StaffNewPatientController extends SceneController {
         if (insuranceOption.getSelectedToggle() == null){
             complete = false;
             warningInsurance.setVisible(true);
-        } else if(insuranceDropdown.getValue() == null){
+        } else if(insuranceDropdown.getValue() == null && insuranceOption.getSelectedToggle().equals(yesInsurance)){
             complete = false;
             insuranceDropdown.setStyle("-fx-effect: dropshadow(one-pass-box,red,15,0,0,0)");
         }
         return complete;
     }
 
-    private void setAllFilled(){
+    private void setAllUnstyled(){
         nameInput.setStyle("-fx-effect: none");
         ccInput.setStyle("-fx-effect: none");
         addressInput.setStyle("-fx-effect: none");
@@ -220,5 +230,37 @@ public class StaffNewPatientController extends SceneController {
 
     public static void setCcNumber(String index) {
         ccNumber = index;
+    }
+
+    private int getPersonID(){
+        for (Patient patient : Information.getPatients()) {
+            if (patient.getPatientCC().equals(ccNumber)) {
+                return patient.getPersonID();
+            }
+        }
+        return 0;
+    }
+
+    public void setInputs(){
+        for (Patient patient : Information.getPatients()) {
+            if (ccNumber.equals(patient.getPatientCC())) {
+                nameInput.setText(patient.getName());
+                sexDropdown.setValue(patient.getSex().toString());
+                dateInput.setValue(patient.getBirthDate()); dateInput.setDisable(true);
+                ccInput.setText(ccNumber); ccInput.setDisable(true);
+                phoneInput.setText(patient.getContact().getPhoneNumber());
+                hospitalDropdown.setValue(patient.getFavoriteHospital().getName());
+                emailInput.setText(patient.getContact().getEmail());
+                addressInput.setText(patient.getContact().getAddress());
+                if (patient.getInsurance() != null) {
+                    insuranceDropdown.setValue(patient.getInsurance().getName());
+                    insuranceDropdown.setVisible(true);
+                    insuranceNameLabel.setVisible(true);
+                    insuranceOption.selectToggle(yesInsurance);
+                }else{
+                    insuranceOption.selectToggle(noInsurance);
+                }
+            }
+        }
     }
 }

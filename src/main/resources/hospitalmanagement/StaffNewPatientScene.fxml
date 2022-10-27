@@ -201,7 +201,7 @@
                 </HBox>
                 <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="8">
                     <children>
-                        <Button fx:id="buttonSave" mnemonicParsing="false" onAction="#createPatient" prefHeight="40.0" prefWidth="180.0" text="Save" />
+                        <Button fx:id="buttonSave" mnemonicParsing="false" onAction="#savePatient" prefHeight="40.0" prefWidth="180.0" text="Save"/>
                     </children>
                 </HBox>
                 <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="8">

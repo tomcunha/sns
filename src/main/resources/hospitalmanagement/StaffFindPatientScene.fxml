@@ -75,7 +75,7 @@
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                     <children>
-                        <Label text="Identity number: : " />
+                        <Label text="Identity number: " />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
@@ -139,7 +139,7 @@
                   </HBox>
                   <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <children>
-                        <Button fx:id="buttonEdit" mnemonicParsing="false" prefHeight="40.0" prefWidth="180.0" text="Edit">
+                        <Button fx:id="buttonEdit" mnemonicParsing="false" prefHeight="40.0" prefWidth="180.0" text="Edit" onAction="#editPatient">
                            <HBox.margin>
                               <Insets right="20.0" />
                            </HBox.margin>

@@ -1,7 +1,9 @@
 package hospitalmanagement.controller;
 
+import hospitalmanagement.Database;
 import hospitalmanagement.Information;
 import hospitalmanagement.model.medicalLists.Hospital;
+import hospitalmanagement.model.people.Doctor;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -11,8 +13,9 @@ import java.io.IOException;
 
 public class AdminEditHospitalProfileController extends SceneController {
 
+    private static int hospitalID;
     @FXML
-    Button buttonMainMenu, buttonPower;
+    Button buttonMainMenu, buttonPower, buttonEdit, buttonCancel;
     @FXML
     TextField nameInput;
     @FXML
@@ -40,18 +43,33 @@ public class AdminEditHospitalProfileController extends SceneController {
         }
     }
 
-    public void editPerson() {
-        enableAll();
+    @FXML
+    public void setCancel() throws IOException {
+        setScreen(buttonCancel, "AdminFindHospitalScene.fxml");
     }
 
-    public void deletePerson() {
-        disableAll();
+    public void editHospital() {
+        if (buttonEdit.getText().equals("Edit")) {
+            enableAll();
+            buttonEdit.setText("Save");
+            buttonEdit.setStyle("-fx-background-color: #79DD99");
+            buttonCancel.setVisible(true);
+        } else if (buttonEdit.getText().equals("Save")) {
+            Database.modifyTable("UPDATE Hospitals SET name = '" + nameInput.getText() + "' , email = '" + emailInput.getText() + "', phoneNumber = '" + phoneNumberInput.getText() + "', address = '" + addressInput.getText() + "' WHERE hospital_id = " + hospitalID);
+            Information.updateHospitals();
+            disableAll();
+            buttonEdit.setText("Edit");
+            buttonEdit.setStyle("-fx-background-color: #6D6D6D");
+            buttonCancel.setVisible(false);
+        }
     }
+
 
     public void setInputs(String name) {
         nameInput.setText(name);
         for (Hospital hospital : Information.getHospitals()) {
             if (hospital.getName().equals(name)) {
+                hospitalID = hospital.getId();
                 addressInput.setText(hospital.getContact().getAddress());
                 phoneNumberInput.setText(hospital.getContact().getPhoneNumber());
                 emailInput.setText(hospital.getContact().getEmail());
@@ -72,4 +90,5 @@ public class AdminEditHospitalProfileController extends SceneController {
         emailInput.setDisable(true);
         addressInput.setDisable(true);
     }
+
 }

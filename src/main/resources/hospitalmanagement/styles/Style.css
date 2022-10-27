@@ -124,8 +124,8 @@
     -fx-fill: red;
 }
 
-/*STAFF - New Pacient*/
-#warningMessage1, #warningMessage2, #warningInsurance{
+
+#warningMessage1, #warningMessage2, #warningInsurance, #inputTextErrorMessage, #emptyTextErrorMessage, #inputSymbolOfErrorMl, #inputSymbolOfErrorUser{
     -fx-font-family: "Inter";
     -fx-font-size: 20px;
     -fx-text-fill: RED;

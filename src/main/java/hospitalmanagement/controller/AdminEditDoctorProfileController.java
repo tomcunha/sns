@@ -99,10 +99,7 @@ public class AdminEditDoctorProfileController extends SceneController{
     public void enableAll() {
         nameInput.setDisable(false);
         sexDropdown.setDisable(false);
-        //datePicker.setDisable(false);
-        //medicalLicenseInput.setDisable(false);
         phoneNumberInput.setDisable(false);
-        //specialityDropdown.setDisable(false);
         hospitalDropdown.setDisable(false);
         emailInput.setDisable(false);
         addressInput.setDisable(false);
@@ -111,10 +108,7 @@ public class AdminEditDoctorProfileController extends SceneController{
     public void disableAll() {
         nameInput.setDisable(true);
         sexDropdown.setDisable(true);
-        //datePicker.setDisable(true);
-        //medicalLicenseInput.setDisable(true);
         phoneNumberInput.setDisable(true);
-        //specialityDropdown.setDisable(true);
         hospitalDropdown.setDisable(true);
         emailInput.setDisable(true);
         addressInput.setDisable(true);

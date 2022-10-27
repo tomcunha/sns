@@ -83,7 +83,7 @@
                 </HBox>
                 <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="2">
                     <children>
-                        <Text fx:id="inputErrorMessage" strokeType="OUTSIDE" strokeWidth="0.0" text="" visible="false" />
+                        <Text fx:id="inputTextErrorMessage" strokeType="OUTSIDE" strokeWidth="0.0" text="" visible="false" />
                     </children>
                     <opaqueInsets>
                         <Insets top="50.0" />

@@ -68,7 +68,7 @@
             <children>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2">
                     <children>
-                        <Label fx:id="title" text="New Speciality" />
+                        <Label fx:id="title" text="New Exam" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -83,7 +83,7 @@
                 </HBox>
                 <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="2">
                     <children>
-                        <Text fx:id="inputErrorMessage" strokeType="OUTSIDE" strokeWidth="0.0" text="" visible="false" />
+                        <Text fx:id="inputTextErrorMessage" strokeType="OUTSIDE" strokeWidth="0.0" text="" visible="false" />
                     </children>
                     <opaqueInsets>
                         <Insets top="50.0" />

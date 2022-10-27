@@ -15,7 +15,7 @@ import java.sql.SQLException;
 public class AdminNewExamController extends SceneController {
 
     @FXML
-    Text inputErrorMessage;
+    Text inputTextErrorMessage;
     @FXML
     TextField nameInput;
     @FXML
@@ -42,16 +42,16 @@ public class AdminNewExamController extends SceneController {
             String inputName = nameInput.getText().trim();
 
             if (inputName.replace(" ","").equalsIgnoreCase(nameDB.replace(" ",""))) {
-                inputErrorMessage.setVisible(true);
-                inputErrorMessage.setText("* That exam already exists!");
+                inputTextErrorMessage.setVisible(true);
+                inputTextErrorMessage.setText("* That exam already exists!");
                 return false;
             }
             if(nameInput.getText().isEmpty()){
-                inputErrorMessage.setVisible(true);
-                inputErrorMessage.setText("* fPlease fill in the field!");
+                inputTextErrorMessage.setVisible(true);
+                inputTextErrorMessage.setText("* fPlease fill in the field!");
             }
         }
-        inputErrorMessage.setVisible(false);
+        inputTextErrorMessage.setVisible(false);
         return true;
     }
 

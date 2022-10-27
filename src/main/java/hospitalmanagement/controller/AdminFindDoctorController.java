@@ -1,20 +1,21 @@
 package hospitalmanagement.controller;
 
-import hospitalmanagement.Database;
 import hospitalmanagement.Information;
+import hospitalmanagement.model.medicalLists.Hospital;
+import hospitalmanagement.model.people.Doctor;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 
 import java.io.IOException;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import static hospitalmanagement.controller.AdminEditDoctorProfileController.setMedicalLicense;
 
 public class AdminFindDoctorController extends SceneController {
 
@@ -22,7 +23,6 @@ public class AdminFindDoctorController extends SceneController {
     private Button buttonMainMenu, buttonPower;
 
     ObservableList<ObservableList> listDoctors = FXCollections.observableArrayList();
-    private ResultSet resultSet;
 
     @FXML
     private TableView tableDoctors;
@@ -37,77 +37,112 @@ public class AdminFindDoctorController extends SceneController {
     private Button buttonAddDoctor;
 
     @FXML
-    public void setMouseClicked() throws IOException {
-
-
-        String row = tableDoctors.getSelectionModel().getSelectedItems().get(0).toString();
-        row = row.replaceAll("\\D+", "");
-        AdminEditDoctorProfileController.setMedicalLicense(row);
-
-        setScreen(buttonPower, "AdminEditDoctorProfileScene.fxml");
-        AdminEditDoctorProfileController adminEditDoctorProfileController = getFXML().getController();
-        adminEditDoctorProfileController.setInputs();
-        adminEditDoctorProfileController.initializeComboBox();
-
+    public void setMainMenu() {
+        try {
+            setScreen(buttonMainMenu, "AdminMenuScene.fxml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
-    public void setMainMenu() throws IOException {
-        setScreen(buttonMainMenu, "AdminMenuScene.fxml");
+    public void setLogout() {
+        try {
+            setScreen(buttonPower, "LoginScene.fxml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
-    public void setLogout() throws IOException {
-        setScreen(buttonPower, "LoginScene.fxml");
-    }
+    public void selectDoctors(MouseEvent mouseEvent) {
 
-    @FXML
-    public void setNewDoctor() throws IOException, SQLException {
-        setScreen(buttonAddDoctor, "AdminNewDoctorProfileScene.fxml");
-        AdminNewDoctorProfileController adminNewDoctorProfileController = getFXML().getController();
-        adminNewDoctorProfileController.initializeComboBox();
-    }
+        if (mouseEvent.getButton().equals(MouseButton.PRIMARY)) {
+            if (mouseEvent.getClickCount() == 2) {
+                String row = tableDoctors.getSelectionModel().getSelectedItems().get(0).toString();
+                row = row.replaceAll("\\D+", "");
 
-    @FXML
-    public void setButtonSearch() throws SQLException {
-        tableDoctors.getItems().clear();
+                try {
+                    setScreen(buttonPower, "AdminEditDoctorProfileScene.fxml");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
 
-        buttonAddDoctor.setVisible(false);
-
-        initiateCols();
-
-        loadData();
-
-        tableDoctors.setVisible(true);
-    }
-
-@FXML
-    private void loadData() throws SQLException {
-
-        listDoctors.removeAll(listDoctors);
-    tableDoctors.getItems().setAll(listDoctors);
-
-        resultSet = Database.queryTable("SELECT medicalLicense as 'MedicalLicense', Persons.name  as 'Name', Hospitals.name as 'Hospital', Specialities.name as 'Speciality'\n" +
-                "FROM Doctors \n" +
-                "JOIN Employees ON Doctors.employee_id = Employees.employee_id \n" +
-                "JOIN Persons ON Employees.person_id = Persons.person_id\n" +
-                "JOIN Specialities ON Doctors.speciality_id = Specialities.speciality_id\n" +
-                "JOIN Hospitals ON Doctors.hospital_id = Hospitals.hospital_id\n" +
-                "WHERE Persons.name LIKE '%" + nameTextField.getText() + "%';");
-
-        while (resultSet.next()) {
-
-            ObservableList<String> row = FXCollections.observableArrayList();
-            for (int i = 1; i <= resultSet.getMetaData().getColumnCount(); i++) {
-                //Iterate Column
-                row.add(resultSet.getString(i));
+                AdminEditDoctorProfileController adminEditDoctorProfileController = getFXML().getController();
+                adminEditDoctorProfileController.setMedicalLicense(row);
+                adminEditDoctorProfileController.setInputs();
+                adminEditDoctorProfileController.initializeComboBox();
             }
-            listDoctors.add(row);
+        }
+    }
 
+    public void clearInfo() {
+        listDoctors.clear();
+        tableDoctors.getItems().clear();
+    }
+
+    public void startTable() {
+        if (listDoctors.size() != 0) {
+            tableDoctors.setVisible(true);
         }
 
-        tableDoctors.getItems().addAll(listDoctors);
-        initiateCols();
+        try {
+            initiateCols();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    public void showAllDoctors() {
+
+        if (nameTextField.getText().isBlank()) {
+
+            clearInfo();
+
+            for (Doctor doctor : Information.getDoctors()) {
+                loadDoctorInfo(doctor);
+            }
+            tableDoctors.getItems().addAll(listDoctors);
+
+            startTable();
+        }
+    }
+
+    public void loadDoctorInfo(Doctor doctor) {
+        ObservableList<String> row = FXCollections.observableArrayList();
+        row.add(doctor.getMedicalLicense());
+        row.add(doctor.getName());
+        row.add(doctor.getWorkingHospital().getName());
+        row.add(doctor.getSpecialty().getName());
+        listDoctors.add(row);
+    }
+
+    @FXML
+    private void loadData(KeyEvent key) {
+        String name = nameTextField.getText();
+
+        if (!name.isBlank()) {
+
+            clearInfo();
+
+            for (Doctor doctor : Information.getDoctors()) {
+
+                String hName = doctor.getName().toUpperCase();
+                name = name.toUpperCase();
+
+                if (hName.contains(name)) {
+                    loadDoctorInfo(doctor);
+                }
+            }
+
+            tableDoctors.getItems().addAll(listDoctors);
+            startTable();
+
+        } else if (key.getCode().toString().equals("BACK_SPACE")) {
+            showAllDoctors();
+        }
+
     }
 
     private void initiateCols() throws SQLException {
@@ -135,8 +170,15 @@ public class AdminFindDoctorController extends SceneController {
                 return new SimpleStringProperty(param.getValue().get(3).toString());
             }
         });
+    }
 
-
+    @FXML
+    public void createNewDoctor() {
+        try {
+            setScreen(buttonAddDoctor, "AdminNewDoctorProfileScene.fxml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 

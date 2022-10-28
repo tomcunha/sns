@@ -34,7 +34,9 @@ public class StaffNewAppSelectController extends SceneController{
 
     @FXML void setNewAppButton(){
         try {
-            setScreen(buttonNewApp,"LoginScene.fxml");
+            setScreen(buttonNewApp,"StaffNewAppointment.fxml");
+            StaffNewAppointmentController staffNewAppointmentController = getFXML().getController();
+            staffNewAppointmentController.initializeComboBox();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

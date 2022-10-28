@@ -76,12 +76,12 @@
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                     <children>
-                        <TextField fx:id="nameTextField" prefHeight="40.0" prefWidth="1096.0" onKeyReleased="#loadData" />
+                        <TextField fx:id="nameTextField" onKeyReleased="#loadData" prefHeight="40.0" prefWidth="1096.0" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
                     <children>
-                        <Button fx:id="buttonSearch" mnemonicParsing="false" onAction="#showAllDoctors" prefHeight="50.0" prefWidth="177.0" text="Search" >
+                        <Button fx:id="buttonSearch" mnemonicParsing="false" onAction="#showAllDoctors" prefHeight="50.0" prefWidth="177.0" text="Search">
                             <HBox.margin>
                                 <Insets />
                             </HBox.margin></Button>
@@ -100,7 +100,7 @@
                 </HBox>
                 <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="2">
                     <children>
-                        <TableView fx:id="tableDoctors" onMouseClicked="#selectDoctors" prefHeight="200.0" prefWidth="200.0" visible="false">
+                        <TableView fx:id="tableDoctors" onMouseClicked="#selectDoctors" prefHeight="498.0" prefWidth="1536.0" visible="false">
                             <placeholder>
                                 <Label text="No doctors found." />
                             </placeholder>

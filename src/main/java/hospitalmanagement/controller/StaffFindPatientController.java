@@ -14,7 +14,7 @@ import java.io.IOException;
 
 public class StaffFindPatientController extends SceneController {
     @FXML
-    private Button buttonAddPatient, buttonEdit, buttonDelete, buttonMainMenu, buttonPower;
+    private Button buttonAddPatient, buttonEdit, buttonDelete, buttonMainMenu, buttonPower, buttonNext;
 
     @FXML
     private TextField ccTextField;
@@ -114,7 +114,7 @@ public class StaffFindPatientController extends SceneController {
         if (!namePatientText.getText().isEmpty()) {
             patientCC = ccTextField.getText();
             try {
-                setScreen(buttonNext, "StaffNewAppSelectControllerScene.fxml");
+                setScreen(buttonNext, "StaffNewAppSelectScene.fxml");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -123,7 +123,7 @@ public class StaffFindPatientController extends SceneController {
         }
     }
 
-    public String getPatientCC() {
+    public static String getPatientCC() {
         return patientCC;
     }
 }

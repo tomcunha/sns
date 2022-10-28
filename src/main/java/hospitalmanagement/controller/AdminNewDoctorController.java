@@ -34,7 +34,6 @@ public class AdminNewDoctorController extends SceneController {
 
     @FXML
     public void setMainMenu() throws IOException {
-        System.out.println("button clickec");
         setScreen(buttonMainMenu, "AdminMenuScene.fxml");
     }
 

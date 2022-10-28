@@ -116,6 +116,10 @@
     -fx-background-color: #CF5F5F;
 }
 
+#buttonNewApp, #buttonNewExam{
+    -fx-background-color: #8ECACD;
+}
+
 
 /************************************************ WARNING TEXTS  ************************************************/
 /*Login warning*/

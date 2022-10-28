@@ -15,7 +15,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 
 import java.io.IOException;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import static hospitalmanagement.controller.AdminEditDoctorProfileController.setMedicalLicense;
 
 public class AdminFindDoctorController extends SceneController {
 
@@ -180,6 +183,5 @@ public class AdminFindDoctorController extends SceneController {
             throw new RuntimeException(e);
         }
     }
-
 
 }

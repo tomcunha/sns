@@ -10,10 +10,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.List;
 
-public class StaffFindPatientController extends SceneController{
+public class StaffFindPatientController extends SceneController {
     @FXML
     private Button buttonAddPatient, buttonEdit, buttonDelete, buttonMainMenu, buttonPower;
 
@@ -54,33 +52,31 @@ public class StaffFindPatientController extends SceneController{
     }
 
     @FXML
-    public void setButtonSearch(){
+    public void setButtonSearch() {
         patientGrid.setVisible(false);
         nrLabel.setVisible(false);
 
-        for (Patient patient: Information.getPatients()){
-            if (patient.getPatientCC().equals(ccTextField.getText())){
+        for (Patient patient : Information.getPatients()) {
+            if (patient.getPatientCC().equals(ccTextField.getText())) {
                 nrLabel.setVisible(false);
                 patientGrid.setVisible(true);
                 namePatientText.setText(patient.getName());
                 birthDatePatientText.setText(patient.getBirthDate().toString());
                 identityNumberPatientText.setText(patient.getPatientCC());
-                if(patient.getInsurance() != null) {
+                if (patient.getInsurance() != null) {
                     nameInsuranceText.setText(patient.getInsurance().getName());
-                }else {
+                } else {
                     nameInsuranceText.setText("No Insurance");
                 }
                 break;
-               }
-            else {
+            } else {
                 nrLabel.setVisible(true);
-                break;
             }
         }
     }
 
     @FXML
-    public void editPatient(){
+    public void editPatient() {
         try {
             setScreen(buttonEdit, "StaffNewPatientScene.fxml");
             StaffNewPatientController staffNewPatientController = getFXML().getController();
@@ -91,7 +87,5 @@ public class StaffFindPatientController extends SceneController{
             throw new RuntimeException(e);
         }
     }
-
-
 
 }

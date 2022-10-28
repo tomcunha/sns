@@ -164,6 +164,7 @@
                 </HBox>
                 <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="5">
                     <children>
+                        <Button fx:id="buttonDelete" mnemonicParsing="false" onAction="#deleteHospital"  prefWidth="180.0" text="Delete" />
                         <Button fx:id="buttonCancel" mnemonicParsing="false" onAction="#setCancel" prefWidth="180.0" text="Cancel" visible="false" />
                     </children>
                 </HBox>

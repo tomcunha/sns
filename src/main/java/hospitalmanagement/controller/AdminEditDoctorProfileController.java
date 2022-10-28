@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Optional;
 
-public class AdminEditDoctorProfileController extends SceneController{
+public class AdminEditDoctorProfileController extends SceneController {
     private static String medicalLicense;
 
     @FXML
@@ -199,13 +199,13 @@ public class AdminEditDoctorProfileController extends SceneController{
                 //Database.modifyTable("DELETE FROM Doctors WHERE medicalLicense = '" + medicalLicense + "'");
 
             }
-            setScreen(buttonDelete,"AdminMenuScene.fxml");
+            setScreen(buttonDelete, "AdminMenuScene.fxml");
         } else {
             editDoctorScene.setEffect(null);
         }
     }
 
-    public void initializeComboBox(){
+    public void initializeComboBox() {
         initializeComboBoxHospital(hospitalDropdown);
         initializeComboBoxSpeciality(specialityDropdown);
         initializeChoiceBoxSex(sexDropdown);

@@ -12,6 +12,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.layout.Background;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -60,7 +61,6 @@ public class AdminNewDoctorProfileController extends SceneController {
 
         if (validate()) {
 
-
             Database.modifyTable("INSERT INTO Persons (name,birthDate,sex,phoneNumber,address,email) " + "VALUES ('" + nameInput.getText() + "', '" + datePicker.getValue() + "' ,'" + sexDropdown.getValue().toString().charAt(0) + "', '" + phoneNumberInput.getText() + "', '" + addressInput.getText() + "', '" + emailInput.getText() + "') ");
 
             ResultSet resultSet = Database.queryTable("SELECT person_id" + " FROM hospitalManagement.Persons" + " WHERE name ='" + nameInput.getText() + "' AND phoneNumber ='" + phoneNumberInput.getText() + "' AND address ='" + addressInput.getText() + "' AND email='" + emailInput.getText() + "' ");
@@ -101,8 +101,6 @@ public class AdminNewDoctorProfileController extends SceneController {
 
             Information.updateDoctors();
             setScreen(buttonSave, "AdminMenuScene.fxml");
-
-        } else {
         }
     }
 

@@ -8,17 +8,32 @@ import java.io.IOException;
 public class StaffMenuController extends SceneController{
 
     @FXML
-    Button buttonPower;
+    Button buttonPower, patientsManagementButton, newAppointmentButton;
     @FXML
-    Button patientsManagementButton;
-
-    @FXML
-    public void setButtonPower() throws IOException {
-        setScreen(buttonPower, "LoginScene.fxml");
+    public void setButtonPower(){
+        try {
+            setScreen(buttonPower, "LoginScene.fxml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
-    public void setPatientsManagement() throws IOException {
-        setScreen(patientsManagementButton, "StaffFindPatientScene.fxml");
+    public void setPatientsManagement(){
+        try {
+            setScreen(patientsManagementButton, "StaffFindPatientScene.fxml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
+
+    @FXML
+    public void setNewAppointmentButton(){
+        try {
+            setScreen(newAppointmentButton,"StaffNewAppSelectScene.fxml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

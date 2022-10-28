@@ -11,7 +11,7 @@ public class StaffMenuController extends SceneController{
     Button buttonPower, patientsManagementButton, newAppointmentButton;
 
     @FXML
-    public void setButtonPower(){
+    public void setButtonPower() {
         try {
             setScreen(buttonPower, "LoginScene.fxml");
         } catch (IOException e) {
@@ -20,7 +20,7 @@ public class StaffMenuController extends SceneController{
     }
 
     @FXML
-    public void setPatientsManagement(){
+    public void setPatientsManagement() {
         try {
             setScreen(patientsManagementButton, "StaffFindPatientScene.fxml");
         } catch (IOException e) {
@@ -29,12 +29,13 @@ public class StaffMenuController extends SceneController{
     }
 
     @FXML
-    public void setNewAppointmentButton(){
+    public void newAppointment() {
         try {
-            setScreen(newAppointmentButton,"StaffNewAppSelectScene.fxml");
+            setScreen(newAppointmentButton, "StaffFindPatientScene.fxml");
+            StaffFindPatientController findPatient = getFXML().getController();
+            findPatient.selectAppointment();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
-
 }

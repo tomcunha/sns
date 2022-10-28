@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
@@ -22,7 +23,7 @@ public class StaffFindPatientController extends SceneController {
     @FXML
     private TextField ccTextField;
     @FXML
-    private Label nrLabel;
+    private Label nrLabel, title;
     @FXML
     private GridPane patientGrid, editPatientScene, popUp;
     @FXML
@@ -33,6 +34,8 @@ public class StaffFindPatientController extends SceneController {
 
     @FXML
     private Text namePatientText, birthDatePatientText, identityNumberPatientText, nameInsuranceText, popUpText;
+
+    private static String patientCC;
 
     @FXML
     public void setNewPatient() throws IOException {
@@ -59,25 +62,30 @@ public class StaffFindPatientController extends SceneController {
     }
 
     @FXML
-    public void setButtonSearch() {
-        patientGrid.setVisible(false);
-        nrLabel.setVisible(false);
+    public void setButtonSearch(KeyEvent key) {
 
-        for (Patient patient : Information.getPatients()) {
-            if (patient.getPatientCC().equals(ccTextField.getText())) {
-                nrLabel.setVisible(false);
-                patientGrid.setVisible(true);
-                namePatientText.setText(patient.getName());
-                birthDatePatientText.setText(patient.getBirthDate().toString());
-                identityNumberPatientText.setText(patient.getPatientCC());
-                if (patient.getInsurance() != null) {
-                    nameInsuranceText.setText(patient.getInsurance().getName());
+        if (key.getCode().toString().equals("ENTER")) {
+
+            ccTextField.setStyle("-fx-effect: none");
+            patientGrid.setVisible(false);
+            nrLabel.setVisible(false);
+
+            for (Patient patient : Information.getPatients()) {
+                if (patient.getPatientCC().equals(ccTextField.getText())) {
+                    nrLabel.setVisible(false);
+                    patientGrid.setVisible(true);
+                    namePatientText.setText(patient.getName());
+                    birthDatePatientText.setText(patient.getBirthDate().toString());
+                    identityNumberPatientText.setText(patient.getPatientCC());
+                    if (patient.getInsurance() != null) {
+                        nameInsuranceText.setText(patient.getInsurance().getName());
+                    } else {
+                        nameInsuranceText.setText("No Insurance");
+                    }
+                    break;
                 } else {
-                    nameInsuranceText.setText("No Insurance");
+                    nrLabel.setVisible(true);
                 }
-                break;
-            } else {
-                nrLabel.setVisible(true);
             }
         }
     }
@@ -154,4 +162,34 @@ public class StaffFindPatientController extends SceneController {
     }
 
 
+    public void selectAppointment() {
+        title.setText("New Appointment");
+        buttonEdit.setDisable(true);
+        buttonEdit.setVisible(false);
+        buttonDelete.setDisable(true);
+        buttonDelete.setVisible(false);
+        buttonAddPatient.setDisable(true);
+        buttonAddPatient.setVisible(false);
+        textNext.setVisible(true);
+        buttonNext.setDisable(false);
+        buttonNext.setVisible(true);
+    }
+
+    @FXML
+    public void nextAppointment() {
+        if (!namePatientText.getText().isEmpty()) {
+            patientCC = ccTextField.getText();
+            try {
+                setScreen(buttonNext, "StaffNewAppSelectControllerScene.fxml");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            ccTextField.setStyle("-fx-effect: dropshadow( one-pass-box, red, 15,0,0,0)");
+        }
+    }
+
+    public String getPatientCC() {
+        return patientCC;
+    }
 }

@@ -15,8 +15,9 @@
     -fx-background-color: linear-gradient(#d0d0d0, #aeb5b6);
     -fx-background-radius: 30px;
 }
-.button:hover{
-    -fx-effect: dropshadow( one-pass-box , white , 8 , 0 , 2 , 0 );
+
+.button:hover {
+    -fx-effect: dropshadow(one-pass-box, white, 8, 0, 2, 0);
 }
 
 /*Radio Button*/
@@ -28,22 +29,27 @@
     -fx-border-radius: 50px;
     -fx-padding: 4px;
 }
+
 .radio-button .radio:selected {
     -fx-background-color: white;
     -fx-background-image: null;
 }
+
 .radio-button -radio:armed {
     -fx-background-color: white;
     -fx-background-image: null;
 }
+
 .radio-button -radio:determinate {
     -fx-background-color: white;
     -fx-background-image: null;
 }
+
 .radio-button -radio:indeterminate {
     -fx-background-color: white;
     -fx-background-image: null;
 }
+
 .radio-button .dot {
     -fx-background-radius: 50px;
     -fx-padding: 8px;
@@ -68,9 +74,11 @@
     -fx-background-image: url(images/user.png);
     -fx-background-color: Transparent;
 }
-#buttonAdminProfile:hover, #buttonStaffProfile:hover, #buttonDoctorProfile:hover{
-    -fx-effect: dropshadow( one-pass-box , white , 8 , 0 , 0 , 0 );
+
+#buttonAdminProfile:hover, #buttonStaffProfile:hover, #buttonDoctorProfile:hover {
+    -fx-effect: dropshadow(one-pass-box, white, 8, 0, 0, 0);
 }
+
 /*Profile text*/
 #textAdmin, #textStaff, #textDoctor{
     -fx-font-family: "Inter";
@@ -134,6 +142,19 @@
     -fx-font-family: "Inter";
     -fx-font-size: 20px;
     -fx-text-fill: RED;
+}
+
+/************************************************ NEXT  ************************************************/
+
+#textNext {
+    -fx-font-family: "Inter";
+    -fx-font-size: 30px;
+    -fx-text-fill: black;
+}
+
+#buttonNext {
+    -fx-background-image: url(images/arrowRight.png);
+    -fx-background-color: Transparent;
 }
 
 

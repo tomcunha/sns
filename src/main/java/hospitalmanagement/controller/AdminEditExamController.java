@@ -3,11 +3,14 @@ package hospitalmanagement.controller;
 import hospitalmanagement.Database;
 import hospitalmanagement.Information;
 import hospitalmanagement.model.medicalLists.Exam;
+import hospitalmanagement.model.medicalLists.Speciality;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class AdminEditExamController extends SceneController {
 
@@ -16,6 +19,9 @@ public class AdminEditExamController extends SceneController {
     Button buttonSave, buttonCancel, buttonMainMenu, buttonPower;
     @FXML
     TextField nameInput, priceInput;
+    @FXML
+    Text inputTextErrorMessage, emptyTextErrorMessage, inputSymbolOfError;
+    private boolean isDuplicate, isEmpty;
 
 
     @FXML
@@ -40,19 +46,14 @@ public class AdminEditExamController extends SceneController {
         setScreen(buttonCancel, "AdminFindExamScene.fxml");
     }
 
-    public void editExam() throws IOException {
-        try{
-            int price = Integer.parseInt(priceInput.getText());
-            Database.modifyTable("UPDATE Exams SET name = '" + nameInput.getText() + "', price = "+ price + " WHERE exam_id = " + examId);
-        }
-        catch (NumberFormatException ex){
-            ex.printStackTrace();
-        }
+    public void editExam() throws IOException, SQLException {
+        if (validation()) {
+            Database.modifyTable("UPDATE Exams SET name = '" + nameInput.getText() + "', price = " + getPrice() + " WHERE exam_id = " + examId);
 
-        Information.updateExams();
-        setScreen(buttonSave,"AdminFindExamScene.fxml" );
+            Information.updateExams();
+            setScreen(buttonSave, "AdminFindExamScene.fxml");
+        }
     }
-
 
     public void setInputs(String name) {
         nameInput.setText(name);
@@ -63,6 +64,54 @@ public class AdminEditExamController extends SceneController {
                 break;
             }
         }
+    }
+    private boolean validation() {
+        resetErrors();
+        isDuplicate = false;
+        isEmpty = false;
+        inputTextErrorMessage.setVisible(false);
+        inputSymbolOfError.setVisible(false);
+        emptyTextErrorMessage.setVisible(false);
+
+        String inputNameTrimmed = nameInput.getText().trim().replace(" ", "");
+        String inputPriceTrimmed = priceInput.getText().trim().replace(" ", "");
+
+        for (Exam exam : Information.getExams()) {
+            if (inputNameTrimmed.equalsIgnoreCase(exam.getName().replace(" ", ""))) {
+                inputTextErrorMessage.setVisible(true);
+                inputSymbolOfError.setVisible(true);
+                isDuplicate = true;
+            }
+        }
+        if (inputNameTrimmed.isEmpty() || inputPriceTrimmed.isEmpty()) {
+            emptyTextErrorMessage.setVisible(true);
+            isEmpty = true;
+        }
+        if (inputNameTrimmed.isEmpty())
+            nameInput.setStyle("-fx-effect: dropshadow( one-pass-box, red, 15,0,0,0)");
+        if (inputPriceTrimmed.isEmpty())
+            priceInput.setStyle("-fx-effect: dropshadow( one-pass-box, red, 15,0,0,0)");
+
+        if (isEmpty || isDuplicate) {
+            return false;
+        }
+        return true;
+    }
+
+    private void resetErrors() {
+        System.out.println("reset errors called");
+
+        nameInput.setStyle("-fx-effect: none");
+        priceInput.setStyle("-fx-effect: none");
+    }
+    private int getPrice() {
+        try {
+            int price = Integer.parseInt(priceInput.getText());
+            return price;
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 
 

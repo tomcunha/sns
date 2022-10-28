@@ -40,7 +40,7 @@ public class AdminNewExamController extends SceneController {
         }
     }
 
-    private boolean validation() throws SQLException {
+    private boolean validation() {
         resetErrors();
         isDuplicate = false;
         isEmpty = false;
@@ -48,25 +48,26 @@ public class AdminNewExamController extends SceneController {
         inputSymbolOfError.setVisible(false);
         emptyTextErrorMessage.setVisible(false);
 
-        String inputNameTrimmed = nameInput.getText().trim();
+        String inputNameTrimmed = nameInput.getText().trim().replace(" ", "");
+        String inputPriceTrimmed = priceInput.getText().trim().replace(" ", "");
 
         for (Exam exam : Information.getExams()) {
-            if (inputNameTrimmed.replace(" ", "").equalsIgnoreCase(exam.getName().replace(" ", ""))) {
+            if (inputNameTrimmed.equalsIgnoreCase(exam.getName().replace(" ", ""))) {
                 inputTextErrorMessage.setVisible(true);
                 inputSymbolOfError.setVisible(true);
                 isDuplicate = true;
             }
         }
-        if (inputNameTrimmed.isEmpty() || priceInput.getText().isEmpty()) {
+        if (inputNameTrimmed.isEmpty()) {
+            nameInput.setStyle("-fx-effect: dropshadow( one-pass-box, red, 15,0,0,0)");
             emptyTextErrorMessage.setVisible(true);
             isEmpty = true;
         }
-
-        if (nameInput.getText().isEmpty())
-            nameInput.setStyle("-fx-effect: dropshadow( one-pass-box, red, 15,0,0,0)");
-        if (priceInput.getText().isEmpty())
+        if (inputPriceTrimmed.isEmpty()) {
             priceInput.setStyle("-fx-effect: dropshadow( one-pass-box, red, 15,0,0,0)");
-
+            emptyTextErrorMessage.setVisible(true);
+            isEmpty = true;
+        }
         if (isEmpty || isDuplicate) {
             return false;
         }

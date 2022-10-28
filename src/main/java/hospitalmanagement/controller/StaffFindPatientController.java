@@ -189,7 +189,7 @@ public class StaffFindPatientController extends SceneController {
         }
     }
 
-    public String getPatientCC() {
+    public static String getPatientCC() {
         return patientCC;
     }
 }

@@ -108,25 +108,41 @@
     -fx-effect: dropshadow( one-pass-box , white , 8 , 0.0 , 2 , 0 );
 }
 
-/****************************************** SAVE, EDIT, DELETE BUTTONS  ************************************************/
+/****************************************** SAVE, EDIT, DELETE, NEXT BUTTONS  ************************************************/
 
 /*Button save*/
 #buttonSave, #buttonYesPopUp{
     -fx-background-color: #79DD99;
+    -fx-pref-width: 200px;
 }
 
 /*Button edit*/
 #buttonEdit{
     -fx-background-color: #6D6D6D;
+    -fx-pref-width: 200px;
 }
 
 /*Button delete*/
 #buttonDelete{
     -fx-background-color: #CF5F5F;
+    -fx-pref-width: 200px;
 }
 
+/*Button select exam/appointment*/
 #buttonNewApp, #buttonNewExam{
     -fx-background-color: #A2D2D5;
+}
+
+/*Button Next*/
+#textNext {
+    -fx-font-family: "Inter";
+    -fx-font-size: 30px;
+    -fx-text-fill: black;
+}
+
+#buttonNext {
+    -fx-background-image: url(images/arrowRight.png);
+    -fx-background-color: Transparent;
 }
 
 
@@ -144,19 +160,6 @@
     -fx-fill: RED;
 }
 
-/************************************************ NEXT  ************************************************/
-
-#textNext {
-    -fx-font-family: "Inter";
-    -fx-font-size: 30px;
-    -fx-text-fill: black;
-}
-
-#buttonNext {
-    -fx-background-image: url(images/arrowRight.png);
-    -fx-background-color: Transparent;
-}
-
 
 /************************************************ BACKGROUNDS  ************************************************/
 #patientGrid{
@@ -166,3 +169,10 @@
 #popUp{
     -fx-background-color: WHITE;
 }
+
+
+/************************************************ TIME SCHEDULE  ************************************************/
+#timeSchedule .column-header {
+    -fx-background-color: #91CDD0;
+}
+

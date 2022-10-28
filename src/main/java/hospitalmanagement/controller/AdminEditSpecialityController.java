@@ -6,8 +6,10 @@ import hospitalmanagement.model.medicalLists.Speciality;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class AdminEditSpecialityController extends SceneController {
 
@@ -16,6 +18,9 @@ public class AdminEditSpecialityController extends SceneController {
     Button buttonSave, buttonCancel, buttonMainMenu, buttonPower;
     @FXML
     TextField nameInput, priceInput;
+    @FXML
+    Text inputTextErrorMessage, emptyTextErrorMessage, inputSymbolOfError;
+    private boolean isDuplicate, isEmpty;
 
 
     @FXML
@@ -26,6 +31,7 @@ public class AdminEditSpecialityController extends SceneController {
             throw new RuntimeException(e);
         }
     }
+
     @FXML
     public void setLogout() {
         try {
@@ -40,20 +46,14 @@ public class AdminEditSpecialityController extends SceneController {
         setScreen(buttonCancel, "AdminFindSpecialityScene.fxml");
     }
 
-    public void editSpeciality() throws IOException {
-        try{
-            int price = Integer.parseInt(priceInput.getText());
-            Database.modifyTable("UPDATE Specialities SET name = '" + nameInput.getText() + "', price = " + price + " WHERE exam_id = " + specialityID);
-        }
-        catch (NumberFormatException ex){
-            ex.printStackTrace();
-        }
+    public void editSpeciality() throws IOException, SQLException {
+        if (validation()) {
+            Database.modifyTable("UPDATE Specialities SET name = '" + nameInput.getText() + "', price = " + getPrice() + " WHERE speciality_id = " + specialityID);
 
-
-        Information.updateSpecialities();
-        setScreen(buttonSave,"AdminFindSpecialityScene.fxml" );
+            Information.updateSpecialities();
+            setScreen(buttonSave, "AdminFindSpecialityScene.fxml");
+        }
     }
-
 
     public void setInputs(String name) {
         nameInput.setText(name);
@@ -66,5 +66,52 @@ public class AdminEditSpecialityController extends SceneController {
         }
     }
 
+    private boolean validation() {
+        resetErrors();
+        isDuplicate = false;
+        isEmpty = false;
+        inputTextErrorMessage.setVisible(false);
+        inputSymbolOfError.setVisible(false);
+        emptyTextErrorMessage.setVisible(false);
 
+        String inputNameTrimmed = nameInput.getText().trim().replace(" ", "");
+        String inputPriceTrimmed = priceInput.getText().trim().replace(" ", "");
+
+        for (Speciality speciality : Information.getSpecialities()) {
+            if (inputNameTrimmed.equalsIgnoreCase(speciality.getName().replace(" ", ""))) {
+                inputTextErrorMessage.setVisible(true);
+                inputSymbolOfError.setVisible(true);
+                isDuplicate = true;
+            }
+        }
+        if (inputNameTrimmed.isEmpty() || inputPriceTrimmed.isEmpty()) {
+            emptyTextErrorMessage.setVisible(true);
+            isEmpty = true;
+        }
+        if (inputNameTrimmed.isEmpty())
+            nameInput.setStyle("-fx-effect: dropshadow( one-pass-box, red, 15,0,0,0)");
+        if (inputPriceTrimmed.isEmpty())
+            priceInput.setStyle("-fx-effect: dropshadow( one-pass-box, red, 15,0,0,0)");
+
+        if (isEmpty || isDuplicate) {
+            return false;
+        }
+        return true;
+    }
+
+    private void resetErrors() {
+        System.out.println("reset errors called");
+
+        nameInput.setStyle("-fx-effect: none");
+        priceInput.setStyle("-fx-effect: none");
+    }
+    private int getPrice() {
+        try {
+            int price = Integer.parseInt(priceInput.getText());
+            return price;
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
 }

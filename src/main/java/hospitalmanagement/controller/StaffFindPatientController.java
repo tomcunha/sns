@@ -19,7 +19,7 @@ import java.sql.SQLException;
 
 public class StaffFindPatientController extends SceneController {
     @FXML
-    private Button buttonAddPatient, buttonEdit, buttonDelete, buttonNext,buttonMainMenu, buttonPower,buttonYesPopUp;
+    private Button buttonAddPatient, buttonEdit, buttonMainMenu, buttonPower,buttonYesPopUp, buttonDelete,buttonNext;
     @FXML
     private TextField ccTextField;
     @FXML

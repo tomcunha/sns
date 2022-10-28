@@ -6,6 +6,8 @@ import hospitalmanagement.model.medicalLists.Hospital;
 import hospitalmanagement.model.people.Doctor;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
+import javafx.scene.AmbientLight;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.layout.GridPane;
@@ -16,42 +18,27 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Optional;
 
-public class AdminEditDoctorProfileController extends SceneController {
+public class AdminEditDoctorController extends SceneController {
     private static String medicalLicense;
 
     @FXML
-    GridPane editDoctorScene;
-    @FXML
-    TextField nameInput;
+    GridPane editDoctorScene, popUp;
     @FXML
     ChoiceBox sexDropdown;
     @FXML
     DatePicker datePicker;
     @FXML
-    TextField medicalLicenseInput;
+    TextField nameInput, medicalLicenseInput, phoneNumberInput, emailInput, usernameInput, passwordInput;
     @FXML
-    TextField phoneNumberInput;
-    @FXML
-    ComboBox specialityDropdown;
-    @FXML
-    ComboBox hospitalDropdown;
-    @FXML
-    TextField emailInput;
+    ComboBox specialityDropdown,  hospitalDropdown;
     @FXML
     TextArea addressInput;
     @FXML
-    Button buttonEdit;
-    @FXML
-    Button buttonDelete;
+    Button buttonEdit, buttonDelete, buttonMainMenu, buttonPower;
 
     @FXML
-    Button buttonMainMenu, buttonPower;
+    AmbientLight lightScreen;
 
-    @FXML
-    TextField usernameInput;
-
-    @FXML
-    TextField passwordInput;
 
     @FXML
     public void setMainMenu() throws IOException {
@@ -154,6 +141,14 @@ public class AdminEditDoctorProfileController extends SceneController {
         return null;
     }
 
+    private void delete() {
+        popUp.setVisible(true);
+        Stage backStage = (Stage) editDoctorScene.getScene().getWindow();
+        BoxBlur blur = new BoxBlur(5, 5, 5);
+        editDoctorScene.setEffect(blur);
+    }
+
+    /*
     private void delete() throws IOException {
         Stage backStage = (Stage) editDoctorScene.getScene().getWindow();
         BoxBlur blur = new BoxBlur(5, 5, 5);
@@ -204,6 +199,9 @@ public class AdminEditDoctorProfileController extends SceneController {
             editDoctorScene.setEffect(null);
         }
     }
+
+    */
+
 
     public void initializeComboBox() {
         initializeComboBoxHospital(hospitalDropdown);

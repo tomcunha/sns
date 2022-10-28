@@ -10,19 +10,13 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
-public class AdminNewHospitalProfileController extends SceneController {
+public class AdminNewHospitalController extends SceneController {
 
     @FXML
     Button buttonSave, buttonMainMenu, buttonPower, buttonCancel;
 
     @FXML
-    TextField nameInput;
-
-    @FXML
-    TextField phoneNumberInput;
-
-    @FXML
-    TextField emailInput;
+    TextField nameInput, phoneNumberInput, emailInput;
 
     @FXML
     TextArea addressInput;

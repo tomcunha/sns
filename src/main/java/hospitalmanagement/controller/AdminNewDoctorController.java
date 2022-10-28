@@ -2,14 +2,7 @@ package hospitalmanagement.controller;
 
 import hospitalmanagement.Database;
 import hospitalmanagement.Information;
-import hospitalmanagement.StartApplication;
-import hospitalmanagement.model.medicalLists.Hospital;
-import hospitalmanagement.model.medicalLists.Speciality;
 import hospitalmanagement.model.people.Doctor;
-import hospitalmanagement.utility.SexUtil;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Background;
@@ -17,11 +10,9 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 
-public class AdminNewDoctorProfileController extends SceneController {
+public class AdminNewDoctorController extends SceneController {
 
     @FXML
     Button buttonSave, buttonMainMenu, buttonPower, buttonCancel;
@@ -163,7 +154,7 @@ public class AdminNewDoctorProfileController extends SceneController {
         return true;
     }
 
-    public void resetErrors() {
+    private void resetErrors() {
         nameInput.setStyle("-fx-effect: none");
         medicalLicenseInput.setStyle("-fx-effect: none");
         emailInput.setStyle("-fx-effect: none");

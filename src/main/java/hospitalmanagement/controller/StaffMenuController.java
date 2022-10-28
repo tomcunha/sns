@@ -5,12 +5,10 @@ import javafx.scene.control.Button;
 
 import java.io.IOException;
 
-public class StaffMenuController extends SceneController {
+public class StaffMenuController extends SceneController{
 
     @FXML
-    Button buttonPower;
-    @FXML
-    Button patientsManagementButton, newAppointmentButton;
+    Button buttonPower, patientsManagementButton, newAppointmentButton;
 
     @FXML
     public void setButtonPower() {

@@ -21,7 +21,6 @@ public class StartApplication extends Application {
         stage.setScene(scene);
         stage.setFullScreen(true);
         stage.show();
-
     }
 
     public static void main(String[] args) {

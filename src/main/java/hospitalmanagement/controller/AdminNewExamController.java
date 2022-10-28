@@ -17,16 +17,21 @@ public class AdminNewExamController extends SceneController {
     @FXML
     Text inputTextErrorMessage;
     @FXML
-    TextField nameInput;
+    TextField examNameInput, priceInput;
     @FXML
     Button buttonSave, buttonCancel, buttonMainMenu, buttonPower;
 
-    public void saveNewExam() throws SQLException, IOException {
+    public void saveNewExam() throws SQLException{
         if (validation()) {
-            if (!nameInput.getText().isEmpty()) {
-                Database.modifyTable("INSERT INTO hospitalManagement.Exams (name) VALUES ('" + nameInput.getText() + "')");
+            if (!examNameInput.getText().isEmpty()) {
+                Database.modifyTable("INSERT INTO Exams (name, price) VALUES ('" + examNameInput.getText() + "', "+ getPrice() +")");
+
                 Information.updateExams();
-                setScreen(buttonSave, "AdminMenuScene.fxml");
+                try {
+                    setScreen(buttonSave, "AdminMenuScene.fxml");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
 
             }else {
             }
@@ -39,16 +44,16 @@ public class AdminNewExamController extends SceneController {
 
         while (resultSet.next()) {
             String nameDB = resultSet.getString("name");
-            String inputName = nameInput.getText().trim();
+            String inputName = examNameInput.getText().trim();
 
             if (inputName.replace(" ","").equalsIgnoreCase(nameDB.replace(" ",""))) {
                 inputTextErrorMessage.setVisible(true);
                 inputTextErrorMessage.setText("* That exam already exists!");
                 return false;
             }
-            if(nameInput.getText().isEmpty()){
+            if(examNameInput.getText().isEmpty() || priceInput.getText().isEmpty()){
                 inputTextErrorMessage.setVisible(true);
-                inputTextErrorMessage.setText("* fPlease fill in the field!");
+                inputTextErrorMessage.setText("* Please fill in the field!");
             }
         }
         inputTextErrorMessage.setVisible(false);
@@ -56,7 +61,7 @@ public class AdminNewExamController extends SceneController {
     }
 
     public void setCancelButton() throws IOException {
-        setScreen(buttonCancel, "AdminFindExams.fxml");
+        setScreen(buttonCancel, "AdminFindExamScene.fxml");
     }
 
     @FXML
@@ -67,5 +72,17 @@ public class AdminNewExamController extends SceneController {
     @FXML
     public void setLogout() throws IOException {
         setScreen(buttonPower, "LoginScene.fxml");
+    }
+
+    @FXML
+    private int getPrice(){
+        try{
+            int price = Integer.parseInt(priceInput.getText());
+            return price;
+        }
+        catch (NumberFormatException ex){
+            ex.printStackTrace();
+        }
+        return 0;
     }
 }

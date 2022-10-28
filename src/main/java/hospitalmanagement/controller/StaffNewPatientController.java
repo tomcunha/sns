@@ -18,54 +18,36 @@ public class StaffNewPatientController extends SceneController {
     private static String ccNumber = "";
 
     @FXML
-    Button buttonSave;
+    Button buttonSave, buttonMainMenu, buttonPower, buttonCancel;
     @FXML
-    Button buttonCancel;
+    TextField nameInput, ccInput;
+
     @FXML
-    TextField nameInput;
-    @FXML
-    TextField ccInput;
-    @FXML
-    Text warningMessage1;
-    @FXML
-    Text warningMessage2;
+    Text warningMessage1, warningMessage2, warningInsurance;
+
     @FXML
     TextArea addressInput;
     @FXML
-    TextField emailInput;
+    TextField emailInput, phoneInput;
+
     @FXML
-    TextField phoneInput;
-    @FXML
-    DatePicker dateInput;
-    @FXML
-    ChoiceBox sexDropdown;
-    @FXML
-    ComboBox hospitalDropdown;
-    @FXML
-    ToggleGroup insuranceOption;
-    @FXML
-    Text warningInsurance;
-    @FXML
-    RadioButton yesInsurance;
-    @FXML
-    RadioButton noInsurance;
-    @FXML
-    ComboBox insuranceDropdown;
+    RadioButton yesInsurance, noInsurance;
+
     @FXML
     Label insuranceNameLabel;
 
     @FXML
-    private Button buttonMainMenu, buttonPower;
+    ComboBox hospitalDropdown,insuranceDropdown;
 
     @FXML
-    public void setMainMenu() throws IOException {
-        setScreen(buttonMainMenu, "StaffMenuScene.fxml");
-    }
+    ChoiceBox sexDropdown;
 
     @FXML
-    public void setLogout() throws IOException {
-        setScreen(buttonPower, "LoginScene.fxml");
-    }
+    DatePicker dateInput;
+
+    @FXML
+    ToggleGroup insuranceOption;
+
 
     public void savePatient(){
         if(ccInput.isDisable()){
@@ -81,7 +63,24 @@ public class StaffNewPatientController extends SceneController {
 
     public void cancelButton(){
         try {
-            setScreen(buttonCancel,"StaffMenuScene.fxml");
+            setScreen(buttonCancel,"StaffFindPatientScene.fxml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    @FXML
+    public void setMainMenu() {
+        try {
+            setScreen(buttonMainMenu, "StaffMenuScene.fxml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    public void setLogout() {
+        try {
+            setScreen(buttonPower, "LoginScene.fxml");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

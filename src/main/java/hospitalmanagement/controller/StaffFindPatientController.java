@@ -19,7 +19,7 @@ import java.sql.SQLException;
 
 public class StaffFindPatientController extends SceneController {
     @FXML
-    private Button buttonAddPatient, buttonEdit, buttonMainMenu, buttonPower,buttonYesPopUp;
+    private Button buttonAddPatient, buttonEdit, buttonDelete, buttonNext,buttonMainMenu, buttonPower,buttonYesPopUp;
     @FXML
     private TextField ccTextField;
     @FXML
@@ -33,7 +33,7 @@ public class StaffFindPatientController extends SceneController {
     PasswordField passwordInputpopUp;
 
     @FXML
-    private Text namePatientText, birthDatePatientText, identityNumberPatientText, nameInsuranceText, popUpText;
+    private Text namePatientText, birthDatePatientText, identityNumberPatientText, nameInsuranceText, popUpText, textNext;
 
     private static String patientCC;
 

@@ -21,21 +21,17 @@ public class AdminNewExamController extends SceneController {
     @FXML
     Button buttonSave, buttonCancel, buttonMainMenu, buttonPower;
 
-    public void saveNewExam() throws SQLException, IOException {
+    public void saveNewExam() throws SQLException{
         if (validation()) {
             if (!examNameInput.getText().isEmpty()) {
-
-                try{
-                    int price = Integer.parseInt(priceInput.getText());
-                    Database.modifyTable("INSERT INTO Exams (name, price) VALUES ('" + examNameInput.getText() + "', "+ price +")");
-                }
-                catch (NumberFormatException ex){
-                    ex.printStackTrace();
-                }
-
+                Database.modifyTable("INSERT INTO Exams (name, price) VALUES ('" + examNameInput.getText() + "', "+ getPrice() +")");
 
                 Information.updateExams();
-                setScreen(buttonSave, "AdminMenuScene.fxml");
+                try {
+                    setScreen(buttonSave, "AdminMenuScene.fxml");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
 
             }else {
             }
@@ -76,5 +72,17 @@ public class AdminNewExamController extends SceneController {
     @FXML
     public void setLogout() throws IOException {
         setScreen(buttonPower, "LoginScene.fxml");
+    }
+
+    @FXML
+    private int getPrice(){
+        try{
+            int price = Integer.parseInt(priceInput.getText());
+            return price;
+        }
+        catch (NumberFormatException ex){
+            ex.printStackTrace();
+        }
+        return 0;
     }
 }

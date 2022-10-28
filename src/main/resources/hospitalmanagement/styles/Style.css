@@ -103,7 +103,7 @@
 /****************************************** SAVE, EDIT, DELETE BUTTONS  ************************************************/
 
 /*Button save*/
-#buttonSave{
+#buttonSave, #buttonYesPopUp{
     -fx-background-color: #79DD99;
 }
 
@@ -118,7 +118,7 @@
 }
 
 #buttonNewApp, #buttonNewExam{
-    -fx-background-color: #8ECACD;
+    -fx-background-color: #A2D2D5;
 }
 
 

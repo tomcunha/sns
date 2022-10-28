@@ -18,21 +18,17 @@ public class StaffNewPatientController extends SceneController {
     private static String ccNumber = "";
 
     @FXML
-    Button buttonSave, buttonCancel, buttonMainMenu, buttonPower;
+    Button buttonSave, buttonMainMenu, buttonPower, buttonCancel;
     @FXML
-    TextField nameInput, ccInput, emailInput, phoneInput;
+    TextField nameInput, ccInput;
+
     @FXML
     Text warningMessage1, warningMessage2, warningInsurance;
+
     @FXML
     TextArea addressInput;
     @FXML
-    DatePicker dateInput;
-    @FXML
-    ChoiceBox sexDropdown;
-    @FXML
-    ComboBox hospitalDropdown, insuranceDropdown;
-    @FXML
-    ToggleGroup insuranceOption;
+    TextField emailInput, phoneInput;
 
     @FXML
     RadioButton yesInsurance, noInsurance;
@@ -41,14 +37,17 @@ public class StaffNewPatientController extends SceneController {
     Label insuranceNameLabel;
 
     @FXML
-    public void setMainMenu() throws IOException {
-        setScreen(buttonMainMenu, "StaffMenuScene.fxml");
-    }
+    ComboBox hospitalDropdown,insuranceDropdown;
 
     @FXML
-    public void setLogout() throws IOException {
-        setScreen(buttonPower, "LoginScene.fxml");
-    }
+    ChoiceBox sexDropdown;
+
+    @FXML
+    DatePicker dateInput;
+
+    @FXML
+    ToggleGroup insuranceOption;
+
 
     public void savePatient(){
         if(ccInput.isDisable()){
@@ -64,7 +63,24 @@ public class StaffNewPatientController extends SceneController {
 
     public void cancelButton(){
         try {
-            setScreen(buttonCancel,"StaffMenuScene.fxml");
+            setScreen(buttonCancel,"StaffFindPatientScene.fxml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    @FXML
+    public void setMainMenu() {
+        try {
+            setScreen(buttonMainMenu, "StaffMenuScene.fxml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    public void setLogout() {
+        try {
+            setScreen(buttonPower, "LoginScene.fxml");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

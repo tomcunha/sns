@@ -41,9 +41,9 @@
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2">
                     <children>
                         <Button fx:id="buttonMainMenu" mnemonicParsing="false" onAction="#setMainMenu" prefHeight="128.0" prefWidth="128.0">
-                     <HBox.margin>
-                        <Insets right="15.0" />
-                     </HBox.margin></Button>
+                            <HBox.margin>
+                                <Insets right="15.0" />
+                            </HBox.margin></Button>
                         <Button fx:id="buttonPower" mnemonicParsing="false" onAction="#setLogout" prefHeight="128.0" prefWidth="128.0" />
                     </children>
                 </HBox>
@@ -71,7 +71,7 @@
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                     <children>
-                        <Label text="Name: " />
+                        <Label text="Speciality Name:" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
@@ -84,12 +84,13 @@
                         <Button fx:id="buttonSearch" mnemonicParsing="false" onAction="#showAllSpecialities" prefHeight="50.0" prefWidth="177.0" text="Search">
                             <HBox.margin>
                                 <Insets />
-                            </HBox.margin></Button>
+                            </HBox.margin>
+                        </Button>
                     </children>
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
                     <children>
-                        <Button fx:id="buttonAddSpeciality" mnemonicParsing="false" onAction="#createNewSpeciality" prefHeight="50.0" prefWidth="400.0" text="Add new speciality" visible="true" />
+                        <Button fx:id="buttonAddSpeciality" mnemonicParsing="false" onAction="#createNewSpeciality" prefHeight="50.0" prefWidth="350.0" text="Add new Speciality" />
                     </children>
                     <GridPane.margin>
                         <Insets />
@@ -102,14 +103,14 @@
                     <children>
                         <TableView fx:id="tableSpecialities" onMouseClicked="#selectSpecialities" prefHeight="200.0" prefWidth="200.0" visible="false">
                             <placeholder>
-                                <Label text="No specialities found." />
+                                <Label text="No Speciality found." />
                             </placeholder>
                             <columns>
-                                <TableColumn fx:id="specialityColumn" prefWidth="1265.0" text="Name" />
-                        <TableColumn fx:id="priceColumn" prefWidth="269.0" text="Price" />
+                                <TableColumn fx:id="specialityColumn" prefWidth="1217.0" text="Speciality Name" />
+                                <TableColumn fx:id="priceColumn" prefWidth="317.0" text="Price" />
                             </columns>
                             <columnResizePolicy>
-                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                <TableView fx:id="" fx:constant="CONSTRAINED_RESIZE_POLICY" />
                             </columnResizePolicy>
                         </TableView>
                     </children>

@@ -3,10 +3,9 @@ package hospitalmanagement.model.medicalLists;
 public class Speciality {
 
     private int id;
-    private String  name;
+    private String name;
 
-private int price;
-
+    private int price;
 
     public Speciality(int id, String name, int price) {
         this.id = id;
@@ -24,6 +23,10 @@ private int price;
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getPrice() {

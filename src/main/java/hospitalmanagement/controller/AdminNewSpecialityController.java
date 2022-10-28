@@ -2,8 +2,6 @@ package hospitalmanagement.controller;
 
 import hospitalmanagement.Database;
 import hospitalmanagement.Information;
-import hospitalmanagement.model.medicalLists.Speciality;
-import hospitalmanagement.model.people.Doctor;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -16,29 +14,59 @@ import java.sql.SQLException;
 public class AdminNewSpecialityController extends SceneController {
 
     @FXML
-    Button buttonSave, buttonMainMenu, buttonPower, buttonCancel;
+    Text inputTextErrorMessage;
     @FXML
-    private TextField specNameInput, priceInput;
+    TextField nameInput, priceInput;
     @FXML
-    private Text inputTextErrorMessage;
+    Button buttonSave, buttonCancel, buttonMainMenu, buttonPower;
+
+    public void saveNewSpeciality() throws SQLException, IOException {
+        if (validation()) {
+            if (!nameInput.getText().isEmpty()) {
+
+                try{
+                    int price = Integer.parseInt(priceInput.getText());
+                    Database.modifyTable("INSERT INTO Specialities (name, price) VALUES ('" + nameInput.getText() + "', "+ price +")");
+                }
+                catch (NumberFormatException ex){
+                    ex.printStackTrace();
+                }
 
 
+                Information.updateExams();
+                setScreen(buttonSave, "AdminMenuScene.fxml");
 
-    @FXML
-    private void createSpeciality() throws IOException{
-        if(validate()){
-            try{
-                int price = Integer.parseInt(priceInput.getText());
-                Database.modifyTable("INSERT INTO Specialities (name, price) VALUES ('" + specNameInput.getText() + "', "+ price +")");
+            }else {
             }
-            catch (NumberFormatException ex){
-                ex.printStackTrace();
-            }
-            setScreen(buttonSave, "AdminFindSpecialityScene.fxml");
-            Information.updateSpecialities();
-        } else {
+
         }
-}
+    }
+
+    private boolean validation() throws SQLException {
+        ResultSet resultSet = Database.queryTable("SELECT name FROM hospitalManagement.Specialities;");
+
+        while (resultSet.next()) {
+            String nameDB = resultSet.getString("name");
+            String inputName = nameInput.getText().trim();
+
+            if (inputName.replace(" ","").equalsIgnoreCase(nameDB.replace(" ",""))) {
+                inputTextErrorMessage.setVisible(true);
+                inputTextErrorMessage.setText("* That speciality already exists!");
+                return false;
+            }
+            if(nameInput.getText().isEmpty() || priceInput.getText().isEmpty()){
+                inputTextErrorMessage.setVisible(true);
+                inputTextErrorMessage.setText("* Please fill in the field!");
+            }
+        }
+        inputTextErrorMessage.setVisible(false);
+        return true;
+    }
+
+    public void setCancelButton() throws IOException {
+        setScreen(buttonCancel, "AdminFindSpecialityScene.fxml");
+    }
+
     @FXML
     public void setMainMenu() throws IOException {
         setScreen(buttonMainMenu, "AdminMenuScene.fxml");
@@ -47,28 +75,5 @@ public class AdminNewSpecialityController extends SceneController {
     @FXML
     public void setLogout() throws IOException {
         setScreen(buttonPower, "LoginScene.fxml");
-    }
-    @FXML
-    public void cancel() throws IOException {
-        setScreen(buttonCancel, "AdminFindSpecialityScene.fxml");
-    }
-
-    private boolean validate(){
-        for (Speciality speciality : Information.getSpecialities()) {
-            String inputNameTrimmed = specNameInput.getText().trim();
-
-            if (inputNameTrimmed.replace(" ","").equalsIgnoreCase(speciality.getName().replace(" ",""))) {
-                inputTextErrorMessage.setVisible(true);
-                inputTextErrorMessage.setText("* That speciality already exists!");
-                return false;
-            }
-            if (inputNameTrimmed.isEmpty() || priceInput.getText().isEmpty()){
-                inputTextErrorMessage.setVisible(true);
-                inputTextErrorMessage.setText("* Please fill in the fields!");
-                return false;
-            }
-        }
-        inputTextErrorMessage.setVisible(false);
-        return true;
     }
 }

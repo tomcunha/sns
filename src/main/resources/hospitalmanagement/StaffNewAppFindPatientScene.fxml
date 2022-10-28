@@ -12,7 +12,7 @@
 
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@styles/Style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hospitalmanagement.controller.StaffNewAppFindPatientController">
     <columnConstraints>
-        <ColumnConstraints fx:id="gridStaff" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     </columnConstraints>
     <rowConstraints>
         <RowConstraints maxHeight="132.0" minHeight="10.0" percentHeight="15" prefHeight="205.0" vgrow="SOMETIMES" />
@@ -40,11 +40,11 @@
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2">
                     <children>
-                        <Button fx:id="buttonMainMenu" mnemonicParsing="false" onAction="#setMainMenu" prefHeight="128.0" prefWidth="128.0">
+                        <Button fx:id="buttonMainMenu" mnemonicParsing="false" prefHeight="128.0" prefWidth="128.0">
                      <HBox.margin>
                         <Insets right="15.0" />
                      </HBox.margin></Button>
-                        <Button fx:id="buttonPower" mnemonicParsing="false" onAction="#setLogout" prefHeight="128.0" prefWidth="128.0" />
+                        <Button fx:id="buttonPower" mnemonicParsing="false"  prefHeight="128.0" prefWidth="128.0" />
                     </children>
                <padding>
                   <Insets right="15.0" />
@@ -85,7 +85,7 @@
                 </HBox>
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
                     <children>
-                        <Button fx:id="buttonSearch" mnemonicParsing="false" onAction="#setButtonSearch" prefHeight="50.0" prefWidth="177.0" text="Search">
+                        <Button fx:id="buttonSearch" mnemonicParsing="false" prefHeight="50.0" prefWidth="177.0" text="Search">
                             <HBox.margin>
                                 <Insets />
                             </HBox.margin></Button>
@@ -136,7 +136,7 @@
                   </HBox>
                   <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <children>
-                        <Button fx:id="buttonEdit" mnemonicParsing="false" onAction="#editPatient" prefHeight="40.0" prefWidth="180.0" text="Edit">
+                        <Button fx:id="buttonEdit" mnemonicParsing="false" prefHeight="40.0" prefWidth="180.0" text="Edit">
                            <HBox.margin>
                               <Insets right="20.0" />
                            </HBox.margin>

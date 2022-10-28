@@ -15,7 +15,7 @@ public class StartApplication extends Application {
         Database.connect();
         Information.updateAll();
 
-        FXMLLoader fxmlLoader = new FXMLLoader(StartApplication.class.getResource("AdminMenuScene.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(StartApplication.class.getResource("AdminFindDoctorScene.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
         stage.setTitle("HealthCare System");
         stage.setScene(scene);

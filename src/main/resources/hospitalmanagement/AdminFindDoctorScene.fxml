@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@styles/AdminFindDoctorStyle.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hospitalmanagement.controller.AdminFindDoctorController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@styles/Style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hospitalmanagement.controller.AdminFindDoctorController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     </columnConstraints>
@@ -22,7 +22,7 @@
         <RowConstraints maxHeight="919.0" minHeight="0.0" prefHeight="875.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <GridPane fx:id="gridCabecalho">
+        <GridPane fx:id="gridAdmin">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="714.0" minWidth="10.0" percentWidth="30" prefWidth="350" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="1109.0" minWidth="10.0" prefWidth="1109.0" />
@@ -34,14 +34,17 @@
             <children>
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                     <children>
-                        <Button fx:id="buttonUser" mnemonicParsing="false" prefHeight="128.0" prefWidth="128.0"  />
+                        <Button fx:id="buttonAdminProfile" mnemonicParsing="false" prefHeight="128.0" prefWidth="128.0" />
                         <Text fx:id="textAdmin" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2">
                     <children>
-                        <Button fx:id="buttonMainMenu" mnemonicParsing="false" prefHeight="128.0" prefWidth="128.0" onAction="#setMainMenu" />
-                        <Button fx:id="buttonPower" mnemonicParsing="false" prefHeight="128.0" prefWidth="128.0" onAction="#setLogout"/>
+                        <Button fx:id="buttonMainMenu" mnemonicParsing="false" onAction="#setMainMenu" prefHeight="128.0" prefWidth="128.0">
+                     <HBox.margin>
+                        <Insets right="15.0" />
+                     </HBox.margin></Button>
+                        <Button fx:id="buttonPower" mnemonicParsing="false" onAction="#setLogout" prefHeight="128.0" prefWidth="128.0" />
                     </children>
                 </HBox>
             </children>
@@ -78,7 +81,7 @@
                 </HBox>
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
                     <children>
-                        <Button fx:id="buttonSearch" mnemonicParsing="false" onAction="#setButtonSearch" prefHeight="50.0" prefWidth="177.0" text="Search" >
+                        <Button fx:id="buttonSearch" mnemonicParsing="false" onAction="#showAllDoctors" prefHeight="50.0" prefWidth="177.0" text="Search" >
                             <HBox.margin>
                                 <Insets />
                             </HBox.margin></Button>
@@ -86,7 +89,7 @@
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
                     <children>
-                        <Button fx:id="buttonAddDoctor" mnemonicParsing="false" prefHeight="50.0" prefWidth="350.0" text="Add new Doctor" visible="true" onAction="#setNewDoctor" />
+                        <Button fx:id="buttonAddDoctor" mnemonicParsing="false" onAction="#createNewDoctor" prefHeight="50.0" prefWidth="350.0" text="Add new Doctor" visible="true" />
                     </children>
                     <GridPane.margin>
                         <Insets />
@@ -97,9 +100,9 @@
                 </HBox>
                 <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="2">
                     <children>
-                        <TableView fx:id="tableDoctors" prefHeight="200.0" prefWidth="200.0" visible="false" onMouseClicked="#setMouseClicked">
+                        <TableView fx:id="tableDoctors" onMouseClicked="#selectDoctors" prefHeight="200.0" prefWidth="200.0" visible="false">
                             <placeholder>
-                                <Label text="No doctors found."/>
+                                <Label text="No doctors found." />
                             </placeholder>
                             <columns>
                                 <TableColumn fx:id="doctorLicense" prefWidth="90.0" text="Medical License" />

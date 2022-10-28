@@ -30,9 +30,10 @@ public class AdminNewSpecialityController extends SceneController {
     private Text inputTextErrorMessage, emptyTextErrorMessage, inputSymbolOfError;
     private boolean isEmpty, isDuplicate;
 
-
     @FXML
     private void createSpeciality() throws IOException {
+        System.out.println("button clicked called");
+
         if (validate()) {
             Database.modifyTable("INSERT INTO Specialities (name, price) VALUES ('" + specNameInput.getText() + "','" + specPriceInput.getText() + "' )");
             setScreen(buttonSave, "AdminFindSpecialitiesScene.fxml");
@@ -49,19 +50,21 @@ public class AdminNewSpecialityController extends SceneController {
     public void setLogout() throws IOException {
         setScreen(buttonPower, "LoginScene.fxml");
     }
-
     @FXML
     public void cancel() throws IOException {
         setScreen(buttonCancel, "AdminFindSpecialitiesScene.fxml");
     }
 
     private boolean validate() {
+        System.out.println("validate called");
         resetErrors();
         isDuplicate = false;
         isEmpty = false;
         inputTextErrorMessage.setVisible(false);
         inputSymbolOfError.setVisible(false);
         emptyTextErrorMessage.setVisible(false);
+        System.out.println("error messages visible FALSE");
+
         String inputNameTrimmed = specNameInput.getText().trim();
 
         for (Speciality speciality : Information.getSpecialities()) {
@@ -88,6 +91,8 @@ public class AdminNewSpecialityController extends SceneController {
     }
 
     private void resetErrors() {
+        System.out.println("reset errors called");
+
         specNameInput.setStyle("-fx-effect: none");
         specPriceInput.setStyle("-fx-effect: none");
     }

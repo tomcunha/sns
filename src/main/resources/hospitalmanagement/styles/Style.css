@@ -1,0 +1,132 @@
+/***************************************************** GENERAL ****************************************************************/
+/* All texts */
+.label , .text-field, .text-area, .combo-box, .choice-box, .date-picker, .table-view, .radio-button{
+    -fx-font-family: "Inter";
+    -fx-font-size: 30px;
+    -fx-text-fill: #0E1D33;
+}
+
+/*Default buttons*/
+.button{
+    -fx-font-family: "Inter";
+    -fx-font-size: 35 px;
+    -fx-text-fill: black;
+    -fx-background-color: linear-gradient(#d0d0d0, #aeb5b6);
+    -fx-background-radius: 30px;
+}
+.button:hover{
+    -fx-effect: dropshadow( one-pass-box , white , 8 , 0 , 2 , 0 );
+}
+
+/*Radio Button*/
+.radio-button .radio {
+    -fx-border-width: 1px;
+    -fx-border-color: #000;
+    -fx-background-color: white;
+    -fx-background-image: null;
+    -fx-border-radius: 50px;
+    -fx-padding: 4px;
+}
+.radio-button .radio:selected {
+    -fx-background-color: white;
+    -fx-background-image: null;
+}
+.radio-button -radio:armed {
+    -fx-background-color: white;
+    -fx-background-image: null;
+}
+.radio-button -radio:determinate {
+    -fx-background-color: white;
+    -fx-background-image: null;
+}
+.radio-button -radio:indeterminate {
+    -fx-background-color: white;
+    -fx-background-image: null;
+}
+.radio-button .dot {
+    -fx-background-radius: 50px;
+    -fx-padding: 8px;
+}
+
+
+/******************************************* MENU BACKGROUNDS, BUTTONS, TEXTS **********************************************/
+/*Login Scene*/
+#gridLogin {-fx-background-image: url(images/backgroundLogin.png);}
+
+#usernamefield, #passwordfield{
+    -fx-font-size: 30 px;
+}
+
+/*Menu Scene*/
+#gridAdmin {-fx-background-image: url(images/Admin/backgroundAdmin.png);}
+#gridStaff {-fx-background-image: url(images/Staff/backgroundStaff.png);}
+#gridDoctor {-fx-background-image: url(images/Doctor/backgroundDoctor.png);}
+
+/*Profile button*/
+#buttonAdminProfile, #buttonStaffProfile, #buttonDoctorProfile{
+    -fx-background-image: url(images/user.png);
+    -fx-background-color: Transparent;
+}
+#buttonAdminProfile:hover, #buttonStaffProfile:hover, #buttonDoctorProfile:hover{
+    -fx-effect: dropshadow( one-pass-box , white , 8 , 0 , 0 , 0 );
+}
+/*Profile text*/
+#textAdmin, #textStaff, #textDoctor{
+    -fx-font-family: "Inter";
+    -fx-font-size: 30px;
+    -fx-text-fill: #0E1D33;
+}
+
+/*Main menu button*/
+#buttonMainMenu{
+    -fx-background-image: url(images/home.png);
+    -fx-background-color: Transparent;
+}
+#buttonMainMenu:hover{
+    -fx-effect: dropshadow( one-pass-box , white , 8 , 0 , 0 , 0 );
+}
+
+/*Logout Button*/
+#buttonPower{
+    -fx-background-image: url(images/power.png);
+    -fx-background-color: Transparent;
+}
+
+/*Title*/
+#title{
+    -fx-font-size: 80px;
+    -fx-font-weight: BOLD;
+    -fx-effect: dropshadow( one-pass-box , white , 8 , 0.0 , 2 , 0 );
+}
+
+/****************************************** SAVE, EDIT, DELETE BUTTONS  ************************************************/
+
+/*Button save*/
+#buttonSave{
+    -fx-background-color: #79DD99;
+}
+
+/*Button edit*/
+#buttonEdit{
+    -fx-background-color: #6D6D6D;
+}
+
+/*Button delete*/
+#buttonDelete{
+    -fx-background-color: #CF5F5F;
+}
+
+
+/************************************************ WARNING TEXTS  ************************************************/
+/*Login warning*/
+#textWarning{
+    -fx-font-size: 30px;
+    -fx-fill: red;
+}
+
+
+#warningMessage1, #warningMessage2, #warningInsurance, #inputTextErrorMessage, #emptyTextErrorMessage, #inputSymbolOfErrorMl, #inputSymbolOfErrorUser{
+    -fx-font-family: "Inter";
+    -fx-font-size: 20px;
+    -fx-text-fill: RED;
+}

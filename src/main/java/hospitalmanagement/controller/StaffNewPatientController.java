@@ -42,7 +42,6 @@ public class StaffNewPatientController extends SceneController {
     @FXML
     Label insuranceNameLabel;
 
-
     public void savePatient(){
         if(ccInput.isDisable()){
             editPatient();

@@ -82,16 +82,6 @@
     -fx-background-color: #79DD99;
 }
 
-#inputSymbolOfErrorMl{
-    -fx-font-size: 30px;
-    -fx-font-weight: BOLD;
-}
-
-#inputSymbolOfErrorUser{
-    -fx-font-size: 30px;
-    -fx-font-weight: BOLD;
-}
-
 /*Text*/
 .text {
     -fx-font-family: "Inter";

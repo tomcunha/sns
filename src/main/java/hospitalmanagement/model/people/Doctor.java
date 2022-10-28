@@ -1,5 +1,6 @@
 package hospitalmanagement.model.people;
 
+import hospitalmanagement.model.medicalLists.Speciality;
 import hospitalmanagement.utility.SexUtil;
 import hospitalmanagement.utility.SpecialitiesUtil;
 import hospitalmanagement.model.medicalLists.Hospital;
@@ -10,12 +11,12 @@ public class Doctor extends Employee {
 
     private String medicalLicense;
 
-    private SpecialitiesUtil specialty;
+    private Speciality specialty;
 
     private Hospital workingHospital;
 
 
-    public Doctor(String name, LocalDate birthDate, SexUtil sexUtil, String email, String phoneNumber, String address, int person_id, String username, String password, int type, int employee_id, String medicalLicense, SpecialitiesUtil specialty, Hospital workingHospital) {
+    public Doctor(String name, LocalDate birthDate, SexUtil sexUtil, String email, String phoneNumber, String address, int person_id, String username, String password, int type, int employee_id, String medicalLicense, Speciality specialty, Hospital workingHospital) {
         super(name, birthDate, sexUtil, email, phoneNumber, address, person_id, username, password, type, employee_id);
         this.medicalLicense = medicalLicense;
         this.specialty = specialty;
@@ -30,11 +31,11 @@ public class Doctor extends Employee {
         this.medicalLicense = medicalLicense;
     }
 
-    public SpecialitiesUtil getSpecialty() {
+    public Speciality getSpecialty() {
         return specialty;
     }
 
-    public void setSpecialty(SpecialitiesUtil specialty) {
+    public void setSpecialty(Speciality specialty) {
         this.specialty = specialty;
     }
 

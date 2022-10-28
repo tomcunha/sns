@@ -45,10 +45,23 @@ public class AdminEditDoctorProfileController extends SceneController{
     Button buttonDelete;
 
     @FXML
+    Button buttonMainMenu, buttonPower;
+
+    @FXML
     TextField usernameInput;
 
     @FXML
     TextField passwordInput;
+
+    @FXML
+    public void setMainMenu() throws IOException {
+        setScreen(buttonMainMenu, "AdminMenuScene.fxml");
+    }
+
+    @FXML
+    public void setLogout() throws IOException {
+        setScreen(buttonPower, "LoginScene.fxml");
+    }
 
     public void editPersonAttributes() {
         if (buttonEdit.getText().equals("Edit")) {
@@ -86,10 +99,7 @@ public class AdminEditDoctorProfileController extends SceneController{
     public void enableAll() {
         nameInput.setDisable(false);
         sexDropdown.setDisable(false);
-        //datePicker.setDisable(false);
-        //medicalLicenseInput.setDisable(false);
         phoneNumberInput.setDisable(false);
-        //specialityDropdown.setDisable(false);
         hospitalDropdown.setDisable(false);
         emailInput.setDisable(false);
         addressInput.setDisable(false);
@@ -98,10 +108,7 @@ public class AdminEditDoctorProfileController extends SceneController{
     public void disableAll() {
         nameInput.setDisable(true);
         sexDropdown.setDisable(true);
-        //datePicker.setDisable(true);
-        //medicalLicenseInput.setDisable(true);
         phoneNumberInput.setDisable(true);
-        //specialityDropdown.setDisable(true);
         hospitalDropdown.setDisable(true);
         emailInput.setDisable(true);
         addressInput.setDisable(true);

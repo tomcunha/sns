@@ -195,8 +195,8 @@ public class Information {
                     }
                 }
 
-                SpecialitiesUtil selectedSpeciality = null;
-                for (SpecialitiesUtil speciality : SpecialitiesUtil.values()) {
+                Speciality selectedSpeciality = null;
+                for (Speciality speciality : getSpecialities()) {
                     if (speciality_id == speciality.getId()) {
                         selectedSpeciality = speciality;
                         break;

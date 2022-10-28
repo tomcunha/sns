@@ -13,11 +13,7 @@ import java.io.IOException;
 
 public class StaffFindPatientController extends SceneController {
     @FXML
-    private Button buttonAddPatient, buttonEdit, buttonDelete;
-
-    @FXML
-    private Button buttonMainMenu, buttonPower;
-
+    private Button buttonAddPatient, buttonEdit, buttonDelete,buttonMainMenu, buttonPower;
 
     @FXML
     private TextField ccTextField;

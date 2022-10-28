@@ -8,9 +8,7 @@ import java.io.IOException;
 public class StaffMenuController extends SceneController{
 
     @FXML
-    Button buttonPower;
-    @FXML
-    Button patientsManagementButton;
+    Button buttonPower, patientsManagementButton;
 
     @FXML
     public void setButtonPower() throws IOException {

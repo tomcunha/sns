@@ -1,7 +1,6 @@
 package hospitalmanagement.controller;
 
 import hospitalmanagement.Information;
-import hospitalmanagement.model.medicalLists.Hospital;
 import hospitalmanagement.model.people.Doctor;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
@@ -15,15 +14,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 
 import java.io.IOException;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import static hospitalmanagement.controller.AdminEditDoctorProfileController.setMedicalLicense;
 
 public class AdminFindDoctorController extends SceneController {
 
     @FXML
-    private Button buttonMainMenu, buttonPower;
+    private Button buttonMainMenu, buttonPower, buttonAddDoctor;
 
     ObservableList<ObservableList> listDoctors = FXCollections.observableArrayList();
 
@@ -35,9 +31,6 @@ public class AdminFindDoctorController extends SceneController {
 
     @FXML
     private TextField nameTextField;
-
-    @FXML
-    private Button buttonAddDoctor;
 
     @FXML
     public void setMainMenu() {
@@ -66,15 +59,15 @@ public class AdminFindDoctorController extends SceneController {
                 row = row.replaceAll("\\D+", "");
 
                 try {
-                    setScreen(buttonPower, "AdminEditDoctorProfileScene.fxml");
+                    setScreen(buttonPower, "AdminEditDoctorScene.fxml");
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
 
-                AdminEditDoctorProfileController adminEditDoctorProfileController = getFXML().getController();
-                adminEditDoctorProfileController.setMedicalLicense(row);
-                adminEditDoctorProfileController.setInputs();
-                adminEditDoctorProfileController.initializeComboBox();
+                AdminEditDoctorController adminEditDoctorController = getFXML().getController();
+                adminEditDoctorController.setMedicalLicense(row);
+                adminEditDoctorController.setInputs();
+                adminEditDoctorController.initializeComboBox();
             }
         }
     }
@@ -178,7 +171,7 @@ public class AdminFindDoctorController extends SceneController {
     @FXML
     public void createNewDoctor() {
         try {
-            setScreen(buttonAddDoctor, "AdminNewDoctorProfileScene.fxml");
+            setScreen(buttonAddDoctor, "AdminNewDoctorScene.fxml");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

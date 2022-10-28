@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@styles/Style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hospitalmanagement.controller.AdminFindExamsController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@styles/Style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hospitalmanagement.controller.AdminFindSpecialityController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     </columnConstraints>
@@ -66,12 +66,12 @@
             <children>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2">
                     <children>
-                        <Label fx:id="title" text="Find Exams" />
+                        <Label fx:id="title" text="Find Specialities" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                     <children>
-                        <Label text="Exam Name:" />
+                        <Label text="Name: " />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
@@ -81,16 +81,15 @@
                 </HBox>
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
                     <children>
-                        <Button fx:id="buttonSearch" mnemonicParsing="false" onAction="#setButtonSearch" prefHeight="50.0" prefWidth="177.0" text="Search">
+                        <Button fx:id="buttonSearch" mnemonicParsing="false" onAction="#showAllSpecialities" prefHeight="50.0" prefWidth="177.0" text="Search">
                             <HBox.margin>
                                 <Insets />
-                            </HBox.margin>
-                        </Button>
+                            </HBox.margin></Button>
                     </children>
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
                     <children>
-                        <Button fx:id="buttonAddExam" mnemonicParsing="false" onAction="#setNewExam" prefHeight="50.0" prefWidth="350.0" text="Add new Exam" />
+                        <Button fx:id="buttonAddSpeciality" mnemonicParsing="false" onAction="#createNewSpeciality" prefHeight="50.0" prefWidth="400.0" text="Add new speciality" visible="true" />
                     </children>
                     <GridPane.margin>
                         <Insets />
@@ -101,12 +100,13 @@
                 </HBox>
                 <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="2">
                     <children>
-                        <TableView fx:id="tableExams" onMouseClicked="#setMouseClicked" prefHeight="200.0" prefWidth="200.0" visible="false">
+                        <TableView fx:id="tableSpecialities" onMouseClicked="#selectSpecialities" prefHeight="200.0" prefWidth="200.0" visible="false">
                             <placeholder>
-                                <Label text="No Exams found." />
+                                <Label text="No specialities found." />
                             </placeholder>
                             <columns>
-                                <TableColumn fx:id="examColumn" prefWidth="90.0" text="Exam Name" />
+                                <TableColumn fx:id="specialityColumn" prefWidth="1265.0" text="Name" />
+                        <TableColumn fx:id="priceColumn" prefWidth="269.0" text="Price" />
                             </columns>
                             <columnResizePolicy>
                                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

@@ -5,12 +5,13 @@ import javafx.beans.property.SimpleStringProperty;
 public class Exam {
 
     private int id;
-    private final SimpleStringProperty name;
+    private String name;
+    private int price;
 
-
-    public Exam(int id, String name) {
+    public Exam(int id, String name, int price) {
         this.id = id;
-        this.name = new SimpleStringProperty(name);
+        this.name = name;
+        this.price = price;
     }
 
     public int getId() {
@@ -22,14 +23,14 @@ public class Exam {
     }
 
     public String getName() {
-        return name.get();
-    }
-
-    public SimpleStringProperty nameProperty() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name.set(name);
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 }

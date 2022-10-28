@@ -16,15 +16,9 @@ import java.sql.SQLException;
 public class AdminNewSpecialityController extends SceneController {
 
     @FXML
-    Button buttonSave;
+    Button buttonSave, buttonMainMenu, buttonPower, buttonCancel;
     @FXML
-    private Button buttonMainMenu;
-    @FXML
-    private Button buttonPower;
-    @FXML
-    private Button buttonCancel;
-    @FXML
-    private TextField specNameInput;
+    private TextField specNameInput, priceInput;
     @FXML
     private Text inputTextErrorMessage;
 
@@ -33,8 +27,14 @@ public class AdminNewSpecialityController extends SceneController {
     @FXML
     private void createSpeciality() throws IOException{
         if(validate()){
-            Database.modifyTable("INSERT INTO Specialities (name) VALUES ('" + specNameInput.getText() + "')");
-            setScreen(buttonSave, "AdminFindSpecialitiesScene.fxml");
+            try{
+                int price = Integer.parseInt(priceInput.getText());
+                Database.modifyTable("INSERT INTO Specialities (name, price) VALUES ('" + specNameInput.getText() + "', "+ price +")");
+            }
+            catch (NumberFormatException ex){
+                ex.printStackTrace();
+            }
+            setScreen(buttonSave, "AdminFindSpecialityScene.fxml");
             Information.updateSpecialities();
         } else {
         }
@@ -50,7 +50,7 @@ public class AdminNewSpecialityController extends SceneController {
     }
     @FXML
     public void cancel() throws IOException {
-        setScreen(buttonCancel, "AdminFindSpecialitiesScene.fxml");
+        setScreen(buttonCancel, "AdminFindSpecialityScene.fxml");
     }
 
     private boolean validate(){
@@ -62,9 +62,9 @@ public class AdminNewSpecialityController extends SceneController {
                 inputTextErrorMessage.setText("* That speciality already exists!");
                 return false;
             }
-            if (inputNameTrimmed.isEmpty()){
+            if (inputNameTrimmed.isEmpty() || priceInput.getText().isEmpty()){
                 inputTextErrorMessage.setVisible(true);
-                inputTextErrorMessage.setText("* fPlease fill in the field!");
+                inputTextErrorMessage.setText("* Please fill in the fields!");
                 return false;
             }
         }

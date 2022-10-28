@@ -66,8 +66,9 @@ public class Information {
 
                 int speciality_id = resultSet.getInt("speciality_id");
                 String name = resultSet.getString("name");
+                int price = resultSet.getInt("price");
 
-                spe.add(new Speciality(speciality_id, name));
+                spe.add(new Speciality(speciality_id, name, price));
 
             }
         } catch (SQLException e) {
@@ -128,8 +129,9 @@ public class Information {
             while (resultSet.next()) {
                 int exam_id = resultSet.getInt("exam_id");
                 String name = resultSet.getString("name");
+                int price = resultSet.getInt("price");
 
-                ex.add(new Exam(exam_id, name));
+                ex.add(new Exam(exam_id, name, price));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

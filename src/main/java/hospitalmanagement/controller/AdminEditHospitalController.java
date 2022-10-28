@@ -17,16 +17,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
 
-public class AdminEditHospitalProfileController extends SceneController {
+public class AdminEditHospitalController extends SceneController {
 
     @FXML
     Button buttonMainMenu, buttonPower, buttonEdit, buttonDelete,buttonCancel;
     @FXML
-    TextField nameInput;
-    @FXML
-    TextField phoneNumberInput;
-    @FXML
-    TextField emailInput;
+    TextField nameInput, phoneNumberInput, emailInput;
     @FXML
     TextArea addressInput;
     @FXML
@@ -159,7 +155,7 @@ public class AdminEditHospitalProfileController extends SceneController {
         for (Hospital hospital : Information.getHospitals()) {
 
             if (hospital.getId() != hospital_id) {
-                validation = AdminNewHospitalProfileController.validateHospital(name, address, phoneNumber, email, validation, hospital, nameInput, addressInput, phoneNumberInput, emailInput);
+                validation = AdminNewHospitalController.validateHospital(name, address, phoneNumber, email, validation, hospital, nameInput, addressInput, phoneNumberInput, emailInput);
             }
         }
         return validation;

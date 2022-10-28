@@ -138,10 +138,10 @@
 }
 
 
-#warningMessage1, #warningMessage2, #warningInsurance, #inputTextErrorMessage, #emptyTextErrorMessage, #inputSymbolOfErrorMl, #inputSymbolOfErrorUser{
+#warningMessage1, #warningMessage2, #warningInsurance, #inputTextErrorMessage, #emptyTextErrorMessage, #inputSymbolOfErrorMl, #inputSymbolOfErrorUser, #inputSymbolOfError{
     -fx-font-family: "Inter";
     -fx-font-size: 20px;
-    -fx-text-fill: RED;
+    -fx-fill: RED;
 }
 
 /************************************************ NEXT  ************************************************/

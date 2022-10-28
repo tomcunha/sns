@@ -17,14 +17,23 @@ public class AdminNewExamController extends SceneController {
     @FXML
     Text inputTextErrorMessage;
     @FXML
-    TextField nameInput;
+    TextField examNameInput, priceInput;
     @FXML
     Button buttonSave, buttonCancel, buttonMainMenu, buttonPower;
 
     public void saveNewExam() throws SQLException, IOException {
         if (validation()) {
-            if (!nameInput.getText().isEmpty()) {
-                Database.modifyTable("INSERT INTO hospitalManagement.Exams (name) VALUES ('" + nameInput.getText() + "')");
+            if (!examNameInput.getText().isEmpty()) {
+
+                try{
+                    int price = Integer.parseInt(priceInput.getText());
+                    Database.modifyTable("INSERT INTO Exams (name, price) VALUES ('" + examNameInput.getText() + "', "+ price +")");
+                }
+                catch (NumberFormatException ex){
+                    ex.printStackTrace();
+                }
+
+
                 Information.updateExams();
                 setScreen(buttonSave, "AdminMenuScene.fxml");
 
@@ -39,16 +48,16 @@ public class AdminNewExamController extends SceneController {
 
         while (resultSet.next()) {
             String nameDB = resultSet.getString("name");
-            String inputName = nameInput.getText().trim();
+            String inputName = examNameInput.getText().trim();
 
             if (inputName.replace(" ","").equalsIgnoreCase(nameDB.replace(" ",""))) {
                 inputTextErrorMessage.setVisible(true);
                 inputTextErrorMessage.setText("* That exam already exists!");
                 return false;
             }
-            if(nameInput.getText().isEmpty()){
+            if(examNameInput.getText().isEmpty() || priceInput.getText().isEmpty()){
                 inputTextErrorMessage.setVisible(true);
-                inputTextErrorMessage.setText("* fPlease fill in the field!");
+                inputTextErrorMessage.setText("* Please fill in the field!");
             }
         }
         inputTextErrorMessage.setVisible(false);
@@ -56,7 +65,7 @@ public class AdminNewExamController extends SceneController {
     }
 
     public void setCancelButton() throws IOException {
-        setScreen(buttonCancel, "AdminFindExams.fxml");
+        setScreen(buttonCancel, "AdminFindExamScene.fxml");
     }
 
     @FXML

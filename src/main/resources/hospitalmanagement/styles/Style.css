@@ -1,6 +1,7 @@
 /***************************************************** GENERAL ****************************************************************/
 /* All texts */
-.label , .text-field, .text-area, .combo-box, .choice-box, .date-picker, .table-view, .radio-button{
+.label , .text-field, .text-area, .combo-box, .choice-box, .date-picker, .table-view, .radio-button,
+#namePatientText, #birthDatePatientText, #identityNumberPatientText, #nameInsuranceText, #popUpText{
     -fx-font-family: "Inter";
     -fx-font-size: 30px;
     -fx-text-fill: #0E1D33;
@@ -133,4 +134,14 @@
     -fx-font-family: "Inter";
     -fx-font-size: 20px;
     -fx-text-fill: RED;
+}
+
+
+/************************************************ BACKGROUNDS  ************************************************/
+#patientGrid{
+    -fx-background-color: #DFF1F2;
+}
+
+#popUp{
+    -fx-background-color: WHITE;
 }

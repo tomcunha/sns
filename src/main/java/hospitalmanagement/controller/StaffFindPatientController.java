@@ -13,11 +13,7 @@ import java.io.IOException;
 
 public class StaffFindPatientController extends SceneController {
     @FXML
-    private Button buttonAddPatient, buttonEdit, buttonDelete;
-
-    @FXML
-    private Button buttonMainMenu, buttonPower;
-
+    private Button buttonAddPatient, buttonEdit, buttonDelete, buttonMainMenu, buttonPower;
 
     @FXML
     private TextField ccTextField;
@@ -32,20 +28,27 @@ public class StaffFindPatientController extends SceneController {
     private Text namePatientText, birthDatePatientText, identityNumberPatientText, nameInsuranceText;
 
     @FXML
-    public void setMainMenu() throws IOException {
-        setScreen(buttonMainMenu, "StaffMenuScene.fxml");
-    }
-
-    @FXML
-    public void setLogout() throws IOException {
-        setScreen(buttonPower, "LoginScene.fxml");
-    }
-
-    @FXML
     public void setNewPatient() throws IOException {
         setScreen(buttonAddPatient, "StaffNewPatientScene.fxml");
         StaffNewPatientController staffNewPatientController = getFXML().getController();
         staffNewPatientController.initializeComboBox();
+    }
+    @FXML
+    public void setMainMenu() {
+        try {
+            setScreen(buttonMainMenu, "StaffMenuScene.fxml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    public void setLogout() {
+        try {
+            setScreen(buttonPower, "LoginScene.fxml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML

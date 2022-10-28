@@ -1,24 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@styles/Style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hospitalmanagement.controller.StaffNewPatientController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@styles/Style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hospitalmanagement.controller.AdminNewDoctorController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     </columnConstraints>
@@ -27,7 +23,7 @@
         <RowConstraints maxHeight="919.0" minHeight="0.0" prefHeight="875.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <GridPane fx:id="gridStaff">
+        <GridPane fx:id="gridAdmin">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="714.0" minWidth="10.0" percentWidth="30" prefWidth="350" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="1109.0" minWidth="10.0" prefWidth="1109.0" />
@@ -39,8 +35,8 @@
             <children>
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                     <children>
-                        <Button fx:id="buttonStaffProfile" mnemonicParsing="false" prefHeight="128.0" prefWidth="128.0" />
-                        <Text fx:id="textStaff" strokeType="OUTSIDE" strokeWidth="0.0" text="Staff" />
+                        <Button fx:id="buttonAdminProfile" mnemonicParsing="false" prefHeight="128.0" prefWidth="128.0" />
+                        <Text fx:id="textAdmin" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2">
@@ -67,10 +63,9 @@
             </columnConstraints>
             <rowConstraints>
                 <RowConstraints maxHeight="167.0" minHeight="10.0" prefHeight="120.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="120.0" minHeight="10.0" prefHeight="120.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="477.0" minHeight="10.0" prefHeight="46.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="199.0" minHeight="10.0" prefHeight="120.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="477.0" minHeight="0.0" prefHeight="120.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="477.0" minHeight="10.0" prefHeight="140.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="477.0" minHeight="10.0" prefHeight="150.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="477.0" minHeight="10.0" prefHeight="120.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="509.0" minHeight="10.0" prefHeight="120.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="509.0" minHeight="0.0" prefHeight="120.0" vgrow="SOMETIMES" />
@@ -79,7 +74,7 @@
             <children>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.columnSpan="2">
                     <children>
-                        <Label fx:id="title" text="Patient Profile" />
+                        <Label fx:id="title" text="Doctor Profile" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -95,15 +90,21 @@
                         <TextField fx:id="nameInput" prefHeight="40.0" prefWidth="1330.0" />
                     </children>
                 </HBox>
-                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                     <children>
-                        <Label text="Identity number: " />
+                        <Label text="Medical license: " />
                     </children>
                     <padding>
                         <Insets right="15.0" />
                     </padding>
                 </HBox>
-                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                    <children>
+                        <TextField fx:id="medicalLicenseInput" prefHeight="40.0" prefWidth="250.0" />
+                        <Text fx:id="inputSymbolOfErrorMl" strokeType="OUTSIDE" strokeWidth="0.0" text="*" visible="false" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
                     <children>
                         <Label text="Birth Date: " />
                     </children>
@@ -111,12 +112,12 @@
                         <Insets right="15.0" />
                     </padding>
                 </HBox>
-                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="3">
+                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="2">
                     <children>
-                        <DatePicker fx:id="dateInput" prefHeight="65.0" prefWidth="318.0" />
+                        <DatePicker fx:id="datePicker" prefHeight="40.0" prefWidth="334.0" />
                     </children>
                 </HBox>
-                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="3">
+                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="2">
                     <children>
                         <Label text="Sex: " />
                     </children>
@@ -124,12 +125,12 @@
                         <Insets right="15.0" />
                     </padding>
                 </HBox>
-                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="3">
+                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="2">
                     <children>
-                        <ChoiceBox fx:id="sexDropdown" prefHeight="65.0" prefWidth="207.0" />
+                        <ChoiceBox fx:id="sexDropdown" prefHeight="65.0" prefWidth="220.0" />
                     </children>
                 </HBox>
-                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                     <children>
                         <Label text="Address: " />
                     </children>
@@ -137,12 +138,12 @@
                         <Insets right="15.0" />
                     </GridPane.margin>
                 </HBox>
-                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="4">
+                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="3">
                     <children>
-                        <TextArea fx:id="addressInput" prefHeight="143.0" prefWidth="827.0" />
+                        <TextArea fx:id="addressInput" prefHeight="160.0" prefWidth="840.0" />
                     </children>
                 </HBox>
-                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="4">
+                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="3">
                     <children>
                         <Label text="Phone number: " />
                     </children>
@@ -150,12 +151,12 @@
                         <Insets right="15.0" />
                     </padding>
                 </HBox>
-                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="4">
+                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="3">
                     <children>
-                        <TextField fx:id="phoneInput" prefHeight="40.0" prefWidth="200.0" />
+                        <TextField fx:id="phoneNumberInput" prefHeight="40.0" prefWidth="200.0" />
                     </children>
                 </HBox>
-                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                     <children>
                         <Label text="E-mail: " />
                     </children>
@@ -163,84 +164,78 @@
                         <Insets right="15.0" />
                     </GridPane.margin>
                 </HBox>
-                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="4" GridPane.rowIndex="5">
+                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="4" GridPane.rowIndex="4">
                     <children>
-                        <TextField fx:id="emailInput" prefHeight="65.0" prefWidth="1088.0" />
-                    </children>
-                </HBox>
-                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
-                    <children>
-                        <Label text="Insurance: " />
-                    </children>
-               <GridPane.margin>
-                  <Insets right="15.0" />
-               </GridPane.margin>
-                </HBox>
-                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="7">
-               <children>
-                  <RadioButton fx:id="yesInsurance" mnemonicParsing="false" onAction="#hasInsurance" prefHeight="61.0" prefWidth="194.0" text="Yes">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="insuranceOption" />
-                     </toggleGroup>
-                     <padding>
-                        <Insets left="30.0" right="50.0" />
-                     </padding>
-                  </RadioButton>
-                  <RadioButton fx:id="noInsurance" mnemonicParsing="false" onAction="#hasInsurance" prefHeight="61.0" prefWidth="157.0" text="No" toggleGroup="$insuranceOption" />
-               </children>
-                </HBox>
-                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="7">
-                    <children>
-                        <Label fx:id="insuranceNameLabel" text="Insurance name: " visible="false" />
-                    </children>
-                    <padding>
-                        <Insets right="15.0" />
-                    </padding>
-                </HBox>
-                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.rowIndex="7">
-                    <children>
-                        <ComboBox fx:id="insuranceDropdown" prefHeight="50.0" prefWidth="500.0" visible="false" />
-                    </children>
-                </HBox>
-                <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="8">
-                    <children>
-                        <Button fx:id="buttonSave" mnemonicParsing="false" onAction="#savePatient" prefHeight="40.0" prefWidth="180.0" text="Save" />
-                    </children>
-                </HBox>
-                <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="8">
-                    <children>
-                        <Button fx:id="buttonCancel" mnemonicParsing="false" onAction="#cancelButton" prefWidth="180.0" text="Cancel" />
+                        <TextField fx:id="emailInput" prefHeight="40.0" prefWidth="997.0" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
                     <children>
                         <Label text="Hospital: " />
                     </children>
-               <GridPane.margin>
-                  <Insets right="15.0" />
-               </GridPane.margin>
+                    <padding>
+                        <Insets right="15.0" />
+                    </padding>
                 </HBox>
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="6">
                     <children>
-                        <ComboBox fx:id="hospitalDropdown" prefHeight="53.0" prefWidth="482.0" />
+                        <ComboBox fx:id="hospitalDropdown" prefHeight="50.0" prefWidth="500.0" />
                     </children>
                 </HBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="8">
-               <children>
-                  <Text fx:id="warningInsurance" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Please select an option to Insurance." visible="false" />
-               </children>
-            </VBox>
-            <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="2">
-               <children>
-                  <Text fx:id="warningMessage1" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="This identity number already exists." visible="false" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
-               <children>
-                        <TextField fx:id="ccInput" prefHeight="65.0" prefWidth="250.0" />
-                  <Text fx:id="warningMessage2" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="*" visible="false" />
-               </children>
-            </HBox>
+                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="6">
+                    <children>
+                        <Label text="Speciality: " />
+                    </children>
+                    <padding>
+                        <Insets right="15.0" />
+                    </padding>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.rowIndex="6">
+                    <children>
+                        <ComboBox fx:id="specialityDropdown" prefHeight="50.0" prefWidth="500.0" />
+                    </children>
+                </HBox>
+                <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="7">
+                    <children>
+                        <Button fx:id="buttonSave" mnemonicParsing="false" onAction="#createDoctor" prefHeight="40.0" prefWidth="180.0" text="Save" />
+                    </children>
+                </HBox>
+                <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="7">
+                    <children>
+                        <Button fx:id="buttonCancel" mnemonicParsing="false" onAction="#setCancel" prefWidth="180.0" text="Cancel" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                    <children>
+                        <Label text="Username: " />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="5">
+                    <children>
+                        <TextField fx:id="usernameInput" prefHeight="40.0" prefWidth="450.0" />
+                        <Text fx:id="inputSymbolOfErrorUser" strokeType="OUTSIDE" strokeWidth="0.0" text="*" visible="false" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="5">
+                    <children>
+                        <Label text="Password: " />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.rowIndex="5">
+                    <children>
+                        <TextField fx:id="passwordInput" prefHeight="40.0" prefWidth="450.0" />
+                    </children>
+                </HBox>
+                <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="7">
+                    <children>
+                        <Text fx:id="inputTextErrorMessage" strokeType="OUTSIDE" strokeWidth="0.0" text="* Username and/or Medical License already exists!" visible="false" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="7">
+                    <children>
+                        <Text fx:id="emptyTextErrorMessage" strokeType="OUTSIDE" strokeWidth="0.0" text="Please fill in all the fields!" visible="false" />
+                    </children>
+                </HBox>
             </children>
         </GridPane>
     </children>

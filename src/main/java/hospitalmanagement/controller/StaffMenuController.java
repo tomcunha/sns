@@ -9,6 +9,7 @@ public class StaffMenuController extends SceneController{
 
     @FXML
     Button buttonPower, patientsManagementButton, newAppointmentButton;
+
     @FXML
     public void setButtonPower(){
         try {

@@ -15,13 +15,12 @@ public class StartApplication extends Application {
         Database.connect();
         Information.updateAll();
 
-        FXMLLoader fxmlLoader = new FXMLLoader(StartApplication.class.getResource("LoginScene.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(StartApplication.class.getResource("StaffMenuScene.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
         stage.setTitle("HealthCare System");
         stage.setScene(scene);
         stage.setFullScreen(true);
         stage.show();
-
     }
 
     public static void main(String[] args) {

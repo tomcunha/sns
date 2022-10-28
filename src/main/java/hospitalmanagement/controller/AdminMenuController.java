@@ -18,16 +18,7 @@ import java.util.List;
 public class AdminMenuController extends SceneController {
 
     @FXML
-    Button buttonPower;
-
-    @FXML
-    Button doctorsManagementButton;
-    @FXML
-    Button examsManagementButton;
-    @FXML
-    Button hospitalsManagementButton;
-    @FXML
-    Button specialitiesManagementButton;
+    Button buttonPower,doctorsManagementButton,examsManagementButton, hospitalsManagementButton,specialitiesManagementButton;
 
     @FXML
     public void setButtonPower() throws IOException {
@@ -41,7 +32,7 @@ public class AdminMenuController extends SceneController {
     }
     @FXML
     public void setExamsManagementButton() throws IOException {
-        setScreen(examsManagementButton, "AdminFindExams.fxml");
+        setScreen(examsManagementButton, "AdminFindExamScene.fxml");
     }
 
     @FXML
@@ -51,6 +42,6 @@ public class AdminMenuController extends SceneController {
 
     @FXML
     public void setSpecialitiesManagementButton() throws IOException {
-        setScreen(specialitiesManagementButton, "AdminFindSpecialitiesScene.fxml");
+        setScreen(specialitiesManagementButton, "AdminFindSpecialityScene.fxml");
     }
 }

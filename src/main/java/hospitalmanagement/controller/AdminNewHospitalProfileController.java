@@ -64,8 +64,6 @@ public class AdminNewHospitalProfileController extends SceneController {
         String email = emailInput.getText().trim();
 
         if (validate(name, address, phoneNumber, email)) {
-            System.out.println("ola");
-
             String instruction = "INSERT INTO Hospitals \n" +
                     "VALUES (DEFAULT, '" + name +
                     "','" + address +
@@ -73,6 +71,7 @@ public class AdminNewHospitalProfileController extends SceneController {
                     "','" + email + "')";
 
             Database.modifyTable(instruction);
+            Information.updateHospitals();
             setMainMenu();
         }
     }
@@ -80,22 +79,7 @@ public class AdminNewHospitalProfileController extends SceneController {
     public boolean validate(String name, String address, String phoneNumber, String email) {
         boolean validation = true;
         for (Hospital hospital : Information.getHospitals()) {
-            if (hospital.getName().equals(name) || name.length() == 0) {
-                nameInput.setStyle("-fx-effect: dropshadow( one-pass-box, red, 15,0,0,0)");
-                validation = false;
-            }
-            if (hospital.getContact().getAddress().equals(address) || address.length() == 0) {
-                addressInput.setStyle("-fx-effect: dropshadow( one-pass-box, red, 15,0,0,0)");
-                validation = false;
-            }
-            if (hospital.getContact().getPhoneNumber().equals(phoneNumber) || phoneNumber.length() != 9) {
-                phoneNumberInput.setStyle("-fx-effect: dropshadow( one-pass-box, red, 15,0,0,0)");
-                validation = false;
-            }
-            if (hospital.getContact().getEmail().equals(email) || !email.contains("@")) {
-                emailInput.setStyle("-fx-effect: dropshadow( one-pass-box, red, 15,0,0,0)");
-                validation = false;
-            }
+            validation = validateHospital(name, address, phoneNumber, email, validation, hospital, nameInput, addressInput, phoneNumberInput, emailInput);
         }
         return validation;
     }
@@ -105,6 +89,26 @@ public class AdminNewHospitalProfileController extends SceneController {
         addressInput.setStyle("-fx-effect: none");
         phoneNumberInput.setStyle("-fx-effect: none");
         emailInput.setStyle("-fx-effect: none");
+    }
+
+    static boolean validateHospital(String name, String address, String phoneNumber, String email, boolean validation, Hospital hospital, TextField nameInput, TextArea addressInput, TextField phoneNumberInput, TextField emailInput) {
+        if (hospital.getName().equals(name) || name.length() == 0) {
+            nameInput.setStyle("-fx-effect: dropshadow( one-pass-box, red, 15,0,0,0)");
+            validation = false;
+        }
+        if (hospital.getContact().getAddress().equals(address) || address.length() == 0) {
+            addressInput.setStyle("-fx-effect: dropshadow( one-pass-box, red, 15,0,0,0)");
+            validation = false;
+        }
+        if (hospital.getContact().getPhoneNumber().equals(phoneNumber) || phoneNumber.length() != 9) {
+            phoneNumberInput.setStyle("-fx-effect: dropshadow( one-pass-box, red, 15,0,0,0)");
+            validation = false;
+        }
+        if (hospital.getContact().getEmail().equals(email) || !email.contains("@")) {
+            emailInput.setStyle("-fx-effect: dropshadow( one-pass-box, red, 15,0,0,0)");
+            validation = false;
+        }
+        return validation;
     }
 
 }

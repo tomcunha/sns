@@ -61,6 +61,7 @@ public class LoginMenuController extends SceneController {
             throw new RuntimeException(e);
         }
 
+
         for (int i = 0; i < users.size(); i++) {
             if (users.get(i).equals(usernamefield.getText()) && passwords.get(i).equals(passwordfield.getText())) {
                 switch (types.get(i)) {
@@ -76,9 +77,12 @@ public class LoginMenuController extends SceneController {
                 }
                 employee_id = ids.get(i);
                 break;
-            } else {
-                textWarning.setText("Login failed: Your user ID or password is incorrect.");
             }
         }
+        textWarning.setText("Login failed: Your user ID or password is incorrect.");
+    }
+
+    public static int getEmployee_id() {
+        return employee_id;
     }
 }

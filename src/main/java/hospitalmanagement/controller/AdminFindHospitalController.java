@@ -35,7 +35,6 @@ public class AdminFindHospitalController extends SceneController {
     @FXML
     private Button buttonAddHospital;
 
-
     @FXML
     public void setMainMenu() {
         try {
@@ -56,7 +55,6 @@ public class AdminFindHospitalController extends SceneController {
 
     @FXML
     public void selectHospital(MouseEvent mouseEvent) {
-
         if (mouseEvent.getButton().equals(MouseButton.PRIMARY)) {
             if (mouseEvent.getClickCount() == 2) {
                 String row = tableHospitals.getSelectionModel().getSelectedItems().get(0).toString();
@@ -65,14 +63,16 @@ public class AdminFindHospitalController extends SceneController {
 
                 try {
                     setScreen(buttonPower, "AdminEditHospitalProfileScene.fxml");
+
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-
-                AdminEditHospitalProfileController editHospital = getFXML().getController();
-                editHospital.setInputs(hospitalName);
             }
         }
+    }
+
+    public void changeCellTable() {
+        tableHospitals.getSelectionModel().setCellSelectionEnabled(true);
     }
 
     public void clearInfo() {

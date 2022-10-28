@@ -408,4 +408,6 @@ public class Information {
     public static List<Speciality> getSpecialities() {
         return specialities;
     }
+
+    public static List<Appointment> getAppointments() {return appointments;};
 }

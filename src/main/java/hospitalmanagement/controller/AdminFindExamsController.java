@@ -46,9 +46,7 @@ public class AdminFindExamsController extends SceneController {
 
         initColumn();
         loadData();
-        if (!listExams.isEmpty()) {
-            buttonAddExam.setVisible(false);
-        }
+
 
         tableExams.setVisible(true);
 

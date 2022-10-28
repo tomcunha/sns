@@ -66,8 +66,9 @@ public class Information {
 
                 int speciality_id = resultSet.getInt("speciality_id");
                 String name = resultSet.getString("name");
+                int price = resultSet.getInt("price");
 
-                spe.add(new Speciality(speciality_id, name));
+                spe.add(new Speciality(speciality_id, name, price));
 
             }
         } catch (SQLException e) {

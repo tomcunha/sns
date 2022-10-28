@@ -31,7 +31,7 @@
             <children>
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                     <children>
-                        <Button fx:id="buttonStaff" mnemonicParsing="false" prefHeight="128.0" prefWidth="128.0" />
+                        <Button fx:id="buttonUser" mnemonicParsing="false" prefHeight="128.0" prefWidth="128.0" />
                         <Text fx:id="textStaff" strokeType="OUTSIDE" strokeWidth="0.0" text="Staff" />
                     </children>
                <padding>
@@ -40,11 +40,11 @@
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2">
                     <children>
-                        <Button fx:id="buttonMainMenu" mnemonicParsing="false" prefHeight="128.0" prefWidth="128.0">
+                        <Button fx:id="buttonMainMenu" mnemonicParsing="false" prefHeight="128.0" prefWidth="128.0" onAction="#setMainMenu">
                      <HBox.margin>
                         <Insets right="15.0" />
                      </HBox.margin></Button>
-                        <Button fx:id="buttonPower" mnemonicParsing="false" prefHeight="128.0" prefWidth="128.0" />
+                        <Button fx:id="buttonPower" mnemonicParsing="false" prefHeight="128.0" prefWidth="128.0" onAction="#setLogout" />
                     </children>
                <padding>
                   <Insets right="15.0" />

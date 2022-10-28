@@ -20,11 +20,11 @@
 
 
 /*STAFF BUTTON*/
-#buttonStaff{
+#buttonUser{
     -fx-background-image: url(images/user.png);
     -fx-background-color: Transparent;
 }
-#buttonStaff:hover{
+#buttonUser:hover{
     -fx-effect: dropshadow( one-pass-box , white , 8 , 0 , 0 , 0 );
 }
 /*POWER BUTTON*/

@@ -72,20 +72,17 @@ public class AdminFindDoctorController extends SceneController {
     public void setButtonSearch() throws SQLException {
         tableDoctors.getItems().clear();
 
-        buttonAddDoctor.setVisible(false);
-
         initiateCols();
 
         loadData();
 
-        tableDoctors.setVisible(true);
     }
 
-@FXML
+    @FXML
     private void loadData() throws SQLException {
-
+        tableDoctors.setVisible(true);
+        tableDoctors.getItems().clear();
         listDoctors.removeAll(listDoctors);
-    tableDoctors.getItems().setAll(listDoctors);
 
         resultSet = Database.queryTable("SELECT medicalLicense as 'MedicalLicense', Persons.name  as 'Name', Hospitals.name as 'Hospital', Specialities.name as 'Speciality'\n" +
                 "FROM Doctors \n" +
@@ -106,7 +103,7 @@ public class AdminFindDoctorController extends SceneController {
 
         }
 
-        tableDoctors.getItems().addAll(listDoctors);
+        tableDoctors.getItems().setAll(listDoctors);
         initiateCols();
     }
 

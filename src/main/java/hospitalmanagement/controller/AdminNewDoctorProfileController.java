@@ -165,7 +165,7 @@ public class AdminNewDoctorProfileController extends SceneController {
         return true;
     }
 
-    public void resetErrors() {
+    private void resetErrors() {
         nameInput.setStyle("-fx-effect: none");
         medicalLicenseInput.setStyle("-fx-effect: none");
         emailInput.setStyle("-fx-effect: none");

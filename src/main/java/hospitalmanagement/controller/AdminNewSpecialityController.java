@@ -6,6 +6,7 @@ import hospitalmanagement.model.medicalLists.Speciality;
 import hospitalmanagement.model.people.Doctor;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
@@ -24,21 +25,21 @@ public class AdminNewSpecialityController extends SceneController {
     @FXML
     private Button buttonCancel;
     @FXML
-    private TextField specNameInput;
+    private TextField specNameInput, specPriceInput;
     @FXML
-    private Text inputErrorMessage;
-
+    private Text inputTextErrorMessage, emptyTextErrorMessage, inputSymbolOfError;
+    private boolean isEmpty, isDuplicate;
 
 
     @FXML
-    private void createSpeciality() throws IOException{
-        if(validate()){
-            Database.modifyTable("INSERT INTO Specialities (name) VALUES ('" + specNameInput.getText() + "')");
+    private void createSpeciality() throws IOException {
+        if (validate()) {
+            Database.modifyTable("INSERT INTO Specialities (name, price) VALUES ('" + specNameInput.getText() + "','" + specPriceInput.getText() + "' )");
             setScreen(buttonSave, "AdminFindSpecialitiesScene.fxml");
             Information.updateSpecialities();
-        } else {
         }
-}
+    }
+
     @FXML
     public void setMainMenu() throws IOException {
         setScreen(buttonMainMenu, "AdminMenuScene.fxml");
@@ -48,27 +49,46 @@ public class AdminNewSpecialityController extends SceneController {
     public void setLogout() throws IOException {
         setScreen(buttonPower, "LoginScene.fxml");
     }
+
     @FXML
     public void cancel() throws IOException {
         setScreen(buttonCancel, "AdminFindSpecialitiesScene.fxml");
     }
 
-    private boolean validate(){
-        for (Speciality speciality : Information.getSpecialities()) {
-            String inputNameTrimmed = specNameInput.getText().trim();
+    private boolean validate() {
+        resetErrors();
+        isDuplicate = false;
+        isEmpty = false;
+        inputTextErrorMessage.setVisible(false);
+        inputSymbolOfError.setVisible(false);
+        emptyTextErrorMessage.setVisible(false);
+        String inputNameTrimmed = specNameInput.getText().trim();
 
-            if (inputNameTrimmed.replace(" ","").equalsIgnoreCase(speciality.getName().replace(" ",""))) {
-                inputErrorMessage.setVisible(true);
-                inputErrorMessage.setText("* That speciality already exists!");
-                return false;
-            }
-            if (inputNameTrimmed.isEmpty()){
-                inputErrorMessage.setVisible(true);
-                inputErrorMessage.setText("* fPlease fill in the field!");
-                return false;
+        for (Speciality speciality : Information.getSpecialities()) {
+            if (inputNameTrimmed.replace(" ", "").equalsIgnoreCase(speciality.getName().replace(" ", ""))) {
+                inputTextErrorMessage.setVisible(true);
+                inputSymbolOfError.setVisible(true);
+                isDuplicate = true;
             }
         }
-        inputErrorMessage.setVisible(false);
+        if (inputNameTrimmed.isEmpty() || specPriceInput.getText().isEmpty()) {
+            emptyTextErrorMessage.setVisible(true);
+            isEmpty = true;
+        }
+
+        if (specNameInput.getText().isEmpty())
+            specNameInput.setStyle("-fx-effect: dropshadow( one-pass-box, red, 15,0,0,0)");
+        if (specPriceInput.getText().isEmpty())
+            specPriceInput.setStyle("-fx-effect: dropshadow( one-pass-box, red, 15,0,0,0)");
+
+        if (isEmpty || isDuplicate) {
+            return false;
+        }
         return true;
+    }
+
+    private void resetErrors() {
+        specNameInput.setStyle("-fx-effect: none");
+        specPriceInput.setStyle("-fx-effect: none");
     }
 }

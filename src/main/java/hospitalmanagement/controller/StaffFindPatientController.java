@@ -15,7 +15,7 @@ import java.util.List;
 
 public class StaffFindPatientController extends SceneController{
     @FXML
-    private Button buttonAddPatient, buttonEdit, buttonDelete;
+    private Button buttonAddPatient, buttonEdit, buttonDelete, buttonMainMenu, buttonPower;
 
     @FXML
     private TextField ccTextField;
@@ -34,6 +34,23 @@ public class StaffFindPatientController extends SceneController{
         setScreen(buttonAddPatient, "StaffNewPatientScene.fxml");
         StaffNewPatientController staffNewPatientController = getFXML().getController();
         staffNewPatientController.initializeComboBox();
+    }
+    @FXML
+    public void setMainMenu() {
+        try {
+            setScreen(buttonMainMenu, "StaffMenuScene.fxml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    public void setLogout() {
+        try {
+            setScreen(buttonPower, "LoginScene.fxml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML

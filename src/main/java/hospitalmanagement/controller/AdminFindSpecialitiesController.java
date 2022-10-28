@@ -29,14 +29,14 @@ import static hospitalmanagement.controller.AdminEditDoctorProfileController.set
 
 public class AdminFindSpecialitiesController extends SceneController {
 
-    ObservableList<Speciality> listSpecialities = FXCollections.observableArrayList();
+    ObservableList<ObservableList<String>> listSpecialities = FXCollections.observableArrayList();
 
     @FXML
     private Button buttonMainMenu, buttonPower, buttonAddSpeciality, buttonSearch;
     @FXML
-    private TableView<Speciality> tableSpecialities;
+    private TableView<ObservableList<String>> tableSpecialities;
     @FXML
-    private TableColumn<Speciality, String> specialityColumn;
+    private TableColumn specialityNameColumn, specialityPriceColumn;
     @FXML
     private TextField nameTextField;
 
@@ -55,37 +55,62 @@ public class AdminFindSpecialitiesController extends SceneController {
     public void setNewSpeciality() throws IOException {
         setScreen(buttonAddSpeciality, "AdminNewSpecialityScene.fxml");
     }
-    public void setButtonSearch() {
-        tableSpecialities.getItems().clear();
 
-        initColumn();
-        loadData();
+    public void showAllSpecialities() {
+        if (nameTextField.getText().isBlank()) {
+            for (Speciality speciality : Information.getSpecialities()) {
+                loadSpecialitiesInfo(speciality);
+            }
+            tableSpecialities.getItems().addAll(listSpecialities);
+            tableSpecialities.setVisible(true);
+            initColumn();
+        }
+    }
+    @FXML
+    public void setMouseClicked() throws IOException {
 
-        tableSpecialities.setVisible(true);
+        String row = tableSpecialities.getSelectionModel().getSelectedItems().get(0).toString();
+        row = row.replaceAll("\\D+", "");
+        AdminEditDoctorProfileController.setMedicalLicense(row);
+        System.out.println("mudaria de ecra");
+        setScreen(buttonPower, "AdminEditSpecialitiesScene.fxml");
+        AdminEditDoctorProfileController adminEditDoctorProfileController = getFXML().getController();
+        adminEditDoctorProfileController.setInputs();
+        adminEditDoctorProfileController.initializeComboBox();
+    }
+
+    public void loadSpecialitiesInfo(Speciality speciality) {
+        ObservableList<String> row = FXCollections.observableArrayList();
+        row.add(speciality.getName());
+        row.add(speciality.toString());
+        listSpecialities.add(row);
     }
 
     @FXML
     private void loadData() {
-        listSpecialities.clear();
         tableSpecialities.getItems().clear();
+        listSpecialities.removeAll(listSpecialities);
 
-        String name =  nameTextField.getText();
-        ObservableList<Speciality> filterList = FXCollections.observableArrayList();
+        String name = nameTextField.getText();
         for (Speciality specialityName : Information.getSpecialities()) {
             if (specialityName.getName().toLowerCase().contains(name.toLowerCase()))
-                listSpecialities.add(specialityName);
+                loadSpecialitiesInfo(specialityName);
         }
         tableSpecialities.getItems().setAll(listSpecialities);
-        if(listSpecialities.size() != 0)
-            tableSpecialities.setVisible(true);
+        tableSpecialities.setVisible(true);
         initColumn();
     }
 
     private void initColumn() {
-        specialityColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Speciality, String>, ObservableValue<String>>() {
-            @Override
-            public ObservableValue<String> call(TableColumn.CellDataFeatures<Speciality, String> specialityStringCellDataFeatures) {
-                return specialityStringCellDataFeatures.getValue().nameProperty();
+        specialityNameColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<ObservableList, String> param) {
+                return new SimpleStringProperty(param.getValue().get(0).toString());
+            }
+        });
+
+        specialityPriceColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<ObservableList, String> param) {
+                return new SimpleStringProperty(param.getValue().get(1).toString());
             }
         });
 

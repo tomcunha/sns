@@ -6,12 +6,15 @@ public class Speciality {
 
     private int id;
     private final SimpleStringProperty name;
+    private int price;
 
 
 
-    public Speciality(int id, String name) {
+
+    public Speciality(int id, String name, int price) {
         this.id = id;
         this.name = new SimpleStringProperty(name);
+        this.price = price;
     }
 
     public int getId() {
@@ -25,7 +28,6 @@ public class Speciality {
     public String getName() {
         return name.get();
     }
-
     public void setName(String name) {
         this.name.set(name);
     }
@@ -33,4 +35,8 @@ public class Speciality {
         return name;
     }
 
+    @Override
+    public String toString() {
+        return String.valueOf(price);
+    }
 }

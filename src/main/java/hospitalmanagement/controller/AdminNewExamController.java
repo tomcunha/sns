@@ -2,6 +2,7 @@ package hospitalmanagement.controller;
 
 import hospitalmanagement.Database;
 import hospitalmanagement.Information;
+import hospitalmanagement.model.medicalLists.Exam;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -15,16 +16,18 @@ import java.sql.SQLException;
 public class AdminNewExamController extends SceneController {
 
     @FXML
-    Text inputTextErrorMessage;
+    Text inputTextErrorMessage, emptyTextErrorMessage, inputSymbolOfError;
     @FXML
-    TextField examNameInput, priceInput;
+    TextField nameInput, priceInput;
     @FXML
     Button buttonSave, buttonCancel, buttonMainMenu, buttonPower;
+    private boolean isDuplicate, isEmpty;
 
-    public void saveNewExam() throws SQLException{
+
+    public void saveNewExam() throws SQLException {
         if (validation()) {
-            if (!examNameInput.getText().isEmpty()) {
-                Database.modifyTable("INSERT INTO Exams (name, price) VALUES ('" + examNameInput.getText() + "', "+ getPrice() +")");
+            if (!nameInput.getText().isEmpty()) {
+                Database.modifyTable("INSERT INTO Exams (name, price) VALUES ('" + nameInput.getText() + "', " + getPrice() + ")");
 
                 Information.updateExams();
                 try {
@@ -32,31 +35,41 @@ public class AdminNewExamController extends SceneController {
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-
-            }else {
             }
 
         }
     }
 
     private boolean validation() throws SQLException {
-        ResultSet resultSet = Database.queryTable("SELECT name FROM hospitalManagement.Exams;");
+        resetErrors();
+        isDuplicate = false;
+        isEmpty = false;
+        inputTextErrorMessage.setVisible(false);
+        inputSymbolOfError.setVisible(false);
+        emptyTextErrorMessage.setVisible(false);
 
-        while (resultSet.next()) {
-            String nameDB = resultSet.getString("name");
-            String inputName = examNameInput.getText().trim();
+        String inputNameTrimmed = nameInput.getText().trim();
 
-            if (inputName.replace(" ","").equalsIgnoreCase(nameDB.replace(" ",""))) {
+        for (Exam exam : Information.getExams()) {
+            if (inputNameTrimmed.replace(" ", "").equalsIgnoreCase(exam.getName().replace(" ", ""))) {
                 inputTextErrorMessage.setVisible(true);
-                inputTextErrorMessage.setText("* That exam already exists!");
-                return false;
-            }
-            if(examNameInput.getText().isEmpty() || priceInput.getText().isEmpty()){
-                inputTextErrorMessage.setVisible(true);
-                inputTextErrorMessage.setText("* Please fill in the field!");
+                inputSymbolOfError.setVisible(true);
+                isDuplicate = true;
             }
         }
-        inputTextErrorMessage.setVisible(false);
+        if (inputNameTrimmed.isEmpty() || priceInput.getText().isEmpty()) {
+            emptyTextErrorMessage.setVisible(true);
+            isEmpty = true;
+        }
+
+        if (nameInput.getText().isEmpty())
+            nameInput.setStyle("-fx-effect: dropshadow( one-pass-box, red, 15,0,0,0)");
+        if (priceInput.getText().isEmpty())
+            priceInput.setStyle("-fx-effect: dropshadow( one-pass-box, red, 15,0,0,0)");
+
+        if (isEmpty || isDuplicate) {
+            return false;
+        }
         return true;
     }
 
@@ -75,14 +88,20 @@ public class AdminNewExamController extends SceneController {
     }
 
     @FXML
-    private int getPrice(){
-        try{
+    private int getPrice() {
+        try {
             int price = Integer.parseInt(priceInput.getText());
             return price;
-        }
-        catch (NumberFormatException ex){
+        } catch (NumberFormatException ex) {
             ex.printStackTrace();
         }
         return 0;
+    }
+
+    private void resetErrors() {
+        System.out.println("reset errors called");
+
+        nameInput.setStyle("-fx-effect: none");
+        priceInput.setStyle("-fx-effect: none");
     }
 }

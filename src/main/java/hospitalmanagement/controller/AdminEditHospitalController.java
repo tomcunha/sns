@@ -9,9 +9,9 @@ import javafx.scene.control.*;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,16 +20,24 @@ import java.util.Optional;
 public class AdminEditHospitalController extends SceneController {
 
     @FXML
-    Button buttonMainMenu, buttonPower, buttonEdit, buttonDelete,buttonCancel;
+    Button buttonMainMenu, buttonPower, buttonEdit, buttonDelete,buttonCancel, buttonYesPopUp;
     @FXML
     TextField nameInput, phoneNumberInput, emailInput;
     @FXML
     TextArea addressInput;
-    @FXML
-    GridPane editHospitalScene;
-
     private String hospitalName;
     private int hospital_id;
+
+    @FXML
+    GridPane editHospitalScene, popUp;
+    @FXML
+    HBox firstTextPopUp, secondtTextPopUp;
+
+    @FXML
+    PasswordField passwordInputpopUp;
+
+    @FXML
+    Text popUpText;
 
     @FXML
     public void setMainMenu() {
@@ -79,11 +87,7 @@ public class AdminEditHospitalController extends SceneController {
     public void deleteHospital() {
         resetErrors();
         if (buttonDelete.getText().equals("Delete")) {
-            try {
-                delete();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            delete();
         } else if (buttonDelete.getText().equals("Cancel")) {
             disableAll();
             setInputs(hospitalName);
@@ -161,65 +165,42 @@ public class AdminEditHospitalController extends SceneController {
         return validation;
     }
 
-    private void delete() throws IOException {
+    private void delete() {
+        popUp.setVisible(true);
+        popUpText.setText(nameInput.getText());
+        editHospitalScene.setStyle(" -fx-background-color: rgb(192,192,192);opacity:0.8;");
+    }
 
-        Stage backStage = (Stage) editHospitalScene.getScene().getWindow();
-        BoxBlur blur = new BoxBlur(5, 5, 5);
-        editHospitalScene.setEffect(blur);
+    public void confirmDelete(){
+        if (buttonYesPopUp.getText().equals("Yes")){
+            firstTextPopUp.setVisible(false);
+            secondtTextPopUp.setVisible(true);
+            passwordInputpopUp.setStyle("-fx-effect: none");
+            buttonYesPopUp.setText("OK");
+        } else if (buttonYesPopUp.getText().equals("OK")) {
+            if (verifyPassword(passwordInputpopUp.getText())) {
+                //Database.modifyTable("DELETE FROM Doctors WHERE medicalLicense = '" + medicalLicense + "'");
 
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.initModality(Modality.APPLICATION_MODAL);
-        alert.initOwner(backStage);
-        alert.setHeaderText("Are you sure that you want to delete this Hospital?\nName: " + nameInput.getText() + "?");
-        alert.setContentText("Choose your option.");
-
-        ButtonType buttonTypeYes = new ButtonType("YES");
-        ButtonType buttonTypeCancel = new ButtonType("CANCEL", ButtonBar.ButtonData.CANCEL_CLOSE);
-
-        alert.getButtonTypes().setAll(buttonTypeYes, buttonTypeCancel);
-
-        Optional<ButtonType> yesOrCancelButton = alert.showAndWait();
-        if (yesOrCancelButton.isPresent()){
-            if (yesOrCancelButton.get() == buttonTypeYes) {
-
-                Dialog<String> dialog = new Dialog<>();
-                dialog.initOwner(backStage);
-                dialog.setTitle("Delete Hospital Profile");
-                dialog.setHeaderText("Are you quite sure? This will delete all data present in the programme.");
-                dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
-
-                PasswordField pwd = new PasswordField();
-                HBox content = new HBox();
-                content.setAlignment(Pos.CENTER_LEFT);
-                content.setSpacing(10);
-                content.getChildren().addAll(new Label("Please enter your password to confirm:"), pwd);
-                dialog.getDialogPane().setContent(content);
-                dialog.setResultConverter(dialogButton -> {
-                    if (dialogButton == ButtonType.OK) {
-                        return pwd.getText();
-                    }
-                    return null;
-                });
-
-                Optional<String> result = dialog.showAndWait();
-
-                if (verifyPassword(result.orElseThrow())) {
-                    Database.modifyTable("DELETE FROM Hospitals WHERE hospital_id = " + hospital_id);
-                    setScreen(buttonDelete, "AdminMenuScene.fxml");
-                    Information.updateHospitals();
-                } else {
-                    alert = new Alert(Alert.AlertType.CONFIRMATION);
-                    alert.initModality(Modality.APPLICATION_MODAL);
-                    alert.initOwner(backStage);
-                    alert.setHeaderText("Wrong password ...");
-
-                    ButtonType buttonOk = new ButtonType("OK", ButtonBar.ButtonData.CANCEL_CLOSE);
-                    alert.getButtonTypes().setAll(buttonOk);
-                    alert.showAndWait();
+                try {
+                    setScreen(buttonYesPopUp, "AdminMenuScene.fxml");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
                 }
+            } else {
+                passwordInputpopUp.setStyle("-fx-effect: dropshadow( one-pass-box, red, 15,0,0,0)");
+                passwordInputpopUp.setText("");
             }
+
+
         }
-        editHospitalScene.setEffect(null);
+
+    }
+
+    public void cancel(){
+        popUp.setVisible(false);
+        firstTextPopUp.setVisible(true);
+        secondtTextPopUp.setVisible(false);
+        editHospitalScene.setStyle(" -fx-background-color: default");
     }
 
     public boolean verifyPassword(String insertedPass) {

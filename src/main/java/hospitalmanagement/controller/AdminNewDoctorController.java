@@ -17,7 +17,9 @@ public class AdminNewDoctorController extends SceneController {
     @FXML
     Button buttonSave, buttonMainMenu, buttonPower, buttonCancel;
     @FXML
-    TextField nameInput, medicalLicenseInput, phoneNumberInput, emailInput, usernameInput, passwordInput;
+    TextField nameInput, medicalLicenseInput, phoneNumberInput, emailInput, usernameInput;
+    @FXML
+    PasswordField passwordInput;
     @FXML
     ChoiceBox sexDropdown;
     @FXML
@@ -150,7 +152,6 @@ public class AdminNewDoctorController extends SceneController {
         if (isDuplicate || isEmpty) {
             return false;
         }
-
         return true;
     }
 

@@ -33,11 +33,7 @@ public class AdminNewSpecialityController extends SceneController {
         }
     }
 
-    private boolean validation() throws SQLException {
-        // ResultSet resultSet = Database.queryTable("SELECT name FROM hospitalManagement.Specialities;");
-        // while (resultSet.next()) {fred
-        //   String nameDB = resultSet.getString("name");
-        // String inputName = nameInput.getText().trim();
+    private boolean validation() {
         resetErrors();
         isDuplicate = false;
         isEmpty = false;
@@ -71,7 +67,6 @@ public class AdminNewSpecialityController extends SceneController {
         return true;
     }
 
-
     public void setCancelButton() throws IOException {
         setScreen(buttonCancel, "AdminFindSpecialityScene.fxml");
     }
@@ -87,8 +82,6 @@ public class AdminNewSpecialityController extends SceneController {
     }
 
     private void resetErrors() {
-        System.out.println("reset errors called");
-
         nameInput.setStyle("-fx-effect: none");
         priceInput.setStyle("-fx-effect: none");
     }

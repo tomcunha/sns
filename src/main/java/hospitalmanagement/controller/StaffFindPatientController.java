@@ -14,7 +14,7 @@ import java.io.IOException;
 
 public class StaffFindPatientController extends SceneController {
     @FXML
-    private Button buttonAddPatient, buttonEdit, buttonDelete, buttonMainMenu, buttonPower;
+    private Button buttonAddPatient, buttonEdit, buttonDelete, buttonMainMenu, buttonPower,buttonNext;
 
     @FXML
     private TextField ccTextField;
@@ -36,6 +36,7 @@ public class StaffFindPatientController extends SceneController {
         StaffNewPatientController staffNewPatientController = getFXML().getController();
         staffNewPatientController.initializeComboBox();
     }
+
     @FXML
     public void setMainMenu() {
         try {
@@ -70,14 +71,22 @@ public class StaffFindPatientController extends SceneController {
                     namePatientText.setText(patient.getName());
                     birthDatePatientText.setText(patient.getBirthDate().toString());
                     identityNumberPatientText.setText(patient.getPatientCC());
+
                     if (patient.getInsurance() != null) {
                         nameInsuranceText.setText(patient.getInsurance().getName());
                     } else {
                         nameInsuranceText.setText("No Insurance");
                     }
+                    textNext.setVisible(true);
+                    buttonNext.setDisable(false);
+                    buttonNext.setVisible(true);
                     break;
                 } else {
                     nrLabel.setVisible(true);
+                    namePatientText.setText("");
+                    textNext.setVisible(false);
+                    buttonNext.setDisable(false);
+                    buttonNext.setVisible(false);
                 }
             }
         }
@@ -104,9 +113,6 @@ public class StaffFindPatientController extends SceneController {
         buttonDelete.setVisible(false);
         buttonAddPatient.setDisable(true);
         buttonAddPatient.setVisible(false);
-        textNext.setVisible(true);
-        buttonNext.setDisable(false);
-        buttonNext.setVisible(true);
     }
 
     @FXML
@@ -114,12 +120,10 @@ public class StaffFindPatientController extends SceneController {
         if (!namePatientText.getText().isEmpty()) {
             patientCC = ccTextField.getText();
             try {
-                setScreen(buttonNext, "StaffNewAppSelectControllerScene.fxml");
+                setScreen(buttonNext, "StaffNewAppSelectScene.fxml");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-        } else {
-            ccTextField.setStyle("-fx-effect: dropshadow( one-pass-box, red, 15,0,0,0)");
         }
     }
 

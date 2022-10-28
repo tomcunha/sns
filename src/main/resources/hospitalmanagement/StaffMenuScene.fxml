@@ -80,7 +80,7 @@
                 <Insets left="30" top="30" />
             </padding>
             <children>
-                <Button fx:id="newAppointmentButton" mnemonicParsing="false" prefWidth="600.0" text="New appointment" />
+                <Button fx:id="newAppointmentButton" mnemonicParsing="false" prefWidth="600.0" text="New appointment" onAction="#newAppointment" />
             </children>
         </HBox>
     </children>

@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@styles/Style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hospitalmanagement.controller.StaffFindPatientController">
@@ -80,7 +81,7 @@
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                     <children>
-                        <TextField fx:id="ccTextField" prefHeight="40.0" prefWidth="1096.0" />
+                        <TextField fx:id="ccTextField" prefHeight="40.0" prefWidth="1096.0" onKeyReleased="#setButtonSearch"/>
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
@@ -116,25 +117,25 @@
                <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="2">
                      <children>
-                        <Text fx:id="namePatientText" strokeType="OUTSIDE" strokeWidth="0.0" text="namePatient" />
+                        <Text fx:id="namePatientText" strokeType="OUTSIDE" strokeWidth="0.0" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
                      <children>
                         <Label text="Birth Date: " />
-                        <Text fx:id="birthDatePatientText" strokeType="OUTSIDE" strokeWidth="0.0" text="birthDatePatient" />
+                        <Text fx:id="birthDatePatientText" strokeType="OUTSIDE" strokeWidth="0.0" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <children>
                         <Label text="Identity number: " />
-                        <Text fx:id="identityNumberPatientText" strokeType="OUTSIDE" strokeWidth="0.0" text="identityNumberPatient" />
+                        <Text fx:id="identityNumberPatientText" strokeType="OUTSIDE" strokeWidth="0.0" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
                      <children>
                         <Label text="Insurance: " />
-                        <Text fx:id="nameInsuranceText" strokeType="OUTSIDE" strokeWidth="0.0" text="nameInsurance" />
+                        <Text fx:id="nameInsuranceText" strokeType="OUTSIDE" strokeWidth="0.0" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
@@ -161,6 +162,12 @@
                   <Label fx:id="nrLabel" text="No results found." visible="false" />
                </children>
             </HBox>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="4" GridPane.rowIndex="4">
+               <children>
+                  <Text fx:id="textNext" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Next" visible="false" />
+                  <Button fx:id="buttonNext" disable="true" maxHeight="64" minHeight="64" onAction="#nextAppointment" prefHeight="64.0" prefWidth="64.0" visible="false" />
+               </children>
+            </VBox>
             </children>
         </GridPane>
     </children>

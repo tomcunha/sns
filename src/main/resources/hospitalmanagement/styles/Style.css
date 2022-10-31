@@ -172,7 +172,12 @@
 
 
 /************************************************ TIME SCHEDULE  ************************************************/
-#timeSchedule .column-header {
+#timeSchedule .column-header{
     -fx-background-color: #91CDD0;
 }
 
+#time {
+    -fx-background-color: rgba(154, 154, 154, 0.68);
+    -fx-alignment: center;
+    -fx-padding: 72px 0px 35px 0px;
+}

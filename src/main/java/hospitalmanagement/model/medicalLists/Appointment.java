@@ -5,6 +5,7 @@ import hospitalmanagement.model.people.Patient;
 import hospitalmanagement.utility.MedicineUtil;
 import hospitalmanagement.utility.SymptomsUtil;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -20,7 +21,9 @@ public class Appointment {
 
     private float cost;
 
-    private Date date;
+    private LocalDate date;
+
+    private String slot;
 
     private Exam exam;
 
@@ -28,13 +31,14 @@ public class Appointment {
     private List<SymptomsUtil> symptoms;
     private List<MedicineUtil> medicines;
 
-    public Appointment(int id, Hospital hospital, Patient patient, Doctor doctor, float cost, Date date, Exam exam, List<Disease> diseases, List<SymptomsUtil> symptoms, List<MedicineUtil> medicines) {
+    public Appointment(int id, Hospital hospital, Patient patient, Doctor doctor, float cost, LocalDate date, String slot, Exam exam, List<Disease> diseases, List<SymptomsUtil> symptoms, List<MedicineUtil> medicines) {
         this.id = id;
         this.hospital = hospital;
         this.patient = patient;
         this.doctor = doctor;
         this.cost = cost;
         this.date = date;
+        this.slot = slot;
         this.exam = exam;
         this.diseases = diseases;
         this.symptoms = symptoms;
@@ -85,11 +89,11 @@ public class Appointment {
         this.exam = exam;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
@@ -116,4 +120,8 @@ public class Appointment {
     public void setMedicines(List<MedicineUtil> medicines) {
         this.medicines = medicines;
     }
+
+    public String getSlot() {return slot;}
+
+    public void setSlot(String slot) {this.slot = slot;}
 }

@@ -285,9 +285,8 @@ public class Information {
             while (resultSet.next()) {
                 int appointment_id = resultSet.getInt("appointment_id");
                 float cost = resultSet.getFloat("cost");
-                Date date = resultSet.getDate("date");
-                Time time = resultSet.getTime("time");
-                date.setTime(date.getTime() + time.getTime()+3600000);
+                LocalDate date = resultSet.getDate("date").toLocalDate();
+                String slot = resultSet.getString("slot");
                 int hospital_id = resultSet.getInt("hospital_id");
                 int exam_id = resultSet.getInt("exam_id");
                 String patientCC = resultSet.getString("patientCC");
@@ -369,7 +368,7 @@ public class Information {
                     }
                 }
 
-                appoints.add(new Appointment(appointment_id, selectedHospital, selectedPatient, selectedDoctor, cost, date, selectedExam, diseases, symptoms, medicines));
+                appoints.add(new Appointment(appointment_id, selectedHospital, selectedPatient, selectedDoctor, cost, date, slot, selectedExam, diseases, symptoms, medicines));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

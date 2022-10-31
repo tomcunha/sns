@@ -44,7 +44,6 @@ public abstract class SceneController {
 
     public abstract void setMainMenu(Button button);
 
-
     public void initializeChoiceBoxSex(ChoiceBox sexDropdown){
         ObservableList<String> sexName = FXCollections.observableArrayList();
         for (SexUtil sex : SexUtil.values()){
@@ -85,7 +84,5 @@ public abstract class SceneController {
         examDropdown.setItems(examName);
     }
 
-    public FXMLLoader getFXML(){
-        return fxmlLoader;
-    }
+    public FXMLLoader getFXML(){return fxmlLoader;}
 }

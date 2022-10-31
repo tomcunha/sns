@@ -33,10 +33,10 @@ public class AdminEditDoctorController extends AdminController {
     Button buttonEdit, buttonDelete, buttonMainMenu, buttonPower, buttonYesPopUp;
 
     @FXML
-    HBox firstTextPopUp, secondtTextPopUp;
+    HBox firstTextPopUp, secondTextPopUp;
 
     @FXML
-    PasswordField passwordInputpopUp;
+    PasswordField passwordInputPopUp;
 
     @FXML
     Text popUpText;
@@ -141,11 +141,11 @@ public class AdminEditDoctorController extends AdminController {
     public void confirmDelete(){
         if (buttonYesPopUp.getText().equals("Yes")){
             firstTextPopUp.setVisible(false);
-            secondtTextPopUp.setVisible(true);
-            passwordInputpopUp.setStyle("-fx-effect: none");
+            secondTextPopUp.setVisible(true);
+            passwordInputPopUp.setStyle("-fx-effect: none");
             buttonYesPopUp.setText("OK");
         } else if (buttonYesPopUp.getText().equals("OK")) {
-            if (verifyPassword(passwordInputpopUp.getText())) {
+            if (verifyPassword(passwordInputPopUp.getText())) {
                 //Database.modifyTable("DELETE FROM Doctors WHERE medicalLicense = '" + medicalLicense + "'");
 
                 try {
@@ -154,8 +154,8 @@ public class AdminEditDoctorController extends AdminController {
                     throw new RuntimeException(e);
                 }
             } else {
-                passwordInputpopUp.setStyle("-fx-effect: dropshadow( one-pass-box, red, 15,0,0,0)");
-                passwordInputpopUp.setText("");
+                passwordInputPopUp.setStyle("-fx-effect: dropshadow( one-pass-box, red, 15,0,0,0)");
+                passwordInputPopUp.setText("");
             }
 
 
@@ -166,7 +166,7 @@ public class AdminEditDoctorController extends AdminController {
     public void cancel(){
         popUp.setVisible(false);
         firstTextPopUp.setVisible(true);
-        secondtTextPopUp.setVisible(false);
+        secondTextPopUp.setVisible(false);
         editDoctorScene.setStyle(" -fx-background-color: default");
     }
 

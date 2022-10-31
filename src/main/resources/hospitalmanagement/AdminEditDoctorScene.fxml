@@ -273,10 +273,10 @@
                               <Insets left="80.0" />
                            </padding>
                         </HBox>
-                        <HBox fx:id="secondtTextPopUp" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" visible="false" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                        <HBox fx:id="secondTextPopUp" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" visible="false" GridPane.columnSpan="2" GridPane.rowIndex="1">
                            <children>
                               <Label prefHeight="45.0" prefWidth="405.0" text="Please enter your password:" />
-                              <PasswordField fx:id="passwordInputpopUp" />
+                              <PasswordField fx:id="passwordInputPopUp" />
                            </children>
                         </HBox>
                      </children>

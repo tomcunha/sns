@@ -1,8 +1,6 @@
 package hospitalmanagement.controller;
 
 import javafx.scene.control.Button;
-import javafx.scene.text.Text;
-
 import java.io.IOException;
 
 public class AdminController extends SceneController{

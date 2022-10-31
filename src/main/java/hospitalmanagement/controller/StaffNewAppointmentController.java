@@ -19,7 +19,7 @@ public class StaffNewAppointmentController extends StaffController{
     private Speciality selectedSpeciality = null;
 
     @FXML
-    Button buttonMainMenu, buttonPower;
+    Button buttonMainMenu, buttonPower, buttonNext;
 
     @FXML
     ComboBox hospitalDropdown, specialityDropdown, doctorDropdown;
@@ -98,6 +98,17 @@ public class StaffNewAppointmentController extends StaffController{
             }
         }
         return null;
+    }
+
+    @FXML
+    public void next(){
+        try {
+            setScreen(buttonNext, "StaffNewAppointment2.fxml");
+            StaffNewAppointment2Controller staffNewAppointment2Controller = getFXML().getController();
+            staffNewAppointment2Controller.populate();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML

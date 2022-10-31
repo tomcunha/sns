@@ -16,7 +16,7 @@ import javafx.util.Callback;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class AdminFindHospitalController extends SceneController {
+public class AdminFindHospitalController extends AdminController {
 
     @FXML
     private Button buttonMainMenu, buttonPower, buttonAddHospital;
@@ -34,23 +34,6 @@ public class AdminFindHospitalController extends SceneController {
 
 
 
-    @FXML
-    public void setMainMenu() {
-        try {
-            setScreen(buttonMainMenu, "AdminMenuScene.fxml");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @FXML
-    public void setLogout() {
-        try {
-            setScreen(buttonPower, "LoginScene.fxml");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     @FXML
     public void selectHospital(MouseEvent mouseEvent) {
@@ -170,5 +153,11 @@ public class AdminFindHospitalController extends SceneController {
             throw new RuntimeException(e);
         }
     }
+
+    @FXML
+    public void setMainMenu() {setMainMenu(buttonMainMenu);}
+
+    @FXML
+    public void setLogout() {setLogout(buttonPower);}
 
 }

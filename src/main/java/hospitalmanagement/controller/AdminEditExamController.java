@@ -3,7 +3,6 @@ package hospitalmanagement.controller;
 import hospitalmanagement.Database;
 import hospitalmanagement.Information;
 import hospitalmanagement.model.medicalLists.Exam;
-import hospitalmanagement.model.medicalLists.Speciality;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -12,7 +11,7 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class AdminEditExamController extends SceneController {
+public class AdminEditExamController extends AdminController {
 
     private static int examId;
     @FXML
@@ -25,26 +24,10 @@ public class AdminEditExamController extends SceneController {
 
 
     @FXML
-    public void setMainMenu() {
-        try {
-            setScreen(buttonMainMenu, "AdminMenuScene.fxml");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-    @FXML
-    public void setLogout() {
-        try {
-            setScreen(buttonPower, "LoginScene.fxml");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @FXML
     public void setCancel() throws IOException {
         setScreen(buttonCancel, "AdminFindExamScene.fxml");
     }
+
 
     public void editExam() throws IOException, SQLException {
         if (validation()) {
@@ -65,6 +48,7 @@ public class AdminEditExamController extends SceneController {
             }
         }
     }
+
     private boolean validation() {
         resetErrors();
         isDuplicate = false;
@@ -104,6 +88,7 @@ public class AdminEditExamController extends SceneController {
         nameInput.setStyle("-fx-effect: none");
         priceInput.setStyle("-fx-effect: none");
     }
+
     private int getPrice() {
         try {
             int price = Integer.parseInt(priceInput.getText());
@@ -114,5 +99,12 @@ public class AdminEditExamController extends SceneController {
         return 0;
     }
 
+    @FXML
+    public void setMainMenu() {
+        setMainMenu(buttonMainMenu);
+    }
+
+    @FXML
+    public void setLogout() {setLogout(buttonPower);}
 
 }

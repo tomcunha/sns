@@ -16,7 +16,7 @@ import javafx.util.Callback;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class AdminFindExamController extends SceneController {
+public class AdminFindExamController extends AdminController {
 
     @FXML
     private Button buttonMainMenu, buttonPower, buttonAddExam;
@@ -33,23 +33,6 @@ public class AdminFindExamController extends SceneController {
     private TextField nameTextField;
 
 
-    @FXML
-    public void setMainMenu() {
-        try {
-            setScreen(buttonMainMenu, "AdminMenuScene.fxml");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @FXML
-    public void setLogout() {
-        try {
-            setScreen(buttonPower, "LoginScene.fxml");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     @FXML
     public void selectExams(MouseEvent mouseEvent) {
@@ -164,5 +147,10 @@ public class AdminFindExamController extends SceneController {
         }
     }
 
+    @FXML
+    public void setMainMenu() {setMainMenu(buttonMainMenu);}
+
+    @FXML
+    public void setLogout() {setLogout(buttonPower);}
 
 }

@@ -9,10 +9,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class AdminNewSpecialityController extends SceneController {
+public class AdminNewSpecialityController extends AdminController {
 
     @FXML
     Text inputTextErrorMessage, emptyTextErrorMessage, inputSymbolOfError;
@@ -67,18 +66,12 @@ public class AdminNewSpecialityController extends SceneController {
         return true;
     }
 
-    public void setCancelButton() throws IOException {
-        setScreen(buttonCancel, "AdminFindSpecialityScene.fxml");
-    }
-
-    @FXML
-    public void setMainMenu() throws IOException {
-        setScreen(buttonMainMenu, "AdminMenuScene.fxml");
-    }
-
-    @FXML
-    public void setLogout() throws IOException {
-        setScreen(buttonPower, "LoginScene.fxml");
+    public void setCancelButton(){
+        try {
+            setScreen(buttonCancel, "AdminFindSpecialityScene.fxml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void resetErrors() {
@@ -95,5 +88,11 @@ public class AdminNewSpecialityController extends SceneController {
         }
         return 0;
     }
+
+    @FXML
+    public void setMainMenu() {setMainMenu(buttonMainMenu);}
+
+    @FXML
+    public void setLogout() {setLogout(buttonPower);}
 }
 

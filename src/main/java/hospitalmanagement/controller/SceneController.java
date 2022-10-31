@@ -2,6 +2,7 @@ package hospitalmanagement.controller;
 
 import hospitalmanagement.Information;
 import hospitalmanagement.StartApplication;
+import hospitalmanagement.model.medicalLists.Exam;
 import hospitalmanagement.model.medicalLists.Hospital;
 import hospitalmanagement.model.medicalLists.Speciality;
 import hospitalmanagement.model.people.Insurance;
@@ -9,16 +10,16 @@ import hospitalmanagement.utility.SexUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class SceneController {
+public abstract class SceneController {
 
     private Stage stage;
     private Scene scene;
@@ -32,6 +33,17 @@ public class SceneController {
         stage.setFullScreen(true);
         stage.show();
     }
+
+    public void setLogout(Button button){
+        try {
+            setScreen(button, "LoginScene.fxml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public abstract void setMainMenu(Button button);
+
 
     public void initializeChoiceBoxSex(ChoiceBox sexDropdown){
         ObservableList<String> sexName = FXCollections.observableArrayList();
@@ -65,7 +77,13 @@ public class SceneController {
         insuranceDropdown.setItems(insuranceName);
     }
 
-
+    public void initializeComboBoxExam(ComboBox examDropdown){
+        ObservableList<String> examName = FXCollections.observableArrayList();
+        for(Exam exam: Information.getExams()){
+            examName.add(exam.getName());
+        }
+        examDropdown.setItems(examName);
+    }
 
     public FXMLLoader getFXML(){
         return fxmlLoader;

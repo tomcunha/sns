@@ -3,17 +3,15 @@ package hospitalmanagement.controller;
 import hospitalmanagement.Database;
 import hospitalmanagement.Information;
 import hospitalmanagement.model.medicalLists.Exam;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class AdminNewExamController extends SceneController {
+public class AdminNewExamController extends AdminController {
 
     @FXML
     Text inputTextErrorMessage, emptyTextErrorMessage, inputSymbolOfError;
@@ -79,16 +77,6 @@ public class AdminNewExamController extends SceneController {
     }
 
     @FXML
-    public void setMainMenu() throws IOException {
-        setScreen(buttonMainMenu, "AdminMenuScene.fxml");
-    }
-
-    @FXML
-    public void setLogout() throws IOException {
-        setScreen(buttonPower, "LoginScene.fxml");
-    }
-
-    @FXML
     private int getPrice() {
         try {
             int price = Integer.parseInt(priceInput.getText());
@@ -105,4 +93,10 @@ public class AdminNewExamController extends SceneController {
         nameInput.setStyle("-fx-effect: none");
         priceInput.setStyle("-fx-effect: none");
     }
+
+    @FXML
+    public void setMainMenu() {setMainMenu(buttonMainMenu);}
+
+    @FXML
+    public void setLogout() {setLogout(buttonPower);}
 }

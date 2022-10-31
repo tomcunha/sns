@@ -10,7 +10,7 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
-public class AdminNewHospitalController extends SceneController {
+public class AdminNewHospitalController extends AdminController {
 
     @FXML
     Button buttonSave, buttonMainMenu, buttonPower, buttonCancel;
@@ -21,23 +21,6 @@ public class AdminNewHospitalController extends SceneController {
     @FXML
     TextArea addressInput;
 
-    @FXML
-    public void setMainMenu() {
-        try {
-            setScreen(buttonMainMenu, "AdminMenuScene.fxml");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @FXML
-    public void setLogout() {
-        try {
-            setScreen(buttonPower, "LoginScene.fxml");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     @FXML
     public void cancelCreation() {
@@ -105,4 +88,9 @@ public class AdminNewHospitalController extends SceneController {
         return validation;
     }
 
+    @FXML
+    public void setMainMenu() {setMainMenu(buttonMainMenu);}
+
+    @FXML
+    public void setLogout() {setLogout(buttonPower);}
 }

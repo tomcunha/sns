@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class StaffFindPatientController extends SceneController {
+public class StaffFindPatientController extends StaffController {
     @FXML
     private Button buttonAddPatient, buttonEdit, buttonMainMenu, buttonPower,buttonYesPopUp, buttonDelete,buttonNext;
     @FXML
@@ -38,29 +38,12 @@ public class StaffFindPatientController extends SceneController {
 
     private static String patientCC;
 
+
     @FXML
     public void setNewPatient() throws IOException {
         setScreen(buttonAddPatient, "StaffNewPatientScene.fxml");
         StaffNewPatientController staffNewPatientController = getFXML().getController();
         staffNewPatientController.initializeComboBox();
-    }
-
-    @FXML
-    public void setMainMenu() {
-        try {
-            setScreen(buttonMainMenu, "StaffMenuScene.fxml");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @FXML
-    public void setLogout() {
-        try {
-            setScreen(buttonPower, "LoginScene.fxml");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     @FXML
@@ -170,7 +153,6 @@ public class StaffFindPatientController extends SceneController {
         return false;
     }
 
-
     public void selectAppointment() {
         title.setText("New Appointment");
         buttonEdit.setDisable(true);
@@ -196,4 +178,10 @@ public class StaffFindPatientController extends SceneController {
     public static String getPatientCC() {
         return patientCC;
     }
+
+    @FXML
+    public void setMainMenu() {setMainMenu(buttonMainMenu);}
+
+    @FXML
+    public void setLogout() {setLogout(buttonPower);}
 }

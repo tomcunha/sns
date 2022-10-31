@@ -5,29 +5,33 @@ import javafx.scene.control.Button;
 
 import java.io.IOException;
 
-public class DoctorMenuController extends SceneController {
+public class DoctorMenuController extends DoctorController {
     @FXML
     Button buttonPower,scheduleButton,patientsManagementButton,diseasesMedSymptButton;
     @FXML
-    public void setButtonPower() throws IOException {
-        setScreen(buttonPower, "LoginScene.fxml");
+    public void setScheduleButton(){
+        try {
+            setScreen(scheduleButton, ".fxml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
     @FXML
-    public void setScheduleButton() throws IOException {
-        setScreen(scheduleButton, ".fxml");
-    }
-    @FXML
-    public void setPatientsManagementButton() throws IOException {
+    public void setPatientsManagementButton(){
+        try {
             setScreen(patientsManagementButton, "StaffFindPatientScene.fxml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
     @FXML
-    public void setDiseasesMedSymptButton() throws IOException {
-        setScreen(diseasesMedSymptButton, ".fxml");
+    public void setDiseasesMedSymptButton(){
+        try {
+            setScreen(diseasesMedSymptButton, ".fxml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
-
-
-
-
-
-
+    @FXML
+    public void setLogout() {setLogout(buttonPower);}
 }

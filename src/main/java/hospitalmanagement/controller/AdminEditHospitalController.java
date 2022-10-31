@@ -4,20 +4,16 @@ import hospitalmanagement.Database;
 import hospitalmanagement.Information;
 import hospitalmanagement.model.medicalLists.Hospital;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
 import javafx.scene.control.*;
-import javafx.scene.effect.BoxBlur;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Optional;
 
-public class AdminEditHospitalController extends SceneController {
+public class AdminEditHospitalController extends AdminController {
 
     @FXML
     Button buttonMainMenu, buttonPower, buttonEdit, buttonDelete,buttonCancel, buttonYesPopUp;
@@ -31,31 +27,13 @@ public class AdminEditHospitalController extends SceneController {
     @FXML
     GridPane editHospitalScene, popUp;
     @FXML
-    HBox firstTextPopUp, secondtTextPopUp;
+    HBox firstTextPopUp, secondTextPopUp;
 
     @FXML
-    PasswordField passwordInputpopUp;
+    PasswordField passwordInputPopUp;
 
     @FXML
     Text popUpText;
-
-    @FXML
-    public void setMainMenu() {
-        try {
-            setScreen(buttonMainMenu, "AdminMenuScene.fxml");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @FXML
-    public void setLogout() {
-        try {
-            setScreen(buttonPower, "LoginScene.fxml");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     public void setCancel() {
         try{
@@ -174,11 +152,11 @@ public class AdminEditHospitalController extends SceneController {
     public void confirmDelete(){
         if (buttonYesPopUp.getText().equals("Yes")){
             firstTextPopUp.setVisible(false);
-            secondtTextPopUp.setVisible(true);
-            passwordInputpopUp.setStyle("-fx-effect: none");
+            secondTextPopUp.setVisible(true);
+            passwordInputPopUp.setStyle("-fx-effect: none");
             buttonYesPopUp.setText("OK");
         } else if (buttonYesPopUp.getText().equals("OK")) {
-            if (verifyPassword(passwordInputpopUp.getText())) {
+            if (verifyPassword(passwordInputPopUp.getText())) {
                 //Database.modifyTable("DELETE FROM Doctors WHERE medicalLicense = '" + medicalLicense + "'");
 
                 try {
@@ -187,8 +165,8 @@ public class AdminEditHospitalController extends SceneController {
                     throw new RuntimeException(e);
                 }
             } else {
-                passwordInputpopUp.setStyle("-fx-effect: dropshadow( one-pass-box, red, 15,0,0,0)");
-                passwordInputpopUp.setText("");
+                passwordInputPopUp.setStyle("-fx-effect: dropshadow( one-pass-box, red, 15,0,0,0)");
+                passwordInputPopUp.setText("");
             }
 
 
@@ -199,7 +177,7 @@ public class AdminEditHospitalController extends SceneController {
     public void cancel(){
         popUp.setVisible(false);
         firstTextPopUp.setVisible(true);
-        secondtTextPopUp.setVisible(false);
+        secondTextPopUp.setVisible(false);
         editHospitalScene.setStyle(" -fx-background-color: default");
     }
 
@@ -219,5 +197,12 @@ public class AdminEditHospitalController extends SceneController {
 
         return false;
     }
+
+    @FXML
+    public void setMainMenu() {setMainMenu(buttonMainMenu);}
+
+    @FXML
+    public void setLogout() {setLogout(buttonPower);}
+
 
 }

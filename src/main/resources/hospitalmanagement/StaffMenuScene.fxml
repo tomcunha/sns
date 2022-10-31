@@ -25,6 +25,11 @@
         <HBox prefHeight="100.0" prefWidth="200.0">
             <children>
                 <Button fx:id="buttonStaffProfile" mnemonicParsing="false" prefHeight="128.0" prefWidth="128.0" />
+            <Text fx:id="textStaff" strokeType="OUTSIDE" strokeWidth="0.0" text="">
+               <HBox.margin>
+                  <Insets top="40.0" />
+               </HBox.margin>
+            </Text>
             </children>
          <padding>
             <Insets left="10.0" top="10.0" />
@@ -32,7 +37,7 @@
         </HBox>
         <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
             <children>
-                <Button fx:id="buttonPower" mnemonicParsing="false" onAction="#setButtonPower" prefHeight="128.0" prefWidth="128.0" />
+                <Button fx:id="buttonPower" mnemonicParsing="false" onAction="#setLogout" prefHeight="128.0" prefWidth="128.0" />
             </children>
          <opaqueInsets>
             <Insets />
@@ -80,7 +85,7 @@
                 <Insets left="30" top="30" />
             </padding>
             <children>
-                <Button fx:id="newAppointmentButton" mnemonicParsing="false" prefWidth="600.0" text="New appointment" onAction="#newAppointment" />
+                <Button fx:id="newAppointmentButton" mnemonicParsing="false" onAction="#newAppointment" prefWidth="600.0" text="New appointment" />
             </children>
         </HBox>
     </children>

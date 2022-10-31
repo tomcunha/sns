@@ -13,9 +13,8 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Optional;
 
-public class AdminEditDoctorController extends SceneController {
+public class AdminEditDoctorController extends AdminController {
     private static String medicalLicense;
 
     @FXML
@@ -42,16 +41,6 @@ public class AdminEditDoctorController extends SceneController {
     @FXML
     Text popUpText;
 
-
-    @FXML
-    public void setMainMenu() throws IOException {
-        setScreen(buttonMainMenu, "AdminMenuScene.fxml");
-    }
-
-    @FXML
-    public void setLogout() throws IOException {
-        setScreen(buttonPower, "LoginScene.fxml");
-    }
 
     public void editPersonAttributes() {
         if (buttonEdit.getText().equals("Edit")) {
@@ -84,7 +73,6 @@ public class AdminEditDoctorController extends SceneController {
             buttonDelete.setStyle("-fx-background-color: #CF5F5F");
         }
     }
-
 
     public void enableAll() {
         nameInput.setDisable(false);
@@ -199,11 +187,14 @@ public class AdminEditDoctorController extends SceneController {
         return false;
     }
 
-
-
     public void initializeComboBox() {
         initializeComboBoxHospital(hospitalDropdown);
         initializeComboBoxSpeciality(specialityDropdown);
         initializeChoiceBoxSex(sexDropdown);
     }
+
+    @FXML
+    public void setMainMenu() {setMainMenu(buttonMainMenu);}
+    @FXML
+    public void setLogout() throws IOException {setLogout(buttonPower);}
 }

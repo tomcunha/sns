@@ -11,35 +11,17 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class AdminEditSpecialityController extends SceneController {
+public class AdminEditSpecialityController extends AdminController {
 
     private static int specialityID;
+    private boolean isDuplicate, isEmpty;
     @FXML
     Button buttonSave, buttonCancel, buttonMainMenu, buttonPower;
     @FXML
     TextField nameInput, priceInput;
     @FXML
     Text inputTextErrorMessage, emptyTextErrorMessage, inputSymbolOfError;
-    private boolean isDuplicate, isEmpty;
 
-
-    @FXML
-    public void setMainMenu() {
-        try {
-            setScreen(buttonMainMenu, "AdminMenuScene.fxml");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @FXML
-    public void setLogout() {
-        try {
-            setScreen(buttonPower, "LoginScene.fxml");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     @FXML
     public void setCancel() throws IOException {
@@ -114,4 +96,10 @@ public class AdminEditSpecialityController extends SceneController {
         }
         return 0;
     }
+
+    @FXML
+    public void setMainMenu() {setMainMenu(buttonMainMenu);}
+
+    @FXML
+    public void setLogout() {setLogout(buttonPower);}
 }

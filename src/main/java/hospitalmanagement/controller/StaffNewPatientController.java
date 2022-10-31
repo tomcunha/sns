@@ -13,38 +13,28 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class StaffNewPatientController extends SceneController {
+public class StaffNewPatientController extends StaffController{
 
     private static String ccNumber = "";
 
     @FXML
     Button buttonSave, buttonMainMenu, buttonPower, buttonCancel;
     @FXML
-    TextField nameInput, ccInput;
-
+    TextField nameInput, ccInput, emailInput, phoneInput;
     @FXML
     Text warningMessage1, warningMessage2, warningInsurance;
-
     @FXML
     TextArea addressInput;
     @FXML
-    TextField emailInput, phoneInput;
-
-    @FXML
     RadioButton yesInsurance, noInsurance;
-
     @FXML
     Label insuranceNameLabel;
-
     @FXML
     ComboBox hospitalDropdown,insuranceDropdown;
-
     @FXML
     ChoiceBox sexDropdown;
-
     @FXML
     DatePicker dateInput;
-
     @FXML
     ToggleGroup insuranceOption;
 
@@ -64,23 +54,6 @@ public class StaffNewPatientController extends SceneController {
     public void cancelButton(){
         try {
             setScreen(buttonCancel,"StaffFindPatientScene.fxml");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-    @FXML
-    public void setMainMenu() {
-        try {
-            setScreen(buttonMainMenu, "StaffMenuScene.fxml");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @FXML
-    public void setLogout() {
-        try {
-            setScreen(buttonPower, "LoginScene.fxml");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -274,4 +247,8 @@ public class StaffNewPatientController extends SceneController {
             }
         }
     }
+    @FXML
+    public void setMainMenu() {setMainMenu(buttonMainMenu);}
+    @FXML
+    public void setLogout() {setLogout(buttonPower);}
 }

@@ -2,22 +2,16 @@ package hospitalmanagement.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 
-public class StaffMenuController extends SceneController{
+public class StaffMenuController extends StaffController{
 
     @FXML
     Button buttonPower, patientsManagementButton, newAppointmentButton;
-
     @FXML
-    public void setButtonPower() {
-        try {
-            setScreen(buttonPower, "LoginScene.fxml");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
+    Text textStaff;
 
     @FXML
     public void setPatientsManagement() {
@@ -37,5 +31,12 @@ public class StaffMenuController extends SceneController{
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @FXML
+    public void setLogout() {setLogout(buttonPower);}
+
+    public void setTextStaff(String string) {
+        textStaff.setText(string);
     }
 }

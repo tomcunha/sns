@@ -5,14 +5,13 @@ import hospitalmanagement.Information;
 import hospitalmanagement.model.people.Doctor;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.layout.Background;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.sql.*;
 
 
-public class AdminNewDoctorController extends SceneController {
+public class AdminNewDoctorController extends AdminController {
 
     @FXML
     Button buttonSave, buttonMainMenu, buttonPower, buttonCancel;
@@ -33,16 +32,6 @@ public class AdminNewDoctorController extends SceneController {
     Text inputTextErrorMessage, inputSymbolOfErrorMl, inputSymbolOfErrorUser, emptyTextErrorMessage;
     boolean isDuplicate, isEmpty;
 
-
-    @FXML
-    public void setMainMenu() throws IOException {
-        setScreen(buttonMainMenu, "AdminMenuScene.fxml");
-    }
-
-    @FXML
-    public void setLogout() throws IOException {
-        setScreen(buttonPower, "LoginScene.fxml");
-    }
 
     @FXML
     public void setCancel() throws IOException {
@@ -174,5 +163,11 @@ public class AdminNewDoctorController extends SceneController {
         initializeComboBoxSpeciality(specialityDropdown);
         initializeChoiceBoxSex(sexDropdown);
     }
+
+    @FXML
+    public void setMainMenu() {setMainMenu(buttonMainMenu);}
+
+    @FXML
+    public void setLogout() {setLogout(buttonPower);}
 
 }

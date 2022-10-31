@@ -64,18 +64,22 @@ public class LoginMenuController extends SceneController {
 
         for (int i = 0; i < users.size(); i++) {
             if (users.get(i).equals(usernamefield.getText()) && passwords.get(i).equals(passwordfield.getText())) {
+                employee_id = ids.get(i);
                 switch (types.get(i)) {
                     case 1:
                         setScreen(signInButton, "StaffMenuScene.fxml");
+                        StaffMenuController staffMenuController = getFXML().getController();
+                        staffMenuController.setTextStaff(getEmployee_name());
                         break;
                     case 2:
                         setScreen(signInButton, "DoctorMenuScene.fxml");
                         break;
                     case 3:
                         setScreen(signInButton, "AdminMenuScene.fxml");
+                        AdminMenuController adminMenuController = getFXML().getController();
+                        adminMenuController.setTextAdmin(getEmployee_name());
                         break;
                 }
-                employee_id = ids.get(i);
                 break;
             }
         }
@@ -85,4 +89,19 @@ public class LoginMenuController extends SceneController {
     public static int getEmployee_id() {
         return employee_id;
     }
+
+    public static String getEmployee_name(){
+        ResultSet resultSet = Database.queryTable("SELECT name FROM Persons INNER JOIN Employees ON Persons.person_id = Employees.person_id WHERE employee_id = " + getEmployee_id());
+        try {
+            if(resultSet.next()){
+                return resultSet.getString("name");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
+
+    @Override
+    public void setMainMenu(Button button) {}
 }

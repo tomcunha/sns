@@ -1,7 +1,6 @@
 package hospitalmanagement.controller;
 
 import hospitalmanagement.Information;
-import hospitalmanagement.model.medicalLists.Exam;
 import hospitalmanagement.model.medicalLists.Speciality;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
@@ -17,40 +16,20 @@ import javafx.util.Callback;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class AdminFindSpecialityController extends SceneController {
-
-    @FXML
-    private Button buttonMainMenu, buttonPower, buttonAddSpeciality;
+public class AdminFindSpecialityController extends AdminController {
 
     ObservableList<ObservableList> listSpecialities = FXCollections.observableArrayList();
 
     @FXML
+    private Button buttonMainMenu, buttonPower, buttonAddSpeciality;
+    @FXML
     private TableView tableSpecialities;
-
     @FXML
     private TableColumn specialityColumn, priceColumn;
-
     @FXML
     private TextField nameTextField;
 
 
-    @FXML
-    public void setMainMenu() {
-        try {
-            setScreen(buttonMainMenu, "AdminMenuScene.fxml");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @FXML
-    public void setLogout() {
-        try {
-            setScreen(buttonPower, "LoginScene.fxml");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     @FXML
     public void selectSpecialities(MouseEvent mouseEvent) {
@@ -164,6 +143,12 @@ public class AdminFindSpecialityController extends SceneController {
             throw new RuntimeException(e);
         }
     }
+
+    @FXML
+    public void setMainMenu() {setMainMenu(buttonMainMenu);}
+
+    @FXML
+    public void setLogout() {setLogout(buttonPower);}
 
 
 }

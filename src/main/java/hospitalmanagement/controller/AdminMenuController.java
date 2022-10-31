@@ -1,29 +1,19 @@
 package hospitalmanagement.controller;
 
 
-import hospitalmanagement.Database;
-import hospitalmanagement.model.people.Doctor;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
 
-public class AdminMenuController extends SceneController {
+public class AdminMenuController extends AdminController {
 
     @FXML
     Button buttonPower,doctorsManagementButton,examsManagementButton, hospitalsManagementButton,specialitiesManagementButton;
 
     @FXML
-    public void setButtonPower() throws IOException {
-        setScreen(buttonPower, "LoginScene.fxml");
-    }
+    Text textAdmin;
 
     @FXML
     public void setDoctorManagementButton() throws IOException {
@@ -43,5 +33,12 @@ public class AdminMenuController extends SceneController {
     @FXML
     public void setSpecialitiesManagementButton() throws IOException {
         setScreen(specialitiesManagementButton, "AdminFindSpecialityScene.fxml");
+    }
+
+    @FXML
+    public void setLogout() {setLogout(buttonPower);}
+
+    public void setTextAdmin(String string) {
+        textAdmin.setText(string);
     }
 }

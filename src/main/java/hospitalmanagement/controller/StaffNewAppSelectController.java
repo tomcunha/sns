@@ -5,7 +5,7 @@ import javafx.scene.control.Button;
 
 import java.io.IOException;
 
-public class StaffNewAppSelectController extends SceneController{
+public class StaffNewAppSelectController extends StaffController{
 
     @FXML
     private Button buttonNewExam, buttonNewApp;
@@ -14,19 +14,11 @@ public class StaffNewAppSelectController extends SceneController{
     private Button buttonMainMenu, buttonPower;
 
     @FXML
-    public void setMainMenu() throws IOException {
-        setScreen(buttonMainMenu, "StaffMenuScene.fxml");
-    }
-
-    @FXML
-    public void setLogout() throws IOException {
-        setScreen(buttonPower, "LoginScene.fxml");
-    }
-
-    @FXML
     public void setNewExamButton(){
         try {
-            setScreen(buttonNewExam,"LoginScene.fxml");
+            setScreen(buttonNewExam,"StaffNewExamScene.fxml");
+            StaffNewExamController staffNewExamController = getFXML().getController();
+            staffNewExamController.initializeComboBox();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -41,4 +33,10 @@ public class StaffNewAppSelectController extends SceneController{
             throw new RuntimeException(e);
         }
     }
+
+    @FXML
+    public void setMainMenu() {setMainMenu(buttonMainMenu);}
+
+    @FXML
+    public void setLogout() {setLogout(buttonPower);}
 }

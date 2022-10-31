@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 import javafx.util.Callback;
 
 import java.io.IOException;
@@ -31,6 +32,9 @@ public class AdminFindDoctorController extends AdminController {
 
     @FXML
     private TextField nameTextField;
+    @FXML
+    Text textAdmin;
+
 
 
     @FXML

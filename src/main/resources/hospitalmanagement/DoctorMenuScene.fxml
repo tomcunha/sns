@@ -26,6 +26,11 @@
         <HBox prefHeight="100.0" prefWidth="200.0">
             <children>
                 <Button fx:id="buttonDoctorProfile" mnemonicParsing="false" prefHeight="128.0" prefWidth="128.0" />
+                <Text fx:id="textDoctor" strokeType="OUTSIDE" strokeWidth="0.0" text="">
+                    <HBox.margin>
+                        <Insets top="40.0" />
+                    </HBox.margin>
+                </Text>
             </children>
          <padding>
             <Insets left="10.0" top="10.0" />

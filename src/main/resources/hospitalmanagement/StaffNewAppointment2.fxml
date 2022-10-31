@@ -35,7 +35,7 @@
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                     <children>
                         <Button fx:id="buttonStaffProfile" mnemonicParsing="false" prefHeight="128.0" prefWidth="128.0" />
-                        <Text fx:id="textStaff" strokeType="OUTSIDE" strokeWidth="0.0" text="Staff" />
+                        <Text fx:id="textStaff" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
                     </children>
                     <padding>
                         <Insets left="15.0" />

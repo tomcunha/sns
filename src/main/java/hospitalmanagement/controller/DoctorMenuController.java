@@ -2,12 +2,15 @@ package hospitalmanagement.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 
 public class DoctorMenuController extends DoctorController {
     @FXML
     Button buttonPower,scheduleButton,patientsManagementButton,diseasesMedSymptButton;
+    @FXML
+    Text textDoctor;
     @FXML
     public void setScheduleButton(){
         try {
@@ -34,4 +37,7 @@ public class DoctorMenuController extends DoctorController {
     }
     @FXML
     public void setLogout() {setLogout(buttonPower);}
+    public void setTextDoctor(String string) {
+        textDoctor.setText(string);
+    }
 }

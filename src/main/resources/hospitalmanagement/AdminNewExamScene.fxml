@@ -34,7 +34,7 @@
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                     <children>
                         <Button fx:id="buttonAdminProfile" mnemonicParsing="false" prefHeight="128.0" prefWidth="128.0" />
-                        <Text fx:id="textAdmin" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin" />
+                        <Text fx:id="textAdmin" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2">

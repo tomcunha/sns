@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 import javafx.util.Callback;
 
 import java.io.IOException;
@@ -32,6 +33,8 @@ public class AdminFindExamController extends AdminController {
     @FXML
     private TextField nameTextField;
 
+    @FXML
+    Text textAdmin;
 
 
     @FXML
@@ -142,15 +145,21 @@ public class AdminFindExamController extends AdminController {
     public void createNewExam() {
         try {
             setScreen(buttonAddExam, "AdminNewExamScene.fxml");
+            AdminNewExamController adminMenuController = getFXML().getController();
+            adminMenuController.textAdmin.setText(LoginMenuController.getEmployee_name());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
     @FXML
-    public void setMainMenu() {setMainMenu(buttonMainMenu);}
+    public void setMainMenu() {
+        setMainMenu(buttonMainMenu);
+    }
 
     @FXML
-    public void setLogout() {setLogout(buttonPower);}
+    public void setLogout() {
+        setLogout(buttonPower);
+    }
 
 }

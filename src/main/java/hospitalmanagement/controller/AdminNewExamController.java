@@ -19,6 +19,8 @@ public class AdminNewExamController extends AdminController {
     TextField nameInput, priceInput;
     @FXML
     Button buttonSave, buttonCancel, buttonMainMenu, buttonPower;
+    @FXML
+    Text textAdmin;
     private boolean isDuplicate, isEmpty;
 
 

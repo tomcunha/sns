@@ -20,6 +20,8 @@ public class AdminNewSpecialityController extends AdminController {
     @FXML
     Button buttonSave, buttonCancel, buttonMainMenu, buttonPower;
     private boolean isDuplicate, isEmpty;
+    @FXML
+    Text textAdmin;
 
     public void saveNewSpeciality() throws SQLException, IOException {
         if (validation()) {
@@ -27,7 +29,7 @@ public class AdminNewSpecialityController extends AdminController {
 
                 Database.modifyTable("INSERT INTO Specialities (name, price) VALUES ('" + nameInput.getText() + "', " + getPrice() + ")");
                 Information.updateExams();
-                setScreen(buttonSave, "AdminMenuScene.fxml");
+                setMainMenu();
             }
         }
     }
@@ -67,11 +69,7 @@ public class AdminNewSpecialityController extends AdminController {
     }
 
     public void setCancelButton(){
-        try {
-            setScreen(buttonCancel, "AdminFindSpecialityScene.fxml");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        setFindSpeciality(buttonCancel);
     }
 
     private void resetErrors() {

@@ -10,25 +10,27 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 
-public class StaffNewExamController extends StaffController{
+public class StaffNewExamController extends StaffController {
     private Hospital selectedHospital = null;
     private Speciality selectedExam = null;
 
     @FXML
     Button buttonMainMenu, buttonPower;
-
+    @FXML
+    Text textStaff;
     @FXML
     ComboBox hospitalDropdown, examDropdown, doctorDropdown;
 
 
-    public void initializeComboBox(){
+    public void initializeComboBox() {
         initializeComboBoxHospital(hospitalDropdown);
         String cc = StaffFindPatientController.getPatientCC();
-        for (Patient patient: Information.getPatients()){
-            if (patient.getPatientCC().equals(cc)){
+        for (Patient patient : Information.getPatients()) {
+            if (patient.getPatientCC().equals(cc)) {
                 selectedHospital = patient.getFavoriteHospital();
                 hospitalDropdown.setValue(selectedHospital.getName());
                 break;
@@ -37,13 +39,13 @@ public class StaffNewExamController extends StaffController{
         initializeComboBoxExam(examDropdown);
     }
 
-    public void refreshDoctors(){
+    public void refreshDoctors() {
         ObservableList<String> doctorsHospital = FXCollections.observableArrayList();
-        for (Doctor doctor:Information.getDoctors()){
-            if (doctor.getWorkingHospital().equals(selectedHospital) && !doctorsHospital.contains(doctor.getName())){
-                try{
+        for (Doctor doctor : Information.getDoctors()) {
+            if (doctor.getWorkingHospital().equals(selectedHospital) && !doctorsHospital.contains(doctor.getName())) {
+                try {
                     doctorsHospital.add(doctor.getName());
-                }catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
@@ -51,13 +53,13 @@ public class StaffNewExamController extends StaffController{
         doctorDropdown.setItems(doctorsHospital);
     }
 
-    public void hospitalSelection(){
+    public void hospitalSelection() {
         selectedHospital = getHospital();
         doctorDropdown.setValue(null);
         refreshDoctors();
     }
 
-    public void examSelection(){
+    public void examSelection() {
         doctorDropdown.setDisable(false);
     }
 
@@ -71,8 +73,13 @@ public class StaffNewExamController extends StaffController{
     }
 
     @FXML
-    public void setMainMenu() {setMainMenu(buttonMainMenu);}
+    public void setMainMenu() {
+        setMainMenu(buttonMainMenu);
+    }
+
     @FXML
-    public void setLogout() {setLogout(buttonPower);}
+    public void setLogout() {
+        setLogout(buttonPower);
+    }
 
 }

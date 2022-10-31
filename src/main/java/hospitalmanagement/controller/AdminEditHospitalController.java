@@ -16,7 +16,7 @@ import java.sql.SQLException;
 public class AdminEditHospitalController extends AdminController {
 
     @FXML
-    Button buttonMainMenu, buttonPower, buttonEdit, buttonDelete,buttonCancel, buttonYesPopUp;
+    Button buttonMainMenu, buttonPower, buttonEdit, buttonDelete, buttonCancel, buttonYesPopUp;
     @FXML
     TextField nameInput, phoneNumberInput, emailInput;
     @FXML
@@ -34,12 +34,16 @@ public class AdminEditHospitalController extends AdminController {
 
     @FXML
     Text popUpText;
+    @FXML
+    Text textAdmin;
 
     public void setCancel() {
-        try{
+        try {
             setScreen(buttonCancel, "AdminFindHospitalScene.fxml");
-        }catch (IOException e){
-            throw  new RuntimeException(e);
+            AdminFindHospitalController adminFindHospitalController = getFXML().getController();
+            adminFindHospitalController.textAdmin.setText(LoginMenuController.getEmployee_name());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -149,8 +153,8 @@ public class AdminEditHospitalController extends AdminController {
         editHospitalScene.setStyle(" -fx-background-color: rgb(192,192,192);opacity:0.8;");
     }
 
-    public void confirmDelete(){
-        if (buttonYesPopUp.getText().equals("Yes")){
+    public void confirmDelete() {
+        if (buttonYesPopUp.getText().equals("Yes")) {
             firstTextPopUp.setVisible(false);
             secondTextPopUp.setVisible(true);
             passwordInputPopUp.setStyle("-fx-effect: none");
@@ -159,11 +163,8 @@ public class AdminEditHospitalController extends AdminController {
             if (verifyPassword(passwordInputPopUp.getText())) {
                 //Database.modifyTable("DELETE FROM Doctors WHERE medicalLicense = '" + medicalLicense + "'");
 
-                try {
-                    setScreen(buttonYesPopUp, "AdminMenuScene.fxml");
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
+                setMainMenu();
+
             } else {
                 passwordInputPopUp.setStyle("-fx-effect: dropshadow( one-pass-box, red, 15,0,0,0)");
                 passwordInputPopUp.setText("");
@@ -174,7 +175,7 @@ public class AdminEditHospitalController extends AdminController {
 
     }
 
-    public void cancel(){
+    public void cancel() {
         popUp.setVisible(false);
         firstTextPopUp.setVisible(true);
         secondTextPopUp.setVisible(false);
@@ -199,10 +200,14 @@ public class AdminEditHospitalController extends AdminController {
     }
 
     @FXML
-    public void setMainMenu() {setMainMenu(buttonMainMenu);}
+    public void setMainMenu() {
+        setMainMenu(buttonMainMenu);
+    }
 
     @FXML
-    public void setLogout() {setLogout(buttonPower);}
+    public void setLogout() {
+        setLogout(buttonPower);
+    }
 
 
 }

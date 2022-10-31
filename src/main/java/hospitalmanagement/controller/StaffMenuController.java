@@ -15,11 +15,7 @@ public class StaffMenuController extends StaffController{
 
     @FXML
     public void setPatientsManagement() {
-        try {
-            setScreen(patientsManagementButton, "StaffFindPatientScene.fxml");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        setFindPatient(patientsManagementButton);
     }
 
     @FXML
@@ -28,10 +24,12 @@ public class StaffMenuController extends StaffController{
             setScreen(newAppointmentButton, "StaffFindPatientScene.fxml");
             StaffFindPatientController findPatient = getFXML().getController();
             findPatient.selectAppointment();
+            findPatient.textStaff.setText(LoginMenuController.getEmployee_name());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
+
 
     @FXML
     public void setLogout() {setLogout(buttonPower);}

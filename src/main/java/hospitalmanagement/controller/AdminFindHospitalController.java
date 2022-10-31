@@ -49,6 +49,8 @@ public class AdminFindHospitalController extends AdminController {
 
                 try {
                     setScreen(buttonPower, "AdminEditHospitalScene.fxml");
+                    AdminEditHospitalController adminEditHospitalController = getFXML().getController();
+                    adminEditHospitalController.textAdmin.setText(LoginMenuController.getEmployee_name());
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -152,6 +154,8 @@ public class AdminFindHospitalController extends AdminController {
     public void createNewHospital() {
         try {
             setScreen(buttonAddHospital, "AdminNewHospitalScene.fxml");
+            AdminNewHospitalController adminNewHospitalController = getFXML().getController();
+            adminNewHospitalController.textAdmin.setText(LoginMenuController.getEmployee_name());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

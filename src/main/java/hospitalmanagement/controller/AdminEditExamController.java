@@ -20,21 +20,23 @@ public class AdminEditExamController extends AdminController {
     TextField nameInput, priceInput;
     @FXML
     Text inputTextErrorMessage, emptyTextErrorMessage, inputSymbolOfError;
+    @FXML
+    Text textAdmin;
     private boolean isDuplicate, isEmpty;
 
 
     @FXML
-    public void setCancel() throws IOException {
-        setScreen(buttonCancel, "AdminFindExamScene.fxml");
+    public void setCancel() {
+      setFindExam(buttonCancel);
     }
 
 
-    public void editExam() throws IOException, SQLException {
+    public void editExam()  {
         if (validation()) {
             Database.modifyTable("UPDATE Exams SET name = '" + nameInput.getText() + "', price = " + getPrice() + " WHERE exam_id = " + examId);
 
             Information.updateExams();
-            setScreen(buttonSave, "AdminFindExamScene.fxml");
+            setFindExam(buttonSave);
         }
     }
 

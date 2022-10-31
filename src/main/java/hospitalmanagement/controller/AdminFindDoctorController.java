@@ -47,6 +47,8 @@ public class AdminFindDoctorController extends AdminController {
 
                 try {
                     setScreen(buttonPower, "AdminEditDoctorScene.fxml");
+                    AdminEditDoctorController adminEditDoctorController = getFXML().getController();
+                    adminEditDoctorController.textAdmin.setText(LoginMenuController.getEmployee_name());
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -159,6 +161,9 @@ public class AdminFindDoctorController extends AdminController {
     public void createNewDoctor() {
         try {
             setScreen(buttonAddDoctor, "AdminNewDoctorScene.fxml");
+            AdminNewDoctorController adminNewDoctorController = getFXML().getController();
+            adminNewDoctorController.textAdmin.setText(LoginMenuController.getEmployee_name());
+            adminNewDoctorController.initializeComboBox();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

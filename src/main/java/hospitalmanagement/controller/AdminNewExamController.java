@@ -30,11 +30,7 @@ public class AdminNewExamController extends AdminController {
                 Database.modifyTable("INSERT INTO Exams (name, price) VALUES ('" + nameInput.getText() + "', " + getPrice() + ")");
 
                 Information.updateExams();
-                try {
-                    setScreen(buttonSave, "AdminMenuScene.fxml");
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
+                setMainMenu();
             }
 
         }
@@ -74,8 +70,8 @@ public class AdminNewExamController extends AdminController {
         return true;
     }
 
-    public void setCancelButton() throws IOException {
-        setScreen(buttonCancel, "AdminFindExamScene.fxml");
+    public void setCancelButton() {
+        setFindExam(buttonCancel);
     }
 
     @FXML

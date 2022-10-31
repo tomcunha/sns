@@ -45,6 +45,8 @@ public class AdminFindSpecialityController extends AdminController {
 
                 try {
                     setScreen(buttonPower, "AdminEditSpecialityScene.fxml");
+                    AdminEditSpecialityController adminEditSpecialityController = getFXML().getController();
+                    adminEditSpecialityController.textAdmin.setText(LoginMenuController.getEmployee_name());
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -142,6 +144,8 @@ public class AdminFindSpecialityController extends AdminController {
     public void createNewSpeciality() {
         try {
             setScreen(buttonAddSpeciality, "AdminNewSpecialityScene.fxml");
+            AdminNewSpecialityController adminNewSpecialityController = getFXML().getController();
+            adminNewSpecialityController.textAdmin.setText(LoginMenuController.getEmployee_name());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

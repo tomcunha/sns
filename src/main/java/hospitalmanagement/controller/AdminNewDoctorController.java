@@ -30,12 +30,16 @@ public class AdminNewDoctorController extends AdminController {
 
     @FXML
     Text inputTextErrorMessage, inputSymbolOfErrorMl, inputSymbolOfErrorUser, emptyTextErrorMessage;
+    @FXML
+    Text textAdmin;
     boolean isDuplicate, isEmpty;
 
 
     @FXML
     public void setCancel() throws IOException {
         setScreen(buttonCancel, "AdminFindDoctorScene.fxml");
+        AdminFindDoctorController adminFindDoctorController = getFXML().getController();
+        adminFindDoctorController.textAdmin.setText(LoginMenuController.getEmployee_name());
     }
 
     public void createDoctor() throws SQLException, IOException {
@@ -81,7 +85,7 @@ public class AdminNewDoctorController extends AdminController {
             Database.modifyTable("INSERT INTO hospitalManagement.Doctors (medicalLicense,speciality_id,hospital_id,employee_id) " + "VALUES ('" + medicalLicenseInput.getText() + "', " + speciality_id + ", " + hospital_id + " ,  '" + employeeId + "' ) ");
 
             Information.updateDoctors();
-            setScreen(buttonSave, "AdminMenuScene.fxml");
+            setMainMenu();
         }
     }
 
@@ -165,9 +169,13 @@ public class AdminNewDoctorController extends AdminController {
     }
 
     @FXML
-    public void setMainMenu() {setMainMenu(buttonMainMenu);}
+    public void setMainMenu() {
+        setMainMenu(buttonMainMenu);
+    }
 
     @FXML
-    public void setLogout() {setLogout(buttonPower);}
+    public void setLogout() {
+        setLogout(buttonPower);
+    }
 
 }

@@ -40,6 +40,8 @@ public class AdminEditDoctorController extends AdminController {
 
     @FXML
     Text popUpText;
+    @FXML
+    Text textAdmin;
 
 
     public void editPersonAttributes() {
@@ -60,6 +62,7 @@ public class AdminEditDoctorController extends AdminController {
             buttonDelete.setStyle("-fx-background-color: #CF5F5F");
         }
     }
+
 
     public void deletePerson() throws IOException {
         if (buttonDelete.getText().equals("Delete")) {
@@ -147,12 +150,7 @@ public class AdminEditDoctorController extends AdminController {
         } else if (buttonYesPopUp.getText().equals("OK")) {
             if (verifyPassword(passwordInputpopUp.getText())) {
                 //Database.modifyTable("DELETE FROM Doctors WHERE medicalLicense = '" + medicalLicense + "'");
-
-                try {
-                    setScreen(buttonYesPopUp, "AdminMenuScene.fxml");
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
+                    setMainMenu();
             } else {
                 passwordInputpopUp.setStyle("-fx-effect: dropshadow( one-pass-box, red, 15,0,0,0)");
                 passwordInputpopUp.setText("");

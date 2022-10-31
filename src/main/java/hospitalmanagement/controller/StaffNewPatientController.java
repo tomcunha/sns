@@ -22,7 +22,7 @@ public class StaffNewPatientController extends StaffController{
     @FXML
     TextField nameInput, ccInput, emailInput, phoneInput;
     @FXML
-    Text warningMessage1, warningMessage2, warningInsurance;
+    Text warningMessage1, warningMessage2, warningInsurance, textStaff;
     @FXML
     TextArea addressInput;
     @FXML
@@ -52,11 +52,7 @@ public class StaffNewPatientController extends StaffController{
     }
 
     public void cancelButton(){
-        try {
-            setScreen(buttonCancel,"StaffFindPatientScene.fxml");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        setFindPatient(buttonCancel);
     }
 
     public void createPatient() throws SQLException {
@@ -74,11 +70,7 @@ public class StaffNewPatientController extends StaffController{
             }
 
             Information.updatePatients();
-            try {
-                setScreen(buttonSave, "StaffMenuScene.fxml");
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            setMainMenu();
         }
     }
 
@@ -92,11 +84,7 @@ public class StaffNewPatientController extends StaffController{
                 Database.modifyTable("UPDATE Patients SET insurance_id = '" + getInsurance().getId() + "' WHERE Patients.patientCC = '" + ccInput.getText() + "'");
             }
             Information.updatePatients();
-            try {
-                setScreen(buttonSave, "StaffMenuScene.fxml");
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            setMainMenu();
         }
     }
 

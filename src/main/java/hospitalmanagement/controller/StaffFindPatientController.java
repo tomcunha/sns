@@ -34,8 +34,7 @@ public class StaffFindPatientController extends StaffController {
     PasswordField passwordInputpopUp;
 
     @FXML
-    private Text namePatientText, birthDatePatientText, identityNumberPatientText, nameInsuranceText, popUpText, textNext;
-
+    Text namePatientText, birthDatePatientText, identityNumberPatientText, nameInsuranceText, popUpText, textNext, textStaff;
     private static String patientCC;
 
 
@@ -44,6 +43,7 @@ public class StaffFindPatientController extends StaffController {
         setScreen(buttonAddPatient, "StaffNewPatientScene.fxml");
         StaffNewPatientController staffNewPatientController = getFXML().getController();
         staffNewPatientController.initializeComboBox();
+        staffNewPatientController.textStaff.setText(LoginMenuController.getEmployee_name());
     }
 
     @FXML
@@ -91,6 +91,7 @@ public class StaffFindPatientController extends StaffController {
             staffNewPatientController.setCcNumber(identityNumberPatientText.getText());
             staffNewPatientController.initializeComboBox();
             staffNewPatientController.setInputs();
+            staffNewPatientController.textStaff.setText(LoginMenuController.getEmployee_name());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -112,12 +113,7 @@ public class StaffFindPatientController extends StaffController {
         } else if (buttonYesPopUp.getText().equals("OK")) {
             if (verifyPassword(passwordInputpopUp.getText())) {
                 //Database.modifyTable("DELETE FROM Patients WHERE patient_cc = '" + .... + "'");
-
-                try {
-                    setScreen(buttonYesPopUp, "StaffMenuScene.fxml");
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
+                setMainMenu();
             } else {
                 passwordInputpopUp.setStyle("-fx-effect: dropshadow( one-pass-box, red, 15,0,0,0)");
                 passwordInputpopUp.setText("");
@@ -169,6 +165,8 @@ public class StaffFindPatientController extends StaffController {
             patientCC = ccTextField.getText();
             try {
                 setScreen(buttonNext, "StaffNewAppSelectScene.fxml");
+                StaffNewAppSelectController staffNewAppSelectController = getFXML().getController();
+                staffNewAppSelectController.textStaff.setText(LoginMenuController.getEmployee_name());
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

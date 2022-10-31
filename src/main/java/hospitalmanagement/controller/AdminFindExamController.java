@@ -48,6 +48,8 @@ public class AdminFindExamController extends AdminController {
 
                 try {
                     setScreen(buttonPower, "AdminEditExamScene.fxml");
+                    AdminEditExamController adminEditExamController = getFXML().getController();
+                    adminEditExamController.textAdmin.setText(LoginMenuController.getEmployee_name());
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }

@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 import javafx.util.Callback;
 
 import java.io.IOException;
@@ -28,6 +29,8 @@ public class AdminFindSpecialityController extends AdminController {
     private TableColumn specialityColumn, priceColumn;
     @FXML
     private TextField nameTextField;
+    @FXML
+    Text textAdmin;
 
 
 
@@ -42,6 +45,8 @@ public class AdminFindSpecialityController extends AdminController {
 
                 try {
                     setScreen(buttonPower, "AdminEditSpecialityScene.fxml");
+                    AdminEditSpecialityController adminEditSpecialityController = getFXML().getController();
+                    adminEditSpecialityController.textAdmin.setText(LoginMenuController.getEmployee_name());
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -139,6 +144,8 @@ public class AdminFindSpecialityController extends AdminController {
     public void createNewSpeciality() {
         try {
             setScreen(buttonAddSpeciality, "AdminNewSpecialityScene.fxml");
+            AdminNewSpecialityController adminNewSpecialityController = getFXML().getController();
+            adminNewSpecialityController.textAdmin.setText(LoginMenuController.getEmployee_name());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

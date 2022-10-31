@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 import javafx.util.Callback;
 
 import java.io.IOException;
@@ -31,6 +32,9 @@ public class AdminFindDoctorController extends AdminController {
 
     @FXML
     private TextField nameTextField;
+    @FXML
+    Text textAdmin;
+
 
 
     @FXML
@@ -43,6 +47,8 @@ public class AdminFindDoctorController extends AdminController {
 
                 try {
                     setScreen(buttonPower, "AdminEditDoctorScene.fxml");
+                    AdminEditDoctorController adminEditDoctorController = getFXML().getController();
+                    adminEditDoctorController.textAdmin.setText(LoginMenuController.getEmployee_name());
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -155,6 +161,9 @@ public class AdminFindDoctorController extends AdminController {
     public void createNewDoctor() {
         try {
             setScreen(buttonAddDoctor, "AdminNewDoctorScene.fxml");
+            AdminNewDoctorController adminNewDoctorController = getFXML().getController();
+            adminNewDoctorController.textAdmin.setText(LoginMenuController.getEmployee_name());
+            adminNewDoctorController.initializeComboBox();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

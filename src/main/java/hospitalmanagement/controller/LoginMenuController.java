@@ -73,6 +73,8 @@ public class LoginMenuController extends SceneController {
                         break;
                     case 2:
                         setScreen(signInButton, "DoctorMenuScene.fxml");
+                        DoctorMenuController doctorMenuController = getFXML().getController();
+                        doctorMenuController.setTextDoctor(getEmployee_name());
                         break;
                     case 3:
                         setScreen(signInButton, "AdminMenuScene.fxml");

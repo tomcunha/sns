@@ -17,4 +17,16 @@ public class StaffController extends SceneController{
             throw new RuntimeException(e);
         }
     }
+
+    public void setFindPatient(Button button){
+        try {
+            setScreen(button,"StaffFindPatientScene.fxml");
+            StaffFindPatientController staffFindPatientController = getFXML().getController();
+            staffFindPatientController.textStaff.setText(LoginMenuController.getEmployee_name());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
 }

@@ -10,6 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 
@@ -20,17 +21,17 @@ public class StaffNewAppointmentController extends StaffController{
 
     @FXML
     Button buttonMainMenu, buttonPower, buttonNext;
-
+    @FXML
+    Text textStaff;
     @FXML
     ComboBox hospitalDropdown, specialityDropdown, doctorDropdown;
 
 
-
-    public void initializeComboBox(){
+    public void initializeComboBox() {
         initializeComboBoxHospital(hospitalDropdown);
         String cc = StaffFindPatientController.getPatientCC();
-        for (Patient patient: Information.getPatients()){
-            if (patient.getPatientCC().equals(cc)){
+        for (Patient patient : Information.getPatients()) {
+            if (patient.getPatientCC().equals(cc)) {
                 selectedHospital = patient.getFavoriteHospital();
                 hospitalDropdown.setValue(selectedHospital.getName());
                 break;
@@ -39,14 +40,14 @@ public class StaffNewAppointmentController extends StaffController{
         refreshSpecialities();
     }
 
-    public void refreshSpecialities(){
+    public void refreshSpecialities() {
         ObservableList<String> specialitiesHospital = FXCollections.observableArrayList();
-        for (Doctor doctor:Information.getDoctors()){
+        for (Doctor doctor : Information.getDoctors()) {
             String doctor_spe = doctor.getSpecialty().getName();
-            if (doctor.getWorkingHospital().equals(selectedHospital) && !specialitiesHospital.contains(doctor_spe)){
-                try{
+            if (doctor.getWorkingHospital().equals(selectedHospital) && !specialitiesHospital.contains(doctor_spe)) {
+                try {
                     specialitiesHospital.add(doctor_spe);
-                }catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
@@ -54,13 +55,13 @@ public class StaffNewAppointmentController extends StaffController{
         specialityDropdown.setItems(specialitiesHospital);
     }
 
-    public void refreshDoctors(){
+    public void refreshDoctors() {
         ObservableList<String> doctorsSpecialityHospital = FXCollections.observableArrayList();
-        for (Doctor doctor:Information.getDoctors()){
-            if (doctor.getWorkingHospital().equals(selectedHospital) && doctor.getSpecialty().equals(selectedSpeciality) && !doctorsSpecialityHospital.contains(doctor.getName())){
-                try{
+        for (Doctor doctor : Information.getDoctors()) {
+            if (doctor.getWorkingHospital().equals(selectedHospital) && doctor.getSpecialty().equals(selectedSpeciality) && !doctorsSpecialityHospital.contains(doctor.getName())) {
+                try {
                     doctorsSpecialityHospital.add(doctor.getName());
-                }catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
@@ -68,14 +69,14 @@ public class StaffNewAppointmentController extends StaffController{
         doctorDropdown.setItems(doctorsSpecialityHospital);
     }
 
-    public void hospitalSelection(){
+    public void hospitalSelection() {
         selectedHospital = getHospital();
         specialityDropdown.setValue(null);
         refreshSpecialities();
         doctorDropdown.setDisable(true);
     }
 
-    public void specialitySelection(){
+    public void specialitySelection() {
         selectedSpeciality = getSpeciality();
         doctorDropdown.setValue(null);
         refreshDoctors();
@@ -91,7 +92,7 @@ public class StaffNewAppointmentController extends StaffController{
         return null;
     }
 
-    private Speciality getSpeciality(){
+    private Speciality getSpeciality() {
         for (Speciality speciality : Information.getSpecialities()) {
             if (speciality.getName().equals(specialityDropdown.getValue())) {
                 return speciality;
@@ -112,9 +113,13 @@ public class StaffNewAppointmentController extends StaffController{
     }
 
     @FXML
-    public void setMainMenu() {setMainMenu(buttonMainMenu);}
+    public void setMainMenu() {
+        setMainMenu(buttonMainMenu);
+    }
 
     @FXML
-    public void setLogout() {setLogout(buttonPower);}
+    public void setLogout() {
+        setLogout(buttonPower);
+    }
 
 }

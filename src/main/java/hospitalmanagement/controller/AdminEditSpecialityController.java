@@ -21,11 +21,13 @@ public class AdminEditSpecialityController extends AdminController {
     TextField nameInput, priceInput;
     @FXML
     Text inputTextErrorMessage, emptyTextErrorMessage, inputSymbolOfError;
+    @FXML
+    Text textAdmin;
 
 
     @FXML
     public void setCancel() throws IOException {
-        setScreen(buttonCancel, "AdminFindSpecialityScene.fxml");
+        setFindSpeciality(buttonCancel);
     }
 
     public void editSpeciality() throws IOException, SQLException {
@@ -33,7 +35,7 @@ public class AdminEditSpecialityController extends AdminController {
             Database.modifyTable("UPDATE Specialities SET name = '" + nameInput.getText() + "', price = " + getPrice() + " WHERE speciality_id = " + specialityID);
 
             Information.updateSpecialities();
-            setScreen(buttonSave, "AdminFindSpecialityScene.fxml");
+            setFindSpeciality(buttonSave);
         }
     }
 

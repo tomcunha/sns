@@ -11,6 +11,8 @@ public class DoctorController extends SceneController{
     public void setMainMenu(Button button) {
         try {
             setScreen(button, "DoctorMenuScene.fxml");
+            DoctorMenuController doctorMenuController = getFXML().getController();
+            doctorMenuController.setTextDoctor(LoginMenuController.getEmployee_name());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

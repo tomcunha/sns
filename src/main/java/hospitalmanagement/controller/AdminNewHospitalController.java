@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 
@@ -20,12 +21,16 @@ public class AdminNewHospitalController extends AdminController {
 
     @FXML
     TextArea addressInput;
+    @FXML
+    Text textAdmin;
 
 
     @FXML
     public void cancelCreation() {
         try {
             setScreen(buttonCancel, "AdminFindHospitalScene.fxml");
+            AdminFindHospitalController adminFindHospitalController = getFXML().getController();
+            adminFindHospitalController.textAdmin.setText(LoginMenuController.getEmployee_name());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

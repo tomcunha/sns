@@ -16,7 +16,7 @@ public class Database {
         }
     }
 
-    //Can edit, create and delete records of a table
+    //Can edit, create and delete records of a table in the database
     public static void modifyTable(String instruction) {
         try {
             PreparedStatement statement = connection.prepareStatement(instruction);
